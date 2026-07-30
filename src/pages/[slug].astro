@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { getRelatedServices, getServiceUrl, serviceAreas, servicePages, whatsapp } from '../data/service-pages';
+
+export function getStaticPaths() {
+  return servicePages.map((service) => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+const canonical = getServiceUrl(service.slug);
+const relatedServices = getRelatedServices(service.slug);
+
+const serviceSchema = {
+  '@type': 'Service',
+  '@id': `${canonical}#service`,
+  name: service.serviceType,
+  serviceType: service.serviceType,
+  description: service.description,
+  url: canonical,
+  provider: { '@id': 'https://www.serviciospinamar.com/#localbusiness' },
+  areaServed: serviceAreas.map((area) => ({
+    '@type': 'AdministrativeArea',
+    name: area
+  })),
+  offers: {
+    '@type': 'Offer',
+    url: canonical,
+    itemOffered: {
+      '@type': 'Service',
+      name: service.serviceType
+    }
+  }
+};
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': `${canonical}#faq`,
+  mainEntity: service.faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer
+    }
+  }))
+};
+---
+<BaseLayout title={service.title} description={service.description} canonical={canonical} structuredData={[serviceSchema, faqSchema]}>
+  <Header />
+  <main class="service-page">
+    <section class="service-hero">
+      <div class="service-hero__grain" aria-hidden="true"></div>
+      <div class="container service-hero__grid">
+        <div class="service-hero__copy">
+          <a class="service-back" href="/#servicios"><Icon name="arrow" size={17} /> Volver a servicios</a>
+          <p class="eyebrow">{service.eyebrow}</p>
+          <h1><span class="marker-sequence marker-hero-title" data-marker>{service.h1}</span></h1>
+          <p class="lead">{service.lead}</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
+            <a class="button button-outline" href="#alcance">Ver alcance</a>
+          </div>
+        </div>
+        <figure class="service-hero__image" data-animate>
+          <img src={service.image} alt={service.imageAlt} />
+          <figcaption>{service.intent} · Pinamar, Cariló, Valeria del Mar y Ostende</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="alcance" class="section service-intro">
+      <div class="container service-intro__grid">
+        <header class="section-heading">
+          <p class="eyebrow">Qué incluye</p>
+          <h2>Un servicio claro para resolver lo que necesita tu propiedad</h2>
+        </header>
+        <div class="service-list-panel" data-animate>
+          <ul>
+            {service.covers.map((item) => <li><Icon name="check" size={18} /> {item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-small service-situations">
+      <div class="container service-band">
+        <div>
+          <p class="eyebrow">Cuándo conviene pedirlo</p>
+          <h2>Situaciones frecuentes en propiedades de la costa</h2>
+        </div>
+        <div class="service-situation-grid">
+          {service.situations.map((item) => <article data-animate><p>{item}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section service-process">
+      <div class="container service-process__grid">
+        <header class="section-heading">
+          <p class="eyebrow">Cómo trabajamos</p>
+          <h2>Del primer mensaje al trabajo coordinado</h2>
+          <p>El objetivo es que tengas alcance, tiempos y próximos pasos claros antes de avanzar.</p>
+        </header>
+        <ol class="process-list">
+          {service.process.map((item, index) => <li data-animate><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid">{serviceAreas.map((area) => <article data-animate><h3>{area}</h3><p>{service.shortName} para propiedades en {area}.</p></article>)}</div></div></section>
+
+    <section class="section service-related">
+      <div class="container">
+        <header class="section-heading centered"><p class="eyebrow">También puede servirte</p><h2>Otros servicios en Pinamar</h2></header>
+        <div class="related-grid">
+          {relatedServices.map((item) => <a href={`/${item.slug}/`} data-animate><span>{item.shortName}</span><Icon name="arrow" size={18} /></a>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><p class="eyebrow">Preguntas frecuentes</p><h2>Antes de pedir presupuesto</h2></header><div>{service.faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
+
+    <section class="section-small service-final-cta">
+      <div class="container contact-card" data-animate>
+        <p class="eyebrow">¿Necesitás {service.shortName.toLowerCase()}?</p>
+        <h2>Mandanos fotos o contanos qué necesitás y coordinamos el presupuesto.</h2>
+        <a class="button button-light" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>

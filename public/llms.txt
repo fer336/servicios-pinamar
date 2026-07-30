@@ -25,6 +25,10 @@ The site directs quote requests through WhatsApp: https://wa.me/5492267521448?te
 ## Key Pages
 
 - Home: https://www.serviciospinamar.com/
+- Pintura en Pinamar: https://www.serviciospinamar.com/pintura-pinamar/
+- Hidrolavado en Pinamar: https://www.serviciospinamar.com/hidrolavado-pinamar/
+- Gasista en Pinamar: https://www.serviciospinamar.com/gasista-pinamar/
+- Plomería en Pinamar: https://www.serviciospinamar.com/plomeria-pinamar/
 - Services section: https://www.serviciospinamar.com/#servicios
 - Coverage areas: https://www.serviciospinamar.com/#zonas
 - Contact section: https://www.serviciospinamar.com/#contacto
