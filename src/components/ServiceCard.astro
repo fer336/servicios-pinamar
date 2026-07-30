@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+interface Props { title: string; description: string; image: string; href?: string; }
+const { title, description, image, href = '#contacto' } = Astro.props;
+---
+<article class="service-card" style={`--service-image:url('${image}')`} data-animate>
+  <div class="service-card__bg"></div>
+  <div class="service-card__shade"></div>
+  <div class="service-card__content">
+    <span class="service-icon"><Icon name="check" size={21} /></span>
+    <div>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <a href={href} aria-label={`Consultar por ${title}`}><Icon name="arrow" size={19} /></a>
+    </div>
+  </div>
+</article>

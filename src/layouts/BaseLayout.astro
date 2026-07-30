@@ -1,0 +1,130 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = 'https://www.serviciospinamar.com/'
+} = Astro.props;
+
+const siteName = 'Servicios Pinamar';
+const ogImage = 'https://www.serviciospinamar.com/og-image.png';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Servicios Pinamar',
+  description,
+  url: canonical,
+  image: ogImage,
+  telephone: '+54 9 2267 52-1448',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Pinamar',
+    addressRegion: 'Buenos Aires',
+    addressCountry: 'AR'
+  },
+  areaServed: ['Pinamar', 'Cariló', 'Valeria del Mar', 'Ostende'],
+  serviceType: ['Pintura', 'Hidrolavado', 'Plomería', 'Gas'],
+  makesOffer: ['Pintura', 'Hidrolavado', 'Plomería', 'Gas'].map((service) => ({
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: service,
+      areaServed: ['Pinamar', 'Cariló', 'Valeria del Mar', 'Ostende']
+    }
+  }))
+};
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173f38" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Servicios Pinamar: mantenimiento de propiedades en Pinamar" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Outfit:wght@500;600;700&family=Playwrite+AR:wght@300;400&display=swap" rel="stylesheet" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <slot />
+    <script>
+      const animated = document.querySelectorAll('[data-animate], [data-marker]');
+      const reveal = (el: Element) => el.classList.add(el.hasAttribute('data-marker') ? 'is-marked' : 'is-visible');
+      if ('IntersectionObserver' in window && animated.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+        animated.forEach((el) => observer.observe(el));
+      } else {
+        animated.forEach(reveal);
+      }
+
+      const floatingWa = document.querySelector<HTMLAnchorElement>('.floating-wa');
+      const mobileWaQuery = window.matchMedia('(max-width: 760px)');
+      const bottomThreshold = 520;
+      let floatingWaTicking = false;
+
+      const updateFloatingWa = () => {
+        if (!floatingWa) return;
+
+        const distanceFromBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+        const shouldShow = mobileWaQuery.matches && distanceFromBottom <= bottomThreshold;
+
+        document.body.classList.toggle('is-floating-visible', shouldShow);
+        floatingWa.setAttribute('aria-hidden', String(!shouldShow));
+        floatingWa.tabIndex = shouldShow ? 0 : -1;
+      };
+
+      const requestFloatingWaUpdate = () => {
+        if (floatingWaTicking) return;
+
+        floatingWaTicking = true;
+        window.requestAnimationFrame(() => {
+          floatingWaTicking = false;
+          updateFloatingWa();
+        });
+      };
+
+      if (floatingWa) {
+        updateFloatingWa();
+        window.addEventListener('scroll', requestFloatingWaUpdate, { passive: true });
+        window.addEventListener('resize', requestFloatingWaUpdate);
+
+        mobileWaQuery.addEventListener('change', requestFloatingWaUpdate);
+      }
+    </script>
+  </body>
+</html>

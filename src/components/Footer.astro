@@ -1,0 +1,13 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+---
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><Logo /><p>Mantenimiento integral de propiedades en Pinamar y alrededores.</p></div>
+    <div><h3>Navegación</h3><a href="#servicios">Servicios</a><a href="#nosotros">Sobre nosotros</a><a href="#zonas">Zonas</a><a href="#faq">Preguntas frecuentes</a></div>
+    <div><h3>Servicios</h3><a href="#servicios">Pintura</a><a href="#servicios">Hidrolavado</a><a href="#servicios">Plomería</a><a href="#servicios">Gas</a></div>
+    <div><h3>Contacto</h3><a href="https://wa.me/5492267521448"><Icon name="whatsapp" size={18} /> Escribir por WhatsApp</a><span>Pinamar, Buenos Aires</span></div>
+  </div>
+  <div class="container footer-bottom"><span>© {new Date().getFullYear()} Servicios Pinamar.</span><span>Todos los derechos reservados.</span></div>
+</footer>

@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  web:
+    image: ghcr.io/fer336/servicios-pinamar-web:1.0.0
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=network_public
+        - traefik.http.routers.servicios-pinamar.rule=Host(`www.serviciospinamar.com`)
+        - traefik.http.routers.servicios-pinamar.entrypoints=websecure
+        - traefik.http.routers.servicios-pinamar.tls=true
+        - traefik.http.routers.servicios-pinamar.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.servicios-pinamar.service=servicios-pinamar
+        - traefik.http.services.servicios-pinamar.loadbalancer.server.port=80
+        - traefik.http.routers.servicios-pinamar-apex.rule=Host(`serviciospinamar.com`)
+        - traefik.http.routers.servicios-pinamar-apex.entrypoints=websecure
+        - traefik.http.routers.servicios-pinamar-apex.tls=true
+        - traefik.http.routers.servicios-pinamar-apex.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.servicios-pinamar-apex.middlewares=servicios-pinamar-www
+        - traefik.http.routers.servicios-pinamar-apex.service=servicios-pinamar
+        - traefik.http.middlewares.servicios-pinamar-www.redirectregex.regex=^https://serviciospinamar\.com/(.*)
+        - traefik.http.middlewares.servicios-pinamar-www.redirectregex.replacement=https://www.serviciospinamar.com/$${1}
+        - traefik.http.middlewares.servicios-pinamar-www.redirectregex.permanent=true
+
+networks:
+  network_public:
+    external: true
+    name: network_public

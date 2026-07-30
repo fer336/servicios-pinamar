@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Feature from '../components/Feature.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+
+const whatsapp = 'https://wa.me/5492267521448?text=Hola%2C%20quiero%20pedir%20un%20presupuesto.';
+const services = [
+  { title: 'Pintura', description: 'Interior y exterior. Materiales resistentes al clima costero.', image: '/images/servicio-pintura.webp' },
+  { title: 'Hidrolavado', description: 'Fachadas, techos, veredas, pisos, decks y muros.', image: '/images/servicio-hidrolavado.webp' },
+  { title: 'Plomería', description: 'Instalaciones, reparaciones y mantenimiento general.', image: '/images/servicio-plomeria.webp' },
+  { title: 'Gas', description: 'Instalaciones, revisiones y mantenimiento seguro.', image: '/images/servicio-gas.webp' }
+];
+const faqs = [
+  ['¿Realizan presupuestos en Pinamar?', 'Sí. Podés enviarnos fotos o videos por WhatsApp y coordinamos una visita cuando sea necesario.'],
+  ['¿Trabajan con propiedades cerradas?', 'Sí. Coordinamos el acceso y enviamos fotografías del avance para que puedas seguir el trabajo a distancia.'],
+  ['¿Atienden inmobiliarias y administradores?', 'Sí. Trabajamos con propietarios, inmobiliarias y administradores de propiedades de toda la zona.'],
+  ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende. Consultanos por ubicaciones cercanas.']
+];
+---
+<BaseLayout title="Mantenimiento en Pinamar | Pintura, Gas, Plomería" description="Servicios de mantenimiento en Pinamar, Cariló, Valeria y Ostende: pintura, hidrolavado, plomería y gas. Pedí presupuesto por WhatsApp.">
+  <Header />
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <p class="eyebrow">Mantenimiento de propiedades en Pinamar</p>
+          <h1><span class="marker-sequence marker-hero-title" data-marker><span class="marker marker-word" style="--word-index:0">Cuidamos</span> <span class="marker marker-word" style="--word-index:1">tu</span> <span class="marker marker-word" style="--word-index:2">propiedad</span></span> <span class="title-script">como si fuera nuestra.</span></h1>
+          <p class="lead">Pintura, hidrolavado, plomería y gas para que tu casa siempre esté lista para disfrutar.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
+            <a class="button button-outline" href="#servicios">Ver servicios</a>
+          </div>
+          <p class="trust"><Icon name="shield" size={23} /> Presupuestos claros y sin compromiso</p>
+        </div>
+      </div>
+      <div class="coverage-pill">Pinamar · Cariló · Valeria del Mar · Ostende</div>
+    </section>
+
+    <section id="servicios" class="section services-section">
+      <div class="container">
+        <header class="section-heading centered"><p class="eyebrow">Nuestros servicios</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Soluciones</span> <span class="marker marker-word" style="--word-index:1">integrales</span> <span class="marker marker-word" style="--word-index:2">para</span> <span class="marker marker-word" style="--word-index:3">tu</span> <span class="marker marker-word" style="--word-index:4">propiedad</span></span></h2></header>
+        <div class="services-grid">{services.map((service) => <ServiceCard {...service} />)}</div>
+        <div class="features-grid">
+          <Feature icon="shield" title="Profesionales de confianza" text="Equipos especializados y trabajos garantizados." />
+          <Feature icon="camera" title="Transparencia total" text="Te enviamos fotos del avance y te mantenemos informado." />
+          <Feature icon="pin" title="Conocemos la zona" text="Experiencia real en Pinamar y alrededores." />
+          <Feature icon="calendar" title="Disponibilidad todo el año" text="Estamos cuando nos necesitás." />
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="section about-section">
+      <div class="container about-grid">
+        <article class="about-copy">
+          <p class="eyebrow">Sobre nosotros</p>
+          <h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Somos</span> <span class="marker marker-word" style="--word-index:1">un</span> <span class="marker marker-word" style="--word-index:2">equipo</span> <span class="marker marker-word" style="--word-index:3">local,</span> <span class="marker marker-word" style="--word-index:4">dedicado</span> <span class="marker marker-word" style="--word-index:5">a</span> <span class="marker marker-word" style="--word-index:6">lo</span> <span class="marker marker-word" style="--word-index:7">que</span> <span class="marker marker-word" style="--word-index:8">hacemos.</span></span></h2>
+          <p>Trabajamos con administradores, inmobiliarias y propietarios que buscan calidad, cumplimiento y tranquilidad.</p>
+          <a class="button button-outline" href="#contacto">Conocer más</a>
+        </article>
+        <figure class="about-image" data-animate><img src="/images/costa-pinamar.webp" alt="Costa de Pinamar entre dunas y pinos" loading="lazy" /></figure>
+        <aside id="contacto" class="contact-card" data-animate>
+          <p class="eyebrow">¿Hablamos?</p>
+          <h2>Escribinos por <span class="marker marker-light">WhatsApp</span> y te pasamos tu presupuesto.</h2>
+          <ul><li><Icon name="check" size={18} /> Respondemos rápido</li><li><Icon name="check" size={18} /> Sin compromiso</li><li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li></ul>
+          <a class="button button-light" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="zonas" class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid"><article data-animate><h3>Pinamar</h3><p>Desde el Centro hasta Pinamar Norte.</p></article><article data-animate><h3>Cariló</h3><p>Toda la zona de Cariló y alrededores.</p></article><article data-animate><h3>Valeria del Mar</h3><p>Atención permanente en Valeria del Mar.</p></article><article data-animate><h3>Ostende</h3><p>Servicio también en Ostende.</p></article></div></div></section>
+
+    <section id="trabajos" class="section gallery-section"><div class="container"><header class="section-heading"><p class="eyebrow">Trabajos realizados</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Soluciones</span> <span class="marker marker-word" style="--word-index:1">pensadas</span> <span class="marker marker-word" style="--word-index:2">para</span> <span class="marker marker-word" style="--word-index:3">el</span> <span class="marker marker-word" style="--word-index:4">clima</span> <span class="marker marker-word" style="--word-index:5">de</span> <span class="marker marker-word" style="--word-index:6">la</span> <span class="marker marker-word" style="--word-index:7">costa</span></span></h2></header><div class="gallery"><img data-animate src="/images/servicio-pintura.webp" alt="Trabajo de pintura" loading="lazy" /><img data-animate src="/images/servicio-hidrolavado.webp" alt="Trabajo de hidrolavado" loading="lazy" /><img data-animate src="/images/servicio-plomeria.webp" alt="Trabajo de plomería" loading="lazy" /></div></div></section>
+
+    <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><p class="eyebrow">Preguntas frecuentes</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Todo</span> <span class="marker marker-word" style="--word-index:1">lo</span> <span class="marker marker-word" style="--word-index:2">que</span> <span class="marker marker-word" style="--word-index:3">necesitás</span> <span class="marker marker-word" style="--word-index:4">saber</span></span></h2></header><div>{faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>
