@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   web:
-    image: ghcr.io/fer336/servicios-pinamar-web:1.0.1
+    image: ghcr.io/fer336/servicios-pinamar-web:1.0.2
     networks:
       - network_public
     deploy:
