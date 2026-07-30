@@ -8,10 +8,10 @@ import Icon from '../components/Icon.astro';
 
 const whatsapp = 'https://wa.me/5492267521448?text=Hola%2C%20quiero%20pedir%20un%20presupuesto.';
 const services = [
-  { title: 'Pintura', description: 'Pintura interior y exterior de casas y comercios en Pinamar, con materiales resistentes al clima costero.', image: '/images/servicio-pintura.webp', href: '/pintura-pinamar/', ariaLabel: 'Ver servicio de pintura en Pinamar' },
-  { title: 'Hidrolavado', description: 'Hidrolavado de fachadas, techos, veredas, decks, patios, pisos y muros en Pinamar, Cariló, Valeria del Mar y Ostende.', image: '/images/servicio-hidrolavado.webp', href: '/hidrolavado-pinamar/', ariaLabel: 'Ver servicio de hidrolavado en Pinamar' },
-  { title: 'Plomería', description: 'Servicio de plomería en Pinamar para instalaciones, reparaciones, pérdidas de agua y mantenimiento general.', image: '/images/servicio-plomeria.webp', href: '/plomeria-pinamar/', ariaLabel: 'Ver servicio de plomería en Pinamar' },
-  { title: 'Gas', description: 'Revisión, reparación e instalación de artefactos de gas en casas y comercios de Pinamar.', image: '/images/servicio-gas.webp', href: '/gasista-pinamar/', ariaLabel: 'Ver servicio de gas en Pinamar' }
+  { title: 'Pintura', description: 'Pintura interior y exterior de casas y comercios en Pinamar, con materiales resistentes al clima costero.', image: '/images/servicio-pintura.webp', href: '/servicios/pintura/', ariaLabel: 'Ver servicio de pintura en Pinamar' },
+  { title: 'Hidrolavado', description: 'Hidrolavado de fachadas, techos, veredas, decks, patios, pisos y muros en Pinamar, Cariló, Valeria del Mar y Ostende.', image: '/images/servicio-hidrolavado.webp', href: '/servicios/hidrolavado/', ariaLabel: 'Ver servicio de hidrolavado en Pinamar' },
+  { title: 'Plomería', description: 'Servicio de plomería en Pinamar para instalaciones, reparaciones, pérdidas de agua y mantenimiento general.', image: '/images/servicio-plomeria.webp', href: '/servicios/plomeria/', ariaLabel: 'Ver servicio de plomería en Pinamar' },
+  { title: 'Gas', description: 'Revisión, reparación e instalación de artefactos de gas en casas y comercios de Pinamar.', image: '/images/servicio-gas.webp', href: '/servicios/gas/', ariaLabel: 'Ver servicio de gas en Pinamar' }
 ];
 const faqs = [
   ['¿Realizan presupuestos en Pinamar?', 'Sí. Realizamos presupuestos para trabajos de pintura, hidrolavado, plomería, gas y mantenimiento general en Pinamar. Podemos coordinar una visita o recibir fotos y videos por WhatsApp.'],
@@ -56,7 +56,7 @@ const faqSchema = {
               <span class="marker marker-word" style="--word-index:6">Pinamar</span>
             </span>
           </h1>
-          <p class="lead">Servicios de pintura, hidrolavado, plomería y gas para casas, comercios e inmobiliarias en Pinamar, Cariló, Valeria del Mar y Ostende.</p>
+          <p class="lead">Mantenimiento de casas y propiedades en Pinamar: pintura, hidrolavado, plomería y gas para casas, comercios e inmobiliarias en Cariló, Valeria del Mar y Ostende.</p>
           <div class="hero-actions">
             <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
             <a class="button button-outline" href="#servicios">Ver servicios</a>
@@ -69,7 +69,7 @@ const faqSchema = {
 
     <section id="servicios" class="section services-section">
       <div class="container">
-        <header class="section-heading centered"><p class="eyebrow">Nuestros servicios</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Realizamos trabajos de pintura, hidrolavado, plomería y gas para viviendas, comercios y propiedades de alquiler en Pinamar, Cariló, Valeria del Mar y Ostende.</p></header>
+        <header class="section-heading centered"><p class="eyebrow">Nuestros servicios</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Mantenimiento de casas y propiedades en Pinamar: realizamos trabajos de pintura, hidrolavado, plomería y gas para viviendas, comercios y alquileres en Cariló, Valeria del Mar y Ostende.</p></header>
         <div class="services-grid">{services.map((service) => <ServiceCard {...service} />)}</div>
         <div class="features-grid">
           <Feature icon="shield" title="Profesionales de confianza" text="Trabajos coordinados con alcance claro antes de empezar." />

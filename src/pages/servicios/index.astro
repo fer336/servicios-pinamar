@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import { servicePages, whatsapp } from '../../data/service-pages';
+---
+<BaseLayout title="Servicios de Mantenimiento en Pinamar | Pintura, Hidrolavado, Plomería y Gas" description="Servicios de mantenimiento de propiedades en Pinamar: pintura, hidrolavado, plomería y gas. Pedí presupuesto por WhatsApp.">
+  <Header />
+  <main>
+    <section class="section services-listing">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="/">Inicio</a>
+          <span>/</span>
+          <span>Servicios</span>
+        </div>
+        <header class="section-heading centered">
+          <p class="eyebrow">Servicios de mantenimiento</p>
+          <h1><span class="marker-sequence marker-heading" data-marker>Servicios de mantenimiento en Pinamar</span></h1>
+          <p class="lead">Ofrecemos pintura, hidrolavado, plomería y gas para casas, comercios e inmobiliarias en Pinamar, Cariló, Valeria del Mar y Ostende.</p>
+        </header>
+        <div class="services-grid">
+          {servicePages.map((service) => (
+            <article class="service-card" style={`--service-image:url('${service.image}')`} data-animate>
+              <div class="service-card__bg"></div>
+              <div class="service-card__shade"></div>
+              <div class="service-card__content">
+                <span class="service-icon"><Icon name="check" size={21} /></span>
+                <div>
+                  <h3>{service.shortName}</h3>
+                  <p>{service.description}</p>
+                  <a href={`/servicios/${service.slug}/`} aria-label={`Ver servicio de ${service.shortName.toLowerCase()} en Pinamar`}><Icon name="arrow" size={19} /></a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="centered-text" style="margin-top: 3rem;">
+          <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>

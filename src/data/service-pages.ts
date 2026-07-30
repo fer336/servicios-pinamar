@@ -6,7 +6,7 @@ export const whatsapp = 'https://wa.me/5492267521448?text=Hola%2C%20quiero%20ped
 
 export const servicePages = [
   {
-    slug: 'pintura-pinamar',
+    slug: 'pintura',
     shortName: 'Pintura',
     serviceType: 'Pintura interior y exterior',
     title: 'Pintura en Pinamar | Servicios Pinamar',
@@ -43,7 +43,7 @@ export const servicePages = [
     ]
   },
   {
-    slug: 'hidrolavado-pinamar',
+    slug: 'hidrolavado',
     shortName: 'Hidrolavado',
     serviceType: 'Hidrolavado de exteriores',
     title: 'Hidrolavado en Pinamar | Servicios Pinamar',
@@ -80,7 +80,7 @@ export const servicePages = [
     ]
   },
   {
-    slug: 'gasista-pinamar',
+    slug: 'gas',
     shortName: 'Gasista',
     serviceType: 'Servicio de gas',
     title: 'Gasista en Pinamar | Servicios Pinamar',
@@ -117,7 +117,7 @@ export const servicePages = [
     ]
   },
   {
-    slug: 'plomeria-pinamar',
+    slug: 'plomeria',
     shortName: 'Plomería',
     serviceType: 'Plomería general',
     title: 'Plomería en Pinamar | Servicios Pinamar',
@@ -157,6 +157,6 @@ export const servicePages = [
 
 export type ServicePage = (typeof servicePages)[number];
 
-export const getServiceUrl = (slug: string) => `${baseUrl}/${slug}/`;
+export const getServiceUrl = (slug: string) => `${baseUrl}/servicios/${slug}/`;
 
 export const getRelatedServices = (slug: string) => servicePages.filter((service) => service.slug !== slug);

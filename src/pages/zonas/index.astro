@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import { whatsapp } from '../../data/service-pages';
+---
+<BaseLayout title="Zonas de Cobertura | Servicios Pinamar" description="Servicios de mantenimiento en Pinamar, Cariló, Valeria del Mar y Ostende. Pintura, hidrolavado, plomería y gas en la Costa Atlántica.">
+  <Header />
+  <main>
+    <section class="section zones-page">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="/">Inicio</a>
+          <span>/</span>
+          <span>Zonas de cobertura</span>
+        </div>
+        <header class="section-heading centered">
+          <p class="eyebrow">Zonas de cobertura</p>
+          <h1><span class="marker-sequence marker-heading" data-marker>Zonas donde trabajamos en la Costa Atlántica</span></h1>
+          <p class="lead">Brindamos servicios de pintura, hidrolavado, plomería y gas en las principales localidades de la costa atlántica bonaerense.</p>
+        </header>
+        <div class="zones-grid">
+          <article data-animate>
+            <h3>Pinamar</h3>
+            <p>Servicios de mantenimiento, pintura, hidrolavado, plomería y gas para propiedades en Pinamar. Atendemos casas, departamentos, comercios y propiedades administradas durante todo el año.</p>
+          </article>
+          <article data-animate>
+            <h3>Cariló</h3>
+            <p>Mantenimiento de casas y propiedades en Cariló. Pintura, hidrolavado, plomería y gas para viviendas de uso permanente y temporario.</p>
+          </article>
+          <article data-animate>
+            <h3>Valeria del Mar</h3>
+            <p>Pintura, hidrolavado, plomería y mantenimiento de propiedades en Valeria del Mar. Coordinamos trabajos para propietarios e inmobiliarias.</p>
+          </article>
+          <article data-animate>
+            <h3>Ostende</h3>
+            <p>Servicios de mantenimiento para casas, comercios y propiedades en Ostende. Presupuestos por WhatsApp y seguimiento con fotos y videos.</p>
+          </article>
+        </div>
+        <div class="centered-text" style="margin-top: 3rem;">
+          <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Solicitar presupuesto por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>

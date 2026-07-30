@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Icon from '../components/Icon.astro';
-import { getRelatedServices, getServiceUrl, serviceAreas, servicePages, whatsapp } from '../data/service-pages';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import { getRelatedServices, getServiceUrl, serviceAreas, servicePages, whatsapp } from '../../data/service-pages';
 
 export function getStaticPaths() {
   return servicePages.map((service) => ({
@@ -54,11 +54,18 @@ const faqSchema = {
 <BaseLayout title={service.title} description={service.description} canonical={canonical} structuredData={[serviceSchema, faqSchema]}>
   <Header />
   <main class="service-page">
+    <div class="breadcrumbs">
+      <a href="/">Inicio</a>
+      <span>/</span>
+      <a href="/servicios/">Servicios</a>
+      <span>/</span>
+      <span>{service.shortName}</span>
+    </div>
     <section class="service-hero">
       <div class="service-hero__grain" aria-hidden="true"></div>
       <div class="container service-hero__grid">
         <div class="service-hero__copy">
-          <a class="service-back" href="/#servicios"><Icon name="arrow" size={17} /> Volver a servicios</a>
+          <a class="service-back" href="/servicios/"><Icon name="arrow" size={17} /> Volver a servicios</a>
           <p class="eyebrow">{service.eyebrow}</p>
           <h1><span class="marker-sequence marker-hero-title" data-marker>{service.h1}</span></h1>
           <p class="lead">{service.lead}</p>
@@ -119,7 +126,7 @@ const faqSchema = {
       <div class="container">
         <header class="section-heading centered"><p class="eyebrow">También puede servirte</p><h2>Otros servicios en Pinamar</h2></header>
         <div class="related-grid">
-          {relatedServices.map((item) => <a href={`/${item.slug}/`} data-animate><span>{item.shortName}</span><Icon name="arrow" size={18} /></a>)}
+          {relatedServices.map((item) => <a href={`/servicios/${item.slug}/`} data-animate><span>{item.shortName}</span><Icon name="arrow" size={18} /></a>)}
         </div>
       </div>
     </section>

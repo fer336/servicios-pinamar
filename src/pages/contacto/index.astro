@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import { serviceAreas, whatsapp } from '../../data/service-pages';
+---
+<BaseLayout title="Contacto | Servicios Pinamar" description="Contactanos para pedir presupuesto de mantenimiento en Pinamar. Respondemos rápido por WhatsApp.">
+  <Header />
+  <main>
+    <section class="section contact-page">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="/">Inicio</a>
+          <span>/</span>
+          <span>Contacto</span>
+        </div>
+        <header class="section-heading centered">
+          <p class="eyebrow">Contacto</p>
+          <h1><span class="marker-sequence marker-heading" data-marker>Pedí tu presupuesto de mantenimiento</span></h1>
+          <p class="lead">Contanos qué trabajo necesitás y te respondemos rápido por WhatsApp. Podemos coordinar una visita o recibir fotos y videos para evaluar el trabajo.</p>
+        </header>
+        <div class="contact-card" style="max-width: 600px; margin: 0 auto; text-align: center;">
+          <p class="eyebrow">¿Hablamos?</p>
+          <h2>Respondemos rápido y sin compromiso</h2>
+          <ul style="list-style: none; padding: 0; margin: 1rem 0;">
+            <li><Icon name="check" size={18} /> Presupuestos claros y sin compromiso</li>
+            <li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li>
+            <li><Icon name="check" size={18} /> Te mantenemos informado durante el trabajo</li>
+          </ul>
+          <div class="hero-actions" style="justify-content: center; margin-top: 1.5rem;">
+            <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Escribir por WhatsApp</a>
+          </div>
+          <p style="margin-top: 2rem; font-size: 0.9rem;">Cubrimos {serviceAreas.slice(0, -1).join(', ')} y {serviceAreas[serviceAreas.length - 1]}.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>
