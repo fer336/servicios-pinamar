@@ -19,8 +19,21 @@ const faqs = [
   ['¿Atienden inmobiliarias y administradores?', 'Sí. Trabajamos con propietarios, inmobiliarias y administradores de propiedades de toda la zona.'],
   ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende. Consultanos por ubicaciones cercanas.']
 ];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': 'https://www.serviciospinamar.com/#faq',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer
+    }
+  }))
+};
 ---
-<BaseLayout title="Mantenimiento en Pinamar | Pintura, Gas, Plomería" description="Servicios de mantenimiento en Pinamar, Cariló, Valeria y Ostende: pintura, hidrolavado, plomería y gas. Pedí presupuesto por WhatsApp.">
+<BaseLayout title="Mantenimiento en Pinamar | Pintura, Gas, Plomería" description="Servicios de mantenimiento en Pinamar, Cariló, Valeria y Ostende: pintura, hidrolavado, plomería y gas. Pedí presupuesto por WhatsApp." structuredData={[faqSchema]}>
   <Header />
   <main>
     <section id="inicio" class="hero">
@@ -28,8 +41,8 @@ const faqs = [
       <div class="container hero-content">
         <div class="hero-copy">
           <p class="eyebrow">Mantenimiento de propiedades en Pinamar</p>
-          <h1><span class="marker-sequence marker-hero-title" data-marker><span class="marker marker-word" style="--word-index:0">Cuidamos</span> <span class="marker marker-word" style="--word-index:1">tu</span> <span class="marker marker-word" style="--word-index:2">propiedad</span></span> <span class="title-script">como si fuera nuestra.</span></h1>
-          <p class="lead">Pintura, hidrolavado, plomería y gas para que tu casa siempre esté lista para disfrutar.</p>
+          <h1><span class="marker-sequence marker-hero-title" data-marker><span class="marker marker-word" style="--word-index:0">Mantenimiento</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">propiedades</span> <span class="marker marker-word" style="--word-index:3">en</span> <span class="marker marker-word" style="--word-index:4">Pinamar</span></span> <span class="title-script">como si fuera nuestra.</span></h1>
+          <p class="lead">Pintura, hidrolavado, plomería y gas en Pinamar, Cariló, Valeria del Mar y Ostende para que tu casa siempre esté lista para disfrutar.</p>
           <div class="hero-actions">
             <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
             <a class="button button-outline" href="#servicios">Ver servicios</a>
@@ -73,7 +86,7 @@ const faqs = [
 
     <section id="zonas" class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid"><article data-animate><h3>Pinamar</h3><p>Desde el Centro hasta Pinamar Norte.</p></article><article data-animate><h3>Cariló</h3><p>Toda la zona de Cariló y alrededores.</p></article><article data-animate><h3>Valeria del Mar</h3><p>Atención permanente en Valeria del Mar.</p></article><article data-animate><h3>Ostende</h3><p>Servicio también en Ostende.</p></article></div></div></section>
 
-    <section id="trabajos" class="section gallery-section"><div class="container"><header class="section-heading"><p class="eyebrow">Trabajos realizados</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Soluciones</span> <span class="marker marker-word" style="--word-index:1">pensadas</span> <span class="marker marker-word" style="--word-index:2">para</span> <span class="marker marker-word" style="--word-index:3">el</span> <span class="marker marker-word" style="--word-index:4">clima</span> <span class="marker marker-word" style="--word-index:5">de</span> <span class="marker marker-word" style="--word-index:6">la</span> <span class="marker marker-word" style="--word-index:7">costa</span></span></h2></header><div class="gallery"><img data-animate src="/images/servicio-pintura.webp" alt="Trabajo de pintura" loading="lazy" /><img data-animate src="/images/servicio-hidrolavado.webp" alt="Trabajo de hidrolavado" loading="lazy" /><img data-animate src="/images/servicio-plomeria.webp" alt="Trabajo de plomería" loading="lazy" /></div></div></section>
+    <section id="trabajos" class="section gallery-section"><div class="container"><header class="section-heading"><p class="eyebrow">Trabajos realizados</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Soluciones</span> <span class="marker marker-word" style="--word-index:1">pensadas</span> <span class="marker marker-word" style="--word-index:2">para</span> <span class="marker marker-word" style="--word-index:3">el</span> <span class="marker marker-word" style="--word-index:4">clima</span> <span class="marker marker-word" style="--word-index:5">de</span> <span class="marker marker-word" style="--word-index:6">la</span> <span class="marker marker-word" style="--word-index:7">costa</span></span></h2></header><div class="gallery"><img data-animate src="/images/servicio-pintura.webp" alt="Servicio de pintura interior y exterior en propiedades de Pinamar" loading="lazy" /><img data-animate src="/images/servicio-hidrolavado.webp" alt="Hidrolavado de fachadas, pisos y exteriores en la costa" loading="lazy" /><img data-animate src="/images/servicio-plomeria.webp" alt="Trabajo de plomería y mantenimiento para casas en Pinamar" loading="lazy" /></div></div></section>
 
     <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><p class="eyebrow">Preguntas frecuentes</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Todo</span> <span class="marker marker-word" style="--word-index:1">lo</span> <span class="marker marker-word" style="--word-index:2">que</span> <span class="marker marker-word" style="--word-index:3">necesitás</span> <span class="marker marker-word" style="--word-index:4">saber</span></span></h2></header><div>{faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
   </main>
