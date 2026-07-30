@@ -16,6 +16,16 @@ const { service } = Astro.props;
 const canonical = getServiceUrl(service.slug);
 const relatedServices = getRelatedServices(service.slug);
 
+const baseUrl = 'https://www.serviciospinamar.com';
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: baseUrl },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${baseUrl}/servicios/` },
+    { '@type': 'ListItem', position: 3, name: service.shortName, item: canonical }
+  ]
+};
+
 const serviceSchema = {
   '@type': 'Service',
   '@id': `${canonical}#service`,
@@ -51,16 +61,9 @@ const faqSchema = {
   }))
 };
 ---
-<BaseLayout title={service.title} description={service.description} canonical={canonical} structuredData={[serviceSchema, faqSchema]}>
+<BaseLayout title={service.title} description={service.description} canonical={canonical} structuredData={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
   <main class="service-page">
-    <div class="breadcrumbs">
-      <a href="/">Inicio</a>
-      <span>/</span>
-      <a href="/servicios/">Servicios</a>
-      <span>/</span>
-      <span>{service.shortName}</span>
-    </div>
     <section class="service-hero">
       <div class="service-hero__grain" aria-hidden="true"></div>
       <div class="container service-hero__grid">

@@ -31,6 +31,7 @@
 @media(max-width:760px){.floating-wa{display:grid;right:14px;top:auto;bottom:max(16px,env(safe-area-inset-bottom));width:52px;height:52px;box-shadow:0 14px 30px rgba(23,63,56,.24)}body.is-floating-visible .floating-wa{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);transition-delay:0s}}
 @media(prefers-reduced-motion:reduce){.floating-wa{transform:none;transition:none}body.is-floating-visible .floating-wa{transform:none}}
 
+.breadcrumbs{display:none}
 .service-page{background:var(--paper)}
 .service-hero{position:relative;overflow:hidden;padding:154px 0 82px;background:linear-gradient(135deg,#f7f5ef 0%,#eef2ef 52%,#dfe9e4 100%)}
 .service-hero__grain{position:absolute;inset:0;opacity:.48;background:radial-gradient(circle at 18% 22%,rgba(127,150,132,.24),transparent 28%),radial-gradient(circle at 82% 16%,rgba(255,255,255,.74),transparent 24%),radial-gradient(ellipse at 48% 110%,rgba(23,63,56,.12),transparent 42%);pointer-events:none}
