@@ -29,7 +29,7 @@ El deploy productivo usa GitHub Actions, GHCR y Portainer.
 
 Para publicar:
 
-1. Crear una release con tag `vX.Y.Z` o `web-vX.Y.Z`.
+1. Crear una release con tag `vX.Y.Z` — por ejemplo `v1.0.0`. No usar prefijo `web-`.
 2. GitHub Actions compila y publica la imagen con tags `X.Y.Z` y `latest`.
 3. El workflow fija `docker-compose.yml` a la versión publicada y pushea ese cambio a `main`.
 4. El workflow llama al webhook de Portainer para redeployar el stack.
