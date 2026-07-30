@@ -1,0 +1,37 @@
+# Servicios Pinamar
+
+Canonical URL: https://www.serviciospinamar.com/
+
+Servicios Pinamar is a local services landing page for property maintenance in Pinamar and nearby coastal areas in Buenos Aires, Argentina.
+
+## Services
+
+- Pintura interior y exterior
+- Hidrolavado de fachadas, techos, veredas, pisos, decks y muros
+- Plomería para instalaciones, reparaciones y mantenimiento general
+- Gas para instalaciones, revisiones y mantenimiento seguro
+
+## Areas Served
+
+- Pinamar
+- Cariló
+- Valeria del Mar
+- Ostende
+
+## Contact
+
+The site directs quote requests through WhatsApp: https://wa.me/5492267521448?text=Hola%2C%20quiero%20pedir%20un%20presupuesto.
+
+## Key Pages
+
+- Home: https://www.serviciospinamar.com/
+- Services section: https://www.serviciospinamar.com/#servicios
+- Coverage areas: https://www.serviciospinamar.com/#zonas
+- Contact section: https://www.serviciospinamar.com/#contacto
+- FAQ: https://www.serviciospinamar.com/#faq
+- Sitemap: https://www.serviciospinamar.com/sitemap-index.xml
+
+## Content Accuracy Notes
+
+- Do not infer ratings, reviews, exact address, years of experience, social profiles, certifications, credentials, or emergency availability unless explicitly present on the site.
+- The visible site copy is in Spanish and focuses on maintenance services for Pinamar, Cariló, Valeria del Mar and Ostende.
