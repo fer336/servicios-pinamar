@@ -14,7 +14,7 @@ const breadcrumbSchema = {
   ]
 };
 ---
-<BaseLayout title="Contacto | Servicios Pinamar" description="Contactanos para pedir presupuesto de mantenimiento en Pinamar. Respondemos rápido por WhatsApp." structuredData={[breadcrumbSchema]}>
+<BaseLayout title="Contacto | Servicios Pinamar" description="Contactanos para pedir presupuesto de mantenimiento en Pinamar. Coordinamos por WhatsApp trabajos de pintura, hidrolavado, plomería y gas." structuredData={[breadcrumbSchema]}>
   <Header />
   <main>
     <section class="section contact-page">
@@ -22,11 +22,11 @@ const breadcrumbSchema = {
         <header class="section-heading centered">
           <p class="eyebrow">Contacto</p>
           <h1><span class="marker-sequence marker-heading" data-marker>Pedí tu presupuesto de mantenimiento</span></h1>
-          <p class="lead">Contanos qué trabajo necesitás y te respondemos rápido por WhatsApp. Podemos coordinar una visita o recibir fotos y videos para evaluar el trabajo.</p>
+          <p class="lead">Contanos qué trabajo necesitás por WhatsApp. Podemos coordinar una visita o recibir fotos y videos para evaluar pintura, hidrolavado, plomería, gas o mantenimiento general.</p>
         </header>
         <div class="contact-card" style="max-width: 600px; margin: 0 auto; text-align: center;">
           <p class="eyebrow">¿Hablamos?</p>
-          <h2>Respondemos rápido y sin compromiso</h2>
+          <h2>Coordinamos tu consulta sin compromiso</h2>
           <ul style="list-style: none; padding: 0; margin: 1rem 0;">
             <li><Icon name="check" size={18} /> Presupuestos claros y sin compromiso</li>
             <li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li>
@@ -37,6 +37,19 @@ const breadcrumbSchema = {
           </div>
           <p style="margin-top: 2rem; font-size: 0.9rem;">Cubrimos {serviceAreas.slice(0, -1).join(', ')} y {serviceAreas[serviceAreas.length - 1]}.</p>
         </div>
+        <div class="features-grid" style="margin-top: 2.5rem;">
+          <article class="feature"><Icon name="camera" size={24} /><div><h3>Fotos o videos</h3><p>Si el problema se puede ver, enviar imágenes ayuda a entender el alcance inicial.</p></div></article>
+          <article class="feature"><Icon name="calendar" size={24} /><div><h3>Visita cuando hace falta</h3><p>Para trabajos con más variables, coordinamos una visita a la propiedad.</p></div></article>
+          <article class="feature"><Icon name="shield" size={24} /><div><h3>Alcance claro</h3><p>Antes de avanzar, dejamos definido qué trabajo se va a realizar y qué queda fuera.</p></div></article>
+          <article class="feature"><Icon name="pin" size={24} /><div><h3>Zonas cubiertas</h3><p>Trabajamos en Pinamar, Cariló, Valeria del Mar y Ostende.</p></div></article>
+        </div>
+        <section class="section-small" style="padding-bottom: 0;">
+          <div class="section-heading centered" style="margin-inline: auto;">
+            <p class="eyebrow">Qué consultar</p>
+            <h2>Mantenimiento para casas, locales y propiedades administradas</h2>
+            <p>Podés escribirnos por trabajos puntuales o por puesta a punto de propiedades antes de temporada, alquiler temporario o uso familiar. Atendemos consultas de propietarios, administradores e inmobiliarias que necesitan resolver tareas de mantenimiento con seguimiento claro.</p>
+          </div>
+        </section>
       </div>
     </section>
   </main>

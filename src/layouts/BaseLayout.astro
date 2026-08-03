@@ -5,19 +5,23 @@ interface Props {
   title: string;
   description: string;
   canonical?: string;
+  preloadImage?: string;
   structuredData?: unknown[];
 }
-
-const {
-  title,
-  description,
-  canonical = 'https://www.serviciospinamar.com/',
-  structuredData = []
-} = Astro.props;
 
 const siteName = 'Servicios Pinamar';
 const siteUrl = 'https://www.serviciospinamar.com/';
 const ogImage = 'https://www.serviciospinamar.com/og-image.png';
+
+const {
+  title,
+  description,
+  canonical,
+  preloadImage,
+  structuredData = []
+} = Astro.props;
+
+const pageCanonical = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 const serviceAreas = ['Pinamar', 'Cariló', 'Valeria del Mar', 'Ostende'];
 const serviceNames = ['Pintura', 'Hidrolavado', 'Plomería', 'Gas'];
 
@@ -77,7 +81,7 @@ const schema = {
     <meta name="theme-color" content="#173f38" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={pageCanonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
     <link rel="icon" href="/favicon-192x192.png" type="image/png" sizes="192x192" />
@@ -87,7 +91,7 @@ const schema = {
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={pageCanonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -101,7 +105,8 @@ const schema = {
     <meta name="twitter:image" content={ogImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Outfit:wght@500;600;700&family=Playwrite+AR:wght@300;400&display=swap" rel="stylesheet" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>

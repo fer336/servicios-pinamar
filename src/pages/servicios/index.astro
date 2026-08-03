@@ -24,6 +24,9 @@ const breadcrumbSchema = {
           <h1><span class="marker-sequence marker-heading" data-marker>Servicios de mantenimiento en Pinamar</span></h1>
           <p class="lead">Ofrecemos pintura, hidrolavado, plomería y gas para casas, comercios e inmobiliarias en Pinamar, Cariló, Valeria del Mar y Ostende.</p>
         </header>
+        <div class="section-heading centered" style="margin-inline: auto;">
+          <p>Si necesitás <a href="/servicios/pintura/">pintores en Pinamar</a>, <a href="/servicios/plomeria/">plomero en Pinamar</a>, <a href="/servicios/gas/">gasista en Pinamar</a> o <a href="/servicios/hidrolavado/">hidrolavado en Pinamar</a>, estas páginas explican el alcance de cada servicio sin duplicar contenido por localidad.</p>
+        </div>
         <div class="services-grid">
           {servicePages.map((service) => (
             <article class="service-card" style={`--service-image:url('${service.image}')`} data-animate>
@@ -43,6 +46,20 @@ const breadcrumbSchema = {
         <div class="centered-text" style="margin-top: 3rem;">
           <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto por WhatsApp</a>
         </div>
+        <section class="section-small" style="padding-bottom: 0;">
+          <div class="service-band">
+            <div>
+              <p class="eyebrow">Cómo elegir</p>
+              <h2>Consultá según el problema visible de la propiedad</h2>
+            </div>
+            <div class="service-situation-grid">
+              <article><p>Si el exterior está opaco, manchado o con verdín, revisá <a href="/servicios/hidrolavado/">hidrolavado en Pinamar</a>.</p></article>
+              <article><p>Si hay desgaste de paredes, frentes o interiores, revisá <a href="/servicios/pintura/">pintura en Pinamar</a>.</p></article>
+              <article><p>Si aparece una pérdida, humedad o problema de agua, revisá <a href="/servicios/plomeria/">plomería en Pinamar</a>.</p></article>
+              <article><p>Si necesitás instalación, revisión o mantenimiento de artefactos, revisá <a href="/servicios/gas/">gasista en Pinamar</a>.</p></article>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   </main>

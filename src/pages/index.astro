@@ -8,10 +8,10 @@ import Icon from '../components/Icon.astro';
 
 const whatsapp = 'https://wa.me/5492267521448?text=Hola%2C%20quiero%20pedir%20un%20presupuesto.';
 const services = [
-  { title: 'Pintura', description: 'Pintura interior y exterior de casas y comercios en Pinamar, con materiales resistentes al clima costero.', image: '/images/servicio-pintura.webp', href: '/servicios/pintura/', ariaLabel: 'Ver servicio de pintura en Pinamar' },
+  { title: 'Pintores en Pinamar', description: 'Pintura interior y exterior de casas y comercios en Pinamar, con materiales adecuados para el clima costero.', image: '/images/servicio-pintura.webp', href: '/servicios/pintura/', ariaLabel: 'Ver servicio de pintores en Pinamar' },
   { title: 'Hidrolavado', description: 'Hidrolavado de fachadas, techos, veredas, decks, patios, pisos y muros en Pinamar, Cariló, Valeria del Mar y Ostende.', image: '/images/servicio-hidrolavado.webp', href: '/servicios/hidrolavado/', ariaLabel: 'Ver servicio de hidrolavado en Pinamar' },
-  { title: 'Plomería', description: 'Servicio de plomería en Pinamar para instalaciones, reparaciones, pérdidas de agua y mantenimiento general.', image: '/images/servicio-plomeria.webp', href: '/servicios/plomeria/', ariaLabel: 'Ver servicio de plomería en Pinamar' },
-  { title: 'Gas', description: 'Revisión, reparación e instalación de artefactos de gas en casas y comercios de Pinamar.', image: '/images/servicio-gas.webp', href: '/servicios/gas/', ariaLabel: 'Ver servicio de gas en Pinamar' }
+  { title: 'Plomero en Pinamar', description: 'Servicio de plomería en Pinamar para instalaciones, reparaciones, pérdidas de agua y mantenimiento general.', image: '/images/servicio-plomeria.webp', href: '/servicios/plomeria/', ariaLabel: 'Ver servicio de plomero en Pinamar' },
+  { title: 'Gasista en Pinamar', description: 'Revisión, reparación e instalación de artefactos de gas en casas y comercios de Pinamar.', image: '/images/servicio-gas.webp', href: '/servicios/gas/', ariaLabel: 'Ver servicio de gasista en Pinamar' }
 ];
 const faqs = [
   ['¿Realizan presupuestos en Pinamar?', 'Sí. Realizamos presupuestos para trabajos de pintura, hidrolavado, plomería, gas y mantenimiento general en Pinamar. Podemos coordinar una visita o recibir fotos y videos por WhatsApp.'],
@@ -37,7 +37,7 @@ const faqSchema = {
   }))
 };
 ---
-<BaseLayout title="Mantenimiento de Casas en Pinamar | Pintura, Plomería e Hidrolavado" description="Mantenimiento de casas y propiedades en Pinamar. Servicios de pintura, hidrolavado, plomería y gas en Pinamar, Cariló, Valeria del Mar y Ostende. Pedí presupuesto por WhatsApp." structuredData={[faqSchema]}>
+<BaseLayout title="Mantenimiento de Casas en Pinamar | Pintura, Plomería e Hidrolavado" description="Mantenimiento de casas y propiedades en Pinamar. Servicios de pintura, hidrolavado, plomería y gas en Pinamar, Cariló, Valeria del Mar y Ostende. Pedí presupuesto por WhatsApp." preloadImage="/images/hero-casa-pinamar.webp" structuredData={[faqSchema]}>
   <Header />
   <main>
     <section id="inicio" class="hero">
@@ -69,7 +69,7 @@ const faqSchema = {
 
     <section id="servicios" class="section services-section">
       <div class="container">
-        <header class="section-heading centered"><p class="eyebrow">Nuestros servicios</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Mantenimiento de casas y propiedades en Pinamar: realizamos trabajos de pintura, hidrolavado, plomería y gas para viviendas, comercios y alquileres en Cariló, Valeria del Mar y Ostende.</p></header>
+        <header class="section-heading centered"><p class="eyebrow">Nuestros servicios</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Mantenimiento de casas y propiedades en Pinamar: si buscás pintores, plomero, gasista o hidrolavado en Pinamar, cada servicio tiene su página con alcance y preguntas frecuentes.</p></header>
         <div class="services-grid">{services.map((service) => <ServiceCard {...service} />)}</div>
         <div class="features-grid">
           <Feature icon="shield" title="Profesionales de confianza" text="Trabajos coordinados con alcance claro antes de empezar." />
@@ -94,7 +94,7 @@ const faqSchema = {
           <p class="eyebrow">¿Hablamos?</p>
           <h2>Pedí tu presupuesto de mantenimiento en <span class="marker marker-light">Pinamar</span></h2>
           <p>Contanos qué trabajo necesitás. Podemos coordinar una visita o recibir fotos y videos para evaluar pintura, hidrolavado, plomería, gas o reparaciones generales.</p>
-          <ul><li><Icon name="check" size={18} /> Respondemos rápido</li><li><Icon name="check" size={18} /> Sin compromiso</li><li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li></ul>
+          <ul><li><Icon name="check" size={18} /> Comunicación directa por WhatsApp</li><li><Icon name="check" size={18} /> Sin compromiso</li><li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li></ul>
           <a class="button button-light" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Solicitar presupuesto por WhatsApp</a>
         </aside>
       </div>

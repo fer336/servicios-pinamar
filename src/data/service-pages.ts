@@ -9,11 +9,11 @@ export const servicePages = [
     slug: 'pintura',
     shortName: 'Pintura',
     serviceType: 'Pintura interior y exterior',
-    title: 'Pintura en Pinamar | Servicios Pinamar',
-    description: 'Servicio de pintura en Pinamar para casas, locales y propiedades de la costa. Interior, exterior, mantenimiento y presupuestos por WhatsApp.',
+    title: 'Pintura en Pinamar y Pintores en Pinamar | Servicios Pinamar',
+    description: 'Pintores en Pinamar para casas, locales y propiedades de la costa. Pintura interior, exterior, mantenimiento y presupuestos por WhatsApp.',
     h1: 'Pintura en Pinamar para casas, locales y propiedades de la costa',
     eyebrow: 'Pintura interior y exterior',
-    lead: 'Trabajos de pintura pensados para propiedades expuestas al clima costero: interiores, exteriores, retoques, mantenimiento y terminaciones prolijas.',
+    lead: 'Pintores en Pinamar para trabajos de pintura interior, exterior, retoques, mantenimiento y terminaciones prolijas en propiedades expuestas al clima costero.',
     image: '/images/servicio-pintura.webp',
     imageAlt: 'Servicio de pintura interior y exterior en una propiedad de Pinamar',
     intent: 'pintura en Pinamar',
@@ -21,7 +21,7 @@ export const servicePages = [
       'Pintura interior para ambientes de casas, departamentos y locales.',
       'Pintura exterior para frentes, muros, rejas, aberturas y superficies expuestas.',
       'Preparación de superficies, lijado, limpieza previa y terminaciones.',
-      'Mantenimiento de pintura para propiedades de uso permanente o temporario.'
+      'Pintores para mantenimiento de propiedades de uso permanente o temporario.'
     ],
     situations: [
       'La humedad, el salitre o el sol deterioraron la pintura exterior.',
@@ -36,7 +36,7 @@ export const servicePages = [
       'Mantenemos comunicación durante el trabajo para que sepas cómo avanza.'
     ],
     faqs: [
-      ['¿Hacen pintura interior y exterior en Pinamar?', 'Sí. Realizamos pintura interior y exterior para propiedades en Pinamar, Cariló, Valeria del Mar y Ostende.'],
+      ['¿Trabajan como pintores en Pinamar para casas y locales?', 'Sí. Realizamos pintura interior y exterior para casas, locales y propiedades en Pinamar, Cariló, Valeria del Mar y Ostende.'],
       ['¿Puedo pedir presupuesto enviando fotos?', 'Sí. Podés mandar fotos o videos por WhatsApp para una primera evaluación y coordinamos visita si hace falta.'],
       ['¿Trabajan en propiedades que no están habitadas todo el año?', 'Sí. Coordinamos el acceso y el seguimiento para propietarios, administradores o inmobiliarias.'],
       ['¿Qué zonas cubre el servicio de pintura?', 'Trabajamos en Pinamar, Cariló, Valeria del Mar y Ostende.']
@@ -50,7 +50,7 @@ export const servicePages = [
     description: 'Hidrolavado en Pinamar para fachadas, techos, veredas, pisos, decks y muros. Limpieza exterior para propiedades de la Costa Atlántica.',
     h1: 'Hidrolavado en Pinamar para fachadas, pisos, techos y exteriores',
     eyebrow: 'Limpieza exterior de propiedades',
-    lead: 'Limpieza con hidrolavadora para recuperar superficies castigadas por arena, humedad, hojas, tránsito y clima costero.',
+    lead: 'Hidrolavado en Pinamar para recuperar superficies castigadas por arena, humedad, hojas, tránsito y clima costero.',
     image: '/images/servicio-hidrolavado.webp',
     imageAlt: 'Hidrolavado de superficies exteriores en una propiedad de Pinamar',
     intent: 'hidrolavado en Pinamar',
@@ -74,7 +74,7 @@ export const servicePages = [
     ],
     faqs: [
       ['¿Qué superficies pueden hidrolavar?', 'Fachadas, techos, veredas, pisos, decks, muros y otras superficies exteriores aptas para este tipo de limpieza.'],
-      ['¿Sirve antes de pintar?', 'Sí. En muchos casos el hidrolavado ayuda a preparar superficies exteriores antes de pintar o hacer mantenimiento.'],
+      ['¿El hidrolavado sirve para preparar superficies antes de pintar?', 'Sí. En muchos casos el hidrolavado ayuda a preparar superficies exteriores antes de pintar o hacer mantenimiento.'],
       ['¿Atienden casas de alquiler temporario?', 'Sí. Trabajamos con propietarios, inmobiliarias y administradores de propiedades en la zona.'],
       ['¿En qué zonas hacen hidrolavado?', 'En Pinamar, Cariló, Valeria del Mar y Ostende.']
     ]
@@ -87,7 +87,7 @@ export const servicePages = [
     description: 'Gasista en Pinamar para instalaciones, revisiones y mantenimiento de gas en casas, locales y propiedades. Coordiná presupuesto por WhatsApp.',
     h1: 'Gasista en Pinamar para instalaciones, revisiones y mantenimiento',
     eyebrow: 'Instalaciones y revisión de gas',
-    lead: 'Servicio de gas para propiedades que necesitan instalación, revisión, reparación o mantenimiento con comunicación clara desde el primer contacto.',
+    lead: 'Gasista en Pinamar para propiedades que necesitan instalación, revisión, reparación o mantenimiento de gas con comunicación clara desde el primer contacto.',
     image: '/images/servicio-gas.webp',
     imageAlt: 'Trabajo de gas y mantenimiento seguro para una propiedad de Pinamar',
     intent: 'gasista en Pinamar',
@@ -112,7 +112,7 @@ export const servicePages = [
     faqs: [
       ['¿Realizan instalaciones de gas en Pinamar?', 'Sí. Atendemos instalaciones, revisiones y mantenimiento de gas en Pinamar, Cariló, Valeria del Mar y Ostende.'],
       ['¿Puedo coordinar si no estoy en la propiedad?', 'Sí. Coordinamos acceso con propietarios, administradores o inmobiliarias cuando corresponde.'],
-      ['¿Pueden revisar una instalación existente?', 'Sí. Podés consultar por revisión de conexiones, artefactos y puntos vinculados al servicio de gas.'],
+      ['¿Puedo consultar por un gasista en Pinamar para revisar una instalación existente?', 'Sí. Podés consultar por revisión de conexiones, artefactos y puntos vinculados al servicio de gas.'],
       ['¿Qué zonas cubre el servicio de gas?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
     ]
   },
@@ -120,11 +120,11 @@ export const servicePages = [
     slug: 'plomeria',
     shortName: 'Plomería',
     serviceType: 'Plomería general',
-    title: 'Plomería en Pinamar | Servicios Pinamar',
-    description: 'Plomería en Pinamar para instalaciones, reparaciones y mantenimiento general en casas, locales y propiedades de la costa.',
+    title: 'Plomero Pinamar y Plomería en Pinamar | Servicios Pinamar',
+    description: 'Plomero en Pinamar para instalaciones, reparaciones, pérdidas de agua y mantenimiento general en casas, locales y propiedades de la costa.',
     h1: 'Plomería en Pinamar para reparaciones, instalaciones y mantenimiento',
     eyebrow: 'Instalaciones y reparaciones de agua',
-    lead: 'Servicio de plomería para resolver filtraciones, instalaciones, reparaciones y mantenimiento general en propiedades de Pinamar, Cariló, Valeria del Mar y Ostende.',
+    lead: 'Plomero en Pinamar para resolver filtraciones, instalaciones, reparaciones y mantenimiento general en propiedades de Pinamar, Cariló, Valeria del Mar y Ostende.',
     image: '/images/servicio-plomeria.webp',
     imageAlt: 'Trabajo de plomería y mantenimiento para una casa en Pinamar',
     intent: 'plomería en Pinamar',
@@ -147,7 +147,7 @@ export const servicePages = [
       'Te mantenemos informado durante el trabajo, especialmente si no estás en la propiedad.'
     ],
     faqs: [
-      ['¿Hacen reparaciones de plomería en Pinamar?', 'Sí. Atendemos reparaciones, instalaciones y mantenimiento general de plomería.'],
+      ['¿Puedo consultar por un plomero en Pinamar si tengo una pérdida?', 'Sí. Atendemos consultas por pérdidas visibles, reparaciones, instalaciones y mantenimiento general de plomería.'],
       ['¿Puedo mandar fotos de una pérdida?', 'Sí. Las fotos o videos ayudan a entender el problema y definir si hace falta una visita.'],
       ['¿Trabajan con propiedades de alquiler o administradas?', 'Sí. Coordinamos con propietarios, administradores e inmobiliarias de la zona.'],
       ['¿Dónde brindan plomería?', 'En Pinamar, Cariló, Valeria del Mar y Ostende.']

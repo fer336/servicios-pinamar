@@ -61,7 +61,7 @@ const faqSchema = {
   }))
 };
 ---
-<BaseLayout title={service.title} description={service.description} canonical={canonical} structuredData={[serviceSchema, faqSchema, breadcrumbSchema]}>
+<BaseLayout title={service.title} description={service.description} canonical={canonical} preloadImage={service.image} structuredData={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
   <main class="service-page">
     <section class="service-hero">
@@ -78,7 +78,7 @@ const faqSchema = {
           </div>
         </div>
         <figure class="service-hero__image" data-animate>
-          <img src={service.image} alt={service.imageAlt} />
+          <img src={service.image} alt={service.imageAlt} width="1122" height="1402" fetchpriority="high" decoding="async" />
           <figcaption>{service.intent} · Pinamar, Cariló, Valeria del Mar y Ostende</figcaption>
         </figure>
       </div>
