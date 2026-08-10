@@ -74,6 +74,8 @@ jobs:
           context: apps/cms
           file: apps/cms/Dockerfile
           push: true
+          build-args: |
+            VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
           tags: |
             ${{ env.IMAGE_NAME_CMS }}:${{ steps.version.outputs.version }}
             ${{ env.IMAGE_NAME_CMS }}:latest
