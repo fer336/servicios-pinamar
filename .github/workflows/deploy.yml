@@ -10,7 +10,9 @@ permissions:
   packages: write
 
 env:
-  IMAGE_NAME: ghcr.io/fer336/servicios-pinamar-web
+  IMAGE_NAME_WEB: ghcr.io/fer336/servicios-pinamar-web
+  IMAGE_NAME_API: ghcr.io/fer336/servicios-pinamar-api
+  IMAGE_NAME_CMS: ghcr.io/fer336/servicios-pinamar-cms
 
 jobs:
   deploy:
@@ -47,18 +49,38 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push image
+      - name: Build and push web image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }}
-            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME_WEB }}:${{ steps.version.outputs.version }}
+            ${{ env.IMAGE_NAME_WEB }}:latest
+
+      - name: Build and push API image
+        uses: docker/build-push-action@v6
+        with:
+          context: apps/api
+          file: apps/api/Dockerfile
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME_API }}:${{ steps.version.outputs.version }}
+            ${{ env.IMAGE_NAME_API }}:latest
+
+      - name: Build and push CMS image
+        uses: docker/build-push-action@v6
+        with:
+          context: apps/cms
+          file: apps/cms/Dockerfile
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME_CMS }}:${{ steps.version.outputs.version }}
+            ${{ env.IMAGE_NAME_CMS }}:latest
 
       - name: Pin compose image
         run: |
-          perl -0pi -e 's#image: ghcr\.io/fer336/servicios-pinamar-web:[^\n]+#image: ghcr.io/fer336/servicios-pinamar-web:${{ steps.version.outputs.version }}#' docker-compose.yml
+          perl -0pi -e 's#image: ghcr\.io/fer336/servicios-pinamar-web:[^\n]+#image: ghcr.io/fer336/servicios-pinamar-web:${{ steps.version.outputs.version }}#; s#image: ghcr\.io/fer336/servicios-pinamar-api:[^\n]+#image: ghcr.io/fer336/servicios-pinamar-api:${{ steps.version.outputs.version }}#; s#image: ghcr\.io/fer336/servicios-pinamar-cms:[^\n]+#image: ghcr.io/fer336/servicios-pinamar-cms:${{ steps.version.outputs.version }}#' docker-compose.yml
 
       - name: Commit compose image pin
         run: |

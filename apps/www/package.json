@@ -1,0 +1,25 @@
+{
+  "name": "@servicios-pinamar/www",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.2",
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.12.0",
+    "motion": "^12.23.24",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.8.3"
+  }
+}

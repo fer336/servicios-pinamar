@@ -3,19 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "apps/www"
+  ],
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "check": "astro check"
-  },
-  "dependencies": {
-    "@astrojs/sitemap": "^3.2.1",
-    "astro": "^5.12.0"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "typescript": "^5.8.3"
+    "dev": "npm run dev --workspace @servicios-pinamar/www",
+    "start": "npm run start --workspace @servicios-pinamar/www",
+    "build": "npm run build --workspace @servicios-pinamar/www",
+    "preview": "npm run preview --workspace @servicios-pinamar/www",
+    "check": "npm run check --workspace @servicios-pinamar/www"
   }
 }

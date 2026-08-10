@@ -1,0 +1,18 @@
+{
+  "service": "pintura",
+  "items": [
+    {
+      "id": "pintura-interior-exterior",
+      "title": "Pintura interior y exterior",
+      "description": "Trabajos de pintura y mantenimiento de superficies en propiedades de la costa.",
+      "service": "pintura",
+      "thumbnailUrl": "/images/servicio-pintura.webp",
+      "imageUrl": "/images/servicio-pintura.webp",
+      "alt": "Servicio de pintura interior y exterior en una propiedad de Pinamar",
+      "aspectRatio": "2 / 3",
+      "images": [
+        { "id": "pintura-interior-exterior-0", "thumbnailUrl": "/images/servicio-pintura.webp", "imageUrl": "/images/servicio-pintura.webp", "alt": "Servicio de pintura interior y exterior en una propiedad de Pinamar", "aspectRatio": "2 / 3", "sortOrder": 0, "isCover": true }
+      ]
+    }
+  ]
+}

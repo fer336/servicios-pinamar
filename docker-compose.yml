@@ -31,6 +31,50 @@ services:
         - traefik.http.middlewares.servicios-pinamar-www.redirectregex.replacement=https://www.serviciospinamar.com/$${1}
         - traefik.http.middlewares.servicios-pinamar-www.redirectregex.permanent=true
 
+  api:
+    image: ghcr.io/fer336/servicios-pinamar-api:0.1.0
+    env_file:
+      - .env
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=network_public
+        - traefik.http.routers.servicios-pinamar-api.rule=Host(`api.serviciospinamar.com`)
+        - traefik.http.routers.servicios-pinamar-api.entrypoints=websecure
+        - traefik.http.routers.servicios-pinamar-api.tls=true
+        - traefik.http.routers.servicios-pinamar-api.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.servicios-pinamar-api.service=servicios-pinamar-api
+        - traefik.http.services.servicios-pinamar-api.loadbalancer.server.port=8000
+
+  cms:
+    image: ghcr.io/fer336/servicios-pinamar-cms:0.1.0
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=network_public
+        - traefik.http.routers.servicios-pinamar-cms.rule=Host(`cms.serviciospinamar.com`)
+        - traefik.http.routers.servicios-pinamar-cms.entrypoints=websecure
+        - traefik.http.routers.servicios-pinamar-cms.tls=true
+        - traefik.http.routers.servicios-pinamar-cms.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.servicios-pinamar-cms.service=servicios-pinamar-cms
+        - traefik.http.services.servicios-pinamar-cms.loadbalancer.server.port=80
+
 networks:
   network_public:
     external: true

@@ -1,0 +1,19 @@
+{
+  "service": "plomeria",
+  "items": [
+    {
+      "id": "plomeria-trabajos-de-plomeria",
+      "title": "Trabajos de plomería",
+      "description": "Reparaciones e instalaciones de plomería en propiedades de Pinamar.",
+      "service": "plomeria",
+      "thumbnailUrl": "/images/trabajos/plomeria/trabajos-de-plomeria/trabajo-de-plomeria.webp",
+      "imageUrl": "/images/trabajos/plomeria/trabajos-de-plomeria/trabajo-de-plomeria.webp",
+      "alt": "Trabajo de plomería realizado en una propiedad de Pinamar",
+      "aspectRatio": "2 / 3",
+      "images": [
+        { "id": "plomeria-trabajos-0", "thumbnailUrl": "/images/trabajos/plomeria/trabajos-de-plomeria/trabajo-de-plomeria.webp", "imageUrl": "/images/trabajos/plomeria/trabajos-de-plomeria/trabajo-de-plomeria.webp", "alt": "Trabajo de plomería realizado en una propiedad de Pinamar", "aspectRatio": "2 / 3", "sortOrder": 0, "isCover": true },
+        { "id": "plomeria-trabajos-1", "thumbnailUrl": "/images/trabajos/plomeria/trabajos-de-plomeria/instalacion-de-canerias.webp", "imageUrl": "/images/trabajos/plomeria/trabajos-de-plomeria/instalacion-de-canerias.webp", "alt": "Reparación o instalación de cañerías y conexiones de agua en la costa", "aspectRatio": "2 / 3", "sortOrder": 1, "isCover": false }
+      ]
+    }
+  ]
+}

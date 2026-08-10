@@ -1,0 +1,22 @@
+{
+  "service": "gas",
+  "items": [
+    {
+      "id": "gas-revision-e-instalacion-de-gas",
+      "title": "Revisión e instalación de gas",
+      "description": "Instalaciones, revisiones y pruebas de gas en propiedades de la costa.",
+      "service": "gas",
+      "thumbnailUrl": "/images/trabajos/gas/revision-e-instalacion/instalacion-de-gas.webp",
+      "imageUrl": "/images/trabajos/gas/revision-e-instalacion/instalacion-de-gas.webp",
+      "alt": "Trabajo de gas realizado por un gasista matriculado en Pinamar",
+      "aspectRatio": "2 / 3",
+      "images": [
+        { "id": "gas-revision-0", "thumbnailUrl": "/images/trabajos/gas/revision-e-instalacion/instalacion-de-gas.webp", "imageUrl": "/images/trabajos/gas/revision-e-instalacion/instalacion-de-gas.webp", "alt": "Trabajo de gas realizado por un gasista matriculado en Pinamar", "aspectRatio": "2 / 3", "sortOrder": 0, "isCover": true },
+        { "id": "gas-revision-1", "thumbnailUrl": "/images/trabajos/gas/revision-e-instalacion/revision-de-instalacion.webp", "imageUrl": "/images/trabajos/gas/revision-e-instalacion/revision-de-instalacion.webp", "alt": "Revisión y reparación de una instalación de gas en una propiedad de la costa", "aspectRatio": "2 / 3", "sortOrder": 1, "isCover": false },
+        { "id": "gas-revision-2", "thumbnailUrl": "/images/trabajos/gas/revision-e-instalacion/instalacion-termotanque.webp", "imageUrl": "/images/trabajos/gas/revision-e-instalacion/instalacion-termotanque.webp", "alt": "Colocación de termotanque con conexión de gas en Pinamar", "aspectRatio": "2 / 3", "sortOrder": 2, "isCover": false },
+        { "id": "gas-revision-3", "thumbnailUrl": "/images/trabajos/gas/revision-e-instalacion/bateria-de-termotanques.webp", "imageUrl": "/images/trabajos/gas/revision-e-instalacion/bateria-de-termotanques.webp", "alt": "Batería de termotanques instalada con sus conexiones de gas", "aspectRatio": "2 / 3", "sortOrder": 3, "isCover": false },
+        { "id": "gas-revision-4", "thumbnailUrl": "/images/trabajos/gas/revision-e-instalacion/prueba-manometrica.webp", "imageUrl": "/images/trabajos/gas/revision-e-instalacion/prueba-manometrica.webp", "alt": "Prueba manométrica para verificar la presión de una instalación de gas", "aspectRatio": "2 / 3", "sortOrder": 4, "isCover": false }
+      ]
+    }
+  ]
+}

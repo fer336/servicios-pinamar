@@ -6,3 +6,10 @@ dist/
 .DS_Store
 .env
 *.log
+serviciospinamar.txt
+
+# Python (apps/api)
+apps/api/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/

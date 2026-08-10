@@ -26,5 +26,25 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Build Docker image
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile API sources
+        run: python -m compileall apps/api/app apps/api/alembic
+
+      - name: Build CMS
+        working-directory: apps/cms
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build web Docker image
         run: docker build -t servicios-pinamar-web:test .
+
+      - name: Build API Docker image
+        run: docker build -f apps/api/Dockerfile -t servicios-pinamar-api:test apps/api
+
+      - name: Build CMS Docker image
+        run: docker build -f apps/cms/Dockerfile -t servicios-pinamar-cms:test apps/cms

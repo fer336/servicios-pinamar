@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WorkGallery from '../components/WorkGallery.astro';
+import Icon from '../components/Icon.astro';
+import { servicePages, whatsapp } from '../data/service-pages';
+import { getTrabajos, normalizeServiceFilter, SERVICE_SLUGS } from '../data/trabajos/api';
+
+const currentService = normalizeServiceFilter(Astro.url.searchParams.get('service'));
+const trabajosPage = await getTrabajos({ page: 1, limit: 12, service: currentService });
+const serviceTabs = servicePages.filter((service) => SERVICE_SLUGS.includes(service.slug));
+const canonical = 'https://www.serviciospinamar.com/trabajos/';
+---
+
+<BaseLayout title="Trabajos realizados en Pinamar | Servicios Pinamar" description="Galería de trabajos realizados de pintura, hidrolavado, plomería y gas en Pinamar, Cariló, Valeria del Mar y Ostende." canonical={canonical}>
+  <Header />
+  <main class="works-page">
+    <section class="service-hero works-hero">
+      <div class="service-hero__grain" aria-hidden="true"></div>
+      <div class="container service-hero__grid">
+        <div class="service-hero__copy">
+          <p class="eyebrow">Trabajos realizados</p>
+          <h1><span class="marker-sequence marker-hero-title" data-marker>Galería de trabajos en Pinamar</span></h1>
+          <p class="lead">Conocé algunos trabajos de pintura, hidrolavado, plomería y gas realizados en propiedades de Pinamar y la Costa Atlántica.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
+            <a class="button button-outline" href="/servicios/">Ver servicios</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section service-gallery">
+      <div class="container">
+        <nav class="works-tabs" aria-label="Filtrar trabajos por servicio">
+          <a href="/trabajos/" aria-current={!currentService ? 'page' : undefined}>Todos</a>
+          {serviceTabs.map((service) => (
+            <a href={`/trabajos/?service=${service.slug}`} aria-current={currentService === service.slug ? 'page' : undefined}>{service.shortName}</a>
+          ))}
+        </nav>
+
+        <WorkGallery data={trabajosPage.items} hasMore={trabajosPage.hasMore} service={currentService} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>
