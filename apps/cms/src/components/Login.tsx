@@ -14,10 +14,12 @@ export function Login(): React.JSX.Element {
     setBusy(true);
     setError(null);
     try {
+      const origin = window.location.origin;
+
       await signIn.authenticateWithRedirect({
         strategy: "oauth_google",
-        redirectUrl: window.location.href,
-        redirectUrlComplete: window.location.href,
+        redirectUrl: `${origin}/sso-callback`,
+        redirectUrlComplete: `${origin}/`,
       });
     } catch (err) {
       setError(formatError(err));

@@ -1,4 +1,5 @@
 import {
+  AuthenticateWithRedirectCallback,
   ClerkProvider,
   useAuth,
   useClerk,
@@ -74,7 +75,11 @@ export default function App(): React.JSX.Element {
         <ClerkProvider
           publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY!}
         >
-          <ClerkGate />
+          {window.location.pathname === "/sso-callback" ? (
+            <AuthenticateWithRedirectCallback />
+          ) : (
+            <ClerkGate />
+          )}
         </ClerkProvider>
         <ToastHost />
       </>
