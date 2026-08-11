@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   web:
-    image: ghcr.io/fer336/servicios-pinamar-web:1.0.10
+    image: ghcr.io/fer336/servicios-pinamar-web:1.0.11
     networks:
       - network_public
     deploy:
@@ -32,7 +32,7 @@ services:
         - traefik.http.middlewares.servicios-pinamar-www.redirectregex.permanent=true
 
   api:
-    image: ghcr.io/fer336/servicios-pinamar-api:1.0.10
+    image: ghcr.io/fer336/servicios-pinamar-api:1.0.11
     secrets:
       - servicios_env
     networks:
@@ -55,7 +55,7 @@ services:
         - traefik.http.services.servicios-pinamar-api.loadbalancer.server.port=8000
 
   cms:
-    image: ghcr.io/fer336/servicios-pinamar-cms:1.0.10
+    image: ghcr.io/fer336/servicios-pinamar-cms:1.0.11
     networks:
       - network_public
     deploy:
