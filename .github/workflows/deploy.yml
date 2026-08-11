@@ -39,6 +39,41 @@ jobs:
 
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/cms/package-lock.json
+
+      - name: Test and build web
+        run: |
+          npm ci
+          npm run check
+          npm run build
+
+      - name: Build CMS
+        working-directory: apps/cms
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: apps/api/requirements.txt
+
+      - name: Test API
+        working-directory: apps/api
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m pytest tests
+
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -56,7 +91,6 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_NAME_WEB }}:${{ steps.version.outputs.version }}
-            ${{ env.IMAGE_NAME_WEB }}:latest
 
       - name: Build and push API image
         uses: docker/build-push-action@v6
@@ -66,7 +100,6 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_NAME_API }}:${{ steps.version.outputs.version }}
-            ${{ env.IMAGE_NAME_API }}:latest
 
       - name: Build and push CMS image
         uses: docker/build-push-action@v6
@@ -78,19 +111,31 @@ jobs:
             VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
           tags: |
             ${{ env.IMAGE_NAME_CMS }}:${{ steps.version.outputs.version }}
-            ${{ env.IMAGE_NAME_CMS }}:latest
 
       - name: Pin compose image
         run: |
           perl -0pi -e 's#image: ghcr\.io/fer336/servicios-pinamar-web:[^\n]+#image: ghcr.io/fer336/servicios-pinamar-web:${{ steps.version.outputs.version }}#; s#image: ghcr\.io/fer336/servicios-pinamar-api:[^\n]+#image: ghcr.io/fer336/servicios-pinamar-api:${{ steps.version.outputs.version }}#; s#image: ghcr\.io/fer336/servicios-pinamar-cms:[^\n]+#image: ghcr.io/fer336/servicios-pinamar-cms:${{ steps.version.outputs.version }}#' docker-compose.yml
+
+          grep -q "image: ghcr.io/fer336/servicios-pinamar-web:${{ steps.version.outputs.version }}" docker-compose.yml
+          grep -q "image: ghcr.io/fer336/servicios-pinamar-api:${{ steps.version.outputs.version }}" docker-compose.yml
+          grep -q "image: ghcr.io/fer336/servicios-pinamar-cms:${{ steps.version.outputs.version }}" docker-compose.yml
+
+          if grep -q ':latest' docker-compose.yml; then
+            echo "docker-compose.yml must not use latest tags" >&2
+            exit 1
+          fi
 
       - name: Commit compose image pin
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docker-compose.yml
-          git commit -m "chore(deploy): pin image to ${{ steps.version.outputs.version }}" || exit 0
-          git push origin HEAD:main
+          if git diff --cached --quiet; then
+            echo "docker-compose.yml already pinned to ${{ steps.version.outputs.version }}"
+          else
+            git commit -m "chore(deploy): pin image to ${{ steps.version.outputs.version }}"
+            git push origin HEAD:main
+          fi
 
       - name: Trigger Portainer webhook
         env:
@@ -102,3 +147,27 @@ jobs:
           fi
 
           curl --fail --silent --show-error --request POST "$PORTAINER_WEBHOOK"
+
+      - name: Verify production health check
+        env:
+          PRODUCTION_HEALTH_URL: ${{ vars.PRODUCTION_HEALTH_URL }}
+        run: |
+          HEALTHCHECK_URL="${PRODUCTION_HEALTH_URL:-https://www.serviciospinamar.com/trabajos/}"
+          echo "Checking production health: $HEALTHCHECK_URL"
+
+          for attempt in $(seq 1 30); do
+            status_code="$(curl --silent --show-error --location --max-time 10 --output /tmp/healthcheck-body --write-out '%{http_code}' "$HEALTHCHECK_URL" || true)"
+            if [[ "$status_code" =~ ^[0-9]{3}$ ]] && [ "$status_code" -ge 200 ] && [ "$status_code" -lt 400 ]; then
+              echo "Production health check passed with HTTP $status_code"
+              exit 0
+            fi
+
+            echo "Attempt $attempt failed with HTTP ${status_code:-curl_error}; retrying..."
+            sleep 10
+          done
+
+          echo "Production health check failed after 30 attempts" >&2
+          if [ -f /tmp/healthcheck-body ]; then
+            cat /tmp/healthcheck-body >&2
+          fi
+          exit 1
