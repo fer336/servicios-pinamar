@@ -52,6 +52,12 @@ services:
         - traefik.http.routers.servicios-pinamar-api.tls=true
         - traefik.http.routers.servicios-pinamar-api.tls.certresolver=letsencryptresolver
         - traefik.http.routers.servicios-pinamar-api.service=servicios-pinamar-api
+        - traefik.http.routers.servicios-pinamar-api-cms.rule=Host(`cms.serviciospinamar.com`) && PathPrefix(`/api`)
+        - traefik.http.routers.servicios-pinamar-api-cms.entrypoints=websecure
+        - traefik.http.routers.servicios-pinamar-api-cms.tls=true
+        - traefik.http.routers.servicios-pinamar-api-cms.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.servicios-pinamar-api-cms.service=servicios-pinamar-api
+        - traefik.http.routers.servicios-pinamar-api-cms.priority=100
         - traefik.http.services.servicios-pinamar-api.loadbalancer.server.port=8000
 
   cms:
@@ -73,6 +79,7 @@ services:
         - traefik.http.routers.servicios-pinamar-cms.tls=true
         - traefik.http.routers.servicios-pinamar-cms.tls.certresolver=letsencryptresolver
         - traefik.http.routers.servicios-pinamar-cms.service=servicios-pinamar-cms
+        - traefik.http.routers.servicios-pinamar-cms.priority=1
         - traefik.http.services.servicios-pinamar-cms.loadbalancer.server.port=80
 
 networks:
