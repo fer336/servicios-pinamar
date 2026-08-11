@@ -1,9 +1,4 @@
-import {
-  AuthenticateWithRedirectCallback,
-  ClerkProvider,
-  useAuth,
-  useClerk,
-} from "@clerk/clerk-react";
+import { ClerkProvider, useAuth, useClerk } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import type React from "react";
 import {
@@ -47,6 +42,27 @@ function ClerkGate(): React.JSX.Element {
   );
 }
 
+function ClerkCallback(): React.JSX.Element {
+  const { isLoaded, isSignedIn } = useAuth();
+  const clerk = useClerk();
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    if (isSignedIn) {
+      window.location.replace("/");
+      return;
+    }
+
+    void clerk.handleRedirectCallback({
+      signInFallbackRedirectUrl: "/",
+      signUpFallbackRedirectUrl: "/",
+    });
+  }, [clerk, isLoaded, isSignedIn]);
+
+  return <FullSpinner label="Completando autenticación…" />;
+}
+
 function LocalGate(): React.JSX.Element {
   const [authed, setAuthed] = useState(false);
 
@@ -76,7 +92,7 @@ export default function App(): React.JSX.Element {
           publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY!}
         >
           {window.location.pathname === "/sso-callback" ? (
-            <AuthenticateWithRedirectCallback />
+            <ClerkCallback />
           ) : (
             <ClerkGate />
           )}
