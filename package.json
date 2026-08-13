@@ -12,5 +12,10 @@
     "build": "npm run build --workspace @servicios-pinamar/www",
     "preview": "npm run preview --workspace @servicios-pinamar/www",
     "check": "npm run check --workspace @servicios-pinamar/www"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "esbuild@0.25.12": true,
+    "sharp@0.34.5": true
   }
 }
