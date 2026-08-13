@@ -51,8 +51,39 @@ const serviceSchema = {
   }
 };
 
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': `${canonical}#faq`,
+  mainEntity: service.faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer
+    }
+  }))
+};
+
+const subtypeSchemas = 'subtypes' in service && service.subtypes
+  ? service.subtypes.map((subtype) => ({
+      '@type': 'Service',
+      '@id': `${canonical}#service-${subtype.slug}`,
+      name: subtype.name,
+      serviceType: subtype.name,
+      description: subtype.description,
+      url: `${canonical}#${subtype.slug}`,
+      provider: { '@id': 'https://www.serviciospinamar.com/#localbusiness' },
+      areaServed: serviceAreas.map((area) => ({
+        '@type': 'AdministrativeArea',
+        name: area
+      }))
+    }))
+  : [];
+
+const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbSchema];
+
 ---
-<BaseLayout title={service.title} description={service.description} canonical={canonical} preloadImage={service.image} structuredData={[serviceSchema, breadcrumbSchema]}>
+<BaseLayout title={service.title} description={service.description} canonical={canonical} preloadImage={service.image} structuredData={structuredData}>
   <Header />
   <main class="service-page">
     <section class="service-hero">
@@ -112,6 +143,38 @@ const serviceSchema = {
       </div>
     </section>
 
+    {'sections' in service && service.sections && (
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
+          <nav class="service-anchor-nav" aria-label="Secciones de este servicio">
+            {service.sections.map((section) => <a href={`#${section.slug}`}>{section.title}</a>)}
+          </nav>
+        </div>
+      </section>
+    )}
+
+    {'sections' in service && service.sections && service.sections.map((section) => (
+      <section id={section.slug} class="section">
+        <div class="container">
+          <header class="section-heading">
+            <p class="eyebrow">{section.eyebrow}</p>
+            <h2>{section.title}</h2>
+          </header>
+          <div class="service-anchor-section__copy">
+            {section.body.map((paragraph) => <p>{paragraph}</p>)}
+            {section.bullets && (
+              <ul>
+                {section.bullets.map((bullet) => <li><Icon name="check" size={18} /> {bullet}</li>)}
+              </ul>
+            )}
+            {'link' in section && section.link && (
+              <p><a href={section.link.href} target="_blank" rel="noopener">{section.link.label}</a></p>
+            )}
+          </div>
+        </div>
+      </section>
+    ))}
+
     <section class="section service-process">
       <div class="container service-process__grid">
         <header class="section-heading">
@@ -126,6 +189,8 @@ const serviceSchema = {
     </section>
 
     <section class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid">{serviceAreas.map((area) => <article data-animate><h3>{area}</h3><p>{service.shortName} para propiedades en {area}.</p></article>)}</div></div></section>
+
+    <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><p class="eyebrow">Preguntas frecuentes</p><h2>Consultas sobre {service.shortName} en Pinamar</h2></header><div>{service.faqs.map(([q, a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
     <section class="section service-related">
       <div class="container">

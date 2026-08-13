@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
 import { whatsapp } from '../../data/service-pages';
+import { getZoneUrl, zones } from '../../data/zones';
 
 const baseUrl = 'https://www.serviciospinamar.com';
 const breadcrumbSchema = {
@@ -22,31 +23,23 @@ const breadcrumbSchema = {
         <header class="section-heading centered">
           <p class="eyebrow">Zonas de cobertura</p>
           <h1><span class="marker-sequence marker-heading" data-marker>Zonas donde trabajamos en la Costa Atlántica</span></h1>
-          <p class="lead">Brindamos servicios de pintura, hidrolavado, plomería y gas en Pinamar, Cariló, Valeria del Mar y Ostende, con coordinación por WhatsApp para propietarios, comercios, administradores e inmobiliarias.</p>
+          <p class="lead">Brindamos servicios de pintura, hidrolavado, plomería, gas y planos en Pinamar, Cariló, Valeria del Mar y Ostende, con coordinación por WhatsApp para propietarios, comercios, administradores e inmobiliarias.</p>
         </header>
         <div class="zones-grid">
-          <article data-animate>
-            <h3>Pinamar</h3>
-            <p>Servicios de mantenimiento, pintura, hidrolavado, plomería y gas para propiedades en Pinamar. Atendemos casas, departamentos, comercios y propiedades administradas durante todo el año, tanto para uso permanente como temporario.</p>
-          </article>
-          <article data-animate>
-            <h3>Cariló</h3>
-            <p>Mantenimiento de casas y propiedades en Cariló. Pintura, hidrolavado, plomería y gas para viviendas de uso permanente y temporario, especialmente cuando hay que coordinar trabajos antes de una estadía o alquiler.</p>
-          </article>
-          <article data-animate>
-            <h3>Valeria del Mar</h3>
-            <p>Pintura, hidrolavado, plomería y mantenimiento de propiedades en Valeria del Mar. Coordinamos trabajos para propietarios e inmobiliarias que necesitan resolver tareas puntuales o preparar una propiedad.</p>
-          </article>
-          <article data-animate>
-            <h3>Ostende</h3>
-            <p>Servicios de mantenimiento para casas, comercios y propiedades en Ostende. Podés consultar por presupuesto a través de WhatsApp y compartir fotos o videos del trabajo necesario.</p>
-          </article>
+          {zones.map((zone) => (
+            <article data-animate>
+              <h3><a href={getZoneUrl(zone.slug)}>{zone.name}</a></h3>
+              <p>{zone.description}</p>
+              <a class="zone-card-link" href={getZoneUrl(zone.slug)}>Servicios en {zone.name} <Icon name="arrow" size={15} /></a>
+            </article>
+          ))}
         </div>
         <section class="section-small" style="padding-bottom: 0;">
           <div class="section-heading centered" style="margin-inline: auto;">
             <p class="eyebrow">Cobertura local</p>
             <h2>Trabajos para propiedades de la zona costera</h2>
-            <p>La humedad, la arena, el salitre y el uso intensivo en temporada suelen acelerar el mantenimiento de exteriores, instalaciones y terminaciones. Por eso agrupamos los servicios por necesidad: <a href="/servicios/pintura/">pintura en Pinamar</a>, <a href="/servicios/hidrolavado/">hidrolavado en Pinamar</a>, <a href="/servicios/plomeria/">plomería en Pinamar</a> y <a href="/servicios/gas/">gasista en Pinamar</a>.</p>
+            <p>La humedad, la arena, el salitre y el uso intensivo en temporada suelen acelerar el mantenimiento de exteriores, instalaciones y terminaciones. Por eso agrupamos los servicios por necesidad: <a href="/servicios/pintura/">pintores en Pinamar</a>, <a href="/servicios/hidrolavado/">hidrolavado en Pinamar</a>, <a href="/servicios/plomeria/">plomería en Pinamar</a>, <a href="/servicios/gas/">gasista matriculado en Pinamar</a> y <a href="/servicios/planos/">planos en Pinamar</a>.</p>
+            <p>Cada localidad tiene sus propias características de mantenimiento: conocé cómo trabajamos en <a href="/zonas/pinamar/">Pinamar</a>, <a href="/zonas/carilo/">Cariló</a>, <a href="/zonas/valeria-del-mar/">Valeria del Mar</a> y <a href="/zonas/ostende/">Ostende</a>.</p>
           </div>
         </section>
         <div class="centered-text" style="margin-top: 3rem;">

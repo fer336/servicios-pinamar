@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import { blogPosts, getBlogUrl } from '../../data/blog-posts';
+import { getZoneBySlug, getZoneUrl } from '../../data/zones';
+import { whatsapp, whatsappMessage, whatsappNumber } from '../../data/service-pages';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const canonical = getBlogUrl(post.slug);
+const baseUrl = 'https://www.serviciospinamar.com';
+const pillarSlug = post.pillarUrl.split('/').filter(Boolean)[1] ?? post.slug;
+const whatsappCta = `${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(pillarSlug))}`;
+const relatedZones = (post.relatedZoneSlugs ?? [])
+  .map((slug) => getZoneBySlug(slug))
+  .filter((zone) => zone !== undefined);
+const formatDate = (date: string) =>
+  new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${date}T12:00:00`));
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: baseUrl },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${baseUrl}/blog/` },
+    { '@type': 'ListItem', position: 3, name: post.h1, item: canonical }
+  ]
+};
+
+const blogPostingSchema = {
+  '@type': 'BlogPosting',
+  '@id': `${canonical}#article`,
+  headline: post.h1,
+  description: post.description,
+  datePublished: post.date,
+  dateModified: post.date,
+  inLanguage: 'es-AR',
+  author: {
+    '@type': 'Organization',
+    name: 'Servicios Pinamar',
+    url: baseUrl
+  },
+  publisher: { '@id': `${baseUrl}/#localbusiness` },
+  mainEntityOfPage: canonical
+};
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': `${canonical}#faq`,
+  mainEntity: post.faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer
+    }
+  }))
+};
+
+const structuredData = [blogPostingSchema, faqSchema, breadcrumbSchema];
+---
+<BaseLayout title={post.title} description={post.description} canonical={canonical} structuredData={structuredData}>
+  <Header />
+  <main>
+    <section class="section zone-hero">
+      <div class="container zone-hero__grid">
+        <a class="service-back" href="/blog/"><Icon name="arrow" size={17} /> Volver al blog</a>
+        <p class="eyebrow">{post.eyebrow} · {formatDate(post.date)} · {post.readingTime} min de lectura</p>
+        <h1><span class="marker-sequence marker-hero-title" data-marker>{post.h1}</span></h1>
+        <p class="lead">{post.lead}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href={whatsappCta} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Consultar por este trabajo</a>
+          <a class="button button-outline" href={post.pillarUrl}>Ver el servicio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        {post.sections.map((section) => (
+          <article class="blog-post-section">
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {'officialLink' in post && post.officialLink && (
+      <section class="section-small centered-text">
+        <div class="container">
+          <p class="eyebrow">Referencias oficiales</p>
+          <p>Para trámites municipales, consultá la documentación requerida en el sitio oficial:</p>
+          <p><a href={post.officialLink.href} target="_blank" rel="noopener">{post.officialLink.label}</a></p>
+        </div>
+      </section>
+    )}
+
+    <section class="section service-process">
+      <div class="container service-process__grid">
+        <header class="section-heading">
+          <p class="eyebrow">¿Necesitás este trabajo?</p>
+          <h2>{post.pillarLabel}</h2>
+          <p>Contanos qué necesita tu propiedad: coordinamos por WhatsApp con alcance, materiales y tiempos claros antes de empezar.</p>
+        </header>
+        <div class="centered-text" style="margin-top: 1rem;">
+          <a class="button button-primary" href={whatsappCta} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto por WhatsApp</a>
+          <a class="button button-outline" href={post.pillarUrl}>Ver el servicio completo</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq-section">
+      <div class="container faq-layout">
+        <header class="section-heading">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2>Consultas sobre {post.eyebrow.toLowerCase()} en Pinamar</h2>
+        </header>
+        <div>
+          {post.faqs.map(([question, answer]) => <details><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-small zone-services">
+      <div class="container">
+        <div class="centered-text">
+          <p class="eyebrow">Zonas relacionadas</p>
+          <h2>También te puede interesar</h2>
+          <p>Conocé cómo trabajamos en las localidades de la costa.</p>
+        </div>
+        <div class="zone-services__grid" style="margin-top: 2rem;">
+          {relatedZones.map((zone) => (
+            <a href={getZoneUrl(zone.slug)} data-animate>
+              <span>Servicios en {zone.name}</span>
+              <Icon name="arrow" size={18} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>

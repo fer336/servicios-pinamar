@@ -9,7 +9,8 @@ Servicios Pinamar is a local services landing page for property maintenance in P
 - Pintura interior y exterior
 - Hidrolavado de fachadas, techos, veredas, pisos, decks y muros
 - Plomería para instalaciones, reparaciones y mantenimiento general
-- Gas para instalaciones, revisiones y mantenimiento seguro
+- Gas para instalaciones, revisiones, mantenimiento y planos de gas (gasista matriculado)
+- Planos de gas, planos sanitarios y planos de agua corriente para ampliaciones y nuevas viviendas
 
 ## Areas Served
 
@@ -30,9 +31,14 @@ The site directs quote requests through WhatsApp: https://wa.me/5492267521448?te
 - Hidrolavado en Pinamar: https://www.serviciospinamar.com/servicios/hidrolavado/
 - Gas en Pinamar: https://www.serviciospinamar.com/servicios/gas/
 - Plomería en Pinamar: https://www.serviciospinamar.com/servicios/plomeria/
+- Planos en Pinamar: https://www.serviciospinamar.com/servicios/planos/
 - Sobre nosotros: https://www.serviciospinamar.com/nosotros/
 - Contacto: https://www.serviciospinamar.com/contacto/
 - Zonas de cobertura: https://www.serviciospinamar.com/zonas/
+- Servicios en Pinamar: https://www.serviciospinamar.com/zonas/pinamar/
+- Servicios en Cariló: https://www.serviciospinamar.com/zonas/carilo/
+- Servicios en Valeria del Mar: https://www.serviciospinamar.com/zonas/valeria-del-mar/
+- Servicios en Ostende: https://www.serviciospinamar.com/zonas/ostende/
 - Aviso legal: https://www.serviciospinamar.com/aviso-legal/
 - Política de privacidad: https://www.serviciospinamar.com/privacidad/
 - Sitemap: https://www.serviciospinamar.com/sitemap-index.xml

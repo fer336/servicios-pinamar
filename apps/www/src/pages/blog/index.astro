@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import { blogPosts, getBlogUrl } from '../../data/blog-posts';
+import { whatsapp } from '../../data/service-pages';
+
+const baseUrl = 'https://www.serviciospinamar.com';
+const posts = [...blogPosts].sort((a, b) => (a.date < b.date ? 1 : -1));
+const formatDate = (date: string) =>
+  new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${date}T12:00:00`));
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: baseUrl },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${baseUrl}/blog/` }
+  ]
+};
+
+const blogSchema = {
+  '@type': 'Blog',
+  '@id': `${baseUrl}/blog/#blog`,
+  name: 'Blog de Servicios Pinamar',
+  url: `${baseUrl}/blog/`,
+  blogPost: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.h1,
+    url: getBlogUrl(post.slug),
+    datePublished: post.date
+  }))
+};
+---
+<BaseLayout title="Blog de Servicios Pinamar | Guías de mantenimiento para la costa" description="Artículos sobre gas, planos, pintura y mantenimiento de propiedades en Pinamar, Cariló, Valeria del Mar y Ostende. Guías claras para propietarios de la costa." structuredData={[breadcrumbSchema, blogSchema]}>
+  <Header />
+  <main>
+    <section class="section zones-page">
+      <div class="container">
+        <header class="section-heading centered">
+          <p class="eyebrow">Blog</p>
+          <h1><span class="marker-sequence marker-heading" data-marker>Blog de Servicios Pinamar</span></h1>
+          <p class="lead">Guías de mantenimiento para propietarios de la costa: gas, planos, pintura y cuidado de propiedades en Pinamar, Cariló, Valeria del Mar y Ostende.</p>
+        </header>
+        <div class="zones-grid">
+          {posts.map((post) => (
+            <article data-animate>
+              <p class="eyebrow">{post.eyebrow}</p>
+              <h3><a href={getBlogUrl(post.slug)}>{post.h1}</a></h3>
+              <p>{formatDate(post.date)} · {post.readingTime} min de lectura</p>
+              <p>{post.lead}</p>
+              <a class="zone-card-link" href={getBlogUrl(post.slug)}>Leer artículo <Icon name="arrow" size={15} /></a>
+            </article>
+          ))}
+        </div>
+        <div class="centered-text" style="margin-top: 3rem;">
+          <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Consultar por un trabajo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>

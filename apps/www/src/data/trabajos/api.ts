@@ -49,6 +49,16 @@ export interface GetTrabajosParams {
 
 const TIMEOUT_MS = 2500;
 
+// Base URL of the public API. Resolved in this order:
+//   1. PUBLIC_API_BASE_URL env var (PUBLIC_ exposes it to client bundles too,
+//      which WorkCarousel needs for client-side "load more" fetches).
+//   2. http://localhost:8000 in dev (local FastAPI instance).
+//   3. https://cms.serviciospinamar.com in production as last resort (the public
+//      API lives under the CMS subdomain).
+const API_BASE_URL =
+  import.meta.env.PUBLIC_API_BASE_URL ??
+  (import.meta.env.DEV ? 'http://localhost:8000' : 'https://cms.serviciospinamar.com');
+
 export const normalizeServiceFilter = (service: string | null | undefined): ServiceSlug | undefined => {
   if (!service) return undefined;
   return SERVICE_SLUGS.find((slug) => slug === service);
@@ -103,7 +113,7 @@ export const getTrabajos = async ({ page = 1, limit = 12, service }: GetTrabajos
     const query = new URLSearchParams({ page: String(page), limit: String(limit) });
     if (normalizedService) query.set('service', normalizedService);
 
-    const res = await fetch(`/api/trabajos?${query.toString()}`, {
+    const res = await fetch(`${API_BASE_URL}/api/trabajos?${query.toString()}`, {
       signal: controller.signal,
       headers: { accept: 'application/json' }
     });

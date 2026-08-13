@@ -6,6 +6,7 @@ import Feature from '../components/Feature.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import { whatsapp } from '../data/service-pages';
+import { getZoneUrl, zones } from '../data/zones';
 
 const services = [
   { title: 'Pintores en Pinamar', description: 'Pintura interior y exterior de casas y comercios en Pinamar, con materiales adecuados para el clima costero.', image: '/images/servicio-pintura.webp', href: '/servicios/pintura/', ariaLabel: 'Ver servicio de pintores en Pinamar' },
@@ -100,7 +101,7 @@ const faqSchema = {
       </div>
     </section>
 
-    <section id="zonas" class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid"><article data-animate><h3>Pinamar</h3><p>Servicios de mantenimiento, pintura, hidrolavado, plomería y gas para propiedades en Pinamar.</p></article><article data-animate><h3>Cariló</h3><p>Mantenimiento de casas y propiedades en Cariló.</p></article><article data-animate><h3>Valeria del Mar</h3><p>Pintura, hidrolavado, plomería y mantenimiento de propiedades en Valeria del Mar.</p></article><article data-animate><h3>Ostende</h3><p>Servicios de mantenimiento para casas, comercios y propiedades en Ostende.</p></article></div></div></section>
+    <section id="zonas" class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid">{zones.map((zone) => <article data-animate><h3><a href={getZoneUrl(zone.slug)}>{zone.name}</a></h3><p>{zone.teaser}</p><a class="zone-card-link" href={getZoneUrl(zone.slug)}>Servicios en {zone.name} <Icon name="arrow" size={15} /></a></article>)}</div><div class="centered-text" style="margin-top: 2.2rem;"><a class="zone-card-link" href="/zonas/">Ver todas las zonas de cobertura <Icon name="arrow" size={15} /></a></div></div></section>
 
     <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><p class="eyebrow">Preguntas frecuentes</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Todo</span> <span class="marker marker-word" style="--word-index:1">lo</span> <span class="marker marker-word" style="--word-index:2">que</span> <span class="marker marker-word" style="--word-index:3">necesitás</span> <span class="marker marker-word" style="--word-index:4">saber</span></span></h2></header><div>{faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
   </main>

@@ -7,9 +7,12 @@ import Icon from '../components/Icon.astro';
 import { servicePages, whatsapp } from '../data/service-pages';
 import { getTrabajos, normalizeServiceFilter, SERVICE_SLUGS } from '../data/trabajos/api';
 
+// SSR: this page reads the live API on every request (no rebuild needed for CMS images).
+export const prerender = false;
+
 const currentService = normalizeServiceFilter(Astro.url.searchParams.get('service'));
 const trabajosPage = await getTrabajos({ page: 1, limit: 12, service: currentService });
-const serviceTabs = servicePages.filter((service) => SERVICE_SLUGS.includes(service.slug));
+const serviceTabs = servicePages.filter((service) => (SERVICE_SLUGS as readonly string[]).includes(service.slug));
 const canonical = 'https://www.serviciospinamar.com/trabajos/';
 ---
 
@@ -21,7 +24,7 @@ const canonical = 'https://www.serviciospinamar.com/trabajos/';
       <div class="container service-hero__grid">
         <div class="service-hero__copy">
           <p class="eyebrow">Trabajos realizados</p>
-          <h1><span class="marker-sequence marker-hero-title" data-marker>Galería de trabajos en Pinamar</span></h1>
+          <h1><span class="marker-sequence marker-hero-title" data-marker>Nuestros Trabajos</span></h1>
           <p class="lead">Conocé algunos trabajos de pintura, hidrolavado, plomería y gas realizados en propiedades de Pinamar y la Costa Atlántica.</p>
           <div class="hero-actions">
             <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>

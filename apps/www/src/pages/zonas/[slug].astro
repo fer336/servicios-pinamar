@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import { getServiceBySlug, getServiceUrl, whatsapp } from '../../data/service-pages';
+import { getZoneUrl, zones } from '../../data/zones';
+
+export function getStaticPaths() {
+  return zones.map((zone) => ({
+    params: { slug: zone.slug },
+    props: { zone }
+  }));
+}
+
+const { zone } = Astro.props;
+const canonical = getZoneUrl(zone.slug);
+const baseUrl = 'https://www.serviciospinamar.com';
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: baseUrl },
+    { '@type': 'ListItem', position: 2, name: 'Zonas de cobertura', item: `${baseUrl}/zonas/` },
+    { '@type': 'ListItem', position: 3, name: zone.name, item: canonical }
+  ]
+};
+
+const serviceSchema = {
+  '@type': 'Service',
+  '@id': `${canonical}#service`,
+  name: `Servicios de mantenimiento de propiedades en ${zone.name}`,
+  serviceType: 'Mantenimiento de propiedades',
+  description: zone.description,
+  url: canonical,
+  provider: { '@id': `${baseUrl}/#localbusiness` },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: zone.name
+  }
+};
+
+const faqSchema = zone.faqs
+  ? {
+      '@type': 'FAQPage',
+      '@id': `${canonical}#faq`,
+      mainEntity: zone.faqs.map(([question, answer]) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: answer
+        }
+      }))
+    }
+  : undefined;
+
+const structuredData = [serviceSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+---
+<BaseLayout title={zone.title} description={zone.description} canonical={canonical} structuredData={structuredData}>
+  <Header />
+  <main>
+    <section class="section zone-hero">
+      <div class="container zone-hero__grid">
+        <a class="service-back" href="/zonas/"><Icon name="arrow" size={17} /> Volver a zonas de cobertura</a>
+        <p class="eyebrow">{zone.eyebrow}</p>
+        <h1><span class="marker-sequence marker-hero-title" data-marker>{zone.h1}</span></h1>
+        <p class="lead">{zone.lead}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
+          <a class="button button-outline" href="#servicios">Ver servicios en {zone.name}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section zone-neighborhoods">
+      <div class="container">
+        <header class="section-heading">
+          <p class="eyebrow">Zonas y referencias</p>
+          <h2>Dónde trabajamos en {zone.name}</h2>
+        </header>
+        <div class="zone-neighborhoods__list">
+          {zone.neighborhoods.map((neighborhood) => <span>{neighborhood}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section zone-body">
+      <div class="container">
+        <header class="section-heading">
+          <p class="eyebrow">Cómo trabajamos en {zone.name}</p>
+          <h2>Mantenimiento pensado para las propiedades de {zone.name}</h2>
+        </header>
+        <div class="zone-body__copy">
+          {zone.body.map((paragraph) => <p data-animate>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="section zone-services">
+      <div class="container">
+        <header class="section-heading">
+          <p class="eyebrow">Servicios disponibles</p>
+          <h2>Servicios en {zone.name}</h2>
+          <p>En {zone.name} trabajamos pintura, hidrolavado, plomería, gas y planos, todo coordinado por WhatsApp.</p>
+        </header>
+        <div class="zone-services__grid">
+          {zone.services.map((slug) => {
+            const service = getServiceBySlug(slug);
+            return (
+              <a href={getServiceUrl(slug)} data-animate>
+                <span>{service?.shortName ?? slug}</span>
+                <Icon name="arrow" size={18} />
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {zone.faqs && (
+      <section id="faq" class="section faq-section">
+        <div class="container faq-layout">
+          <header class="section-heading">
+            <p class="eyebrow">Preguntas frecuentes</p>
+            <h2>Consultas sobre el servicio en {zone.name}</h2>
+          </header>
+          <div>
+            {zone.faqs.map(([question, answer]) => <details><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="section-small zone-services">
+      <div class="container">
+        <div class="centered-text">
+          <p class="eyebrow">También te puede interesar</p>
+          <h2>Otras zonas de cobertura</h2>
+          <p>Conocé cómo trabajamos en cada localidad de la costa.</p>
+        </div>
+        <div class="zone-services__grid" style="margin-top: 2rem;">
+          {zones.filter((item) => item.slug !== zone.slug).map((item) => (
+            <a href={getZoneUrl(item.slug)} data-animate>
+              <span>{item.name}</span>
+              <Icon name="arrow" size={18} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-small" style="padding-bottom: 80px;">
+      <div class="container centered-text">
+        <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Solicitar presupuesto por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>
+</BaseLayout>

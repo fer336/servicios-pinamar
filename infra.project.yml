@@ -1,0 +1,87 @@
+standard:
+  name: infrastructure-deployment-standard
+  version: "2.1.0"
+
+project:
+  org: fer336
+  name: servicios-pinamar
+  snake: servicios_pinamar
+  track: app
+  profile: C
+
+registry:
+  host: ghcr.io
+  image_base: ghcr.io/fer336/servicios-pinamar
+  immutable_tags: true
+  platforms:
+    - linux/amd64
+
+runtime:
+  manager: portainer
+  trigger: webhook
+  orchestrator: docker-swarm
+  network: network_public
+
+config:
+  secret_name: servicios_env
+  secret_path: /run/secrets/servicios_env
+  dev_file: .env
+
+health:
+  url: https://www.serviciospinamar.com/trabajos/
+  health_path: /trabajos/
+  version_path: null
+  retries: 30
+  interval_seconds: 10
+
+migrations:
+  strategy: manual
+  notes: >-
+    API schema migrations are versioned with Alembic, but production execution is
+    currently manual/controlled. Do not run Alembic as an unconditional API
+    startup side effect until a dedicated migration job or approved release step
+    exists.
+
+app:
+  tests: required
+  lockfiles:
+    - package-lock.json
+    - apps/api/requirements.txt
+
+services:
+  - name: web
+    image: ghcr.io/fer336/servicios-pinamar-web
+    needs_secret: false
+    stateful: false
+    public_hosts:
+      - www.serviciospinamar.com
+      - serviciospinamar.com
+  - name: api
+    image: ghcr.io/fer336/servicios-pinamar-api
+    needs_secret: true
+    stateful: false
+    public_hosts:
+      - api.serviciospinamar.com
+      - cms.serviciospinamar.com/api
+  - name: cms
+    image: ghcr.io/fer336/servicios-pinamar-cms
+    needs_secret: false
+    stateful: false
+    public_hosts:
+      - cms.serviciospinamar.com
+
+external_dependencies:
+  - name: database
+    configured_by: servicios_env
+    stateful: true
+  - name: object-storage
+    configured_by: servicios_env
+    stateful: true
+
+deviations:
+  - INF-002-INF-101-image-naming
+  - INF-201-secret-name
+  - INF-230-env-example-location
+  - INF-500-INF-502-INF-503-health-version
+  - INF-700-required-files
+  - INF-820-INF-824-ai-attribution
