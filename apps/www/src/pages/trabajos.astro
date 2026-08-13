@@ -7,9 +7,7 @@ import Icon from '../components/Icon.astro';
 import { servicePages, whatsapp } from '../data/service-pages';
 import { getTrabajos, normalizeServiceFilter, SERVICE_SLUGS } from '../data/trabajos/api';
 
-// SSR: this page reads the live API on every request (no rebuild needed for CMS images).
-export const prerender = false;
-
+// Static: this page is prerendered at build time against the live CMS API.
 const currentService = normalizeServiceFilter(Astro.url.searchParams.get('service'));
 const trabajosPage = await getTrabajos({ page: 1, limit: 12, service: currentService });
 const serviceTabs = servicePages.filter((service) => (SERVICE_SLUGS as readonly string[]).includes(service.slug));
