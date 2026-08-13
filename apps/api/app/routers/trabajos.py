@@ -6,6 +6,7 @@ from collections.abc import Sequence
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Query, UploadFile, status
 from sqlalchemy import func, select, update
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
@@ -26,8 +27,46 @@ SERVICE_MAX_LENGTH = 50
 MAX_IMAGES_PER_TRABAJO = 12
 
 
-def _to_out(trabajo: Trabajo) -> TrabajoOut:
-    return TrabajoOut.model_validate(trabajo)
+def _to_out(trabajo: Trabajo, *, include_images: bool = True) -> TrabajoOut:
+    if include_images:
+        return TrabajoOut.model_validate(trabajo)
+    return TrabajoOut.model_validate(
+        {
+            "id": trabajo.id,
+            "title": trabajo.title,
+            "description": trabajo.description,
+            "thumbnail_url": trabajo.thumbnail_url,
+            "image_url": trabajo.image_url,
+            "alt": trabajo.alt,
+            "aspect_ratio": trabajo.aspect_ratio,
+            "service": trabajo.service,
+            "sort_order": trabajo.sort_order,
+            "created_at": trabajo.created_at,
+            "images": [],
+        }
+    )
+
+
+def _is_missing_gallery_table(exc: DBAPIError) -> bool:
+    orig = exc.orig
+    pg_code = getattr(orig, "pgcode", None) or getattr(orig, "sqlstate", None)
+    if pg_code == "42P01":
+        return True
+    return "trabajo_imagenes" in str(orig) and "no such table" in str(orig).lower()
+
+
+async def _get_public_trabajo(db: AsyncSession, trabajo_id: uuid.UUID) -> tuple[Trabajo | None, bool]:
+    try:
+        trabajo = await _get_trabajo_with_images(db, trabajo_id)
+        return trabajo, True
+    except DBAPIError as exc:
+        if not _is_missing_gallery_table(exc):
+            raise
+        await db.rollback()
+        trabajo = (
+            await db.execute(select(Trabajo).where(Trabajo.id == trabajo_id))
+        ).scalar_one_or_none()
+        return trabajo, False
 
 
 async def _get_trabajo_with_images(db: AsyncSession, trabajo_id: uuid.UUID) -> Trabajo | None:
@@ -107,15 +146,32 @@ async def list_trabajos(
         count = count.where(Trabajo.service == service)
 
     total = (await db.execute(count)).scalar_one()
-    rows = (
-        await db.execute(
-            base.order_by(Trabajo.created_at.desc(), Trabajo.sort_order.asc())
-            .offset((page - 1) * limit)
-            .limit(limit)
-        )
-    ).scalars().all()
+    include_images = True
+    try:
+        rows = (
+            await db.execute(
+                base.order_by(Trabajo.created_at.desc(), Trabajo.sort_order.asc())
+                .offset((page - 1) * limit)
+                .limit(limit)
+            )
+        ).scalars().all()
+    except DBAPIError as exc:
+        if not _is_missing_gallery_table(exc):
+            raise
+        await db.rollback()
+        include_images = False
+        fallback_base = select(Trabajo)
+        if service:
+            fallback_base = fallback_base.where(Trabajo.service == service)
+        rows = (
+            await db.execute(
+                fallback_base.order_by(Trabajo.created_at.desc(), Trabajo.sort_order.asc())
+                .offset((page - 1) * limit)
+                .limit(limit)
+            )
+        ).scalars().all()
 
-    items = [_to_out(t) for t in rows]
+    items = [_to_out(t, include_images=include_images) for t in rows]
     return TrabajoListResponse(
         items=items,
         page=page,
@@ -127,10 +183,10 @@ async def list_trabajos(
 
 @router.get("/{trabajo_id}", response_model=TrabajoOut, status_code=status.HTTP_200_OK)
 async def get_trabajo(trabajo_id: uuid.UUID, db: AsyncSession = Depends(get_db)) -> TrabajoOut:
-    trabajo = await _get_trabajo_with_images(db, trabajo_id)
+    trabajo, include_images = await _get_public_trabajo(db, trabajo_id)
     if trabajo is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Trabajo not found")
-    return _to_out(trabajo)
+    return _to_out(trabajo, include_images=include_images)
 
 
 def _parse_service(service: str) -> str:

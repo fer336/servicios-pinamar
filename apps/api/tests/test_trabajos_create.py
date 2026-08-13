@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 from PIL import Image
-from sqlalchemy import event, func, select
+from sqlalchemy import event, func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
@@ -172,6 +172,36 @@ def test_service_filter_pagination_returns_images_without_n_plus_one(api_client:
     assert all(item["service"] == "pintura" for item in body["items"])
     assert all(len(item["images"]) == 2 for item in body["items"])
     assert statement_count <= 3
+
+
+def test_public_reads_fall_back_to_legacy_cover_fields_when_gallery_table_is_missing(
+    api_client: tuple[TestClient, dict],
+) -> None:
+    client, storage = api_client
+    body = create_work(client, count=2, service="gas")
+
+    async def drop_gallery_table(session: AsyncSession) -> None:
+        await session.execute(text("DROP TABLE trabajo_imagenes"))
+        await session.commit()
+
+    storage["run_db"](drop_gallery_table)
+
+    listed = client.get("/api/trabajos?page=1&limit=1")
+    assert listed.status_code == 200, listed.text
+    listed_item = listed.json()["items"][0]
+    assert listed_item["id"] == body["id"]
+    assert listed_item["imageUrl"] == body["imageUrl"]
+    assert listed_item["thumbnailUrl"] == body["thumbnailUrl"]
+    assert listed_item["alt"] == body["alt"]
+    assert listed_item["aspectRatio"] == body["aspectRatio"]
+    assert listed_item["images"] == []
+
+    detail = client.get(f"/api/trabajos/{body['id']}")
+    assert detail.status_code == 200, detail.text
+    detail_body = detail.json()
+    assert detail_body["imageUrl"] == body["imageUrl"]
+    assert detail_body["thumbnailUrl"] == body["thumbnailUrl"]
+    assert detail_body["images"] == []
 
 
 def test_delete_trabajo_cascades_images_and_cleans_all_objects(api_client: tuple[TestClient, dict]) -> None:

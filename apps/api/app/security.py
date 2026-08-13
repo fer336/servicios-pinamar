@@ -136,7 +136,7 @@ def _resolve_public_key(header: dict[str, Any]):
     cache_key = jwk_dict.get("kid", "key")
     if cache_key not in _signing_key_cache:
         jwt = _jwt()
-        from jwt.jwk import PyJWK
+        from jwt import PyJWK
 
         _signing_key_cache[cache_key] = PyJWK(jwk_dict).key
     return _signing_key_cache[cache_key]

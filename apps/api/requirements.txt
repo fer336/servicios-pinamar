@@ -7,7 +7,7 @@ pydantic-settings
 python-multipart
 boto3
 pillow
-PyJWT[crypto]
+PyJWT[crypto]>=2.0
 bcrypt
 alembic
 pytest
