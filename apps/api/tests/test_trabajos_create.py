@@ -61,7 +61,7 @@ def api_client(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Generator[tup
 
     monkeypatch.setattr("app.routers.trabajos.put_object", fake_put)
     monkeypatch.setattr("app.routers.trabajos.delete_objects", fake_delete)
-    monkeypatch.setattr("app.routers.trabajos.public_url", lambda key: f"https://cdn.example/{key}")
+    monkeypatch.setattr("app.routers.trabajos.public_url", lambda key: f"https://cms.example/api/media/{key}")
     app.dependency_overrides[get_db] = override_db
     app.dependency_overrides[require_admin] = lambda: None
 
@@ -110,6 +110,8 @@ def test_create_trabajo_accepts_1_to_12_images_and_first_is_cover(api_client: tu
     assert [image["sortOrder"] for image in body["images"]] == list(range(12))
     assert [image["isCover"] for image in body["images"]].count(True) == 1
     assert body["images"][0]["isCover"] is True
+    assert body["imageUrl"].startswith("https://cms.example/api/media/trabajos/")
+    assert body["thumbnailUrl"].startswith("https://cms.example/api/media/trabajos/")
     assert len(storage["put"]) == 24
     assert all(f"trabajos/{body['id']}/" in key for key, _ in storage["put"])
 
@@ -232,8 +234,8 @@ def test_backfilled_existing_work_has_one_cover_image_row(api_client: tuple[Test
             alt="alt existente",
             image_key="trabajos/old/image.webp",
             thumbnail_key="trabajos/old/thumbnail.webp",
-            image_url="https://cdn.example/trabajos/old/image.webp",
-            thumbnail_url="https://cdn.example/trabajos/old/thumbnail.webp",
+            image_url="https://s3.qeva.xyz/trabajos/old/image.webp",
+            thumbnail_url="https://s3.qeva.xyz/trabajos/old/thumbnail.webp",
             aspect_ratio="4 / 3",
         )
         session.add(trabajo)
@@ -264,3 +266,9 @@ def test_backfilled_existing_work_has_one_cover_image_row(api_client: tuple[Test
     assert len(images) == 1
     assert images[0].is_cover is True
     assert images[0].sort_order == 0
+
+    listed = _client.get("/api/trabajos?page=1&limit=1")
+    assert listed.status_code == 200, listed.text
+    item = listed.json()["items"][0]
+    assert item["imageUrl"] == "https://cms.example/api/media/trabajos/old/image.webp"
+    assert item["thumbnailUrl"] == "https://cms.example/api/media/trabajos/old/thumbnail.webp"

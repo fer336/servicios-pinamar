@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     s3_bucket: str = "serviciospinamar-fotos"
     s3_region: str = "us-east-1"
     s3_public_base_url: str = ""
+    public_api_base_url: str = "https://cms.serviciospinamar.com"
 
     @property
     def cors_origins_list(self) -> list[str]:

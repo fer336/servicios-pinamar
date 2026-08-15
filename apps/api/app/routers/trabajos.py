@@ -28,21 +28,34 @@ MAX_IMAGES_PER_TRABAJO = 12
 
 
 def _to_out(trabajo: Trabajo, *, include_images: bool = True) -> TrabajoOut:
+    images = []
     if include_images:
-        return TrabajoOut.model_validate(trabajo)
+        images = [
+            {
+                "id": image.id,
+                "image_url": public_url(image.image_key),
+                "thumbnail_url": public_url(image.thumbnail_key),
+                "alt": image.alt,
+                "aspect_ratio": image.aspect_ratio,
+                "sort_order": image.sort_order,
+                "is_cover": image.is_cover,
+                "created_at": image.created_at,
+            }
+            for image in trabajo.images
+        ]
     return TrabajoOut.model_validate(
         {
             "id": trabajo.id,
             "title": trabajo.title,
             "description": trabajo.description,
-            "thumbnail_url": trabajo.thumbnail_url,
-            "image_url": trabajo.image_url,
+            "thumbnail_url": public_url(trabajo.thumbnail_key),
+            "image_url": public_url(trabajo.image_key),
             "alt": trabajo.alt,
             "aspect_ratio": trabajo.aspect_ratio,
             "service": trabajo.service,
             "sort_order": trabajo.sort_order,
             "created_at": trabajo.created_at,
-            "images": [],
+            "images": images,
         }
     )
 

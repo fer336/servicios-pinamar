@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import logging
+import mimetypes
 from functools import lru_cache
+from urllib.parse import quote
 
 from app.core.config import settings
 
@@ -9,6 +11,10 @@ logger = logging.getLogger(__name__)
 
 
 class StorageError(RuntimeError):
+    pass
+
+
+class StorageNotFound(StorageError):
     pass
 
 
@@ -30,10 +36,29 @@ def get_s3_client():
 
 
 def public_url(object_key: str) -> str:
-    base = settings.s3_public_base_url.rstrip("/")
+    path = quote(object_key.lstrip("/"), safe="/")
+    base = settings.public_api_base_url.rstrip("/")
     if not base:
-        raise RuntimeError("S3_PUBLIC_BASE_URL is not configured")
-    return f"{base}/{object_key}"
+        return f"/api/media/{path}"
+    return f"{base}/api/media/{path}"
+
+
+def get_object(object_key: str) -> tuple[bytes, str]:
+    try:
+        response = get_s3_client().get_object(Bucket=settings.s3_bucket, Key=object_key)
+        body = response["Body"].read()
+    except Exception as exc:
+        error = getattr(exc, "response", {}).get("Error", {})
+        code = error.get("Code")
+        if code in {"NoSuchKey", "404", "NotFound"}:
+            raise StorageNotFound(f"object not found: {object_key}") from exc
+        logger.error("failed to read %s: %s", object_key, exc)
+        raise StorageError(f"failed to read {object_key}") from exc
+    guessed_type = mimetypes.guess_type(object_key)[0]
+    content_type = response.get("ContentType")
+    if not content_type or content_type == "application/octet-stream":
+        content_type = guessed_type or "application/octet-stream"
+    return body, content_type
 
 
 def put_object(object_key: str, data: bytes, content_type: str = "image/webp") -> None:
