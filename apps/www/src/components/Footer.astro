@@ -1,11 +1,22 @@
 ---
-import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 import { whatsapp } from '../data/service-pages';
 ---
 <footer class="footer">
   <div class="container footer-grid">
-    <div><Logo /><p>Servicios de mantenimiento integral para casas, comercios y propiedades en Pinamar, Cariló, Valeria del Mar y Ostende.</p></div>
+    <div>
+      <a class="footer-brand" href="/#inicio" aria-label="Servicios Pinamar, inicio">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 4 14 17h6l-9 11h8l-10 12h30L29 28h8l-9-11h6L24 4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <path d="M24 19v23" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <span class="footer-brand__wordmark">
+          <strong>SERVICIOS</strong>
+          <small>PINAMAR</small>
+        </span>
+      </a>
+      <p>Servicios de mantenimiento integral para casas, comercios y propiedades en Pinamar, Cariló, Valeria del Mar y Ostende.</p>
+    </div>
     <div><h3>Navegación</h3><a href="/servicios/">Servicios</a><a href="/trabajos/">Trabajos</a><a href="/nosotros/">Sobre nosotros</a><a href="/zonas/">Zonas</a><a href="/contacto/">Contacto</a></div>
     <div><h3>Servicios</h3><a href="/servicios/pintura/">Pintores en Pinamar</a><a href="/servicios/hidrolavado/">Hidrolavado en Pinamar</a><a href="/servicios/plomeria/">Plomero en Pinamar</a><a href="/servicios/gas/">Gasista en Pinamar</a></div>
     <div><h3>Contacto</h3><a href={whatsapp}><Icon name="whatsapp" size={18} /> Escribir por WhatsApp</a><span>Pinamar, Buenos Aires</span><a href="/aviso-legal/">Aviso legal</a><a href="/privacidad/">Política de privacidad</a></div>
