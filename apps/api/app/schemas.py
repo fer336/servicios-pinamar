@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -60,16 +59,6 @@ class TrabajoUpdate(ApiModel):
 
 class TrabajoImageReorder(ApiModel):
     image_ids: list[UUID] = Field(min_length=1)
-
-
-class AdminLoginRequest(BaseModel):
-    username: str
-    password: str
-
-
-class AdminLoginResponse(ApiModel):
-    access_token: str
-    token_type: Literal["bearer"] = "bearer"
 
 
 class ErrorResponse(ApiModel):

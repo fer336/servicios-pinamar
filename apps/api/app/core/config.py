@@ -12,8 +12,11 @@ class Settings(BaseSettings):
 
     database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/servicios_pinamar"
 
-    admin_username: str = "admin"
-    admin_password_hash: str = ""
+    allow_gmail: str = ""
+    google_client_id: str = ""
+    google_client_secret: str = ""
+    google_redirect_uri: str = ""
+    admin_login_redirect_url: str = "http://localhost:5173"
     jwt_secret: str = ""
 
     cors_origins: str = "https://cms.serviciospinamar.com,https://serviciospinamar.com,https://www.serviciospinamar.com"
@@ -25,17 +28,13 @@ class Settings(BaseSettings):
     s3_region: str = "us-east-1"
     s3_public_base_url: str = ""
 
-    clerk_issuer_url: str = ""
-    clerk_jwks_url: str = ""
-    clerk_signing_keys: str = ""
-
     @property
     def cors_origins_list(self) -> list[str]:
         return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
 
     @property
-    def clerk_enabled(self) -> bool:
-        return bool(self.clerk_issuer_url) and bool(self.clerk_jwks_url or self.clerk_signing_keys)
+    def allowed_admin_email(self) -> str:
+        return self.allow_gmail.strip().lower()
 
 
 @lru_cache

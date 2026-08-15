@@ -41,7 +41,7 @@ def create_app() -> FastAPI:
     @app.get("/health")
     async def health() -> dict[str, str]:
         return {"status": "ok"}
-    logger.info("auth mode: %s", "clerk" if settings.clerk_enabled else "local-admin-fallback")
+    logger.info("auth mode: google-oauth-jwt")
     _app_instance = app
     return app
 

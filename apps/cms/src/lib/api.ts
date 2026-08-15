@@ -94,10 +94,6 @@ export function hasStoredToken(): boolean {
   return storedToken() !== null;
 }
 
-export function isClerkMode(): boolean {
-  return Boolean(import.meta.env.VITE_CLERK_PUBLISHABLE_KEY);
-}
-
 function storedToken(): string | null {
   return sessionStorage.getItem(TOKEN_KEY);
 }
