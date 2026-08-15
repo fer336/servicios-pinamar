@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useEffect, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { motion } from 'motion/react';
@@ -102,10 +101,6 @@ export default function WorkCarousel({
     setIsLoading(false);
     setSelectedWorkIndex(null);
     setActiveImageIndex(0);
-
-    if (nextService === initialService) return () => {
-      cancelled = true;
-    };
 
     setIsLoading(true);
     getTrabajos({ page: 1, limit: 12, service: nextService })
