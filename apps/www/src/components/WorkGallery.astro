@@ -17,10 +17,8 @@ const {
 } = Astro.props;
 ---
 
-{data.length > 0 && (
-  <section class="work-grid-section" data-work-gallery data-has-more={hasMore ? 'true' : 'false'} data-service={service ?? ''} aria-label="Trabajos realizados">
-    {title && <h3 class="work-grid__title">{title}</h3>}
-    <script is:inline type="application/json" data-work-data set:html={JSON.stringify(data)}></script>
-    <WorkCarousel client:load initialItems={data} initialHasMore={hasMore} service={service} />
-  </section>
-)}
+<section class="work-grid-section" data-work-gallery data-has-more={hasMore ? 'true' : 'false'} data-service={service ?? ''} aria-label="Trabajos realizados">
+  {title && <h3 class="work-grid__title">{title}</h3>}
+  <script is:inline type="application/json" data-work-data set:html={JSON.stringify(data)}></script>
+  <WorkCarousel client:load initialItems={data} initialHasMore={hasMore} service={service} />
+</section>
