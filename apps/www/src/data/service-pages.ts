@@ -208,8 +208,8 @@ export const servicePages = [
     h1: 'Planos de Gas, Planos Sanitarios y de Agua Corriente en Pinamar',
     eyebrow: 'Planos y trámites',
     lead: 'Elaboramos planos de gas, planos sanitarios y planos de agua corriente para ampliaciones y nuevas viviendas en Pinamar, Cariló, Valeria del Mar y Ostende, con firma de gasista matriculado y orientación para la presentación ante Obras Particulares.',
-    image: '/images/servicio-gas.webp',
-    imageAlt: 'Trabajo de gas a cargo del gasista matriculado que elabora planos en Pinamar',
+    image: '/images/servicio-planos.svg',
+    imageAlt: 'Planos técnicos de gas, sanitarios y agua corriente para una propiedad de Pinamar',
     intent: 'planos en Pinamar',
     credential: {
       name: 'Soliz Guido Angel',
