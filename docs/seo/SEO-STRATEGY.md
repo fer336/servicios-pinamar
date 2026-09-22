@@ -28,7 +28,7 @@ La competencia local es extraordinariamente débil: el único jugador cercano es
 ## 2. Descubrimiento (Discovery)
 
 ### 2.1 El negocio
-Servicios Pinamar ofrece mantenimiento integral de propiedades en la costa: pintura, hidrolavado, gas y plomería, con responsable técnico identificado (Soliz Guido Angel, gasista matriculado de primera; Matrícula 7040, ENARGAS 3316-SG, Habilitación 21012 FG2802). Modelo de captación actual: WhatsApp (https://wa.me/5492267416252 y https://wa.me/5492267521448, este último como CTA principal de presupuesto). No hay local comercial a la calle; el negocio opera como *Service Area Business* (SAB).
+Servicios Pinamar ofrece mantenimiento integral de propiedades en la costa: pintura, hidrolavado, gas y plomería, con responsable técnico identificado (Soliz Guido Angel, gasista matriculado de primera; Matrícula 7040, ENARGAS 3316-SG, Habilitación 21012 FG2802). Modelo de captación actual: WhatsApp (https://wa.me/5492254423359, único número de contacto; el responsable deriva las consultas técnicas). No hay local comercial a la calle; el negocio opera como *Service Area Business* (SAB).
 
 ### 2.2 Audiencia
 | Segmento | Intención de búsqueda | Dispositivo |

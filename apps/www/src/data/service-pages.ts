@@ -2,14 +2,14 @@ const baseUrl = 'https://www.serviciospinamar.com';
 
 export const serviceAreas = ['Pinamar', 'Cariló', 'Valeria del Mar', 'Ostende'];
 
-export const whatsapp = 'https://wa.me/5492267521448?text=Hola%2C%20quiero%20pedir%20un%20presupuesto.';
+export const whatsappNumber = 'https://wa.me/5492254423359';
 
-export const whatsappNumber = 'https://wa.me/5492267416252';
+export const whatsapp = `${whatsappNumber}?text=Hola%2C%20quiero%20pedir%20un%20presupuesto.`;
 
 export const whatsappContact = whatsappNumber;
 
 export const whatsappMessage = (servicio: string) =>
-  `Hola Guido, quería hacerte una consulta por un trabajo de ${servicio}.`;
+  `Hola, quería hacer una consulta por un trabajo de ${servicio}.`;
 
 export const servicePages = [
   {
