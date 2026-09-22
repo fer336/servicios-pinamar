@@ -182,7 +182,6 @@ export default function WorkCarousel({
               key={item.id}
               type="button"
               className="work-grid__item"
-              data-animate
               style={{ '--item-ar': item.aspectRatio } as CSSProperties}
               aria-label={`Ver galería: ${item.title}`}
               onClick={() => openWork(index)}
