@@ -53,6 +53,6 @@ DNS esperado:
 
 ## Personalización rápida
 
-- Número de WhatsApp: buscá `5492267521448`.
+- Número de WhatsApp: buscá `5492254423359`.
 - Dominio: `astro.config.mjs` y `BaseLayout.astro`.
 - Paleta: variables CSS al inicio de `src/styles/global.css`.
