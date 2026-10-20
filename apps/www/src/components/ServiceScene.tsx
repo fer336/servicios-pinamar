@@ -58,7 +58,7 @@ export default function ServiceScene() {
   return (
     <div className="scene-card" id="escena">
       <div className="scene-stage" ref={stageRef}>
-        <img className="scene-fallback" src={mode.fallbackImage} alt={mode.title} hidden={ready} width="800" height="600" />
+        <img className="scene-fallback" src={mode.fallbackImage} alt={mode.title} hidden={ready} width="800" height="600" fetchPriority="high" />
         <canvas
           ref={canvasRef}
           className="scene-canvas"
