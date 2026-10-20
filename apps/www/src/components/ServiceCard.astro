@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
-interface Props { title: string; description: string; image: string; href?: string; ariaLabel?: string; }
-const { title, description, image, href = '#contacto', ariaLabel = `Consultar por ${title}` } = Astro.props;
+interface Props { title: string; description: string; image: string; href?: string; ariaLabel?: string; sceneMode?: string; }
+const { title, description, image, href = '#contacto', ariaLabel = `Consultar por ${title}`, sceneMode } = Astro.props;
 ---
 <article class="service-card" style={`--service-image:url('${image}')`} data-animate>
   <div class="service-card__bg"></div>
@@ -11,7 +11,10 @@ const { title, description, image, href = '#contacto', ariaLabel = `Consultar po
     <div>
       <h3>{title}</h3>
       <p>{description}</p>
-      <a href={href} aria-label={ariaLabel}><Icon name="arrow" size={19} /></a>
+      <div class="service-card__actions">
+        <a href={href} aria-label={ariaLabel}><Icon name="arrow" size={19} /></a>
+        {sceneMode && <a class="service-card__scene" href="#escena" data-scene-mode={sceneMode}>Ver en 3D</a>}
+      </div>
     </div>
   </div>
 </article>

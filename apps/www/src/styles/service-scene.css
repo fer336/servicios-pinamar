@@ -1,0 +1,47 @@
+/* Home hero with the interactive 3D service scene (ServiceScene island). */
+.hero--scene{min-height:0;background:var(--cream)}
+.hero--scene .hero-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:center;min-height:0;padding-top:150px;padding-bottom:40px}
+.hero--scene .hero-copy{max-width:600px}
+.hero--scene h1{font-size:clamp(2.6rem,4.2vw,4.1rem)}
+.hero--scene .coverage-pill{position:relative;right:auto;bottom:auto;display:block;width:max-content;max-width:calc(100% - 28px);margin:0 auto 70px;text-align:center}
+
+.scene-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;border-radius:32px;background:var(--paper);box-shadow:0 30px 70px rgba(21,47,41,.16)}
+.scene-stage{position:relative;height:clamp(320px,36vw,480px);background:#e6ece8}
+.scene-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scene-fallback[hidden]{display:none}
+.scene-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab;opacity:0;transition:opacity .6s var(--ease)}
+.scene-canvas[data-ready="true"]{opacity:1}
+.scene-canvas:active{cursor:grabbing}
+.scene-hint{position:absolute;left:16px;top:16px;display:flex;align-items:center;gap:8px;margin:0;padding:8px 14px;border-radius:999px;background:rgba(255,253,250,.9);color:var(--green);font-size:12px;font-weight:600;pointer-events:none}
+.scene-panel{display:flex;flex-direction:column;gap:18px;padding:22px}
+.scene-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.scene-tab{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:64px;padding:12px 14px;border:1px solid rgba(23,63,56,.16);border-radius:16px;background:var(--paper);color:var(--ink);text-align:left;cursor:pointer;transition:background-color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
+.scene-tab:hover{border-color:rgba(23,63,56,.45);transform:translateY(-2px)}
+.scene-tab:focus-visible,.scene-link:focus-visible,.service-card__scene:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}
+.scene-tab[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.scene-tab__num{font-size:11px;font-weight:700;letter-spacing:.18em;color:#4f6a5a}
+.scene-tab[aria-pressed="true"] .scene-tab__num{color:#cfe8b0}
+.scene-tab__label{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600}
+.scene-info{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px}
+.scene-info>div{flex:1 1 260px;min-width:0}
+.scene-info h2{margin:0 0 6px;font-family:'Outfit',sans-serif;font-size:22px;font-weight:600}
+.scene-info p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+.scene-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--green);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+
+/* "Ver en 3D" action on the home service cards */
+.service-card__actions{display:flex;align-items:center;gap:10px}
+.service-card .service-card__scene{display:inline-flex;width:auto;height:39px;padding:0 14px;border-radius:12px;background:rgba(255,255,255,.18);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(6px)}
+.service-card:hover .service-card__scene{transform:none}
+.service-card .service-card__scene:hover{background:rgba(255,255,255,.3)}
+
+/* "Cómo trabajamos" */
+.process-section{padding-top:24px}
+.process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.process-step{display:flex;flex-direction:column;gap:14px;padding:32px;border-radius:24px;background:var(--cream)}
+.process-step span{font-family:'Outfit',sans-serif;font-size:44px;font-weight:600;line-height:1;color:var(--green-2)}
+.process-step h3{margin:0;font-family:'Outfit',sans-serif;font-size:22px;font-weight:600}
+.process-step p{margin:0;color:var(--muted);font-weight:300;line-height:1.65}
+
+@media(max-width:960px){.hero--scene .hero-content{grid-template-columns:1fr;padding-top:130px}.hero--scene .hero-copy{max-width:none}}
+@media(max-width:760px){.hero--scene .hero-content{gap:32px;padding-top:120px;padding-bottom:28px}.scene-card{border-radius:24px}.scene-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.scene-panel{padding:18px}.hero--scene .coverage-pill{width:calc(100% - 28px);margin:0 auto 52px}.process-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.scene-canvas,.scene-tab{transition:none}.scene-tab:hover{transform:none}}
