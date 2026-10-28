@@ -162,6 +162,10 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
             <p class="eyebrow">{section.eyebrow}</p>
             <h2>{section.title}</h2>
           </header>
+          <div class:list={['service-anchor-section__layout', 'image' in section && section.image && 'has-figure']}>
+          {'image' in section && section.image && (
+            <figure class="service-section-figure"><img src={section.image} alt={'imageAlt' in section ? section.imageAlt : ''} width="800" height="1000" loading="lazy" decoding="async" /></figure>
+          )}
           <div class="service-anchor-section__copy">
             {section.body.map((paragraph) => <p>{paragraph}</p>)}
             {section.bullets && (
@@ -172,6 +176,7 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
             {'link' in section && section.link && (
               <p><a href={section.link.href} target="_blank" rel="noopener">{section.link.label}</a></p>
             )}
+          </div>
           </div>
         </div>
       </section>

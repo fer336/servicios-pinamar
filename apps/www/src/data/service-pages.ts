@@ -319,7 +319,7 @@ export const servicePages = [
     eyebrow: 'Control de plagas',
     lead: 'Fumigaciones y control de plagas en Pinamar, Cariló, Valeria del Mar y Ostende. Un profesional asignado revisa tu propiedad, aplica el tratamiento y entrega un certificado del trabajo realizado.',
     image: '/images/servicio-fumigaciones.webp',
-    imageAlt: 'Fumigador aplicando un tratamiento de control de plagas en una propiedad de Pinamar',
+    imageAlt: 'Técnico instalando una red de exclusión en el alero de una casa de Pinamar mientras los murciélagos salen al atardecer',
     intent: 'fumigaciones en Pinamar',
     covers: [
       'Control de cucarachas, hormigas, arañas, pulgas y otros insectos en casas, departamentos y locales.',
@@ -345,6 +345,8 @@ export const servicePages = [
         slug: 'control-de-plagas',
         title: 'Control de plagas',
         eyebrow: 'Insectos y roedores',
+        image: '/images/servicio-plagas.webp',
+        imageAlt: 'Técnico con mochila pulverizadora tratando el perímetro de una casa en Pinamar',
         body: [
           'Las casas de la costa se cierran por meses, tienen jardines húmedos y reciben viento con arena: un buen escenario para cucarachas, hormigas, pulgas, arañas y roedores. Cada plaga necesita un tratamiento distinto, por eso el profesional inspecciona primero y recién después define el producto y el método.',
           'Te explicamos cuánto tiempo hay que ventilar, qué alimentos y objetos proteger y cuándo se puede volver a usar cada ambiente.'
