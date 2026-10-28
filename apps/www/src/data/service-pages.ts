@@ -308,6 +308,182 @@ export const servicePages = [
       ['¿Qué escala usan los planos?', 'Los planos se elaboran en escala 1:100, la escala habitual para la presentación ante Obras Particulares en Pinamar.'],
       ['¿Puedo coordinar el trámite si estoy a distancia?', 'Sí. Coordinamos la elaboración de los planos con fotos, planos previos o visitas puntuales, y te orientamos en la presentación y el seguimiento del trámite.']
     ]
+  },
+  {
+    slug: 'fumigaciones',
+    shortName: 'Fumigaciones',
+    serviceType: 'Fumigaciones y control de plagas con certificado',
+    title: 'Fumigaciones en Pinamar con certificado | Control de plagas | Servicios Pinamar',
+    description: 'Fumigaciones en Pinamar con certificado: control de cucarachas, hormigas, roedores, pulgas y exclusión de murciélagos en casas, locales y propiedades de la costa. Presupuesto por WhatsApp.',
+    h1: 'Fumigaciones en Pinamar con certificado para casas, locales y propiedades',
+    eyebrow: 'Control de plagas',
+    lead: 'Fumigaciones y control de plagas en Pinamar, Cariló, Valeria del Mar y Ostende. Un profesional asignado revisa tu propiedad, aplica el tratamiento y entrega un certificado del trabajo realizado.',
+    image: '/images/servicio-fumigaciones.webp',
+    imageAlt: 'Fumigador aplicando un tratamiento de control de plagas en una propiedad de Pinamar',
+    intent: 'fumigaciones en Pinamar',
+    covers: [
+      'Control de cucarachas, hormigas, arañas, pulgas y otros insectos en casas, departamentos y locales.',
+      'Desratización y control de roedores en patios, depósitos y construcciones.',
+      'Exclusión de murciélagos en techos y entretechos, sin dañar a los animales.',
+      'Fumigación previa a la temporada para propiedades de alquiler y casas de veraneo.',
+      'Certificado del trabajo realizado, emitido por el profesional asignado.'
+    ],
+    situations: [
+      'Cerraste la casa todo el invierno y querés recibirla sin plagas.',
+      'Viste cucarachas, hormigas, pulgas o rastros de roedores.',
+      'Hay murciélagos en el techo o el entretecho y no sabés cómo actuar.',
+      'Una inmobiliaria o un comercio necesita un certificado de fumigación.'
+    ],
+    process: [
+      'Nos contás qué plaga viste y dónde, con fotos si podés.',
+      'Cotizamos y coordinamos la visita con el profesional asignado.',
+      'El profesional inspecciona, define el tratamiento y te indica qué hacer antes y después.',
+      'Aplica el tratamiento y entrega el certificado del trabajo realizado.'
+    ],
+    sections: [
+      {
+        slug: 'control-de-plagas',
+        title: 'Control de plagas',
+        eyebrow: 'Insectos y roedores',
+        body: [
+          'Las casas de la costa se cierran por meses, tienen jardines húmedos y reciben viento con arena: un buen escenario para cucarachas, hormigas, pulgas, arañas y roedores. Cada plaga necesita un tratamiento distinto, por eso el profesional inspecciona primero y recién después define el producto y el método.',
+          'Te explicamos cuánto tiempo hay que ventilar, qué alimentos y objetos proteger y cuándo se puede volver a usar cada ambiente.'
+        ],
+        bullets: [
+          'Inspección previa de la propiedad y del exterior.',
+          'Tratamiento según la plaga detectada.',
+          'Indicaciones claras antes y después de la aplicación.',
+          'Servicio puntual o previo a la temporada.'
+        ]
+      },
+      {
+        slug: 'murcielagos',
+        title: 'Murciélagos en techos y entretechos',
+        eyebrow: 'Exclusión sin dañar',
+        body: [
+          'Muchas especies de murciélagos cumplen un rol útil en el ecosistema y su captura o eliminación puede estar restringida. Por eso el abordaje es la exclusión: se localizan los accesos, se sellan una vez que los animales salieron y se limpia la zona afectada.',
+          'Si encontrás murciélagos en tu propiedad, escribinos con fotos del lugar. El profesional asignado define el procedimiento y la época adecuada para hacerlo.'
+        ],
+        bullets: [
+          'Localización de accesos en techos, aleros y entretechos.',
+          'Exclusión y sellado sin dañar a los animales.',
+          'Limpieza y desinfección de la zona afectada.'
+        ]
+      },
+      {
+        slug: 'certificado-de-fumigacion',
+        title: 'Certificado de fumigación',
+        eyebrow: 'Constancia del trabajo',
+        body: [
+          'Al terminar el servicio, el profesional asignado entrega un certificado del trabajo realizado, útil para inmobiliarias, comercios, administradores y propietarios que necesitan dejar constancia.',
+          'Cada profesional emite su propio certificado y es responsable por el servicio. Nosotros preparamos la cotización y coordinamos la comunicación con vos.'
+        ],
+        bullets: [
+          'Constancia del trabajo realizado.',
+          'Emitida por el profesional asignado.',
+          'Útil para inmobiliarias, comercios y administradores.'
+        ]
+      }
+    ],
+    gallery: {
+      eyebrow: 'Trabajos realizados',
+      title: 'Algunos de nuestros trabajos de fumigación',
+      description: 'Control de plagas en propiedades de Pinamar y la zona.'
+    },
+    faqs: [
+      ['¿Hacen fumigaciones con certificado en Pinamar?', 'Sí. Al finalizar el trabajo, el profesional asignado entrega un certificado de la fumigación realizada.'],
+      ['¿Qué plagas controlan?', 'Cucarachas, hormigas, arañas, pulgas, roedores y otras plagas comunes en casas, locales y propiedades de la costa. Para murciélagos hacemos exclusión.'],
+      ['¿Es seguro para mi familia y mis mascotas?', 'El profesional te indica cuánto tiempo ventilar, qué proteger y cuándo volver a usar cada ambiente según el producto aplicado.'],
+      ['¿Pueden fumigar antes de la temporada?', 'Sí. Es un servicio habitual para casas de veraneo y propiedades de alquiler que estuvieron cerradas.'],
+      ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
+    ]
+  },
+  {
+    slug: 'jardineria',
+    shortName: 'Jardinería',
+    serviceType: 'Jardinería, poda y parquización',
+    title: 'Jardinería, Poda y Parquización en Pinamar | Servicios Pinamar',
+    description: 'Jardinería en Pinamar: poda de árboles y arbustos, corte de pasto, parquización y mantenimiento de jardines en casas y propiedades de la costa. Presupuesto por WhatsApp.',
+    h1: 'Jardinería, poda y parquización en Pinamar para casas y propiedades',
+    eyebrow: 'Jardines y parques',
+    lead: 'Jardineros en Pinamar, Cariló, Valeria del Mar y Ostende para podar, cortar el pasto, parquizar y mantener tu jardín prolijo todo el año, incluso si no vivís en la propiedad.',
+    image: '/images/servicio-jardineria.webp',
+    imageAlt: 'Jardinero podando y cortando el pasto en una propiedad de Pinamar',
+    intent: 'jardinería en Pinamar',
+    covers: [
+      'Poda de árboles, arbustos, setos y plantas trepadoras.',
+      'Corte de pasto y mantenimiento periódico de jardines.',
+      'Parquización de terrenos nuevos: nivelación, césped, plantas y canteros.',
+      'Limpieza de terrenos, retiro de ramas y restos de poda.',
+      'Mantenimiento de jardines de casas de veraneo y propiedades de alquiler.'
+    ],
+    situations: [
+      'El pasto y los árboles crecieron durante el invierno.',
+      'Querés parquizar un terreno o renovar el jardín.',
+      'Una poda se hizo necesaria por ramas cerca del techo o del tendido eléctrico.',
+      'Administrás una propiedad a distancia y necesitás mantenimiento periódico.'
+    ],
+    process: [
+      'Nos mandás fotos del jardín y qué querés lograr.',
+      'Cotizamos y coordinamos la visita con el profesional asignado.',
+      'Definimos el trabajo, la época adecuada y qué se hace con los restos.',
+      'Realizamos el trabajo y, si querés, lo repetimos con una frecuencia fija.'
+    ],
+    sections: [
+      {
+        slug: 'poda',
+        title: 'Poda de árboles y arbustos',
+        eyebrow: 'Poda en la costa',
+        body: [
+          'En la costa el viento, la sal y la arena castigan a las plantas. Una poda a tiempo mejora la salud del árbol, despeja techos y aberturas y reduce el riesgo de que una rama caiga durante una tormenta.',
+          'El profesional asignado evalúa especie, altura y época antes de podar, y se ocupa de retirar los restos.'
+        ],
+        bullets: [
+          'Poda de formación, limpieza y despeje.',
+          'Setos y arbustos ornamentales.',
+          'Retiro de ramas y restos de poda.'
+        ]
+      },
+      {
+        slug: 'corte-de-pasto',
+        title: 'Corte de pasto y mantenimiento',
+        eyebrow: 'Jardines al día',
+        body: [
+          'Corte de pasto, bordeado y perfilado de canteros para que el jardín se vea cuidado. Podemos coordinar una visita única antes de la temporada o un servicio periódico mientras la propiedad está deshabitada.'
+        ],
+        bullets: [
+          'Corte y bordeado de césped.',
+          'Visitas periódicas para propiedades a distancia.',
+          'Limpieza de hojas, restos y malezas.'
+        ]
+      },
+      {
+        slug: 'parquizacion',
+        title: 'Parquización',
+        eyebrow: 'Diseño y plantación',
+        body: [
+          'Parquización de terrenos nuevos o renovación de jardines existentes: nivelación, siembra o colocación de césped, plantas adaptadas al clima costero y armado de canteros.',
+          'Coordinamos con vos el estilo y el nivel de mantenimiento que querés después, para que el jardín sea fácil de sostener.'
+        ],
+        bullets: [
+          'Nivelación y preparación del terreno.',
+          'Césped, plantas y canteros.',
+          'Especies adecuadas para viento y salitre.'
+        ]
+      }
+    ],
+    gallery: {
+      eyebrow: 'Trabajos realizados',
+      title: 'Algunos de nuestros trabajos de jardinería',
+      description: 'Poda, corte de pasto y parquización en propiedades de Pinamar y la zona.'
+    },
+    faqs: [
+      ['¿Hacen poda de árboles en Pinamar?', 'Sí. Podamos árboles, arbustos y setos, y retiramos los restos. Para ramas cerca de tendidos eléctricos coordinamos con el profesional asignado.'],
+      ['¿Cortan el pasto de casas de veraneo?', 'Sí. Podemos hacerlo una vez antes de la temporada o con una frecuencia fija.'],
+      ['¿Qué incluye la parquización?', 'Preparación del terreno, césped, plantas y canteros. Se define según el tamaño del terreno y el mantenimiento que quieras.'],
+      ['¿Pueden trabajar si no estoy en la propiedad?', 'Sí. Coordinamos el acceso y te mandamos fotos del antes y el después.'],
+      ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
+    ]
   }
 ] as const;
 

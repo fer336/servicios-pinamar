@@ -11,6 +11,8 @@ Servicios Pinamar is a local services landing page for property maintenance in P
 - Plomería para instalaciones, reparaciones y mantenimiento general
 - Gas para instalaciones, revisiones, mantenimiento y planos de gas (gasista matriculado)
 - Planos de gas, planos sanitarios y planos de agua corriente para ampliaciones y nuevas viviendas
+- Fumigaciones y control de plagas con certificado del trabajo realizado
+- Jardinería: poda de árboles y arbustos, corte de pasto y parquización
 
 ## Areas Served
 
@@ -32,6 +34,8 @@ The site directs quote requests through WhatsApp: https://wa.me/5492254423359?te
 - Gas en Pinamar: https://www.serviciospinamar.com/servicios/gas/
 - Plomería en Pinamar: https://www.serviciospinamar.com/servicios/plomeria/
 - Planos en Pinamar: https://www.serviciospinamar.com/servicios/planos/
+- Fumigaciones en Pinamar: https://www.serviciospinamar.com/servicios/fumigaciones/
+- Jardinería en Pinamar: https://www.serviciospinamar.com/servicios/jardineria/
 - Sobre nosotros: https://www.serviciospinamar.com/nosotros/
 - Contacto: https://www.serviciospinamar.com/contacto/
 - Zonas de cobertura: https://www.serviciospinamar.com/zonas/
@@ -39,6 +43,7 @@ The site directs quote requests through WhatsApp: https://wa.me/5492254423359?te
 - Servicios en Cariló: https://www.serviciospinamar.com/zonas/carilo/
 - Servicios en Valeria del Mar: https://www.serviciospinamar.com/zonas/valeria-del-mar/
 - Servicios en Ostende: https://www.serviciospinamar.com/zonas/ostende/
+- Términos y condiciones: https://www.serviciospinamar.com/terminos-y-condiciones/
 - Aviso legal: https://www.serviciospinamar.com/aviso-legal/
 - Política de privacidad: https://www.serviciospinamar.com/privacidad/
 - Sitemap: https://www.serviciospinamar.com/sitemap-index.xml
