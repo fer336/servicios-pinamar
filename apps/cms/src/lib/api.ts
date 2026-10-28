@@ -1,12 +1,20 @@
 export const API_BASE_URL: string =
   import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
 
-export type ServiceSlug = "gas" | "plomeria" | "pintura" | "hidrolavado";
+export type ServiceSlug =
+  | "gas"
+  | "plomeria"
+  | "pintura"
+  | "hidrolavado"
+  | "fumigaciones"
+  | "jardineria";
 export const SERVICE_SLUGS: ServiceSlug[] = [
   "gas",
   "plomeria",
   "pintura",
   "hidrolavado",
+  "fumigaciones",
+  "jardineria",
 ];
 
 export const SERVICE_TITLES: Record<string, string> = {
@@ -14,6 +22,8 @@ export const SERVICE_TITLES: Record<string, string> = {
   plomeria: "Plomería",
   pintura: "Pintura",
   hidrolavado: "Hidrolavado",
+  fumigaciones: "Fumigaciones",
+  jardineria: "Jardinería",
 };
 
 export interface Trabajo {

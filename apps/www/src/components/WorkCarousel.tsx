@@ -13,7 +13,9 @@ const SERVICE_LABEL = {
   gas: 'Gas',
   plomeria: 'Plomería',
   pintura: 'Pintura',
-  hidrolavado: 'Hidrolavado'
+  hidrolavado: 'Hidrolavado',
+  fumigaciones: 'Fumigaciones',
+  jardineria: 'Jardinería'
 } as const;
 const INITIAL_VISIBLE_BY_MEDIA = {
   MOBILE: 5,

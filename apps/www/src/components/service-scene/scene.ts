@@ -349,7 +349,7 @@ export function createServiceScene(T: Three, container: HTMLElement, canvas: HTM
 
   // Gardening: hedge being trimmed on the right, mower with its gardener on the left lawn
   const hedgeMat = mat(0x3f7d3a, { roughness: 1 });
-  const hedge = box(house, 1.7, 0.9, 0.7, hedgeMat, 3.5, 0.47, 1.7);
+  box(house, 1.7, 0.9, 0.7, hedgeMat, 3.5, 0.47, 1.7);
   const flowerBed = part(house, new T.CylinderGeometry(0.55, 0.6, 0.12, 24), mat(0x6b4a33), -3.9, 0.08, 3.1);
   flowerBed.receiveShadow = true;
   [0xe9588b, 0xf2c230, 0xffffff, 0xe9588b, 0xf2c230].forEach((c, i) => {
