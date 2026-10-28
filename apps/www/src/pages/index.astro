@@ -70,7 +70,7 @@ const faqSchema = {
 
     <section id="servicios" class="section services-section">
       <div class="container">
-        <header class="section-heading centered"><p class="eyebrow">Nuestros servicios</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Mantenimiento de casas y propiedades en Pinamar: si buscás pintores, plomero, gasista o hidrolavado en Pinamar, cada servicio tiene su página con alcance y preguntas frecuentes.</p></header>
+        <header class="section-heading centered"><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Mantenimiento de casas y propiedades en Pinamar: si buscás pintores, plomero, gasista o hidrolavado en Pinamar, cada servicio tiene su página con alcance y preguntas frecuentes.</p></header>
         <div class="services-grid">{services.map((service) => <ServiceCard {...service} />)}</div>
         <div class="features-grid">
           <Feature icon="shield" title="Profesionales de confianza" text="Seleccionados por su seriedad, compromiso y respeto, con alcance claro antes de empezar." />
@@ -98,7 +98,7 @@ const faqSchema = {
 
     <section id="proceso" class="section process-section">
       <div class="container">
-        <header class="section-heading"><p class="eyebrow">Cómo trabajamos</p><h2>Del mensaje al trabajo terminado, sin que tengas que estar acá</h2></header>
+        <header class="section-heading"><h2>Del mensaje al trabajo terminado, sin que tengas que estar acá</h2></header>
         <div class="process-grid">
           <article class="process-step" data-animate><span>01</span><h3>Mandanos fotos o videos</h3><p>Por WhatsApp hacemos una primera evaluación. Si hace falta, coordinamos una visita.</p></article>
           <article class="process-step" data-animate><span>02</span><h3>Presupuesto con alcance claro</h3><p>Sabés qué se hace antes de empezar. Sin compromiso.</p></article>
@@ -110,7 +110,6 @@ const faqSchema = {
     <section id="nosotros" class="section about-section">
       <div class="container about-grid">
         <article class="about-copy">
-          <p class="eyebrow">Sobre nosotros</p>
           <h2><span class="marker-sequence marker-heading" data-marker>Equipo local de mantenimiento en Pinamar</span></h2>
           <p>Somos partner de profesionales independientes de mantenimiento de propiedades en Pinamar. Preparamos las cotizaciones y coordinamos todo el trabajo; el profesional asignado lo realiza y emite su factura.</p>
           <p>También atendemos casas cerradas o de vacaciones, coordinando los trabajos y enviando fotos y videos del avance por WhatsApp.</p>
@@ -127,9 +126,9 @@ const faqSchema = {
       </div>
     </section>
 
-    <section id="zonas" class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid">{zones.map((zone) => <article data-animate><h3><a href={getZoneUrl(zone.slug)}>{zone.name}</a></h3><p>{zone.teaser}</p><a class="zone-card-link" href={getZoneUrl(zone.slug)}>Servicios en {zone.name} <Icon name="arrow" size={15} /></a></article>)}</div><div class="centered-text" style="margin-top: 2.2rem;"><a class="zone-card-link" href="/zonas/">Ver todas las zonas de cobertura <Icon name="arrow" size={15} /></a></div></div></section>
+    <section id="zonas" class="zones section-small"><div class="container"><header class="section-heading centered"><h2>Zonas de cobertura</h2></header><div class="zones-grid">{zones.map((zone) => <article data-animate><h3><a href={getZoneUrl(zone.slug)}>{zone.name}</a></h3><p>{zone.teaser}</p><a class="zone-card-link" href={getZoneUrl(zone.slug)}>Servicios en {zone.name} <Icon name="arrow" size={15} /></a></article>)}</div><div class="centered-text" style="margin-top: 2.2rem;"><a class="zone-card-link" href="/zonas/">Ver todas las zonas de cobertura <Icon name="arrow" size={15} /></a></div></div></section>
 
-    <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><p class="eyebrow">Preguntas frecuentes</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Todo</span> <span class="marker marker-word" style="--word-index:1">lo</span> <span class="marker marker-word" style="--word-index:2">que</span> <span class="marker marker-word" style="--word-index:3">necesitás</span> <span class="marker marker-word" style="--word-index:4">saber</span></span></h2></header><div>{faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
+    <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Todo</span> <span class="marker marker-word" style="--word-index:1">lo</span> <span class="marker marker-word" style="--word-index:2">que</span> <span class="marker marker-word" style="--word-index:3">necesitás</span> <span class="marker marker-word" style="--word-index:4">saber</span></span></h2></header><div>{faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
   </main>
   <Footer />
   <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>

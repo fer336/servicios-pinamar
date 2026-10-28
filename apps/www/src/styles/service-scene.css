@@ -40,7 +40,7 @@
 .process-step{display:flex;flex-direction:column;gap:14px;padding:32px;border-radius:24px;background:var(--cream)}
 .process-step span{font-family:'Outfit',sans-serif;font-size:44px;font-weight:600;line-height:1;color:var(--green-2)}
 .process-step h3{margin:0;font-family:'Outfit',sans-serif;font-size:22px;font-weight:600}
-.process-step p{margin:0;color:var(--muted);font-weight:300;line-height:1.65}
+.process-step p{margin:0;color:var(--muted);font-size:16px;font-weight:400;line-height:1.65}
 
 @media(max-width:960px){.hero--scene .hero-content{grid-template-columns:1fr;padding-top:130px}.hero--scene .hero-copy{max-width:none}}
 @media(max-width:760px){.hero--scene .hero-content{gap:32px;padding-top:120px;padding-bottom:28px}.scene-card{border-radius:24px}.scene-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.scene-panel{padding:18px}.hero--scene .coverage-pill{width:calc(100% - 28px);margin:0 auto 52px}.process-grid{grid-template-columns:1fr}}
