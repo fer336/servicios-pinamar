@@ -14,7 +14,7 @@
 .scene-canvas:active{cursor:grabbing}
 .scene-hint{position:absolute;left:16px;top:16px;display:flex;align-items:center;gap:8px;margin:0;padding:8px 14px;border-radius:999px;background:rgba(255,253,250,.9);color:var(--green);font-size:12px;font-weight:600;pointer-events:none}
 .scene-panel{display:flex;flex-direction:column;gap:18px;padding:22px}
-.scene-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.scene-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .scene-tab{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:64px;padding:12px 14px;border:1px solid rgba(23,63,56,.16);border-radius:16px;background:var(--paper);color:var(--ink);text-align:left;cursor:pointer;transition:background-color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
 .scene-tab:hover{border-color:rgba(23,63,56,.45);transform:translateY(-2px)}
 .scene-tab:focus-visible,.scene-link:focus-visible,.service-card__scene:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}

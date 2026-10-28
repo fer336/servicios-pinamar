@@ -1,4 +1,4 @@
-export type SceneModeId = 'pintura' | 'hidrolavado' | 'plomeria' | 'gas';
+export type SceneModeId = 'pintura' | 'hidrolavado' | 'plomeria' | 'gas' | 'fumigaciones' | 'jardineria';
 
 export interface SceneMode {
   id: SceneModeId;
@@ -42,5 +42,21 @@ export const sceneModes: SceneMode[] = [
     description: 'Un gasista controla el medidor y otro revisa el calefón. Revisión, reparación e instalación de artefactos.',
     href: '/servicios/gas/',
     fallbackImage: '/images/servicio-gas.webp'
+  },
+  {
+    id: 'fumigaciones',
+    label: 'Fumigaciones',
+    title: 'Fumigaciones con certificado',
+    description: 'Un profesional trata el perímetro y otro revisa el techo donde anidan murciélagos. Al terminar entrega el certificado del trabajo.',
+    href: '/servicios/fumigaciones/',
+    fallbackImage: '/images/servicio-fumigaciones-3d.webp'
+  },
+  {
+    id: 'jardineria',
+    label: 'Jardinería',
+    title: 'Jardinería, poda y parquización',
+    description: 'Un jardinero corta el pasto con la cortadora y otro poda el cerco: así queda el jardín de tu propiedad.',
+    href: '/servicios/jardineria/',
+    fallbackImage: '/images/servicio-jardineria-3d.webp'
   }
 ];
