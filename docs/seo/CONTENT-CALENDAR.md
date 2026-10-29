@@ -21,6 +21,8 @@
 | P1 | /nosotros/ | Refuerzo E‑E‑A‑T: responsable técnico, credenciales explicadas, fotos de obra | marca | Semana 6 |
 | P2 | /servicios/pintura/ | H1 alineado a "Pintores en Pinamar"; FAQPage opcional | pintores en pinamar | Semana 9 |
 | P2 | /servicios/hidrolavado/ | Incluir plural "hidrolavados en Pinamar" en copy | hidrolavados pinamar | Semana 10 |
+| P1 | /servicios/fumigaciones/ (nueva, publicada v1.0.29) | Medir en GSC; reforzar con fotos de trabajos reales cargadas desde el CMS; sumar datos del certificado solo cuando existan y se puedan verificar | fumigaciones en pinamar, control de plagas pinamar | Mes 1 tras publicar |
+| P1 | /servicios/jardineria/ (nueva, publicada v1.0.29) | Medir en GSC; foto propia para parquización; trabajos reales desde el CMS | poda de árboles pinamar, jardinero en pinamar, corte de pasto | Mes 1 tras publicar |
 
 ---
 
@@ -39,6 +41,10 @@ Los títulos se listan en español neutro; se recomienda mantener la voz del sit
 | Mes 5 | "Mantenimiento pre‑temporada: checklist para propiedades de la costa" | estacional (nov–dic) | Checklist descargable | /servicios/ (índice) | Candidato a lead magnet en el futuro |
 | Mes 5 | "Gas en propiedades de alquiler temporario: responsabilidades del propietario" | gasista matriculado (legal) | Guía legal | /servicios/gas/ | Apunta a propietarios no residentes |
 | Mes 6 | "Cariló, Valeria del Mar u Ostende: qué mantenimiento necesita cada localidad" | localidades (long-tail) | Post de zona | /zonas/ (índice) | Reforzar capa local y enlaces a zonas |
+| Mes 2 | "Cuándo fumigar una casa de la costa antes de la temporada" | fumigación casas pinamar (estacional) | Checklist | /servicios/fumigaciones/ | Sin prometer resultados; el certificado lo emite cada profesional |
+| Mes 3 | "Murciélagos en el techo: qué hacer sin dañarlos" | murciélagos en casa (informativo) | Guía | /servicios/fumigaciones/ | Enfoque de exclusión; muchas especies están protegidas |
+| Mes 4 | "Árbol caído después de una tormenta: qué hacer y a quién llamar" | árbol caído pinamar (urgencia informativa) | Guía + checklist | /servicios/jardineria/ | Seguridad primero; sin prometer atención 24 h |
+| Mes 5 | "Poda en la costa: época, viento y tipos de árbol" | poda de árboles pinamar | Guía | /servicios/jardineria/ | Enlazar corte de pasto y parquización |
 | Mes 6+ | 1–2 posts/mes según demanda detectada en GSC | long-tail real de GSC | Mixto | Variable | Revisión trimestral de queries |
 
 ### Estacionalidad (temas recurrentes)
