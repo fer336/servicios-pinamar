@@ -410,7 +410,7 @@ export const servicePages = [
     eyebrow: 'Jardines y parques',
     lead: 'Jardineros en Pinamar, Cariló, Valeria del Mar y Ostende para podar, cortar el pasto, parquizar y mantener tu jardín prolijo todo el año, incluso si no vivís en la propiedad.',
     image: '/images/servicio-jardineria.webp',
-    imageAlt: 'Jardinero podando y cortando el pasto en una propiedad de Pinamar',
+    imageAlt: 'Jardinero cortando el pasto con una cortadora roja frente a una casa de madera entre pinos y el mar',
     intent: 'jardinería en Pinamar',
     covers: [
       'Poda de árboles, arbustos, setos y plantas trepadoras.',
