@@ -2,7 +2,7 @@ const baseUrl = 'https://www.serviciospinamar.com';
 
 export const serviceAreas = ['Pinamar', 'Cariló', 'Valeria del Mar', 'Ostende'];
 
-export const whatsappNumber = 'https://wa.me/5492254423359';
+export const whatsappNumber = 'https://wa.me/5492254413336';
 
 export const whatsapp = `${whatsappNumber}?text=Hola%2C%20quiero%20pedir%20un%20presupuesto.`;
 
