@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const baseUrl = 'https://www.serviciospinamar.com';
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: baseUrl },
+    { '@type': 'ListItem', position: 2, name: 'Términos y condiciones', item: `${baseUrl}/terminos-y-condiciones/` }
+  ]
+};
+---
+<BaseLayout title="Términos y Condiciones | Servicios Pinamar" description="Cómo trabajamos: Servicios Pinamar prepara cotizaciones y coordina la comunicación; cada profesional asignado presta el servicio, emite su factura y atiende los reclamos." canonical={`${baseUrl}/terminos-y-condiciones/`} structuredData={[breadcrumbSchema]}>
+  <Header />
+  <main>
+    <section class="section legal-page">
+      <div class="container" style="max-width: 700px;">
+        <header class="section-heading">
+          <h1>Términos y condiciones</h1>
+          <p>Última actualización: octubre de 2026.</p>
+        </header>
+        <article>
+          <h2>Quiénes somos</h2>
+          <p>Servicios Pinamar es un partner de profesionales independientes de mantenimiento de propiedades en Pinamar, Cariló, Valeria del Mar y Ostende. Preparamos las cotizaciones y coordinamos la comunicación con el cliente durante todo el trabajo.</p>
+
+          <h2>Qué hacemos y qué no</h2>
+          <p>Recibimos tu consulta, la derivamos al profesional que corresponde, te enviamos la cotización y mantenemos el contacto hasta que el trabajo se termina. El servicio lo presta el profesional asignado, bajo su propia responsabilidad. Servicios Pinamar no presta directamente los trabajos ni emite facturas.</p>
+
+          <h2>Profesionales asignados</h2>
+          <p>Trabajamos con profesionales seleccionados por su seriedad: que cumplan con lo acordado, traten bien al cliente y sean personas de confianza. Cuando una cotización se acepta, te informamos quién es el profesional asignado.</p>
+
+          <h2>Cotizaciones</h2>
+          <p>Las cotizaciones se preparan con la información, las fotos y los videos que nos envíes. Pueden ajustarse si, al ver la propiedad, el alcance real del trabajo es distinto. Cualquier cambio se acuerda con vos antes de avanzar.</p>
+
+          <h2>Facturación</h2>
+          <p>La factura del trabajo la emite el profesional asignado. Servicios Pinamar no genera facturas por los servicios prestados.</p>
+
+          <h2>Reclamos</h2>
+          <p>Los reclamos por el trabajo realizado se dirigen al profesional asignado, que es quien prestó el servicio. Lo mismo vale para los certificados y constancias que cada profesional emite, como el certificado de una fumigación.</p>
+
+          <h2>Cambios en estos términos</h2>
+          <p>Podemos actualizar estos términos. La versión vigente es la publicada en esta página, con su fecha de actualización.</p>
+
+          <h2>Legislación aplicable</h2>
+          <p>Estos términos se rigen por la legislación de la República Argentina. Cualquier controversia se someterá a los tribunales competentes de la Ciudad de Mar del Plata, Provincia de Buenos Aires.</p>
+
+          <p>Para el uso de este sitio web, consultá también el <a href="/aviso-legal/">aviso legal</a> y la <a href="/privacidad/">política de privacidad</a>.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

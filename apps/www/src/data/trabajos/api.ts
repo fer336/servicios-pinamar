@@ -4,7 +4,9 @@ export const SERVICE_SLUG = {
   GAS: 'gas',
   PLOMERIA: 'plomeria',
   PINTURA: 'pintura',
-  HIDROLAVADO: 'hidrolavado'
+  HIDROLAVADO: 'hidrolavado',
+  FUMIGACIONES: 'fumigaciones',
+  JARDINERIA: 'jardineria'
 } as const;
 
 export type ServiceSlug = (typeof SERVICE_SLUG)[keyof typeof SERVICE_SLUG];

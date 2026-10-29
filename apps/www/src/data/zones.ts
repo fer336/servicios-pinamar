@@ -31,7 +31,7 @@ export const zones = [
     eyebrow: 'Zona de cobertura · Pinamar',
     lead: 'Trabajamos en propiedades de Pinamar: pintura, hidrolavado, plomería, gas y planos para casas, departamentos, locales y comercios, con coordinación clara por WhatsApp para propietarios, inmobiliarias y administradores.',
     neighborhoods: ['Centro (Av. Bunge)', 'Av. Shaw', 'Pinamar Norte', 'Bajadas públicas al mar'],
-    services: ['pintura', 'plomeria', 'gas', 'planos', 'hidrolavado'],
+    services: ['pintura', 'plomeria', 'gas', 'planos', 'hidrolavado', 'fumigaciones', 'jardineria'],
     body: [
       'Pinamar concentra la mayor parte de las propiedades atendidas por el servicio: casas de uso permanente, departamentos de alquiler temporario, locales comerciales sobre Avenida Bunge y edificios de departamentos que trabajan todo el año. Esa mezcla hace que los trabajos varíen mucho entre una semana y otra: acá se pide desde repintar un frente antes de temporada hasta regularizar la documentación de gas de una propiedad que estuvo años cerrada.',
       'Las casas alrededor del centro y de la Av. Shaw comparten problemas típicos del ambiente costero: el sol y el salitre atacan las maderas y las pinturas exteriores, la arena se acumula en veredas, decks y patios, y la humedad de los meses de invierno aparece como manchas en paredes y cielorrasos. Por eso el hidrolavado y la pintura de mantenimiento son los trabajos que más se repiten en Pinamar fuera de temporada, cuando los precios y los tiempos son mejores para el propietario.',
@@ -58,7 +58,7 @@ export const zones = [
     eyebrow: 'Zona de cobertura · Cariló',
     lead: 'Pintura, hidrolavado, plomería, gas y planos para casas y propiedades en Cariló, con coordinación a distancia para propietarios, administradores e inmobiliarias.',
     neighborhoods: ['Av. Divisadero', 'Bosque de Cariló', 'Casco forestado', 'Playas de Cariló'],
-    services: ['pintura', 'gas', 'planos', 'plomeria', 'hidrolavado'],
+    services: ['pintura', 'gas', 'planos', 'plomeria', 'hidrolavado', 'fumigaciones', 'jardineria'],
     body: [
       'Cariló es una localidad forestada donde la mayoría de las casas están rodeadas de pinos, y eso cambia el tipo de mantenimiento que necesita cada propiedad. Las copas de los árboles mantienen la humedad sobre techos y muros, las agujas de pino se acumulan en canaletas, decks y veredas, y las superficies exteriores rara vez reciben sol directo, lo que favorece la aparición de verdín y musgo. El hidrolavado en Cariló se hace habitualmente bajo los árboles y no solo en fachadas: patios, decks de madera, entradas y zonas de parrilla son los puntos que más se limpian antes de cada estadía.',
       'El perfil de las propiedades de Cariló también es distinto al del resto de la costa: casas de un nivel o dos, muchas con mucho terreno, uso estacional concentrado en verano y Semana Santa, y un grueso de propietarios que administran desde Buenos Aires o desde el exterior. Eso hace que la coordinación a distancia sea la regla: fotos y videos de cada trabajo, alcance cerrado por WhatsApp y seguimiento con registro del avance mientras la casa permanece cerrada.',
@@ -85,7 +85,7 @@ export const zones = [
     eyebrow: 'Zona de cobertura · Valeria del Mar',
     lead: 'Trabajos de pintura, hidrolavado, plomería, gas y planos en Valeria del Mar, para casas, departamentos y locales con coordinación clara por WhatsApp.',
     neighborhoods: ['Casco de Valeria', 'Playa de Valeria', 'Forestación costera', 'Accesos desde la Av. Shaw'],
-    services: ['plomeria', 'pintura', 'hidrolavado', 'gas', 'planos'],
+    services: ['plomeria', 'pintura', 'hidrolavado', 'gas', 'planos', 'fumigaciones', 'jardineria'],
     body: [
       'Valeria del Mar es la localidad más chica de las cuatro que cubre el servicio, con un casco forestado entre Cariló y Ostende y un perfil tranquilo que se sostiene fuera de temporada. La mayoría de las propiedades son casas bajas y departamentos de pocas plantas, muchas con uso familiar y rotación de alquiler durante el verano. Esa escala hace que los trabajos sean más puntuales que en Pinamar: puesta a punto de departamentos, reparaciones de griferías y pérdidas, y mantenimiento de exteriores de casas.',
       'La humedad de las casas forestadas de Valeria se nota sobre todo en paredes y cielorrasos después del invierno, cuando las viviendas estuvieron cerradas. La pintura de mantenimiento es el trabajo más pedido, casi siempre combinado con la reparación previa de las superficies: se corrige el daño, se limpia y se pinta con productos que aguanten el ambiente costero y la sombra de los pinos.',
@@ -112,7 +112,7 @@ export const zones = [
     eyebrow: 'Zona de cobertura · Ostende',
     lead: 'Pintura, hidrolavado, plomería, gas y planos para casas, comercios y propiedades en Ostende, con coordinación clara por WhatsApp.',
     neighborhoods: ['Casco de Ostende', 'Bosque de Ostende', 'Playas de Ostende', 'Accesos desde la Av. Shaw'],
-    services: ['gas', 'pintura', 'hidrolavado', 'plomeria', 'planos'],
+    services: ['gas', 'pintura', 'hidrolavado', 'plomeria', 'planos', 'fumigaciones', 'jardineria'],
     body: [
       'Ostende tiene un perfil propio dentro de la costa: nació de los loteos de pioneros belgas a principios del siglo XX, y ese origen se nota en el trazado del casco y en las casas de estilo que todavía conviven con construcciones nuevas. Es una localidad más silenciosa que Pinamar, con muchas propiedades de uso familiar y estacional, un bosque que envuelve buena parte del casco y una playa ancha que la temporada ocupa sin agitar el resto del año.',
       'Las casas más antiguas de Ostende concentran trabajos de mantenimiento de instalaciones: cañerías de plomería con décadas de uso, artefactos de gas que se reemplazan en las refacciones y techos que después de años de salitre y humedad piden intervención. La revisión de gas y la modernización de puntos de consumo son habituales en estas propiedades cuando pasan de uso estacional a permanente.',

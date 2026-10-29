@@ -14,14 +14,18 @@ const services = [
   { title: 'Pintores en Pinamar', description: 'Pintura interior y exterior de casas y comercios en Pinamar, con materiales adecuados para el clima costero.', image: '/images/servicio-pintura.webp', href: '/servicios/pintura/', sceneMode: 'pintura', ariaLabel: 'Ver servicio de pintores en Pinamar' },
   { title: 'Hidrolavado', description: 'Hidrolavado de fachadas, techos, veredas, decks, patios, pisos y muros en Pinamar, Cariló, Valeria del Mar y Ostende.', image: '/images/servicio-hidrolavado.webp', href: '/servicios/hidrolavado/', sceneMode: 'hidrolavado', ariaLabel: 'Ver servicio de hidrolavado en Pinamar' },
   { title: 'Plomero en Pinamar', description: 'Servicio de plomería en Pinamar para instalaciones, reparaciones, pérdidas de agua y mantenimiento general.', image: '/images/servicio-plomeria.webp', href: '/servicios/plomeria/', sceneMode: 'plomeria', ariaLabel: 'Ver servicio de plomero en Pinamar' },
-  { title: 'Gasista en Pinamar', description: 'Revisión, reparación e instalación de artefactos de gas en casas y comercios de Pinamar.', image: '/images/servicio-gas.webp', href: '/servicios/gas/', sceneMode: 'gas', ariaLabel: 'Ver servicio de gasista en Pinamar' }
+  { title: 'Gasista en Pinamar', description: 'Revisión, reparación e instalación de artefactos de gas en casas y comercios de Pinamar.', image: '/images/servicio-gas.webp', href: '/servicios/gas/', sceneMode: 'gas', ariaLabel: 'Ver servicio de gasista en Pinamar' },
+  { title: 'Fumigaciones con certificado', description: 'Control de plagas, fumigación previa a la temporada y exclusión de murciélagos en Pinamar, con certificado del trabajo realizado.', image: '/images/servicio-fumigaciones.webp', href: '/servicios/fumigaciones/', sceneMode: 'fumigaciones', ariaLabel: 'Ver servicio de fumigaciones en Pinamar' },
+  { title: 'Jardinería y poda', description: 'Poda de árboles y arbustos, corte de pasto y parquización de jardines en Pinamar, Cariló, Valeria del Mar y Ostende.', image: '/images/servicio-jardineria.webp', href: '/servicios/jardineria/', sceneMode: 'jardineria', ariaLabel: 'Ver servicio de jardinería en Pinamar' }
 ];
 const faqs = [
-  ['¿Realizan presupuestos en Pinamar?', 'Sí. Realizamos presupuestos para trabajos de pintura, hidrolavado, plomería, gas y mantenimiento general en Pinamar. Podemos coordinar una visita o recibir fotos y videos por WhatsApp.'],
+  ['¿Realizan presupuestos en Pinamar?', 'Sí. Realizamos presupuestos para trabajos de pintura, hidrolavado, plomería, gas, fumigaciones, jardinería y mantenimiento general en Pinamar. Podemos coordinar una visita o recibir fotos y videos por WhatsApp.'],
   ['¿Trabajan con propiedades cerradas?', 'Sí. Brindamos mantenimiento para casas cerradas y propiedades de vacaciones. Coordinamos las reparaciones necesarias y enviamos fotografías o videos del avance.'],
   ['¿Atienden inmobiliarias y administradores?', 'Sí. Trabajamos con inmobiliarias, administradores y propietarios que necesitan mantenimiento, reparaciones y puesta a punto de propiedades de alquiler.'],
   ['¿Qué zonas cubren?', 'Trabajamos en Pinamar, Cariló, Valeria del Mar y Ostende.'],
   ['¿Realizan pintura interior y exterior?', 'Sí. Realizamos pintura interior y exterior de casas, departamentos, comercios, fachadas, paredes y techos.'],
+  ['¿Hacen fumigaciones con certificado en Pinamar?', 'Sí. Hacemos control de plagas y fumigaciones en Pinamar, Cariló, Valeria del Mar y Ostende, y el profesional asignado entrega un certificado del trabajo realizado.'],
+  ['¿Hacen poda y jardinería en Pinamar?', 'Sí. Podamos árboles y arbustos, cortamos el pasto y parquizamos jardines en casas y propiedades de la costa.'],
   ['¿Qué superficies pueden hidrolavar?', 'Realizamos hidrolavado de fachadas, techos, patios, veredas, decks, muros y pisos exteriores.'],
   ['¿Puedo pedir presupuesto por WhatsApp?', 'Sí. Podés enviarnos fotos o videos del trabajo por WhatsApp para realizar una primera evaluación y coordinar una visita cuando sea necesario.'],
   ['¿Trabajan durante todo el año?', 'Sí. Brindamos servicios de mantenimiento durante todo el año, tanto en temporada como fuera de temporada.']
@@ -49,13 +53,7 @@ const faqSchema = {
           <p class="eyebrow">Servicios de mantenimiento en la costa</p>
           <h1>
             <span class="marker-sequence marker-hero-title" data-marker>
-              <span class="marker marker-word" style="--word-index:0">Mantenimiento</span>
-              <span class="marker marker-word" style="--word-index:1">de</span>
-              <span class="marker marker-word" style="--word-index:2">casas</span>
-              <span class="marker marker-word" style="--word-index:3">y</span>
-              <span class="marker marker-word" style="--word-index:4">propiedades</span>
-              <span class="marker marker-word" style="--word-index:5">en</span>
-              <span class="marker marker-word" style="--word-index:6">Pinamar</span>
+              <span class="marker marker-word" style="--word-index:0">Mantenimiento</span>{' '}<span class="marker marker-word" style="--word-index:1">de</span>{' '}<span class="marker marker-word" style="--word-index:2">casas</span>{' '}<span class="marker marker-word" style="--word-index:3">y</span>{' '}<span class="marker marker-word" style="--word-index:4">propiedades</span>{' '}<span class="marker marker-word" style="--word-index:5">en</span>{' '}<span class="marker marker-word" style="--word-index:6">Pinamar</span>
             </span>
           </h1>
           <p class="lead">Mantenimiento de casas y propiedades en Pinamar: pintura, hidrolavado, plomería y gas para casas, comercios e inmobiliarias en Cariló, Valeria del Mar y Ostende.</p>
@@ -72,10 +70,10 @@ const faqSchema = {
 
     <section id="servicios" class="section services-section">
       <div class="container">
-        <header class="section-heading centered"><p class="eyebrow">Nuestros servicios</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Mantenimiento de casas y propiedades en Pinamar: si buscás pintores, plomero, gasista o hidrolavado en Pinamar, cada servicio tiene su página con alcance y preguntas frecuentes.</p></header>
+        <header class="section-heading centered"><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Servicios</span> <span class="marker marker-word" style="--word-index:1">de</span> <span class="marker marker-word" style="--word-index:2">mantenimiento</span> <span class="marker marker-word" style="--word-index:3">para</span> <span class="marker marker-word" style="--word-index:4">casas</span> <span class="marker marker-word" style="--word-index:5">en</span> <span class="marker marker-word" style="--word-index:6">Pinamar</span></span></h2><p>Mantenimiento de casas y propiedades en Pinamar: si buscás pintores, plomero, gasista o hidrolavado en Pinamar, cada servicio tiene su página con alcance y preguntas frecuentes.</p></header>
         <div class="services-grid">{services.map((service) => <ServiceCard {...service} />)}</div>
         <div class="features-grid">
-          <Feature icon="shield" title="Profesionales de confianza" text="Trabajos coordinados con alcance claro antes de empezar." />
+          <Feature icon="shield" title="Profesionales de confianza" text="Seleccionados por su seriedad, compromiso y respeto, con alcance claro antes de empezar." />
           <Feature icon="camera" title="Transparencia total" text="Te enviamos fotos del avance y te mantenemos informado." />
           <Feature icon="pin" title="Conocemos la zona" text="Experiencia en mantenimiento de propiedades en Pinamar, Cariló, Valeria del Mar y Ostende." />
           <Feature icon="calendar" title="Disponibilidad todo el año" text="Mantenimiento de casas y comercios durante todo el año, incluso fuera de temporada." />
@@ -83,9 +81,24 @@ const faqSchema = {
       </div>
     </section>
 
+    <section id="profesionales" class="section trust-section">
+      <div class="container trust-grid">
+        <header class="section-heading">
+          <h2>Detrás de cada trabajo hay un profesional que responde</h2>
+          <p>Seleccionamos a los profesionales por su seriedad, su compromiso y su trato respetuoso. Nosotros cotizamos y coordinamos; ellos hacen el trabajo y se hacen cargo.</p>
+        </header>
+        <ul class="trust-list">
+          <li data-animate><div><h3>Gas con matrícula</h3><p>Soliz Guido Angel, gasista matriculado de primera. Matrícula 7040, ENARGAS 3316-SG.</p></div><a href="/servicios/planos/">Ver credenciales <Icon name="arrow" size={16} /></a></li>
+          <li data-animate><div><h3>Certificado de fumigación</h3><p>El profesional que fumiga entrega el certificado del trabajo realizado.</p></div><a href="/servicios/fumigaciones/#certificado-de-fumigacion">Cómo funciona <Icon name="arrow" size={16} /></a></li>
+          <li data-animate><div><h3>Trabajos reales</h3><p>Obras terminadas en propiedades de Pinamar y la costa.</p></div><a href="/trabajos/">Ver trabajos <Icon name="arrow" size={16} /></a></li>
+          <li data-animate><div><h3>Factura y reclamos con el profesional</h3><p>Cada profesional emite su factura y atiende los reclamos de su trabajo.</p></div><a href="/terminos-y-condiciones/">Términos y condiciones <Icon name="arrow" size={16} /></a></li>
+        </ul>
+      </div>
+    </section>
+
     <section id="proceso" class="section process-section">
       <div class="container">
-        <header class="section-heading"><p class="eyebrow">Cómo trabajamos</p><h2>Del mensaje al trabajo terminado, sin que tengas que estar acá</h2></header>
+        <header class="section-heading"><h2>Del mensaje al trabajo terminado, sin que tengas que estar acá</h2></header>
         <div class="process-grid">
           <article class="process-step" data-animate><span>01</span><h3>Mandanos fotos o videos</h3><p>Por WhatsApp hacemos una primera evaluación. Si hace falta, coordinamos una visita.</p></article>
           <article class="process-step" data-animate><span>02</span><h3>Presupuesto con alcance claro</h3><p>Sabés qué se hace antes de empezar. Sin compromiso.</p></article>
@@ -97,11 +110,10 @@ const faqSchema = {
     <section id="nosotros" class="section about-section">
       <div class="container about-grid">
         <article class="about-copy">
-          <p class="eyebrow">Sobre nosotros</p>
           <h2><span class="marker-sequence marker-heading" data-marker>Equipo local de mantenimiento en Pinamar</span></h2>
-          <p>Somos un equipo de mantenimiento de propiedades en Pinamar. Trabajamos con propietarios, administradores e inmobiliarias que necesitan pintura, hidrolavado, plomería, gas y reparaciones generales.</p>
+          <p>Somos partner de profesionales independientes de mantenimiento de propiedades en Pinamar. Preparamos las cotizaciones y coordinamos todo el trabajo; el profesional asignado lo realiza y emite su factura.</p>
           <p>También atendemos casas cerradas o de vacaciones, coordinando los trabajos y enviando fotos y videos del avance por WhatsApp.</p>
-          <a class="button button-outline" href="#contacto">Conocer más</a>
+          <a class="button button-outline" href="/nosotros/">Conocer más</a>
         </article>
         <figure class="about-image" data-animate><img src="/images/costa-pinamar.webp" alt="Costa de Pinamar entre dunas y pinos" loading="lazy" /></figure>
         <aside id="contacto" class="contact-card" data-animate>
@@ -109,14 +121,14 @@ const faqSchema = {
           <h2>Pedí tu presupuesto de mantenimiento en <span class="marker marker-light">Pinamar</span></h2>
           <p>Contanos qué trabajo necesitás. Podemos coordinar una visita o recibir fotos y videos para evaluar pintura, hidrolavado, plomería, gas o reparaciones generales.</p>
           <ul><li><Icon name="check" size={18} /> Comunicación directa por WhatsApp</li><li><Icon name="check" size={18} /> Sin compromiso</li><li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li></ul>
-          <a class="button button-light" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Solicitar presupuesto por WhatsApp</a>
+          <a class="button button-light" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
         </aside>
       </div>
     </section>
 
-    <section id="zonas" class="zones section-small"><div class="container"><p class="eyebrow centered-text">Zonas de cobertura</p><div class="zones-grid">{zones.map((zone) => <article data-animate><h3><a href={getZoneUrl(zone.slug)}>{zone.name}</a></h3><p>{zone.teaser}</p><a class="zone-card-link" href={getZoneUrl(zone.slug)}>Servicios en {zone.name} <Icon name="arrow" size={15} /></a></article>)}</div><div class="centered-text" style="margin-top: 2.2rem;"><a class="zone-card-link" href="/zonas/">Ver todas las zonas de cobertura <Icon name="arrow" size={15} /></a></div></div></section>
+    <section id="zonas" class="zones section-small"><div class="container"><header class="section-heading centered"><h2>Zonas de cobertura</h2></header><div class="zones-grid">{zones.map((zone) => <article data-animate><h3><a href={getZoneUrl(zone.slug)}>{zone.name}</a></h3><p>{zone.teaser}</p><a class="zone-card-link" href={getZoneUrl(zone.slug)}>Servicios en {zone.name} <Icon name="arrow" size={15} /></a></article>)}</div><div class="centered-text" style="margin-top: 2.2rem;"><a class="zone-card-link" href="/zonas/">Ver todas las zonas de cobertura <Icon name="arrow" size={15} /></a></div></div></section>
 
-    <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><p class="eyebrow">Preguntas frecuentes</p><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Todo</span> <span class="marker marker-word" style="--word-index:1">lo</span> <span class="marker marker-word" style="--word-index:2">que</span> <span class="marker marker-word" style="--word-index:3">necesitás</span> <span class="marker marker-word" style="--word-index:4">saber</span></span></h2></header><div>{faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
+    <section id="faq" class="section faq-section"><div class="container faq-layout"><header class="section-heading"><h2><span class="marker-sequence marker-heading" data-marker><span class="marker marker-word" style="--word-index:0">Todo</span> <span class="marker marker-word" style="--word-index:1">lo</span> <span class="marker marker-word" style="--word-index:2">que</span> <span class="marker marker-word" style="--word-index:3">necesitás</span> <span class="marker marker-word" style="--word-index:4">saber</span></span></h2></header><div>{faqs.map(([q,a]) => <details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
   </main>
   <Footer />
   <a class="floating-wa" href={whatsapp} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><Icon name="whatsapp" size={25} /></a>

@@ -3,8 +3,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import { sceneModes } from './service-scene.ts';
 import { servicePages } from './service-pages.ts';
 
-// The home 3D scene offers exactly the four on-site services, in this order.
-assert.deepEqual(sceneModes.map((mode) => mode.id), ['pintura', 'hidrolavado', 'plomeria', 'gas']);
+// The home 3D scene offers exactly the six on-site services, in this order.
+assert.deepEqual(sceneModes.map((mode) => mode.id), ['pintura', 'hidrolavado', 'plomeria', 'gas', 'fumigaciones', 'jardineria']);
 
 for (const mode of sceneModes) {
   // Each mode links to its existing service page.
@@ -27,3 +27,9 @@ const cardModes = [...homeSource.matchAll(/sceneMode: '([a-z]+)'/g)].map((match)
 assert.deepEqual(cardModes, sceneModes.map((mode) => mode.id), 'every service card links to its scene mode');
 const cardSource = readFileSync(new URL('../components/ServiceCard.astro', import.meta.url), 'utf8');
 assert.match(cardSource, /data-scene-mode=\{sceneMode\}/, 'ServiceCard renders the "Ver en 3D" link');
+
+// Characters are built from rounded primitives, not boxes (limbs, torso and head).
+const threeSource = readFileSync(new URL('../components/service-scene/scene.ts', import.meta.url), 'utf8');
+assert.match(threeSource, /CapsuleGeometry/, 'workers use rounded capsule limbs');
+const workerSource = threeSource.slice(threeSource.indexOf('const makeWorker'), threeSource.indexOf('// Arm angle'));
+assert.equal(/BoxGeometry/.test(workerSource), false, 'worker bodies contain no BoxGeometry');

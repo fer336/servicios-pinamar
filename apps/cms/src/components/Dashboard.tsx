@@ -38,6 +38,8 @@ const TABS: { key: Tab; label: string }[] = [
   { key: "plomeria", label: "Plomería" },
   { key: "pintura", label: "Pintura" },
   { key: "hidrolavado", label: "Hidrolavado" },
+  { key: "fumigaciones", label: "Fumigaciones" },
+  { key: "jardineria", label: "Jardinería" },
 ];
 
 const LIMIT = 12;

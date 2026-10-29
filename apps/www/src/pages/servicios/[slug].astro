@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
+import { SERVICE_SLUGS } from '../../data/trabajos/api';
 import { getRelatedServices, getServiceUrl, serviceAreas, servicePages, whatsapp, whatsappMessage, whatsappNumber } from '../../data/service-pages';
 
 export function getStaticPaths() {
@@ -14,6 +15,7 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 const canonical = getServiceUrl(service.slug);
+const hasWorks = (SERVICE_SLUGS as readonly string[]).includes(service.slug);
 const relatedServices = getRelatedServices(service.slug);
 const credentialWhatsapp = 'credential' in service && service.credential
   ? `${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(service.slug === 'plomeria' ? 'plomería' : service.slug))}`
@@ -104,7 +106,7 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
             <img src={service.image} alt={service.imageAlt} width="1122" height="1402" fetchpriority="high" decoding="async" />
             <figcaption>{service.intent} · Pinamar, Cariló, Valeria del Mar y Ostende</figcaption>
           </div>
-          <a class="button button-primary service-hero__works-cta" href={`/trabajos/?service=${service.slug}`}><Icon name="arrow" size={18} /> Ver trabajos realizados</a>
+          {hasWorks && <a class="button button-primary service-hero__works-cta" href={`/trabajos/?service=${service.slug}`}><Icon name="arrow" size={18} /> Ver trabajos realizados</a>}
         </figure>
       </div>
     </section>
@@ -160,6 +162,10 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
             <p class="eyebrow">{section.eyebrow}</p>
             <h2>{section.title}</h2>
           </header>
+          <div class:list={['service-anchor-section__layout', 'image' in section && section.image && 'has-figure']}>
+          {'image' in section && section.image && (
+            <figure class="service-section-figure"><img src={section.image} alt={'imageAlt' in section ? section.imageAlt : ''} width="800" height="1000" loading="lazy" decoding="async" /></figure>
+          )}
           <div class="service-anchor-section__copy">
             {section.body.map((paragraph) => <p>{paragraph}</p>)}
             {section.bullets && (
@@ -170,6 +176,7 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
             {'link' in section && section.link && (
               <p><a href={section.link.href} target="_blank" rel="noopener">{section.link.label}</a></p>
             )}
+          </div>
           </div>
         </div>
       </section>

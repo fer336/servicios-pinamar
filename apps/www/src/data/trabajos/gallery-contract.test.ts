@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { getLocalTrabajosPage, normalizeServiceFilter, SERVICE_SLUGS } from './api';
 
 const allServices = [...SERVICE_SLUGS].sort();
-assert.deepEqual(allServices, ['gas', 'hidrolavado', 'pintura', 'plomeria']);
+assert.deepEqual(allServices, ['fumigaciones', 'gas', 'hidrolavado', 'jardineria', 'pintura', 'plomeria']);
 
 assert.equal(normalizeServiceFilter('hidrolavado'), 'hidrolavado');
 assert.equal(normalizeServiceFilter('no-existe'), undefined);
