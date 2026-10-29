@@ -414,6 +414,7 @@ export const servicePages = [
     intent: 'jardinería en Pinamar',
     covers: [
       'Poda de árboles, arbustos, setos y plantas trepadoras.',
+      'Poda en altura y extracción de árboles, incluidos los caídos o dañados por temporales.',
       'Corte de pasto y mantenimiento periódico de jardines.',
       'Parquización de terrenos nuevos: nivelación, césped, plantas y canteros.',
       'Limpieza de terrenos, retiro de ramas y restos de poda.',
@@ -423,6 +424,7 @@ export const servicePages = [
       'El pasto y los árboles crecieron durante el invierno.',
       'Querés parquizar un terreno o renovar el jardín.',
       'Una poda se hizo necesaria por ramas cerca del techo o del tendido eléctrico.',
+      'Un temporal dejó un árbol caído o ramas grandes partidas en el terreno.',
       'Administrás una propiedad a distancia y necesitás mantenimiento periódico.'
     ],
     process: [
@@ -434,16 +436,18 @@ export const servicePages = [
     sections: [
       {
         slug: 'poda',
-        title: 'Poda de árboles y arbustos',
+        title: 'Poda y extracción de árboles',
         eyebrow: 'Poda en la costa',
+        image: '/images/servicio-poda-arboles.webp',
+        imageAlt: 'Podador profesional con arnés y casco cortando con motosierra un pino caído, con camión y chipeadora al fondo, frente al mar de Pinamar',
         body: [
           'En la costa el viento, la sal y la arena castigan a las plantas. Una poda a tiempo mejora la salud del árbol, despeja techos y aberturas y reduce el riesgo de que una rama caiga durante una tormenta.',
-          'El profesional asignado evalúa especie, altura y época antes de podar, y se ocupa de retirar los restos.'
+          'Si el temporal ya pasó, el profesional asignado evalúa el árbol caído o las ramas partidas, lo corta de forma segura y retira los restos. En árboles altos trabaja con arnés y equipo de poda en altura.'
         ],
         bullets: [
-          'Poda de formación, limpieza y despeje.',
-          'Setos y arbustos ornamentales.',
-          'Retiro de ramas y restos de poda.'
+          'Poda de formación, limpieza y despeje de techos y cables.',
+          'Poda en altura y extracción de árboles peligrosos o caídos.',
+          'Retiro y chipeado de ramas, troncos y restos.'
         ]
       },
       {
@@ -481,6 +485,7 @@ export const servicePages = [
     },
     faqs: [
       ['¿Hacen poda de árboles en Pinamar?', 'Sí. Podamos árboles, arbustos y setos, y retiramos los restos. Para ramas cerca de tendidos eléctricos coordinamos con el profesional asignado.'],
+      ['¿Pueden retirar un árbol caído por una tormenta?', 'Sí. Mandanos fotos del árbol y del lugar, y coordinamos con el profesional asignado el corte, la extracción y el retiro de los restos. Si hay cables o riesgo para la casa, avisanos en el mensaje.'],
       ['¿Cortan el pasto de casas de veraneo?', 'Sí. Podemos hacerlo una vez antes de la temporada o con una frecuencia fija.'],
       ['¿Qué incluye la parquización?', 'Preparación del terreno, césped, plantas y canteros. Se define según el tamaño del terreno y el mantenimiento que quieras.'],
       ['¿Pueden trabajar si no estoy en la propiedad?', 'Sí. Coordinamos el acceso y te mandamos fotos del antes y el después.'],
