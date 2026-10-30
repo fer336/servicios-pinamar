@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
 import { serviceAreas, whatsapp } from '../../data/service-pages';
+import { partnerNote } from '../../data/partner-copy';
 
 const baseUrl = 'https://www.serviciospinamar.com';
 const breadcrumbSchema = {
@@ -30,18 +31,19 @@ const breadcrumbSchema = {
           <ul style="list-style: none; padding: 0; margin: 1rem 0;">
             <li><Icon name="check" size={18} /> Presupuestos claros y sin compromiso</li>
             <li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li>
-            <li><Icon name="check" size={18} /> Te mantenemos informado durante el trabajo</li>
+            <li><Icon name="check" size={18} /> Facilitamos la comunicación durante el trabajo</li>
           </ul>
           <div class="hero-actions" style="justify-content: center; margin-top: 1.5rem;">
             <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Escribir por WhatsApp</a>
           </div>
+          <p class="partner-note" style="margin-left: auto; margin-right: auto;">{partnerNote}</p>
           <p style="margin-top: 1.5rem; font-size: 0.9rem;">Antes de contratar, leé cómo trabajamos en los <a href="/terminos-y-condiciones/">términos y condiciones</a>.</p>
           <p style="margin-top: 2rem; font-size: 0.9rem;">Cubrimos {serviceAreas.slice(0, -1).join(', ')} y {serviceAreas[serviceAreas.length - 1]}.</p>
         </div>
         <div class="features-grid" style="margin-top: 2.5rem;">
           <article class="feature"><Icon name="camera" size={24} /><div><h3>Fotos o videos</h3><p>Si el problema se puede ver, enviar imágenes ayuda a entender el alcance inicial.</p></div></article>
           <article class="feature"><Icon name="calendar" size={24} /><div><h3>Visita cuando hace falta</h3><p>Para trabajos con más variables, coordinamos una visita a la propiedad.</p></div></article>
-          <article class="feature"><Icon name="shield" size={24} /><div><h3>Alcance claro</h3><p>Antes de avanzar, dejamos definido qué trabajo se va a realizar y qué queda fuera.</p></div></article>
+          <article class="feature"><Icon name="shield" size={24} /><div><h3>Alcance claro</h3><p>Antes de avanzar, el profesional define con vos qué trabajo se va a realizar y qué queda fuera.</p></div></article>
           <article class="feature"><Icon name="pin" size={24} /><div><h3>Zonas cubiertas</h3><p>Trabajamos en Pinamar, Cariló, Valeria del Mar y Ostende.</p></div></article>
         </div>
         <section class="section-small" style="padding-bottom: 0;">

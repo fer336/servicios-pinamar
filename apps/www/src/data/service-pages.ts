@@ -1,3 +1,5 @@
+import { howWeWork } from './partner-copy.ts';
+
 const baseUrl = 'https://www.serviciospinamar.com';
 
 export const serviceAreas = ['Pinamar', 'Cariló', 'Valeria del Mar', 'Ostende'];
@@ -36,19 +38,14 @@ export const servicePages = [
       'Querés renovar ambientes sin encarar una obra grande.',
       'Administrás una propiedad a distancia y necesitás seguimiento claro.'
     ],
-    process: [
-      'Nos contás qué superficie querés pintar y, si podés, enviás fotos o videos.',
-      'Revisamos el alcance y coordinamos una visita cuando hace falta ver el estado real.',
-      'Definimos preparación, materiales y tiempos antes de comenzar.',
-      'Mantenemos comunicación durante el trabajo para que sepas cómo avanza.'
-    ],
+    process: howWeWork,
     gallery: {
       eyebrow: 'Trabajos realizados',
       title: 'Algunos de nuestros trabajos de pintura',
       description: 'Pintura interior, exterior y mantenimiento de superficies en propiedades de la costa.'
     },
     faqs: [
-      ['¿Trabajan como pintores en Pinamar para casas y locales?', 'Sí. Realizamos pintura interior y exterior para casas, locales y propiedades en Pinamar, Cariló, Valeria del Mar y Ostende.'],
+      ['¿Trabajan como pintores en Pinamar para casas y locales?', 'Sí. Te conectamos con profesionales que realizan pintura interior y exterior para casas, locales y propiedades en Pinamar, Cariló, Valeria del Mar y Ostende.'],
       ['¿Puedo pedir presupuesto enviando fotos?', 'Sí. Podés mandar fotos o videos por WhatsApp para una primera evaluación y coordinamos visita si hace falta.'],
       ['¿Trabajan en propiedades que no están habitadas todo el año?', 'Sí. Coordinamos el acceso y el seguimiento para propietarios, administradores o inmobiliarias.'],
       ['¿Qué zonas cubre el servicio de pintura?', 'Trabajamos en Pinamar, Cariló, Valeria del Mar y Ostende.']
@@ -78,12 +75,7 @@ export const servicePages = [
       'Necesitás limpiar superficies antes de pintar.',
       'Hay zonas exteriores con verdín, manchas o suciedad acumulada.'
     ],
-    process: [
-      'Relevamos las superficies a limpiar y el tipo de suciedad.',
-      'Definimos el alcance para evitar trabajos innecesarios o zonas delicadas.',
-      'Realizamos el hidrolavado cuidando materiales, bordes y accesos.',
-      'Dejamos indicaciones si la limpieza forma parte de una preparación para pintura.'
-    ],
+    process: howWeWork,
     gallery: {
       eyebrow: 'Trabajos realizados',
       title: 'Algunos de nuestros trabajos de hidrolavado',
@@ -136,12 +128,7 @@ export const servicePages = [
       'Tenés que coordinar un trabajo de gas con acceso limitado o a distancia.',
       'Buscás resolver una reparación sin perder claridad sobre alcance y tiempos.'
     ],
-    process: [
-      'Nos describís la necesidad y compartís fotos o videos cuando ayuda a entender el caso.',
-      'Evaluamos si hace falta una visita para revisar la instalación o el artefacto.',
-      'Acordamos alcance, materiales necesarios y forma de trabajo.',
-      'Realizamos el trabajo priorizando orden, comunicación y cuidado de la propiedad.'
-    ],
+    process: howWeWork,
     faqs: [
       ['¿Realizan instalaciones de gas en Pinamar?', 'Sí. Atendemos instalaciones, revisiones y mantenimiento de gas en Pinamar, Cariló, Valeria del Mar y Ostende.'],
       ['¿Elaboran planos de gas para ampliaciones o viviendas nuevas?', 'Sí. Como gasista matriculado elaboramos y presentamos planos de gas (NAG 200 e IRAM 4504) para ampliaciones y nuevas viviendas, listos para presentar ante Obras Particulares.'],
@@ -186,12 +173,7 @@ export const servicePages = [
       'Querés revisar la plomería antes de temporada o antes de alquilar.',
       'Administrás una propiedad y necesitás seguimiento con fotos o videos.'
     ],
-    process: [
-      'Nos contás el problema y enviás fotos o videos si el daño es visible.',
-      'Identificamos si alcanza con presupuesto remoto o si conviene coordinar visita.',
-      'Definimos reparación, materiales y tiempos antes de iniciar.',
-      'Te mantenemos informado durante el trabajo, especialmente si no estás en la propiedad.'
-    ],
+    process: howWeWork,
     faqs: [
       ['¿Puedo consultar por un plomero en Pinamar si tengo una pérdida?', 'Sí. Atendemos consultas por pérdidas visibles, reparaciones, instalaciones y mantenimiento general de plomería.'],
       ['¿Puedo mandar fotos de una pérdida?', 'Sí. Las fotos o videos ayudan a entender el problema y definir si hace falta una visita.'],
@@ -239,12 +221,7 @@ export const servicePages = [
       'Querés dejar la documentación lista antes de iniciar la obra.',
       'Coordinás una obra a distancia y necesitás un responsable técnico matriculado.'
     ],
-    process: [
-      'Te contamos qué documentación se necesita según el tipo de obra.',
-      'Relevamos la instalación existente o el proyecto que querés construir.',
-      'Elaboramos el plano correspondiente respetando las normas vigentes.',
-      'Te orientamos en la presentación ante Obras Particulares y su seguimiento.'
-    ],
+    process: howWeWork,
     subtypes: [
       { slug: 'planos-de-gas', name: 'Planos de gas', description: 'Elaboración de planos de gas según NAG 200 e IRAM 4504 para ampliaciones y nuevas viviendas, listos para presentar ante Obras Particulares.' },
       { slug: 'planos-sanitarios', name: 'Planos sanitarios', description: 'Planos sanitarios de desagües cloacales y pluviales para obras, reformas y regularizaciones en propiedades de la costa.' },
@@ -334,12 +311,7 @@ export const servicePages = [
       'Hay murciélagos en el techo o el entretecho y no sabés cómo actuar.',
       'Una inmobiliaria o un comercio necesita un certificado de fumigación.'
     ],
-    process: [
-      'Nos contás qué plaga viste y dónde, con fotos si podés.',
-      'Cotizamos y coordinamos la visita con el profesional asignado.',
-      'El profesional inspecciona, define el tratamiento y te indica qué hacer antes y después.',
-      'Aplica el tratamiento y entrega el certificado del trabajo realizado.'
-    ],
+    process: howWeWork,
     sections: [
       {
         slug: 'control-de-plagas',
@@ -378,7 +350,7 @@ export const servicePages = [
         eyebrow: 'Constancia del trabajo',
         body: [
           'Al terminar el servicio, el profesional asignado entrega un certificado del trabajo realizado, útil para inmobiliarias, comercios, administradores y propietarios que necesitan dejar constancia.',
-          'Cada profesional emite su propio certificado y es responsable por el servicio. Nosotros preparamos la cotización y coordinamos la comunicación con vos.'
+          'Cada profesional emite su propio certificado y es responsable por el servicio. Nosotros te comunicamos su presupuesto y facilitamos la coordinación con vos.'
         ],
         bullets: [
           'Constancia del trabajo realizado.',
@@ -394,7 +366,7 @@ export const servicePages = [
     },
     faqs: [
       ['¿Hacen fumigaciones con certificado en Pinamar?', 'Sí. Al finalizar el trabajo, el profesional asignado entrega un certificado de la fumigación realizada.'],
-      ['¿Qué plagas controlan?', 'Cucarachas, hormigas, arañas, pulgas, roedores y otras plagas comunes en casas, locales y propiedades de la costa. Para murciélagos hacemos exclusión.'],
+      ['¿Qué plagas controlan?', 'Cucarachas, hormigas, arañas, pulgas, roedores y otras plagas comunes en casas, locales y propiedades de la costa. Para murciélagos, el profesional realiza la exclusión.'],
       ['¿Es seguro para mi familia y mis mascotas?', 'El profesional te indica cuánto tiempo ventilar, qué proteger y cuándo volver a usar cada ambiente según el producto aplicado.'],
       ['¿Pueden fumigar antes de la temporada?', 'Sí. Es un servicio habitual para casas de veraneo y propiedades de alquiler que estuvieron cerradas.'],
       ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
@@ -427,12 +399,7 @@ export const servicePages = [
       'Un temporal dejó un árbol caído o ramas grandes partidas en el terreno.',
       'Administrás una propiedad a distancia y necesitás mantenimiento periódico.'
     ],
-    process: [
-      'Nos mandás fotos del jardín y qué querés lograr.',
-      'Cotizamos y coordinamos la visita con el profesional asignado.',
-      'Definimos el trabajo, la época adecuada y qué se hace con los restos.',
-      'Realizamos el trabajo y, si querés, lo repetimos con una frecuencia fija.'
-    ],
+    process: howWeWork,
     sections: [
       {
         slug: 'poda',
@@ -484,7 +451,7 @@ export const servicePages = [
       description: 'Poda, corte de pasto y parquización en propiedades de Pinamar y la zona.'
     },
     faqs: [
-      ['¿Hacen poda de árboles en Pinamar?', 'Sí. Podamos árboles, arbustos y setos, y retiramos los restos. Para ramas cerca de tendidos eléctricos coordinamos con el profesional asignado.'],
+      ['¿Hacen poda de árboles en Pinamar?', 'Sí. El profesional poda árboles, arbustos y setos, y retira los restos. Para ramas cerca de tendidos eléctricos, coordinamos con el profesional asignado.'],
       ['¿Pueden retirar un árbol caído por una tormenta?', 'Sí. Mandanos fotos del árbol y del lugar, y coordinamos con el profesional asignado el corte, la extracción y el retiro de los restos. Si hay cables o riesgo para la casa, avisanos en el mensaje.'],
       ['¿Hace falta autorización para talar un árbol en Pinamar o Cariló?', 'Puede hacer falta. En la zona forestada hay normas municipales que protegen el arbolado y pueden exigir autorización o reposición. Antes de cortar, el profesional asignado te orienta sobre qué corresponde en tu caso.'],
       ['¿Cortan el pasto de casas de veraneo?', 'Sí. Podemos hacerlo una vez antes de la temporada o con una frecuencia fija.'],

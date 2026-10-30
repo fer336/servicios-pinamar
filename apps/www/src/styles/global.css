@@ -88,3 +88,5 @@
 .section-heading.centered{margin-inline:auto;text-align:center}.section-heading.centered p{margin-inline:auto}
 @media(min-width:1051px){.about-grid{grid-template-columns:1.1fr 1fr 1.15fr}}.about-grid>.contact-card{display:flex;flex-direction:column;justify-content:center}.about-grid>.contact-card p{line-height:1.6}.about-grid>.contact-card .button{align-self:flex-start}
 .service-card__content{justify-content:flex-end}
+.partner-note{max-width:56ch;margin:14px 0 0;color:var(--muted);font-size:15px;line-height:1.6}
+.partner-note-light{color:rgba(255,255,255,.82)}

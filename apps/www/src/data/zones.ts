@@ -72,7 +72,7 @@ export const zones = [
     faqs: [
       ['¿Coordinan trabajos a distancia en Cariló?', 'Sí. La mayoría de los propietarios de Cariló administra sus casas a distancia: coordinamos por WhatsApp con fotos y videos del avance de cada trabajo.'],
       ['¿El mantenimiento de casas forestadas es distinto?', 'Sí. La humedad del bosque afecta pinturas, maderas y superficies exteriores, y la acumulación de agujas de pino exige limpieza de canaletas y decks más seguido.'],
-      ['¿Pueden revisar gas y plomería antes de la temporada?', 'Sí. Realizamos revisiones de gas y plomería al abrir y cerrar la propiedad, y puesta a punto completa antes de la temporada.']
+      ['¿Pueden revisar gas y plomería antes de la temporada?', 'Sí. Coordinamos con profesionales las revisiones de gas y plomería al abrir y cerrar la propiedad, y la puesta a punto completa antes de la temporada.']
     ]
   },
   {
@@ -97,7 +97,7 @@ export const zones = [
       'El trabajo en Valeria se caracteriza por la cercanía: al ser una localidad chica, los tiempos de respuesta son cortos y el conocimiento de cada propiedad se acumula visita a visita. Es común volver a la misma casa cada temporada para hacer la puesta a punto, y ese historial hace que cada nuevo trabajo sea más rápido y más preciso.'
     ],
     faqs: [
-      ['¿Trabajan en departamentos de alquiler de Valeria del Mar?', 'Sí. Hacemos puesta a punto de departamentos de alquiler: plomería, griferías, revisión de gas y pintura de mantenimiento antes de cada temporada.'],
+      ['¿Trabajan en departamentos de alquiler de Valeria del Mar?', 'Sí. Coordinamos con profesionales la puesta a punto de departamentos de alquiler: plomería, griferías, revisión de gas y pintura de mantenimiento antes de cada temporada.'],
       ['¿Cómo coordinan si el propietario no está en Valeria?', 'Por WhatsApp: enviamos fotos y videos del avance y coordinamos el acceso a la propiedad con el propietario o la inmobiliaria.'],
       ['¿Elaboran planos para reformas en Valeria?', 'Sí. Elaboramos planos de gas, sanitarios y de agua corriente con firma de gasista matriculado y orientamos la presentación municipal.']
     ]
@@ -124,8 +124,8 @@ export const zones = [
       'La coordinación a distancia también es la regla en Ostende: propietarios que vienen pocas semanas al año, administradores que manejan varias propiedades del casco y familias que heredaron la casa de la playa y no la usan seguido. En todos los casos el trabajo se documenta con fotos y se entrega con indicaciones de mantenimiento, para que la próxima intervención sea más simple. Esa continuidad en el cuidado es la que permite que las casas de Ostende conserven sus materiales y sus terminaciones originales décadas después.'
     ],
     faqs: [
-      ['¿Trabajan en casas antiguas y de estilo en Ostende?', 'Sí. Hacemos mantenimiento de casas antiguas y de estilo: pintura de maderas y aberturas, revisión de instalaciones y refacciones que respetan las características de cada propiedad.'],
-      ['¿Pueden revisar instalaciones de gas para habilitaciones de comercios?', 'Sí. Realizamos revisiones de gas y elaboramos la documentación necesaria para comercios y locales del casco de Ostende.'],
+      ['¿Trabajan en casas antiguas y de estilo en Ostende?', 'Sí. Coordinamos con profesionales el mantenimiento de casas antiguas y de estilo: pintura de maderas y aberturas, revisión de instalaciones y refacciones que respetan las características de cada propiedad.'],
+      ['¿Pueden revisar instalaciones de gas para habilitaciones de comercios?', 'Sí. Coordinamos con profesionales las revisiones de gas y la documentación necesaria para comercios y locales del casco de Ostende.'],
       ['¿Cómo coordinan trabajos si la propiedad está cerrada?', 'Por WhatsApp: coordinamos el acceso, enviamos fotos del avance y entregamos indicaciones de mantenimiento al finalizar.']
     ]
   }
