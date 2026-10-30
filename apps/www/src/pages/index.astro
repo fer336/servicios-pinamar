@@ -8,6 +8,7 @@ import Icon from '../components/Icon.astro';
 import ServiceScene from '../components/ServiceScene';
 import '../styles/service-scene.css';
 import { whatsapp } from '../data/service-pages';
+import { aboutText, howWeWork, partnerFaqs, partnerNote } from '../data/partner-copy';
 import { getZoneUrl, zones } from '../data/zones';
 
 const services = [
@@ -19,17 +20,19 @@ const services = [
   { title: 'Jardinería y poda', description: 'Poda de árboles y arbustos, corte de pasto y parquización de jardines en Pinamar, Cariló, Valeria del Mar y Ostende.', image: '/images/servicio-jardineria.webp', href: '/servicios/jardineria/', sceneMode: 'jardineria', ariaLabel: 'Ver servicio de jardinería en Pinamar' }
 ];
 const faqs = [
-  ['¿Realizan presupuestos en Pinamar?', 'Sí. Realizamos presupuestos para trabajos de pintura, hidrolavado, plomería, gas, fumigaciones, jardinería y mantenimiento general en Pinamar. Podemos coordinar una visita o recibir fotos y videos por WhatsApp.'],
-  ['¿Trabajan con propiedades cerradas?', 'Sí. Brindamos mantenimiento para casas cerradas y propiedades de vacaciones. Coordinamos las reparaciones necesarias y enviamos fotografías o videos del avance.'],
+  ['¿Realizan presupuestos en Pinamar?', 'Sí. Recibimos tu consulta y te enviamos el presupuesto elaborado por el profesional para trabajos de pintura, hidrolavado, plomería, gas, fumigaciones, jardinería y mantenimiento general en Pinamar. Podemos coordinar una visita o recibir fotos y videos por WhatsApp.'],
+  ['¿Trabajan con propiedades cerradas?', 'Sí. Coordinamos con profesionales el mantenimiento de casas cerradas y propiedades de vacaciones. El profesional realiza las reparaciones necesarias y facilitamos el envío de fotografías o videos del avance.'],
   ['¿Atienden inmobiliarias y administradores?', 'Sí. Trabajamos con inmobiliarias, administradores y propietarios que necesitan mantenimiento, reparaciones y puesta a punto de propiedades de alquiler.'],
   ['¿Qué zonas cubren?', 'Trabajamos en Pinamar, Cariló, Valeria del Mar y Ostende.'],
-  ['¿Realizan pintura interior y exterior?', 'Sí. Realizamos pintura interior y exterior de casas, departamentos, comercios, fachadas, paredes y techos.'],
-  ['¿Hacen fumigaciones con certificado en Pinamar?', 'Sí. Hacemos control de plagas y fumigaciones en Pinamar, Cariló, Valeria del Mar y Ostende, y el profesional asignado entrega un certificado del trabajo realizado.'],
-  ['¿Hacen poda y jardinería en Pinamar?', 'Sí. Podamos árboles y arbustos, cortamos el pasto y parquizamos jardines en casas y propiedades de la costa.'],
-  ['¿Qué superficies pueden hidrolavar?', 'Realizamos hidrolavado de fachadas, techos, patios, veredas, decks, muros y pisos exteriores.'],
+  ['¿Realizan pintura interior y exterior?', 'Sí. Te conectamos con profesionales que realizan pintura interior y exterior de casas, departamentos, comercios, fachadas, paredes y techos.'],
+  ['¿Hacen fumigaciones con certificado en Pinamar?', 'Sí. Te conectamos con profesionales que hacen control de plagas y fumigaciones en Pinamar, Cariló, Valeria del Mar y Ostende, y el profesional asignado entrega un certificado del trabajo realizado.'],
+  ['¿Hacen poda y jardinería en Pinamar?', 'Sí. Coordinamos el contacto con profesionales que podan árboles y arbustos, cortan el pasto y parquizan jardines en casas y propiedades de la costa.'],
+  ['¿Qué superficies pueden hidrolavar?', 'Los profesionales realizan hidrolavado de fachadas, techos, patios, veredas, decks, muros y pisos exteriores.'],
   ['¿Puedo pedir presupuesto por WhatsApp?', 'Sí. Podés enviarnos fotos o videos del trabajo por WhatsApp para realizar una primera evaluación y coordinar una visita cuando sea necesario.'],
-  ['¿Trabajan durante todo el año?', 'Sí. Brindamos servicios de mantenimiento durante todo el año, tanto en temporada como fuera de temporada.']
+  ['¿Trabajan durante todo el año?', 'Sí. Coordinamos servicios de mantenimiento durante todo el año, tanto en temporada como fuera de temporada.']
 ];
+
+faqs.push(...partnerFaqs);
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -61,6 +64,7 @@ const faqSchema = {
             <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
             <a class="button button-outline" href="#servicios">Ver servicios</a>
           </div>
+          <p class="partner-note">{partnerNote}</p>
           <p class="trust"><Icon name="shield" size={23} /> Presupuestos claros y sin compromiso</p>
         </div>
         <ServiceScene client:visible />
@@ -85,25 +89,23 @@ const faqSchema = {
       <div class="container trust-grid">
         <header class="section-heading">
           <h2>Detrás de cada trabajo hay un profesional que responde</h2>
-          <p>Seleccionamos a los profesionales por su seriedad, su compromiso y su trato respetuoso. Nosotros cotizamos y coordinamos; ellos hacen el trabajo y se hacen cargo.</p>
+          <p>Seleccionamos a los profesionales por su seriedad, su compromiso y su trato respetuoso. Nosotros facilitamos el contacto y la coordinación; ellos preparan el presupuesto y realizan el trabajo.</p>
         </header>
         <ul class="trust-list">
           <li data-animate><div><h3>Gas con matrícula</h3><p>Soliz Guido Angel, gasista matriculado de primera. Matrícula 7040, ENARGAS 3316-SG.</p></div><a href="/servicios/planos/">Ver credenciales <Icon name="arrow" size={16} /></a></li>
           <li data-animate><div><h3>Certificado de fumigación</h3><p>El profesional que fumiga entrega el certificado del trabajo realizado.</p></div><a href="/servicios/fumigaciones/#certificado-de-fumigacion">Cómo funciona <Icon name="arrow" size={16} /></a></li>
           <li data-animate><div><h3>Trabajos reales</h3><p>Obras terminadas en propiedades de Pinamar y la costa.</p></div><a href="/trabajos/">Ver trabajos <Icon name="arrow" size={16} /></a></li>
-          <li data-animate><div><h3>Factura y reclamos con el profesional</h3><p>Cada profesional emite su factura y atiende los reclamos de su trabajo.</p></div><a href="/terminos-y-condiciones/">Términos y condiciones <Icon name="arrow" size={16} /></a></li>
+          <li data-animate><div><h3>Factura y reclamos con el profesional</h3><p>Cada profesional emite los comprobantes fiscales de su trabajo. Ante un inconveniente, podés contactarlo o escribirnos.</p></div><a href="/terminos-y-condiciones/">Términos y condiciones <Icon name="arrow" size={16} /></a></li>
         </ul>
       </div>
     </section>
 
     <section id="proceso" class="section process-section">
       <div class="container">
-        <header class="section-heading"><h2>Del mensaje al trabajo terminado, sin que tengas que estar acá</h2></header>
-        <div class="process-grid">
-          <article class="process-step" data-animate><span>01</span><h3>Mandanos fotos o videos</h3><p>Por WhatsApp hacemos una primera evaluación. Si hace falta, coordinamos una visita.</p></article>
-          <article class="process-step" data-animate><span>02</span><h3>Presupuesto con alcance claro</h3><p>Sabés qué se hace antes de empezar. Sin compromiso.</p></article>
-          <article class="process-step" data-animate><span>03</span><h3>Seguís el avance a distancia</h3><p>Te enviamos fotos y videos del trabajo, ideal para casas cerradas o de vacaciones.</p></article>
-        </div>
+        <header class="section-heading"><h2>Cómo trabajamos</h2></header>
+        <ol class="process-steps-list">
+          {howWeWork.map((step, index) => <li data-animate><span>{String(index + 1).padStart(2, '0')}</span><p>{step}</p></li>)}
+        </ol>
       </div>
     </section>
 
@@ -111,8 +113,8 @@ const faqSchema = {
       <div class="container about-grid">
         <article class="about-copy">
           <h2><span class="marker-sequence marker-heading" data-marker>Equipo local de mantenimiento en Pinamar</span></h2>
-          <p>Somos partner de profesionales independientes de mantenimiento de propiedades en Pinamar. Preparamos las cotizaciones y coordinamos todo el trabajo; el profesional asignado lo realiza y emite su factura.</p>
-          <p>También atendemos casas cerradas o de vacaciones, coordinando los trabajos y enviando fotos y videos del avance por WhatsApp.</p>
+          <p>{aboutText}</p>
+          <p>También coordinamos trabajos en casas cerradas o de vacaciones, con fotos y videos del avance por WhatsApp cuando el profesional los envía.</p>
           <a class="button button-outline" href="/nosotros/">Conocer más</a>
         </article>
         <figure class="about-image" data-animate><img src="/images/costa-pinamar.webp" alt="Costa de Pinamar entre dunas y pinos" loading="lazy" /></figure>
@@ -122,6 +124,7 @@ const faqSchema = {
           <p>Contanos qué trabajo necesitás. Podemos coordinar una visita o recibir fotos y videos para evaluar pintura, hidrolavado, plomería, gas, fumigaciones, jardinería o reparaciones generales.</p>
           <ul><li><Icon name="check" size={18} /> Comunicación directa por WhatsApp</li><li><Icon name="check" size={18} /> Sin compromiso</li><li><Icon name="check" size={18} /> Coordinamos visita o recibimos fotos y videos</li></ul>
           <a class="button button-light" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
+          <p class="partner-note partner-note-light">{partnerNote}</p>
         </aside>
       </div>
     </section>

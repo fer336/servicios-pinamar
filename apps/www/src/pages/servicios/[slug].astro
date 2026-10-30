@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
+import { partnerNote } from '../../data/partner-copy';
 import { SERVICE_SLUGS } from '../../data/trabajos/api';
 import { getRelatedServices, getServiceUrl, serviceAreas, servicePages, whatsapp, whatsappMessage, whatsappNumber } from '../../data/service-pages';
 
@@ -100,6 +101,7 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
             <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
             <a class="button button-outline" href="#alcance">Ver alcance</a>
           </div>
+          <p class="partner-note">{partnerNote}</p>
         </div>
         <figure class="service-hero__image" data-animate>
           <div class="service-hero__image-frame">
@@ -187,7 +189,7 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
         <header class="section-heading">
           <p class="eyebrow">Cómo trabajamos</p>
           <h2>Del primer mensaje al trabajo coordinado</h2>
-          <p>El objetivo es que tengas alcance, tiempos y próximos pasos claros antes de avanzar.</p>
+          <p>El profesional prepara el presupuesto y acuerda con vos el alcance, los tiempos y los pagos.</p>
         </header>
         <ol class="process-list">
           {service.process.map((item, index) => <li data-animate><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>)}

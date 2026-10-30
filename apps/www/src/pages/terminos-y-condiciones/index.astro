@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { legalHolder } from '../../data/legal-holder';
+import { whatsappContact } from '../../data/service-pages';
 
 const baseUrl = 'https://www.serviciospinamar.com';
 const breadcrumbSchema = {
@@ -11,40 +13,63 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 2, name: 'Términos y condiciones', item: `${baseUrl}/terminos-y-condiciones/` }
   ]
 };
+const holderDetails = [
+  legalHolder.name && `Servicios Pinamar es el nombre comercial utilizado por ${legalHolder.name}`,
+  legalHolder.address && `con domicilio en ${legalHolder.address}`,
+  legalHolder.cuit && `CUIT ${legalHolder.cuit}`
+].filter(Boolean);
 ---
-<BaseLayout title="Términos y Condiciones | Servicios Pinamar" description="Cómo trabajamos: Servicios Pinamar prepara cotizaciones y coordina la comunicación; cada profesional asignado presta el servicio, emite su factura y atiende los reclamos." canonical={`${baseUrl}/terminos-y-condiciones/`} structuredData={[breadcrumbSchema]}>
+<BaseLayout title="Términos y Condiciones | Servicios Pinamar" description="Cómo funciona Servicios Pinamar: facilitamos el contacto con profesionales independientes, comunicamos sus presupuestos y coordinamos visitas. El trabajo y los pagos se acuerdan con el profesional." canonical={`${baseUrl}/terminos-y-condiciones/`} structuredData={[breadcrumbSchema]}>
   <Header />
   <main>
     <section class="section legal-page">
       <div class="container" style="max-width: 700px;">
         <header class="section-heading">
           <h1>Términos y condiciones</h1>
-          <p>Última actualización: octubre de 2026.</p>
+          <p>Última actualización: 30 de octubre de 2026.</p>
         </header>
         <article>
-          <h2>Quiénes somos</h2>
-          <p>Servicios Pinamar es un partner de profesionales independientes de mantenimiento de propiedades en Pinamar, Cariló, Valeria del Mar y Ostende. Preparamos las cotizaciones y coordinamos la comunicación con el cliente durante todo el trabajo.</p>
+          <h2>1. Identificación del titular</h2>
+          {holderDetails.length > 0
+            ? <p>{holderDetails.join(', ')}. Contacto: WhatsApp <a href={whatsappContact} target="_blank" rel="noopener">+54 9 2254 41-3336</a>{legalHolder.email && <>, correo <a href={`mailto:${legalHolder.email}`}>{legalHolder.email}</a></>}.</p>
+            : <p>Servicios Pinamar es el nombre comercial con el que opera este sitio. Podés contactarnos por WhatsApp al <a href={whatsappContact} target="_blank" rel="noopener">+54 9 2254 41-3336</a>.</p>}
 
-          <h2>Qué hacemos y qué no</h2>
-          <p>Recibimos tu consulta, la derivamos al profesional que corresponde, te enviamos la cotización y mantenemos el contacto hasta que el trabajo se termina. El servicio lo presta el profesional asignado, bajo su propia responsabilidad. Servicios Pinamar no presta directamente los trabajos ni emite facturas.</p>
+          <h2>2. Qué hace Servicios Pinamar</h2>
+          <p>Servicios Pinamar facilita el contacto entre personas que necesitan trabajos de mantenimiento y prestadores independientes.</p>
+          <p>Recibimos consultas, las comunicamos al prestador correspondiente y enviamos al cliente los presupuestos elaborados y autorizados por dicho prestador. También facilitamos la comunicación y la coordinación de visitas.</p>
+          <p>Servicios Pinamar no ejecuta materialmente los trabajos ofrecidos.</p>
 
-          <h2>Profesionales asignados</h2>
-          <p>Trabajamos con profesionales seleccionados por su seriedad: que cumplan con lo acordado, traten bien al cliente y sean personas de confianza. Cuando una cotización se acepta, te informamos quién es el profesional asignado.</p>
+          <h2>3. Presupuestos y contratación</h2>
+          <p>Cada presupuesto debe identificar al prestador que realizará el trabajo antes de que el cliente lo acepte o efectúe un pago.</p>
+          <p>El alcance, los materiales, el precio, los plazos, las garantías y las condiciones de pago son definidos por el prestador y acordados con el cliente. Servicios Pinamar comunica esa propuesta sin modificarla por su cuenta.</p>
+          <p>La contratación del trabajo se realiza directamente entre el cliente y el prestador identificado. El envío de una consulta no implica aceptar un presupuesto.</p>
+          <p>Los cambios de alcance o precio deben ser informados y acordados antes de su ejecución, conforme a la normativa aplicable.</p>
 
-          <h2>Cotizaciones</h2>
-          <p>Las cotizaciones se preparan con la información, las fotos y los videos que nos envíes. Pueden ajustarse si, al ver la propiedad, el alcance real del trabajo es distinto. Cualquier cambio se acuerda con vos antes de avanzar.</p>
+          <h2>4. Pagos y comisión</h2>
+          <p>Los anticipos, saldos y demás pagos correspondientes al trabajo se acuerdan y realizan directamente entre el cliente y el prestador.</p>
+          <p>Servicios Pinamar no recibe ni administra esos pagos.</p>
+          <p>El prestador abona a Servicios Pinamar una comisión por la gestión de contacto y coordinación. Esta remuneración se acuerda entre el prestador y Servicios Pinamar.</p>
 
-          <h2>Facturación</h2>
-          <p>La factura del trabajo la emite el profesional asignado. Servicios Pinamar no genera facturas por los servicios prestados.</p>
+          <h2>5. Documentación fiscal</h2>
+          <p>El prestador debe emitir los comprobantes fiscales que correspondan al trabajo contratado.</p>
+          <p>La documentación fiscal de la gestión o comisión de Servicios Pinamar corresponde a su titular, de acuerdo con sus obligaciones tributarias. El presupuesto no reemplaza la factura.</p>
 
-          <h2>Reclamos</h2>
-          <p>Los reclamos por el trabajo realizado se dirigen al profesional asignado, que es quien prestó el servicio. Lo mismo vale para los certificados y constancias que cada profesional emite, como el certificado de una fumigación.</p>
+          <h2>6. Ejecución y responsabilidades</h2>
+          <p>El prestador asume las obligaciones correspondientes a la ejecución del trabajo, incluyendo las habilitaciones, matrículas, permisos y medidas de seguridad que resulten exigibles según la tarea.</p>
+          <p>Servicios Pinamar responde por las obligaciones correspondientes a su propia intervención.</p>
+          <p>La descripción de estas funciones no excluye ni limita las responsabilidades que la legislación aplicable atribuya a cualquiera de las partes.</p>
 
-          <h2>Cambios en estos términos</h2>
-          <p>Podemos actualizar estos términos. La versión vigente es la publicada en esta página, con su fecha de actualización.</p>
+          <h2>7. Consultas y reclamos</h2>
+          <p>El cliente puede comunicarse con Servicios Pinamar por WhatsApp al <a href={whatsappContact} target="_blank" rel="noopener">+54 9 2254 41-3336</a> por cuestiones relacionadas con nuestra gestión o para facilitar la comunicación con el prestador.</p>
+          <p>Los reclamos sobre la ejecución del trabajo serán comunicados al prestador para su atención, sin limitar el derecho del cliente a reclamar ante quienes legalmente corresponda.</p>
 
-          <h2>Legislación aplicable</h2>
-          <p>Estos términos se rigen por la legislación de la República Argentina. Cualquier controversia se someterá a los tribunales competentes de la Ciudad de Mar del Plata, Provincia de Buenos Aires.</p>
+          <h2>8. Cancelaciones y devoluciones</h2>
+          <p>Las condiciones de cancelación, reprogramación y devolución deben informarse antes de contratar y respetar los derechos del consumidor.</p>
+          <p>Cuando corresponda por la modalidad de contratación, se respetará el derecho de arrepentimiento y los mecanismos legales para ejercerlo. El cliente podrá comunicar su solicitud por los canales informados.</p>
+
+          <h2>9. Legislación y actualizaciones</h2>
+          <p>Se aplica la legislación de la República Argentina. Los conflictos serán tratados por las autoridades y tribunales competentes conforme a las normas aplicables.</p>
+          <p>Las actualizaciones de estos términos regirán para futuras contrataciones y no modificarán unilateralmente las condiciones ya acordadas.</p>
 
           <p>Para el uso de este sitio web, consultá también el <a href="/aviso-legal/">aviso legal</a> y la <a href="/privacidad/">política de privacidad</a>.</p>
         </article>
