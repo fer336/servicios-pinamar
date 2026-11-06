@@ -5,8 +5,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import Feature from '../components/Feature.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
-import ServiceScene from '../components/ServiceScene';
-import '../styles/service-scene.css';
+import HomeJourney from '../components/HomeJourney.astro';
 import { whatsapp } from '../data/service-pages';
 import { aboutText, howWeWork, partnerFaqs, partnerNote } from '../data/partner-copy';
 import { getZoneUrl, zones } from '../data/zones';
@@ -47,30 +46,10 @@ const faqSchema = {
   }))
 };
 ---
-<BaseLayout title="Mantenimiento de Casas en Pinamar | Pintura, Plomería, Fumigaciones y Jardinería" description="Mantenimiento de casas y propiedades en Pinamar. Servicios de pintura, hidrolavado, plomería, gas, fumigaciones y jardinería en Pinamar, Cariló, Valeria del Mar y Ostende. Pedí presupuesto por WhatsApp." preloadImage="/images/servicio-pintura.webp" structuredData={[faqSchema]}>
+<BaseLayout title="Mantenimiento de Casas en Pinamar | Pintura, Plomería, Fumigaciones y Jardinería" description="Mantenimiento de casas y propiedades en Pinamar. Servicios de pintura, hidrolavado, plomería, gas, fumigaciones y jardinería en Pinamar, Cariló, Valeria del Mar y Ostende. Pedí presupuesto por WhatsApp." preloadImage="/images/hero-casa-pinamar.webp" structuredData={[faqSchema]}>
   <Header />
   <main>
-    <section id="inicio" class="hero hero--scene">
-      <div class="container hero-content">
-        <div class="hero-copy">
-          <p class="eyebrow">Servicios de mantenimiento en la costa</p>
-          <h1>
-            <span class="marker-sequence marker-hero-title" data-marker>
-              <span class="marker marker-word" style="--word-index:0">Mantenimiento</span>{' '}<span class="marker marker-word" style="--word-index:1">de</span>{' '}<span class="marker marker-word" style="--word-index:2">casas</span>{' '}<span class="marker marker-word" style="--word-index:3">y</span>{' '}<span class="marker marker-word" style="--word-index:4">propiedades</span>{' '}<span class="marker marker-word" style="--word-index:5">en</span>{' '}<span class="marker marker-word" style="--word-index:6">Pinamar</span>
-            </span>
-          </h1>
-          <p class="lead">Mantenimiento de casas y propiedades en Pinamar: pintura, hidrolavado, plomería, gas, fumigaciones y jardinería para casas, comercios e inmobiliarias en Cariló, Valeria del Mar y Ostende.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href={whatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={19} /> Pedir presupuesto</a>
-            <a class="button button-outline" href="#servicios">Ver servicios</a>
-          </div>
-          <p class="partner-note">{partnerNote}</p>
-          <p class="trust"><Icon name="shield" size={23} /> Presupuestos claros y sin compromiso</p>
-        </div>
-        <ServiceScene client:visible />
-      </div>
-      <div class="coverage-pill">Pinamar · Cariló · Valeria del Mar · Ostende</div>
-    </section>
+    <HomeJourney />
 
     <section id="servicios" class="section services-section">
       <div class="container">
