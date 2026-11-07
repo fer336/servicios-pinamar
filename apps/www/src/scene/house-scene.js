@@ -134,7 +134,8 @@ function buildHouseViewer(host) {
   }
   const faces=renderer?[]:makeFaces(meshes);
   let pixels,depthBuffer,basePixels,baseDepth,cachedView;
-  const pose={angle:.66,targetX:0,targetY:2.45,targetZ:0,lift:.45,span:15.5};
+  // `tour` (0 overview .. 1 service close-up) blends the two framings so the zoom has no discrete jump.
+  const pose={angle:.66,targetX:0,targetY:2.45,targetZ:0,lift:.45,span:15.5,tour:0};
   function paint(now=performance.now()){
     const width=host.clientWidth,height=host.clientHeight;if(!width||!height)return;
     const scale=renderer?1:Math.min(1,850/width,780/height);
@@ -151,8 +152,10 @@ function buildHouseViewer(host) {
     const compact=matchMedia('(max-width:780px), (max-width:1000px) and (max-height:550px)').matches;
     const mobileSpans=[4.4,4.8,3.8,4.4,5.8,5.4,4.2];
     const mobileHalfHeights=[1.75,1.7,1.65,1.85,2.8,2.55,1.8];
-    const half=active>=0 ? compact?Math.max(mobileSpans[active]/2/aspect,mobileHalfHeights[active]):Math.min(landscapeHalfHeight,pose.span*.41) : landscapeHalfHeight;
-    const xOffset=active>=0&&!compact?-half*aspect*.25:0;
+    const shown=Math.max(0,active);
+    const tourHalf=compact?Math.max(mobileSpans[shown]/2/aspect,mobileHalfHeights[shown]):Math.min(landscapeHalfHeight,pose.span*.41);
+    const half=landscapeHalfHeight+(tourHalf-landscapeHalfHeight)*pose.tour;
+    const xOffset=compact?0:-half*aspect*.25*pose.tour;
     const yOffset=0;
     Object.assign(camera,{top:half+yOffset,bottom:-half+yOffset,left:-half*aspect+xOffset,right:half*aspect+xOffset});
     camera.position.set(pose.targetX+32*Math.sin(pose.angle),pose.targetY+32*pose.lift,pose.targetZ+32*Math.cos(pose.angle));
@@ -221,6 +224,8 @@ function buildHouseViewer(host) {
     else transition={from:{...pose},to:target,start:performance.now()};
     dirty=true;wake();
   };
+  // Scroll-driven zoom is only worth it when the GPU renders; the CPU fallback keeps timed transitions.
+  move.live=!!renderer;
   move.replay=()=>{
     if(active<0)return;
     crewStarted=performance.now();workDone=false;dirty=true;wake();

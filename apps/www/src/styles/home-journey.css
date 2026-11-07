@@ -299,9 +299,8 @@
 .hj .xl{display:inline-block;will-change:transform,opacity}
 /* The scene grows from its card to full screen when the tour starts. */
 .hj .stage.opening{animation:hjStage .8s ease both}
-.hj .stage.opening #viewer{animation:hjExpand .8s cubic-bezier(.2,.8,.2,1) both}
+.hj .stage.opening .frame{animation:hjRise .5s .6s ease both}
 .hj .stage.opening .copy,.hj .stage.opening .chooser{animation:hjRise .6s .35s ease both}
-@keyframes hjExpand{from{clip-path:var(--clip-from)}to{clip-path:inset(0 round 0)}}
 @keyframes hjStage{from{background-color:#fffdfa}to{background-color:#cde8ef}}
 @keyframes hjRise{from{opacity:0;translate:0 24px}to{opacity:1;translate:0 0}}
 @media(prefers-reduced-motion:reduce){.hj .xl,.hj .xb{transform:none!important}.hj .stage.opening,.hj .stage.opening *{animation:none!important}}
@@ -352,3 +351,7 @@
 @keyframes hjBeams{from{opacity:.55}to{opacity:1}}
 @media(max-width:780px) and (orientation:portrait){.hj .sky{--horizon:22%}.hj .sun{right:14%;width:40px}}
 @media(prefers-reduced-motion:reduce){.hj .sun::before,.hj .cloud,.hj .beams{animation:none}.hj .c1{left:8%}.hj .c2{left:48%}.hj .c3{left:70%}}
+
+/* No label in the overview: the place chip only shows while a service is open. */
+.hj .stage:not(.tour) .viewLabel{display:none}
+.hj .hj-eyebrow i{opacity:clamp(0,calc(1 - var(--t,0) * 3),1)}

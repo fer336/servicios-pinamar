@@ -25,10 +25,30 @@ if (root) {
   let move = null;
   let current = null;
   let previousProgress = null;
+  let previousKey = '';
   let queued = false;
   let loading = false;
 
-  const camera = ([angle, targetX, targetY, targetZ, lift, span]) => ({ angle, targetX, targetY, targetZ, lift, span });
+  const camera = ([angle, targetX, targetY, targetZ, lift, span], tour = 0) => ({ angle, targetX, targetY, targetZ, lift, span, tour });
+  const ease = (x) => {
+    const v = Math.min(1, Math.max(0, x));
+    return v * v * (3 - 2 * v);
+  };
+  const mix = (a, b, amount) => a.map((value, i) => value + (b[i] - value) * amount);
+  // The island with its trees is wider than tall: give narrow (phone) viewers more room.
+  const overviewView = (progress) => [0.72 - 0.66 * progress, 0, 2.0, 0.4, 0.49, (host.clientWidth / Math.max(1, host.clientHeight) < 1.3 ? 25 : 24) - 2 * progress];
+  // Camera as a continuous function of scroll: orbit while the copy explodes (q < 0), zoom from the overview into the
+  // first service (0..1), then hold each service and glide to the next one around its midpoint.
+  function trackAt(p, q, intro) {
+    if (q < 0) return { view: overviewView(Math.min(1, p / intro)), tour: 0 };
+    if (q < 1) {
+      const amount = ease(q);
+      return { view: mix(overviewView(1), stops[0].camera, amount), tour: amount };
+    }
+    const k = Math.min(stops.length - 1, Math.floor(q - 1));
+    if (k === stops.length - 1) return { view: stops[k].camera, tour: 1 };
+    return { view: mix(stops[k].camera, stops[k + 1].camera, ease((q - 1 - k - 0.3) / 0.4)), tour: 1 };
+  }
   const journeyTop = () => journey.getBoundingClientRect().top + window.scrollY;
   // Desktop and portrait phones: one extra scroll step before the first service, in which the hero copy blows apart.
   const desktopIntro = matchMedia('(min-width: 781px) and (min-height: 551px), (max-width: 780px) and (orientation: portrait)');
@@ -114,11 +134,20 @@ if (root) {
   function expandViewer(from) {
     const viewer = find('#viewer');
     const to = viewer.getBoundingClientRect();
-    viewer.style.setProperty('--clip-from', 'inset(' + [from.top - to.top, to.right - from.right, to.bottom - from.bottom, from.left - to.left].map((v) => Math.max(0, v).toFixed(0) + 'px').join(' ') + ' round 18px)');
+    // FLIP: start from the card's rectangle and animate to full screen by scaling the whole viewer (canvas included),
+    // so the picture grows instead of being cropped.
+    viewer.style.transformOrigin = '0 0';
+    viewer.animate(
+      [
+        { transform: 'translate(' + (from.left - to.left) + 'px,' + (from.top - to.top) + 'px) scale(' + from.width / to.width + ',' + from.height / to.height + ')', borderRadius: '18px' },
+        { transform: 'none', borderRadius: '0px' }
+      ],
+      { duration: 900, easing: 'cubic-bezier(.22,.8,.2,1)' }
+    );
     stage.classList.remove('opening');
     void stage.offsetWidth;
     stage.classList.add('opening');
-    viewer.addEventListener('animationend', () => stage.classList.remove('opening'), { once: true });
+    setTimeout(() => stage.classList.remove('opening'), 1100);
   }
 
   function riseSheet() {
@@ -176,22 +205,31 @@ if (root) {
     queued = false;
     const p = Math.max(0, (window.scrollY - journeyTop()) / Math.max(1, stepSize()));
     const q = p - introSteps();
-    const index = Math.min(stops.length - 1, Math.round(q) - 1);
+    const intro = introSteps();
+    // With the intro step the first service opens as soon as the copy is gone (q = 0) and the camera zooms in after it.
+    const index = intro ? (q < 0 ? -1 : Math.min(stops.length - 1, Math.max(0, Math.round(q) - 1))) : Math.min(stops.length - 1, Math.round(q) - 1);
     const changed = current !== index;
     if (changed) {
       current = index;
       updatePanel(index);
     }
-    explode(index < 0 && introSteps() ? Math.min(1, p / (introSteps() + 0.4)) : 0);
+    explode(index < 0 && intro ? Math.min(1, p / intro) : 0);
     if (!move) return;
+    if (intro && move.live && !motion.matches) {
+      const { view, tour } = trackAt(p, q, intro);
+      const key = view.map((v) => v.toFixed(3)).join() + tour.toFixed(3) + index;
+      if (changed || key !== previousKey) {
+        move(camera(view, tour), index, true);
+        previousKey = key;
+      }
+      return;
+    }
     if (index < 0) {
-      const progress = motion.matches ? 0 : Math.min(1, p / (introSteps() + 0.5));
-      // The forest island is wider than tall: give narrow (phone) viewers more room.
-      const spanBase = host.clientWidth / Math.max(1, host.clientHeight) < 1.3 ? 25 : 24;
-      if (changed || progress !== previousProgress) move(camera([0.72 - 0.66 * progress, 0, 2.0, 0.4, 0.49, spanBase - 2 * progress]), -1, !changed || previousProgress === null);
+      const progress = motion.matches ? 0 : Math.min(1, p / (intro + 0.5));
+      if (changed || progress !== previousProgress) move(camera(overviewView(progress)), -1, !changed || previousProgress === null);
       previousProgress = progress;
     } else if (changed) {
-      move(camera(stops[index].camera), index, motion.matches);
+      move(camera(stops[index].camera, 1), index, motion.matches);
     }
   }
 
