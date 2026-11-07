@@ -151,17 +151,6 @@ if (root) {
     go(Math.min(stops.length - 1, current + 1));
   };
 
-  // "Ver en 3D" on the service cards lives outside this section.
-  document.addEventListener('click', (event) => {
-    const link = event.target instanceof Element ? event.target.closest('[data-scene-mode]') : null;
-    if (!link) return;
-    const index = stops.findIndex((stop) => stop.id === link.getAttribute('data-scene-mode'));
-    if (index < 0) return;
-    event.preventDefault();
-    loadScene();
-    go(index);
-  });
-
   window.addEventListener('scroll', () => {
     loadScene();
     schedule();

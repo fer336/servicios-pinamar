@@ -198,12 +198,6 @@
   .hj .stage:not(.tour) .partner-note,.hj .stage:not(.tour) .hint{display:none}
 }
 
-/* "Ver en 3D" action on the home service cards (kept from the previous 3D hero). */
-.service-card__actions{display:flex;align-items:center;gap:10px}
-.service-card .service-card__scene{display:inline-flex;width:auto;height:39px;padding:0 14px;border-radius:12px;background:rgba(255,255,255,.18);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(6px)}
-.service-card:hover .service-card__scene{transform:none}
-.service-card .service-card__scene:hover{background:rgba(255,255,255,.3)}
-.service-card__scene:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}
 
 /* Short desktop viewports (e.g. 1366x650): keep the overview inside one screen, chooser included. */
 @media(min-width:781px) and (max-height:780px){
@@ -268,3 +262,25 @@
   .hj .copy h1{font-size:25px}
 }
 @media(prefers-reduced-motion:reduce){.hj #visual .poster{transition:none}}
+
+/* Phones: compact sheet so the 3D scene keeps most of the screen. */
+@media(max-width:780px) and (orientation:portrait){
+  .hj .sheetHandle{height:26px}
+  .hj .copy,.hj .tour .copy{padding:0 16px 8px}
+  .hj .copy h1{font-size:clamp(23px,6.6vw,29px);margin:6px 0}
+  .hj .copy p,.hj .tour .copy p{font-size:14px;line-height:1.38;margin:0 0 8px}
+  .hj .sheet:not(.open) .lead{-webkit-line-clamp:2}
+  .hj .copy .pill,.hj .tour .copy .pill{min-height:46px}
+  .hj .stage:not(.tour) #choices{gap:6px}
+  .hj .stage:not(.tour) #choices :is(button,a){min-height:44px;padding:8px 14px;font-size:14px}
+
+  .hj .tour #chapterName{font-size:24px;margin:0 0 4px}
+  .hj .tour .sheet:not(.open) .serviceLink{display:none}
+  .hj .tour .workState{min-height:30px;margin:0 0 6px;gap:8px}
+  .hj .workState button{min-height:36px}
+  .hj .tour .chooser{grid-template-columns:minmax(0,1fr) auto;padding:6px 12px calc(10px + env(safe-area-inset-bottom))}
+  .hj .tour .chooser>span{display:none}
+  .hj .tour #choices{grid-column:1;grid-row:1}
+  .hj .tour .stepNav{grid-column:2;grid-row:1}
+  .hj .tour .stepNav button{width:42px;height:42px}
+}
