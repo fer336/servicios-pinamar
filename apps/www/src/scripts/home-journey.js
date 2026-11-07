@@ -186,7 +186,9 @@ if (root) {
     if (!move) return;
     if (index < 0) {
       const progress = motion.matches ? 0 : Math.min(1, p / (introSteps() + 0.5));
-      if (changed || progress !== previousProgress) move(camera([0.72 - 0.66 * progress, 0, 2.1, 0, 0.49, 21 - 2 * progress]), -1, !changed || previousProgress === null);
+      // The island with its beach is wider than tall: give narrow (phone) viewers more room.
+      const spanBase = host.clientWidth / Math.max(1, host.clientHeight) < 1.3 ? 29 : 24.5;
+      if (changed || progress !== previousProgress) move(camera([0.72 - 0.66 * progress, 0, 1.9, 2.3, 0.49, spanBase - 2 * progress]), -1, !changed || previousProgress === null);
       previousProgress = progress;
     } else if (changed) {
       move(camera(stops[index].camera), index, motion.matches);

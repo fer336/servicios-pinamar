@@ -1,4 +1,6 @@
 // Shared geometry for the orbital overview and the service detail cameras.
+// Derived from the design package's scene.js (sha256 e2750e9b...). Local changes: the house now stands on a
+// sunny beach (sand, shoreline, sea, boardwalk, parasol, sailboat) with warm light instead of the green island.
 function buildHouseViewer(host) {
   const T = THREE;
   const scene = new T.Scene();
@@ -8,8 +10,8 @@ function buildHouseViewer(host) {
   const canvas = renderer ? renderer.domElement : document.createElement('canvas');
   host.append(canvas);
   if(renderer){renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.outputEncoding=T.sRGBEncoding;}
-  scene.add(new T.HemisphereLight(0xf0ebdf,0x849284,.78));
-  const sun=new T.DirectionalLight(0xf3d9bb,.90);
+  scene.add(new T.HemisphereLight(0xdcecf2,0xd2bb90,.8));
+  const sun=new T.DirectionalLight(0xffdca6,.9);
   sun.position.set(9,11,16);sun.castShadow=true;
   Object.assign(sun.shadow.camera,{left:-14,right:14,top:14,bottom:-14});sun.shadow.mapSize.set(1024,1024);sun.shadow.normalBias=.035;scene.add(sun);
   const materials=new Map(),cube=new T.BoxGeometry(),meshes=[];
@@ -25,7 +27,13 @@ function buildHouseViewer(host) {
     mesh(trunk,0x816d50,x,h*.30,z,.10*h/5,h*.60,.10*h/5);
     for(let j=0;j<5;j++){const r=h*(.197-j*.029);const branch=mesh(foliage,greens[(i+j)%4],x,h*(.40+.128*j),z,r,h*(.48-.042*j),r);branch.rotation.y=i*.8+j*.49;}
   }
-  box(0,-.49,0,15,.65,11.5,0xb09c7d);box(0,-.12,0,15,.18,11.5,0x96a684);
+  // Coastal ground: dune sand behind and around the house, a light beach in front, wet sand, then the sea.
+  box(0,-.49,3,15,.65,17.5,0xbfa57a);
+  box(0,-.12,-.575,15,.18,10.35,0xcdbb8a);
+  box(0,-.12,5.45,15,.18,1.7,0xe0cb9a);
+  box(0,-.15,6.85,15,.18,1.1,0xbda57a);
+  box(0,-.27,8.0,15,.30,1.2,0x5fc1c7);
+  box(0,-.30,10.175,15,.36,3.15,0x2b9bb7);
   // Entry paving, cedar terrace and full-height glazing.
   for(let i=0;i<6;i++)box(3.25,.015,2.7+i*.51,1.13,.08,.37,0xd3ceba);
   box(-.55,.16,1.5,8.4,.38,4.9,0x936c48);
@@ -59,11 +67,38 @@ function buildHouseViewer(host) {
   meterFace.rotation.z=Math.PI/2;
   box(4.255,1.245,-1.976,.018,.068,.018,0x544636).rotation.x=.62;
   box(3.98,.40,-2.1,.10,.59,.10,0xc1a560);
+  // Boardwalk from the terrace to the beach, parasol, loungers and a towel.
+  for(let i=0;i<7;i++)box(-.55,.01,4.25+i*.45,1.7,.07,.36,i%2?0xbf9468:0xb18558);
+  const poleMat=0xe9dcc0;
+  mesh(trunk,poleMat,-4.1,1.12,5.75,.05,2.25,.05);
+  mesh(foliage,0xef9f86,-4.1,2.42,5.75,1.75,.62,1.75).rotation.y=.2;
+  mesh(bush,0xfff3d6,-4.1,2.78,5.75,.1,.1,.1);
+  for(const x of [-4.75,-3.45]){box(x,.16,5.95,.62,.12,1.35,0xf6efdf);const back=box(x,.43,5.1,.62,.1,.7,0xf6efdf);back.rotation.x=-.75;box(x,.07,5.95,.52,.1,1.2,0x9c7650);}
+  box(-2.55,-.01,6.0,.8,.03,1.5,0x4aa9b9);box(-2.55,-.005,6.0,.18,.032,1.5,0xfff4dc);
   let seed=42;
   function random(){seed=seed*16807%2147483647;return seed/2147483647}
   for(const [i,p] of [[-6,-3.1,6.9],[-4.9,-4.7,7.9],[.6,-4.8,6.6],[5.9,-4.4,7.4],[6.6,-2.8,5.1],[-6.45,2.2,4.5]].entries())pine(...p,i);
   for(let i=0;i<35;i++){const x=4.9+random()*1.8,z=.8+random()*3.9,r=.22+random()*.38;mesh(bush,greens[i%4],x,.06+r*.45,z,r,r*.69,r*.86);}
   for(let i=0;i<24;i++){let x=-6.9+random()*3.7,z=4.4+random()*.8;mesh(bush,0xb1b391,x,.04,z,.16,.13,.19);}
+  // Dune grass, shells, foam lines and a sailboat. These run after the original random draws so those stay put.
+  const grassTuft=new T.ConeGeometry(1,1,5);
+  for(let i=0;i<46;i++){const side=i%2?1:-1,x=side*(5.2+random()*2.1),z=4.5+random()*1.9,h=.28+random()*.34;mesh(grassTuft,i%3?0xc8b377:0xb7a566,x,h*.5-.02,z,.06,h,.06);}
+  for(let i=0;i<10;i++)mesh(bush,i%2?0xfff1e6:0xf4cfc2,-6.5+random()*13,-.02,5.0+random()*1.9,.07,.04,.08);
+  const ambient=[];
+  const foam=0xf7fcfb;
+  for(const [z,count,amp] of [[7.42,9,.10],[8.55,7,.16],[9.7,6,.2]])for(let i=0;i<count;i++){
+    const w=1.1+random()*1.5,x=-7+(i+random()*.6)*(14/count);
+    const line=box(x,-.115,z,w,.025,.09,foam);ambient.push({obj:line,kind:'foam',z,x,amp,phase:random()*6.3});
+  }
+  const boat=new T.Group();
+  const hull=new T.Mesh(cube,materials.get(0xf4efe2)||new T.MeshLambertMaterial({color:0xf4efe2,flatShading:true}));
+  hull.scale.set(1.5,.26,.5);boat.add(hull);
+  const mast=new T.Mesh(cube,new T.MeshLambertMaterial({color:0x8b6c4a,flatShading:true}));mast.scale.set(.05,1.9,.05);mast.position.y=1.0;boat.add(mast);
+  const sail=new T.Mesh(cube,new T.MeshLambertMaterial({color:0xffffff,flatShading:true}));sail.scale.set(.03,1.5,.85);sail.position.set(0,1.0,.46);boat.add(sail);
+  const sail2=new T.Mesh(cube,new T.MeshLambertMaterial({color:0xfbd5b3,flatShading:true}));sail2.scale.set(.03,1.0,.6);sail2.position.set(0,.75,-.4);boat.add(sail2);
+  boat.position.set(-3.4,.0,10.8);scene.add(boat);
+  for(const m of boat.children){m.castShadow=true;meshes.push(m)}
+  ambient.push({obj:boat,kind:'boat',x:-3.4,z:10.8});
   scene.updateMatrixWorld(true);
   // Software projection shares the same camera when WebGL is unavailable.
   const crew=buildCrew(scene);
@@ -84,6 +119,14 @@ function buildHouseViewer(host) {
     return faces;
   }
   const faces=renderer?[]:makeFaces(meshes);
+  const ambientOn=()=>renderer&&!reduced.matches;
+  function animateAmbient(now){
+    const t=now/1000;
+    for(const a of ambient){
+      if(a.kind==='foam'){a.obj.position.z=a.z+Math.sin(t*.9+a.phase)*a.amp;a.obj.position.x=a.x+Math.sin(t*.35+a.phase)*.25}
+      else{a.obj.position.y=Math.sin(t*1.1)*.045;a.obj.position.x=a.x+Math.sin(t*.12)*.5;a.obj.rotation.z=Math.sin(t*1.1+1)*.035}
+    }
+  }
   let pixels,depthBuffer,basePixels,baseDepth,cachedView;
   const pose={angle:.66,targetX:0,targetY:2.45,targetZ:0,lift:.45,span:15.5};
   function paint(now=performance.now()){
@@ -96,6 +139,7 @@ function buildHouseViewer(host) {
       workDone=result.done;
       if(actionStatus&&actionStatus.textContent!==result.label)actionStatus.textContent=result.label;
     }
+    if(ambientOn())animateAmbient(now);
     const aspect=w/h;
     const landscapeHalfHeight=Math.max(pose.span/2/aspect,pose.span*.29);
     // Mobile has a dedicated scene area, clear of the description and controls.
@@ -157,10 +201,10 @@ function buildHouseViewer(host) {
       if(t===1)transition=null;
       dirty=true;
     }
-    if(dirty||(active>=0&&!workDone&&!reduced.matches&&now-lastTime>1000/(renderer?30:18))){
+    if(dirty||(ambientOn()&&now-lastTime>1000/24)||(active>=0&&!workDone&&!reduced.matches&&now-lastTime>1000/(renderer?30:18))){
       paint(now);dirty=false;lastTime=now;
     }
-    if(transition||(active>=0&&!workDone&&!reduced.matches))wake();
+    if(transition||ambientOn()||(active>=0&&!workDone&&!reduced.matches))wake();
   }
   function wake(){if(!loopId&&visible&&!document.hidden)loopId=requestAnimationFrame(render)}
   new ResizeObserver(()=>{dirty=true;wake()}).observe(host);

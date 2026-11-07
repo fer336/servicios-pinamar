@@ -51,7 +51,7 @@
 }
 .hj .journey{height:695svh;min-height:0;padding:0}
 .hj .stage{top:0;height:100svh;min-height:0;max-width:none;padding:32px 4vw;box-sizing:border-box}
-.hj .stage.tour{display:block;padding:0;background:#dbe2d3;isolation:isolate}
+.hj .stage.tour{display:block;padding:0;background:#cde8ef;isolation:isolate}
 .hj .tour #viewer{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
 .hj .tour .frame{top:clamp(15px,3vh,32px);left:4vw;right:4vw}
 .hj .tour .frame span,.hj .tour #reset{padding:9px 15px;background:#fffdf5ef}
@@ -86,7 +86,7 @@
 .hj .tour #choices{display:flex}
 .hj .stage:not(.tour){height:auto;min-height:100svh}
 }
-.hj #viewer{background:radial-gradient(ellipse at 66% 24%,#d5d5c6,#bbc7b9 61%,#a3b3a5)}
+.hj #viewer{background:linear-gradient(180deg,#8fd0ec 0%,#c4e6f1 36%,#f7e9cd 70%,#f6d9ae 100%)}
 .hj .workState{display:none}
 .hj .tour .workState{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:12px 0 15px;padding-top:10px;border-top:1px solid #cfd8ca;font-size:12px;color:#486555}
 .hj .workState button{border:0;background:transparent;white-space:nowrap;font-size:12px;padding:5px;text-decoration:underline}
@@ -224,7 +224,7 @@
 
 /* Portrait phones: app-like layout. Full-bleed scene on top, rounded bottom sheet with the options. */
 @media(max-width:780px) and (orientation:portrait){
-  .hj .stage.tour,.hj .stage:not(.tour){display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:0;height:100svh;padding:0;background:#dbe2d3}
+  .hj .stage.tour,.hj .stage:not(.tour){display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:0;height:100svh;padding:0;background:#cde8ef}
   .hj #viewer,.hj .tour #viewer{grid-column:1;grid-row:1;position:relative;inset:auto;width:100%;height:100%;min-height:0;border-radius:0}
   .hj .frame,.hj .tour .frame{top:84px;left:14px;right:14px}
   .hj .tour .frame{top:max(14px,env(safe-area-inset-top))}
@@ -302,7 +302,7 @@
 .hj .stage.opening #viewer{animation:hjExpand .8s cubic-bezier(.2,.8,.2,1) both}
 .hj .stage.opening .copy,.hj .stage.opening .chooser{animation:hjRise .6s .35s ease both}
 @keyframes hjExpand{from{clip-path:var(--clip-from)}to{clip-path:inset(0 round 0)}}
-@keyframes hjStage{from{background-color:#fffdfa}to{background-color:#dbe2d3}}
+@keyframes hjStage{from{background-color:#fffdfa}to{background-color:#cde8ef}}
 @keyframes hjRise{from{opacity:0;translate:0 24px}to{opacity:1;translate:0 0}}
 @media(prefers-reduced-motion:reduce){.hj .xl,.hj .xb{transform:none!important}.hj .stage.opening,.hj .stage.opening *{animation:none!important}}
 
@@ -318,3 +318,24 @@
   .hj .stage.rising .sheet{animation:hjRise .55s ease both}
 }
 @media(prefers-reduced-motion:reduce){.hj .stage.rising .sheet{animation:none}}
+
+/* --- Sunny coast backdrop: sky, sun with slow rays, drifting clouds (behind the transparent canvas) --- */
+.hj .sky{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hj .sun{position:absolute;right:13%;top:7%;width:clamp(74px,9vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 42% 38%,#fffdf0 0,#fff0b3 38%,#ffd36b 72%,#ffc04a 100%);
+  box-shadow:0 0 0 clamp(10px,1.6vw,22px) rgba(255,226,140,.28),0 0 clamp(60px,9vw,130px) clamp(26px,4vw,60px) rgba(255,214,120,.62)}
+.hj .sun::before{content:"";position:absolute;inset:-210%;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,240,180,.34) 0 4deg,rgba(255,240,180,0) 4deg 14deg);
+  -webkit-mask:radial-gradient(circle,#000 0,rgba(0,0,0,.55) 22%,transparent 58%);mask:radial-gradient(circle,#000 0,rgba(0,0,0,.55) 22%,transparent 58%);
+  animation:hjRays 120s linear infinite}
+.hj .cloud{position:absolute;left:-30%;width:26%;height:7%;border-radius:999px;background:rgba(255,255,255,.82);filter:blur(7px);animation:hjCloud 150s linear infinite}
+.hj .cloud::before,.hj .cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}
+.hj .cloud::before{width:42%;height:170%;left:14%;bottom:30%}
+.hj .cloud::after{width:34%;height:140%;left:48%;bottom:25%}
+.hj .c1{top:16%}
+.hj .c2{top:30%;width:20%;opacity:.7;animation-duration:210s;animation-delay:-90s}
+.hj .c3{top:9%;width:16%;opacity:.55;animation-duration:260s;animation-delay:-170s}
+@keyframes hjRays{to{transform:rotate(360deg)}}
+@keyframes hjCloud{to{left:125%}}
+@media(max-width:780px) and (orientation:portrait){.hj .sun{top:19%;right:11%;width:70px}}
+@media(prefers-reduced-motion:reduce){.hj .sun::before,.hj .cloud{animation:none}.hj .c1{left:8%}.hj .c2{left:48%}.hj .c3{left:70%}}
