@@ -170,7 +170,9 @@
 
 
 /* --- Site integration (not part of the package) --- */
-.hj{position:relative;background:#fffdfa}
+.hj{position:relative;background:#fffdfa;
+  /* The services section below overlaps its top by 34px (rounded corners): reserve that space so it never covers the pinned stage. */
+  padding-bottom:34px}
 /* The site header floats over the top of the page: leave room for it before the tour starts. */
 .hj .stage:not(.tour){padding-top:104px}
 .hj h1{font-size:clamp(34px,3.3vw,56px);line-height:1;margin:18px 0}
