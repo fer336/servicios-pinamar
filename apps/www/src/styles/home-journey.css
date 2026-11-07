@@ -182,7 +182,8 @@
 .hj .tour .serviceLink{display:inline-flex}
 .hj .serviceLink{display:none;margin:0 0 12px;font-size:14px;font-weight:650;text-decoration:underline;text-underline-offset:3px;align-items:center;gap:6px}
 .hj .tour .copy .serviceLink{margin-bottom:12px}
-.hj #visual .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hj #visual .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease}
+.hj #visual .poster.fade{opacity:0}
 .hj .copy .pill{color:#fff}
 @media(max-width:780px),(max-width:1000px) and (max-height:550px){
   .hj .stage:not(.tour){padding-top:84px}
@@ -213,3 +214,57 @@
   .hj .stage:not(.tour) .chooser{margin-top:14px;padding-top:12px}
   .hj .stage:not(.tour) #viewer{height:clamp(300px,52vh,660px)}
 }
+
+/* --- Bottom sheet ---
+   The copy and the chooser live in .sheet. Outside portrait phones it is transparent to layout, so the
+   desktop grid and the landscape layout behave exactly as in the design package. */
+.hj .sheet{display:contents}
+.hj .sheetHandle{display:none}
+@media(min-width:781px){
+  .hj .copy{grid-column:1;grid-row:1}
+  .hj #viewer{grid-column:2;grid-row:1}
+  .hj .chooser{grid-row:2}
+}
+
+/* Portrait phones: app-like layout. Full-bleed scene on top, rounded bottom sheet with the options. */
+@media(max-width:780px) and (orientation:portrait){
+  .hj .stage.tour,.hj .stage:not(.tour){display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:0;height:100svh;padding:0;background:#dbe2d3}
+  .hj #viewer,.hj .tour #viewer{grid-column:1;grid-row:1;position:relative;inset:auto;width:100%;height:100%;min-height:0;border-radius:0}
+  .hj .frame,.hj .tour .frame{top:84px;left:14px;right:14px}
+  .hj .tour .frame{top:max(14px,env(safe-area-inset-top))}
+  .hj .viewFoot,.hj .tour .viewFoot{display:none}
+
+  .hj .sheet{display:flex;flex-direction:column;grid-column:1;grid-row:2;position:relative;z-index:3;max-height:62svh;margin-top:-28px;background:#fffdfa;border-radius:28px 28px 0 0;box-shadow:0 -14px 44px rgba(16,35,38,.22);overflow:hidden}
+  .hj .sheetHandle{display:flex;flex:none;align-items:center;justify-content:center;width:100%;height:32px;padding:0;border:0;background:transparent}
+  .hj .sheetHandle span{width:44px;height:5px;border-radius:3px;background:#c3cfc2}
+
+  .hj .copy,.hj .tour .copy{position:static;grid-column:auto;grid-row:auto;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;width:auto;max-width:none;margin:0;padding:0 18px 10px;border:0;border-radius:0;background:transparent;box-shadow:none}
+  .hj .copy h1{font-size:clamp(25px,7.2vw,32px);line-height:1.04;margin:8px 0 8px}
+  .hj .copy .hj-eyebrow{font-size:11px}
+  .hj .copy p{font-size:15px;line-height:1.42;margin:0 0 10px;max-width:none}
+  .hj .tour #chapterName{font-size:28px;margin:0 0 6px}
+  .hj .tour .copy p{font-size:14px;line-height:1.4}
+  .hj .sheet:not(.open) .lead{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hj .sheet:not(.open) .partner-note{display:none}
+  .hj .stage:not(.tour) .hint{display:none}
+  .hj .copy .pill,.hj .tour .copy .pill{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:0;padding:12px 16px;border-radius:16px;font-size:15px}
+  .hj .tour .serviceLink{min-height:40px;margin:0}
+  .hj .tour .workState{min-height:40px;margin:4px 0}
+
+  .hj .chooser,.hj .tour .chooser{position:static;flex:none;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 10px;margin:0;padding:8px 14px calc(12px + env(safe-area-inset-bottom));border:0;border-top:1px solid #e4e9e1;border-radius:0;background:#fffdfa}
+  /* Overview: the services as a 2-column grid of large touch targets. Tour: a swipeable strip. */
+  .hj .stage:not(.tour) #choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;overflow:visible;padding:2px 0}
+  .hj .stage:not(.tour) #choices :is(button,a){display:flex;align-items:center;min-height:48px;padding:10px 14px;border-radius:14px;font-size:15px;white-space:normal}
+  .hj .stage:not(.tour) .stepNav{display:none}
+  .hj .tour #choices :is(button,a){display:flex;align-items:center}
+}
+
+.hj .sheet.open{max-height:86svh}
+/* Small phones: keep the CTA in view by turning the overview options into a swipeable strip. */
+@media(max-width:780px) and (orientation:portrait) and (max-height:700px){
+  .hj .stage:not(.tour) #choices{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .hj .stage:not(.tour) #choices :is(button,a){flex:0 0 auto;min-height:44px;white-space:nowrap}
+  .hj .stage:not(.tour) .stepNav{display:flex}
+  .hj .copy h1{font-size:25px}
+}
+@media(prefers-reduced-motion:reduce){.hj #visual .poster{transition:none}}

@@ -12,29 +12,32 @@ const lead = 'Mantenimiento de casas y propiedades en Pinamar: pintura, hidrolav
 <section id="inicio" class="hj" data-stops={JSON.stringify(journeyStops)} data-scripts={JSON.stringify([threeUrl, crewUrl, sceneUrl])}>
   <div class="journey">
     <div class="stage">
-      <div class="copy">
-        <span class="hj-eyebrow"><i></i> Servicios de mantenimiento en la costa</span>
-        <h1>Mantenimiento de casas y propiedades <em>en Pinamar</em></h1>
-        <h2 id="chapterName" hidden></h2>
-        <p id="lead" class="lead">{lead}</p>
-        <div class="workState"><span id="actionStatus" role="status"></span><button id="replay" type="button" aria-label="Repetir la demostración del servicio">↻ Repetir</button></div>
-        <a id="serviceLink" class="serviceLink" href={journeyStops[0].href}>Más sobre pintura →</a>
-        <a id="quote" class="pill" href={whatsapp} target="_blank" rel="noopener">Consultar por WhatsApp ↗</a>
-        <p class="partner-note">{partnerNote}</p>
-        <span class="hint">↓ &nbsp; Deslizá para recorrer los servicios</span>
-      </div>
       <div id="viewer">
         <div class="frame"><span class="viewLabel" aria-live="polite">Vista general</span><button id="reset" type="button" hidden>↺ Vista general</button></div>
         <div id="visual" role="img" aria-label="Casa costera con deck, jardín y pinos en tres dimensiones">
-          <img class="poster" src="/images/hero-casa-pinamar.webp" alt="" width="1672" height="941" fetchpriority="high" decoding="async" />
+          <img class="poster" src="/images/home-journey-poster.webp" alt="" width="903" height="551" fetchpriority="high" decoding="async" />
         </div>
         <div class="viewFoot"><span>Casa del bosque</span><span>Pinamar · Cariló · Valeria del Mar · Ostende</span></div>
       </div>
-      <div class="chooser" id="explorar">
-        <span id="progress">Explorar por servicio</span>
-        <div class="stepNav" aria-label="Recorrer servicios"><button id="previousService" type="button" aria-label="Servicio anterior" disabled>←</button><button id="nextService" type="button" aria-label="Servicio siguiente">→</button></div>
-        <div id="choices" role="group" aria-label="Elegí un servicio">
-          {journeyStops.map((stop) => <a href={stop.href} aria-current="false">{stop.service}</a>)}
+      <div class="sheet">
+        <button class="sheetHandle" type="button" aria-expanded="false" aria-label="Ver más información"><span></span></button>
+        <div class="copy">
+          <span class="hj-eyebrow"><i></i> Servicios de mantenimiento en la costa</span>
+          <h1>Mantenimiento de casas y propiedades <em>en Pinamar</em></h1>
+          <h2 id="chapterName" hidden></h2>
+          <p id="lead" class="lead">{lead}</p>
+          <div class="workState"><span id="actionStatus" role="status"></span><button id="replay" type="button" aria-label="Repetir la demostración del servicio">↻ Repetir</button></div>
+          <a id="serviceLink" class="serviceLink" href={journeyStops[0].href}>Más sobre pintura →</a>
+          <a id="quote" class="pill" href={whatsapp} target="_blank" rel="noopener">Consultar por WhatsApp ↗</a>
+          <p class="partner-note">{partnerNote}</p>
+          <span class="hint">↓ &nbsp; Deslizá para recorrer los servicios</span>
+        </div>
+        <div class="chooser" id="explorar">
+          <span id="progress">Explorar por servicio</span>
+          <div class="stepNav" aria-label="Recorrer servicios"><button id="previousService" type="button" aria-label="Servicio anterior" disabled>←</button><button id="nextService" type="button" aria-label="Servicio siguiente">→</button></div>
+          <div id="choices" role="group" aria-label="Elegí un servicio">
+            {journeyStops.map((stop) => <a href={stop.href} aria-current="false">{stop.service}</a>)}
+          </div>
         </div>
       </div>
     </div>

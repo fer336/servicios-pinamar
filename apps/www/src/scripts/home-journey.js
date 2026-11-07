@@ -15,6 +15,8 @@ if (root) {
   const quote = find('#quote');
   const lead = find('#lead');
   const serviceLink = find('#serviceLink');
+  const sheet = find('.sheet');
+  const handle = find('.sheetHandle');
   const intro = lead.textContent;
   const defaultQuote = quote.href;
   const defaultQuoteLabel = quote.textContent;
@@ -35,8 +37,14 @@ if (root) {
     sync();
   }
 
+  function setSheet(open) {
+    sheet.classList.toggle('open', open);
+    handle.setAttribute('aria-expanded', String(open));
+  }
+
   function updatePanel(index) {
     const exploring = index >= 0;
+    setSheet(false);
     stage.classList.toggle('tour', exploring);
     find('#chapterName').hidden = !exploring;
     find('#reset').hidden = !exploring;
@@ -112,7 +120,12 @@ if (root) {
       move = window.buildHouseViewer(host);
       find('#reset').onclick = () => go(-1);
       find('#replay').onclick = () => move.replay();
-      host.querySelector('.poster')?.remove();
+      const poster = host.querySelector('.poster');
+      if (poster) {
+        // Let the first 3D frame paint, then fade the placeholder out instead of cutting to the scene.
+        requestAnimationFrame(() => poster.classList.add('fade'));
+        setTimeout(() => poster.remove(), 600);
+      }
       current = null;
       previousProgress = null;
       sync();
@@ -131,6 +144,7 @@ if (root) {
     });
   });
   find('#reset').onclick = () => go(-1);
+  handle.onclick = () => setSheet(!sheet.classList.contains('open'));
   find('#previousService').onclick = () => go(Math.max(-1, current - 1));
   find('#nextService').onclick = () => {
     loadScene();
@@ -160,7 +174,7 @@ if (root) {
   sync();
 
   // Start the 3D engine once the page is idle; do not compete with the first paint.
-  const start = () => ('requestIdleCallback' in window ? requestIdleCallback(loadScene, { timeout: 2500 }) : setTimeout(loadScene, 1200));
+  const start = () => ('requestIdleCallback' in window ? requestIdleCallback(loadScene, { timeout: 400 }) : setTimeout(loadScene, 300));
   if (document.readyState === 'complete') start();
   else window.addEventListener('load', start, { once: true });
 }
