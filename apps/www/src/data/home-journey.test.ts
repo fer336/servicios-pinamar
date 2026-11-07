@@ -31,7 +31,8 @@ for (const [file, hash] of Object.entries(originals)) {
 
 const scene = readFileSync(new URL('../scene/house-scene.js', import.meta.url), 'utf8');
 assert.ok(scene.includes('function buildHouseViewer(host)'), 'the viewer entry point must stay');
-assert.ok(scene.includes('0x5fc1c7'), 'the sea must be part of the scene');
+assert.ok(scene.includes('// Forest:'), 'the forest must be part of the scene');
+assert.equal(scene.includes('0x5fc1c7'), false, 'no sea in the scene');
 assert.equal(scene.includes('0x96a684'), false, 'the green island top must be gone');
 
 console.log('home-journey data ok');

@@ -329,18 +329,17 @@
   background:repeating-conic-gradient(from 0deg,rgba(255,240,180,.30) 0 3deg,rgba(255,240,180,0) 3deg 12deg);
   -webkit-mask:radial-gradient(circle,#000 0,rgba(0,0,0,.5) 24%,transparent 56%);mask:radial-gradient(circle,#000 0,rgba(0,0,0,.5) 24%,transparent 56%);
   animation:hjRays 120s linear infinite}
-/* Open sea down to the horizon; the island stands on it. */
-.hj .sea{position:absolute;left:0;right:0;bottom:0;top:var(--horizon);
-  background:linear-gradient(180deg,#a8e2ea 0,#72cbd8 14%,#3fb0c6 48%,#1f93b3 100%);
-  box-shadow:0 -1px 0 rgba(255,255,255,.7)}
-.hj .sea{overflow:hidden}
-.hj .sea::before{content:"";position:absolute;inset:-44px 0 0 0;opacity:.5;
-  background:repeating-linear-gradient(180deg,rgba(255,255,255,0) 0 18px,rgba(255,255,255,.16) 18px 20px,rgba(255,255,255,0) 20px 44px);
-  animation:hjWaves 14s linear infinite}
-.hj .glitter{position:absolute;right:calc(17% + clamp(14px,1.7vw,26px) - 3%);top:var(--horizon);width:6%;height:calc(100% - var(--horizon));
-  background:repeating-linear-gradient(180deg,rgba(255,250,210,.0) 0 7px,rgba(255,250,215,.85) 7px 9px,rgba(255,250,210,0) 9px 17px);
-  -webkit-mask:linear-gradient(180deg,#000 0,rgba(0,0,0,.6) 40%,transparent 92%);mask:linear-gradient(180deg,#000 0,rgba(0,0,0,.6) 40%,transparent 92%);
-  filter:blur(.4px);animation:hjGlitter 4s ease-in-out infinite alternate}
+/* Pine forest down to the horizon (replaces the sea): three silhouette layers and a forest floor, with sun beams. */
+.hj .forest{position:absolute;left:0;right:0;bottom:0;height:calc(100% - var(--horizon) + 14%)}
+.hj .forest i{position:absolute;left:0;right:0;bottom:0;background-repeat:repeat-x;background-position:bottom left}
+.hj .forest .f1{height:96%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%23b8cfae' d='M0 100V72L12 72L20 50L16 50L28 26L24 26L35 0L46 26L42 26L54 50L50 50L58 72L80 72L88 58L84 58L95 36L91 36L102 12L113 36L109 36L120 58L116 58L124 72L140 72V100Z'/></svg>");background-size:auto 100%;opacity:.9}
+.hj .forest .f2{height:72%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%238db384' d='M0 100V66L10 66L18 44L14 44L24 20L20 20L30 0L40 20L36 20L46 44L42 44L52 66L70 66L78 50L74 50L84 28L80 28L92 4L104 28L100 28L110 50L106 50L116 66L140 66V100Z'/></svg>");background-size:auto 100%;background-position:bottom -60px left}
+.hj .forest .f3{height:52%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%235f9061' d='M0 100V72L12 72L20 50L16 50L28 26L24 26L35 0L46 26L42 26L54 50L50 50L58 72L80 72L88 58L84 58L95 36L91 36L102 12L113 36L109 36L120 58L116 58L124 72L140 72V100Z'/></svg>");background-size:auto 100%;background-position:bottom -20px left}
+.hj .forest .floor{position:absolute;left:0;right:0;bottom:0;height:12%;background:linear-gradient(180deg,rgba(55,100,63,0) 0,#2f5a39 100%)}
+.hj .beams{position:absolute;inset:0;
+  background:repeating-linear-gradient(104deg,rgba(255,243,196,0) 0 46px,rgba(255,243,196,.26) 46px 80px,rgba(255,243,196,0) 80px 150px);
+  -webkit-mask:radial-gradient(ellipse 70% 90% at 82% 14%,#000 0,rgba(0,0,0,.45) 45%,transparent 78%);mask:radial-gradient(ellipse 70% 90% at 82% 14%,#000 0,rgba(0,0,0,.45) 45%,transparent 78%);
+  animation:hjBeams 9s ease-in-out infinite alternate}
 .hj .cloud{position:absolute;left:-30%;width:26%;height:7%;border-radius:999px;background:rgba(255,255,255,.82);filter:blur(7px);animation:hjCloud 150s linear infinite}
 .hj .cloud::before,.hj .cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}
 .hj .cloud::before{width:42%;height:170%;left:14%;bottom:30%}
@@ -350,7 +349,6 @@
 .hj .c3{top:5%;width:16%;opacity:.55;animation-duration:260s;animation-delay:-170s}
 @keyframes hjRays{to{transform:rotate(360deg)}}
 @keyframes hjCloud{to{left:125%}}
-@keyframes hjWaves{to{transform:translateY(44px)}}
-@keyframes hjGlitter{from{opacity:.55;transform:scaleX(.8)}to{opacity:1;transform:scaleX(1.15)}}
+@keyframes hjBeams{from{opacity:.55}to{opacity:1}}
 @media(max-width:780px) and (orientation:portrait){.hj .sky{--horizon:36%}.hj .sun{right:14%;width:40px}}
-@media(prefers-reduced-motion:reduce){.hj .sun::before,.hj .cloud,.hj .sea::before,.hj .glitter{animation:none}.hj .c1{left:8%}.hj .c2{left:48%}.hj .c3{left:70%}}
+@media(prefers-reduced-motion:reduce){.hj .sun::before,.hj .cloud,.hj .beams{animation:none}.hj .c1{left:8%}.hj .c2{left:48%}.hj .c3{left:70%}}
