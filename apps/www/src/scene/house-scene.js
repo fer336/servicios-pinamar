@@ -21,7 +21,7 @@ function buildHouseViewer(host) {
     obj.castShadow=true;obj.receiveShadow=true;scene.add(obj);meshes.push(obj);return obj;
   }
   function box(x,y,z,w,h,d,color){return mesh(cube,color,x,y,z,w,h,d)}
-  const greens=[0x406650,0x466e54,0x325943,0x567655];
+  const greens=[0x2f5f45,0x36694c,0x264f39,0x44704c];
   const foliage=new T.ConeGeometry(1,1,8),trunk=new T.CylinderGeometry(.8,1,1,7),bush=new T.IcosahedronGeometry(1,0);
   function pine(x,z,h,i){
     mesh(trunk,0x816d50,x,h*.30,z,.10*h/5,h*.60,.10*h/5);
@@ -32,7 +32,7 @@ function buildHouseViewer(host) {
   const fade=document.createElement('canvas');fade.width=fade.height=256;
   const fadeCtx=fade.getContext('2d'),fadeGradient=fadeCtx.createRadialGradient(128,128,128*.5,128,128,128);
   fadeGradient.addColorStop(0,'#fff');fadeGradient.addColorStop(1,'#000');fadeCtx.fillStyle=fadeGradient;fadeCtx.fillRect(0,0,256,256);
-  const ground=new T.Mesh(new T.CircleGeometry(13,56),new T.MeshLambertMaterial({color:0x857c5b,transparent:true,alphaMap:new T.CanvasTexture(fade)}));
+  const ground=new T.Mesh(new T.CircleGeometry(13,56),new T.MeshLambertMaterial({color:0x4e792e,transparent:true,alphaMap:new T.CanvasTexture(fade)}));
   ground.rotation.x=-Math.PI/2;ground.position.set(0,-.03,.4);ground.receiveShadow=true;scene.add(ground);meshes.push(ground);
   // Entry paving, cedar terrace and full-height glazing.
   for(let i=0;i<6;i++)box(3.25,.015,2.7+i*.51,1.13,.08,.37,0xd3ceba);
@@ -76,7 +76,7 @@ function buildHouseViewer(host) {
   for(let i=0;i<24;i++){let x=-6.9+random()*3.7,z=4.4+random()*.8;mesh(bush,0xb1b391,x,.04,z,.16,.13,.19);}
   // Forest: moss patches, undergrowth and a dense ring of pines. Tall trees stay behind and beside the house so
   // they never hide the front or the workers; the clearing in front only gets low shrubs and young pines.
-  for(let i=0;i<9;i++)box(-7+random()*14,-.022,-5.6+random()*11.2,1.4+random()*2.2,.012,1.1+random()*1.8,i%2?0x82965a:0x738a52);
+  for(let i=0;i<9;i++)box(-7+random()*14,-.022,-5.6+random()*11.2,1.4+random()*2.2,.012,1.1+random()*1.8,i%2?0x66863f:0x557a38);
   // Each service camera looks at its worker from a fixed side: keep a clearing along that line of sight so the
   // forest frames the scene from behind and the sides instead of hiding the work. [camera angle, target x, target z]
   const lookouts=[[1.04,4.15,.92],[.69,.1,2.68],[.7,4.25,.1],[.81,4.26,-2.02],[-1.08,-4.8,-.15],[-.28,-5.88,2.98]];

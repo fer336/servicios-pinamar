@@ -36,7 +36,7 @@ if (root) {
   };
   const mix = (a, b, amount) => a.map((value, i) => value + (b[i] - value) * amount);
   // The island with its trees is wider than tall: give narrow (phone) viewers more room.
-  const overviewView = (progress) => [0.72 - 0.66 * progress, 0, 2.0, 0.4, 0.49, (host.clientWidth / Math.max(1, host.clientHeight) < 1.3 ? 25 : 24) - 2 * progress];
+  const overviewView = (progress) => [0.72 - 0.66 * progress, 0, 2.0, 0.4, 0.49, (host.clientWidth / Math.max(1, host.clientHeight) < 1.3 ? 16 : 19.5) - 2 * progress];
   // Camera as a continuous function of scroll: orbit while the copy explodes (q < 0), zoom from the overview into the
   // first service (0..1), then hold each service and glide to the next one around its midpoint.
   function trackAt(p, q, intro) {
