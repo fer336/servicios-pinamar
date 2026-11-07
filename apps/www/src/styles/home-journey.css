@@ -170,7 +170,7 @@
 
 
 /* --- Site integration (not part of the package) --- */
-.hj{position:relative;background:#fffdfa;
+.hj{position:relative;overflow:clip;background:#fffdfa;
   /* The services section below overlaps its top by 34px (rounded corners): reserve that space so it never covers the pinned stage. */
   padding-bottom:34px}
 /* The site header floats over the top of the page: leave room for it before the tour starts. */
@@ -286,3 +286,23 @@
   .hj .tour .stepNav{grid-column:2;grid-row:1}
   .hj .tour .stepNav button{width:42px;height:42px}
 }
+
+/* --- Hero copy explosion (desktop) ---
+   --t (0..1) is set on .copy from the scroll position; every letter derives its own progress from it. */
+@media(min-width:781px) and (min-height:551px){.hj .journey{height:785svh}.hj .stage:not(.tour) .copy{position:relative;z-index:3}}
+.hj .copy{--t:0}
+.hj .copy.gone{pointer-events:none}
+.hj .xw{display:inline-block;white-space:nowrap}
+.hj .xl,.hj .xb{--k:clamp(0,calc((var(--t) - var(--d)) * 2.2),1);
+  transform:translate(calc(var(--dx) * var(--k) * var(--k)),calc(var(--dy) * var(--k) * var(--k))) rotate(calc(var(--r) * var(--k))) scale(calc(1 + (var(--s) - 1) * var(--k)));
+  opacity:clamp(0,calc(1 - var(--k) * 1.15),1)}
+.hj .xl{display:inline-block;will-change:transform,opacity}
+.hj #quote.xb{display:inline-block}
+/* The scene grows from its card to full screen when the tour starts. */
+.hj .stage.opening{animation:hjStage .8s ease both}
+.hj .stage.opening #viewer{animation:hjExpand .8s cubic-bezier(.2,.8,.2,1) both}
+.hj .stage.opening .copy,.hj .stage.opening .chooser{animation:hjRise .6s .35s ease both}
+@keyframes hjExpand{from{clip-path:var(--clip-from)}to{clip-path:inset(0 round 0)}}
+@keyframes hjStage{from{background-color:#fffdfa}to{background-color:#dbe2d3}}
+@keyframes hjRise{from{opacity:0;translate:0 24px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){.hj .xl,.hj .xb{transform:none!important}.hj .stage.opening,.hj .stage.opening *{animation:none!important}}

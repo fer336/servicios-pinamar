@@ -17,7 +17,7 @@ if (root) {
   const serviceLink = find('#serviceLink');
   const sheet = find('.sheet');
   const handle = find('.sheetHandle');
-  const intro = lead.textContent;
+  const introText = lead.textContent;
   const defaultQuote = quote.href;
   const defaultQuoteLabel = quote.textContent;
   const whatsappBase = defaultQuote.split('?')[0];
@@ -30,10 +30,65 @@ if (root) {
 
   const camera = ([angle, targetX, targetY, targetZ, lift, span]) => ({ angle, targetX, targetY, targetZ, lift, span });
   const journeyTop = () => journey.getBoundingClientRect().top + window.scrollY;
-  const stepSize = () => (journey.offsetHeight - stage.offsetHeight) / (stops.length + 0.6);
+  // Desktop only: one extra scroll step before the first service, in which the hero copy blows apart.
+  const desktopIntro = matchMedia('(min-width: 781px) and (min-height: 551px)');
+  const introSteps = () => (desktopIntro.matches ? 1 : 0);
+  const stepSize = () => (journey.offsetHeight - stage.offsetHeight) / (stops.length + 0.6 + introSteps());
+  const copy = find('.copy');
+
+  const vec = (el, rand) => {
+    const angle = rand() * Math.PI * 2;
+    const dist = 38 + rand() * 80;
+    el.style.cssText = '--dx:' + (Math.cos(angle) * dist).toFixed(1) + 'vw;--dy:' + (Math.sin(angle) * dist * 0.8 - 10).toFixed(1) + 'vh;--r:' +
+      ((rand() - 0.5) * 1440).toFixed(0) + 'deg;--s:' + (0.3 + rand() * 2.2).toFixed(2) + ';--d:' + (rand() * 0.5).toFixed(2);
+  };
+  // Wrap every letter in a span (words stay together so wrapping is unchanged); the text content is untouched.
+  function splitNode(node, rand) {
+    if (node.nodeType === 3) {
+      const fragment = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach((part) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) return fragment.append(' ');
+        const word = document.createElement('span');
+        word.className = 'xw';
+        for (const char of part) {
+          const letter = document.createElement('span');
+          letter.className = 'xl';
+          letter.textContent = char;
+          vec(letter, rand);
+          word.append(letter);
+        }
+        fragment.append(word);
+      });
+      node.replaceWith(fragment);
+    } else if (node.nodeType === 1) {
+      Array.from(node.childNodes).forEach((child) => splitNode(child, rand));
+    }
+  }
+  function split(element, seed) {
+    if (element.querySelector('.xl')) return;
+    let state = seed;
+    const rand = () => (state = (state * 16807) % 2147483647) / 2147483647;
+    splitNode(element, rand);
+  }
+  function prepareExplosion() {
+    if (!desktopIntro.matches) return;
+    ['.hj-eyebrow', 'h1', '#lead'].forEach((selector, i) => split(find(selector), 11 + i * 13));
+    ['.partner-note', '#quote', '.hint'].forEach((selector, i) => {
+      const block = find(selector);
+      if (block.classList.contains('xb')) return;
+      let state = 101 + i * 29;
+      vec(block, () => (state = (state * 16807) % 2147483647) / 2147483647);
+      block.classList.add('xb');
+    });
+  }
+  function explode(amount) {
+    copy.style.setProperty('--t', amount.toFixed(3));
+    copy.classList.toggle('gone', amount > 0.35);
+  }
 
   function go(index) {
-    window.scrollTo({ top: index < 0 ? journeyTop() : journeyTop() + (index + 1) * stepSize(), behavior: 'instant' });
+    window.scrollTo({ top: index < 0 ? journeyTop() : journeyTop() + (index + 1 + introSteps()) * stepSize(), behavior: 'instant' });
     sync();
   }
 
@@ -42,10 +97,23 @@ if (root) {
     handle.setAttribute('aria-expanded', String(open));
   }
 
+  function expandViewer(from) {
+    const viewer = find('#viewer');
+    const to = viewer.getBoundingClientRect();
+    viewer.style.setProperty('--clip-from', 'inset(' + [from.top - to.top, to.right - from.right, to.bottom - from.bottom, from.left - to.left].map((v) => Math.max(0, v).toFixed(0) + 'px').join(' ') + ' round 18px)');
+    stage.classList.remove('opening');
+    void stage.offsetWidth;
+    stage.classList.add('opening');
+    viewer.addEventListener('animationend', () => stage.classList.remove('opening'), { once: true });
+  }
+
   function updatePanel(index) {
     const exploring = index >= 0;
+    const wasTour = stage.classList.contains('tour');
+    const from = exploring && !wasTour && desktopIntro.matches && !motion.matches ? find('#viewer').getBoundingClientRect() : null;
     setSheet(false);
     stage.classList.toggle('tour', exploring);
+    if (from) expandViewer(from);
     find('#chapterName').hidden = !exploring;
     find('#reset').hidden = !exploring;
     Array.from(choices.children).forEach((link, i) => link.setAttribute('aria-current', String(i === index)));
@@ -60,7 +128,8 @@ if (root) {
     } else {
       choices.scrollTo({ left: 0, behavior: 'instant' });
       find('.viewLabel').textContent = 'Vista general';
-      lead.textContent = intro;
+      lead.textContent = introText;
+      if (desktopIntro.matches) split(lead, 7);
       quote.href = defaultQuote;
       quote.textContent = defaultQuoteLabel;
       find('#progress').textContent = 'Explorar por servicio';
@@ -80,15 +149,17 @@ if (root) {
   function sync() {
     queued = false;
     const p = Math.max(0, (window.scrollY - journeyTop()) / Math.max(1, stepSize()));
-    const index = Math.min(stops.length - 1, Math.round(p) - 1);
+    const q = p - introSteps();
+    const index = Math.min(stops.length - 1, Math.round(q) - 1);
     const changed = current !== index;
     if (changed) {
       current = index;
       updatePanel(index);
     }
+    explode(index < 0 && introSteps() ? Math.min(1, p / (introSteps() + 0.4)) : 0);
     if (!move) return;
     if (index < 0) {
-      const progress = motion.matches ? 0 : Math.min(1, p * 2);
+      const progress = motion.matches ? 0 : Math.min(1, p / (introSteps() + 0.5));
       if (changed || progress !== previousProgress) move(camera([0.72 - 0.66 * progress, 0, 2.1, 0, 0.49, 21 - 2 * progress]), -1, !changed || previousProgress === null);
       previousProgress = progress;
     } else if (changed) {
@@ -160,6 +231,12 @@ if (root) {
     current = null;
     sync();
   });
+  desktopIntro.addEventListener('change', () => {
+    prepareExplosion();
+    current = null;
+    sync();
+  });
+  prepareExplosion();
   sync();
 
   // Start the 3D engine once the page is idle; do not compete with the first paint.
