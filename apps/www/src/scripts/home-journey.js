@@ -30,8 +30,9 @@ if (root) {
 
   const camera = ([angle, targetX, targetY, targetZ, lift, span]) => ({ angle, targetX, targetY, targetZ, lift, span });
   const journeyTop = () => journey.getBoundingClientRect().top + window.scrollY;
-  // Desktop only: one extra scroll step before the first service, in which the hero copy blows apart.
-  const desktopIntro = matchMedia('(min-width: 781px) and (min-height: 551px)');
+  // Desktop and portrait phones: one extra scroll step before the first service, in which the hero copy blows apart.
+  const desktopIntro = matchMedia('(min-width: 781px) and (min-height: 551px), (max-width: 780px) and (orientation: portrait)');
+  const wide = matchMedia('(min-width: 781px)');
   const introSteps = () => (desktopIntro.matches ? 1 : 0);
   const stepSize = () => (journey.offsetHeight - stage.offsetHeight) / (stops.length + 0.6 + introSteps());
   const copy = find('.copy');
@@ -71,9 +72,21 @@ if (root) {
     const rand = () => (state = (state * 16807) % 2147483647) / 2147483647;
     splitNode(element, rand);
   }
+  // Collapsed phone sheet shows two lines of the lead: tag the words after them so CSS can hide them
+  // without an overflow clip (a clip would also cut the letters while they fly out).
+  function markLeadLines() {
+    const words = Array.from(lead.querySelectorAll('.xw'));
+    if (!words.length) return;
+    lead.classList.add('measure');
+    const tops = [...new Set(words.map((word) => word.offsetTop))].sort((a, b) => a - b);
+    const limit = tops[1] ?? Infinity;
+    words.forEach((word) => word.classList.toggle('x3', word.offsetTop > limit));
+    lead.classList.remove('measure');
+  }
   function prepareExplosion() {
     if (!desktopIntro.matches) return;
     ['.hj-eyebrow', 'h1', '#lead'].forEach((selector, i) => split(find(selector), 11 + i * 13));
+    markLeadLines();
     ['.partner-note', '#quote', '.hint'].forEach((selector, i) => {
       const block = find(selector);
       if (block.classList.contains('xb')) return;
@@ -83,6 +96,7 @@ if (root) {
     });
   }
   function explode(amount) {
+    if (amount > 0.02 && sheet.classList.contains('open')) setSheet(false);
     copy.style.setProperty('--t', amount.toFixed(3));
     copy.classList.toggle('gone', amount > 0.35);
   }
@@ -107,13 +121,22 @@ if (root) {
     viewer.addEventListener('animationend', () => stage.classList.remove('opening'), { once: true });
   }
 
+  function riseSheet() {
+    stage.classList.remove('rising');
+    void stage.offsetWidth;
+    stage.classList.add('rising');
+    setTimeout(() => stage.classList.remove('rising'), 800);
+  }
+
   function updatePanel(index) {
     const exploring = index >= 0;
     const wasTour = stage.classList.contains('tour');
-    const from = exploring && !wasTour && desktopIntro.matches && !motion.matches ? find('#viewer').getBoundingClientRect() : null;
+    const entering = exploring && !wasTour && desktopIntro.matches && !motion.matches;
+    const from = entering && wide.matches ? find('#viewer').getBoundingClientRect() : null;
     setSheet(false);
     stage.classList.toggle('tour', exploring);
     if (from) expandViewer(from);
+    else if (entering) riseSheet();
     find('#chapterName').hidden = !exploring;
     find('#reset').hidden = !exploring;
     Array.from(choices.children).forEach((link, i) => link.setAttribute('aria-current', String(i === index)));
@@ -129,7 +152,10 @@ if (root) {
       choices.scrollTo({ left: 0, behavior: 'instant' });
       find('.viewLabel').textContent = 'Vista general';
       lead.textContent = introText;
-      if (desktopIntro.matches) split(lead, 7);
+      if (desktopIntro.matches) {
+        split(lead, 7);
+        markLeadLines();
+      }
       quote.href = defaultQuote;
       quote.textContent = defaultQuoteLabel;
       find('#progress').textContent = 'Explorar por servicio';
@@ -226,7 +252,10 @@ if (root) {
     loadScene();
     schedule();
   }, { passive: true });
-  window.addEventListener('resize', schedule);
+  window.addEventListener('resize', () => {
+    markLeadLines();
+    schedule();
+  });
   motion.addEventListener('change', () => {
     current = null;
     sync();

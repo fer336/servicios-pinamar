@@ -289,7 +289,7 @@
 
 /* --- Hero copy explosion (desktop) ---
    --t (0..1) is set on .copy from the scroll position; every letter derives its own progress from it. */
-@media(min-width:781px) and (min-height:551px){.hj .journey{height:785svh}.hj .stage:not(.tour) .copy{position:relative;z-index:3}}
+@media(min-width:781px) and (min-height:551px){.hj .journey{height:785svh}.hj .stage:not(.tour) .copy{position:relative;z-index:3}.hj #quote.xb{display:inline-block}}
 .hj .copy{--t:0}
 .hj .copy.gone{pointer-events:none}
 .hj .xw{display:inline-block;white-space:nowrap}
@@ -297,7 +297,6 @@
   transform:translate(calc(var(--dx) * var(--k) * var(--k)),calc(var(--dy) * var(--k) * var(--k))) rotate(calc(var(--r) * var(--k))) scale(calc(1 + (var(--s) - 1) * var(--k)));
   opacity:clamp(0,calc(1 - var(--k) * 1.15),1)}
 .hj .xl{display:inline-block;will-change:transform,opacity}
-.hj #quote.xb{display:inline-block}
 /* The scene grows from its card to full screen when the tour starts. */
 .hj .stage.opening{animation:hjStage .8s ease both}
 .hj .stage.opening #viewer{animation:hjExpand .8s cubic-bezier(.2,.8,.2,1) both}
@@ -306,3 +305,16 @@
 @keyframes hjStage{from{background-color:#fffdfa}to{background-color:#dbe2d3}}
 @keyframes hjRise{from{opacity:0;translate:0 24px}to{opacity:1;translate:0 0}}
 @media(prefers-reduced-motion:reduce){.hj .xl,.hj .xb{transform:none!important}.hj .stage.opening,.hj .stage.opening *{animation:none!important}}
+
+/* Phones: the same explosion, one extra scroll step. The sheet and the lead must not clip the letters. */
+.hj .measure .x3{display:inline-block!important}
+@media(max-width:780px) and (orientation:portrait){
+  .hj .journey{height:735svh}
+  .hj .stage:not(.tour) .sheet:not(.open){overflow:visible}
+  .hj .stage:not(.tour) .sheet:not(.open) .copy{overflow:visible}
+  /* Overview: show two lines by hiding the words after them (no line-clamp, which would clip the letters). */
+  .hj .stage:not(.tour) .sheet:not(.open) .lead{display:block;overflow:visible}
+  .hj .stage:not(.tour) .sheet:not(.open) .lead .x3{display:none}
+  .hj .stage.rising .sheet{animation:hjRise .55s ease both}
+}
+@media(prefers-reduced-motion:reduce){.hj .stage.rising .sheet{animation:none}}
