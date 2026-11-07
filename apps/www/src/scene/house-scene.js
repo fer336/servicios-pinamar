@@ -28,12 +28,11 @@ function buildHouseViewer(host) {
     for(let j=0;j<5;j++){const r=h*(.197-j*.029);const branch=mesh(foliage,greens[(i+j)%4],x,h*(.40+.128*j),z,r,h*(.48-.042*j),r);branch.rotation.y=i*.8+j*.49;}
   }
   // Coastal ground: dune sand behind and around the house, a light beach in front, wet sand, then the sea.
-  box(0,-.49,3,15,.65,17.5,0xbfa57a);
+  box(0,-.49,1.425,15,.65,14.35,0xbfa57a);
   box(0,-.12,-.575,15,.18,10.35,0xcdbb8a);
   box(0,-.12,5.45,15,.18,1.7,0xe0cb9a);
   box(0,-.15,6.85,15,.18,1.1,0xbda57a);
   box(0,-.27,8.0,15,.30,1.2,0x5fc1c7);
-  box(0,-.30,10.175,15,.36,3.15,0x2b9bb7);
   // Entry paving, cedar terrace and full-height glazing.
   for(let i=0;i<6;i++)box(3.25,.015,2.7+i*.51,1.13,.08,.37,0xd3ceba);
   box(-.55,.16,1.5,8.4,.38,4.9,0x936c48);
@@ -86,7 +85,7 @@ function buildHouseViewer(host) {
   for(let i=0;i<10;i++)mesh(bush,i%2?0xfff1e6:0xf4cfc2,-6.5+random()*13,-.02,5.0+random()*1.9,.07,.04,.08);
   const ambient=[];
   const foam=0xf7fcfb;
-  for(const [z,count,amp] of [[7.42,9,.10],[8.55,7,.16],[9.7,6,.2]])for(let i=0;i<count;i++){
+  for(const [z,count,amp] of [[7.42,9,.10],[8.45,6,.09]])for(let i=0;i<count;i++){
     const w=1.1+random()*1.5,x=-7+(i+random()*.6)*(14/count);
     const line=box(x,-.115,z,w,.025,.09,foam);ambient.push({obj:line,kind:'foam',z,x,amp,phase:random()*6.3});
   }
