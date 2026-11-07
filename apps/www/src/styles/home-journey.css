@@ -321,7 +321,7 @@
 
 /* --- Sunny coast backdrop: sky, sun with slow rays, drifting clouds (behind the transparent canvas) --- */
 .hj .sky{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.hj .sky{--horizon:40%}
+.hj .sky{--horizon:24%}
 .hj .sun{position:absolute;right:17%;top:calc(var(--horizon) - 21%);width:clamp(40px,4.4vw,66px);aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle at 42% 38%,#fffdf0 0,#fff0b3 40%,#ffd36b 78%,#ffc04a 100%);
   box-shadow:0 0 0 clamp(5px,.7vw,10px) rgba(255,226,140,.26),0 0 clamp(26px,4vw,56px) clamp(8px,1.4vw,20px) rgba(255,214,120,.55)}
@@ -330,12 +330,12 @@
   -webkit-mask:radial-gradient(circle,#000 0,rgba(0,0,0,.5) 24%,transparent 56%);mask:radial-gradient(circle,#000 0,rgba(0,0,0,.5) 24%,transparent 56%);
   animation:hjRays 120s linear infinite}
 /* Pine forest down to the horizon (replaces the sea): three silhouette layers and a forest floor, with sun beams. */
-.hj .forest{position:absolute;left:0;right:0;bottom:0;height:calc(100% - var(--horizon) + 14%)}
-.hj .forest i{position:absolute;left:0;right:0;bottom:0;background-repeat:repeat-x;background-position:bottom left}
-.hj .forest .f1{height:96%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%23b8cfae' d='M0 100V72L12 72L20 50L16 50L28 26L24 26L35 0L46 26L42 26L54 50L50 50L58 72L80 72L88 58L84 58L95 36L91 36L102 12L113 36L109 36L120 58L116 58L124 72L140 72V100Z'/></svg>");background-size:auto 100%;opacity:.9}
-.hj .forest .f2{height:72%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%238db384' d='M0 100V66L10 66L18 44L14 44L24 20L20 20L30 0L40 20L36 20L46 44L42 44L52 66L70 66L78 50L74 50L84 28L80 28L92 4L104 28L100 28L110 50L106 50L116 66L140 66V100Z'/></svg>");background-size:auto 100%;background-position:bottom -60px left}
-.hj .forest .f3{height:52%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%235f9061' d='M0 100V72L12 72L20 50L16 50L28 26L24 26L35 0L46 26L42 26L54 50L50 50L58 72L80 72L88 58L84 58L95 36L91 36L102 12L113 36L109 36L120 58L116 58L124 72L140 72V100Z'/></svg>");background-size:auto 100%;background-position:bottom -20px left}
-.hj .forest .floor{position:absolute;left:0;right:0;bottom:0;height:12%;background:linear-gradient(180deg,rgba(55,100,63,0) 0,#2f5a39 100%)}
+.hj .forest{position:absolute;inset:0}
+.hj .forest i{position:absolute;left:0;right:0;bottom:calc(100% - var(--horizon) - 3%);background-repeat:repeat-x;background-position:bottom left}
+.hj .forest .f1{height:26%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%23b8cfae' d='M0 100V72L12 72L20 50L16 50L28 26L24 26L35 0L46 26L42 26L54 50L50 50L58 72L80 72L88 58L84 58L95 36L91 36L102 12L113 36L109 36L120 58L116 58L124 72L140 72V100Z'/></svg>");background-size:auto 100%;opacity:.9}
+.hj .forest .f2{height:21%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%238db384' d='M0 100V66L10 66L18 44L14 44L24 20L20 20L30 0L40 20L36 20L46 44L42 44L52 66L70 66L78 50L74 50L84 28L80 28L92 4L104 28L100 28L110 50L106 50L116 66L140 66V100Z'/></svg>");background-size:auto 100%;background-position:bottom -60px left}
+.hj .forest .f3{height:15%;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100' preserveAspectRatio='none'><path fill='%235f9061' d='M0 100V72L12 72L20 50L16 50L28 26L24 26L35 0L46 26L42 26L54 50L50 50L58 72L80 72L88 58L84 58L95 36L91 36L102 12L113 36L109 36L120 58L116 58L124 72L140 72V100Z'/></svg>");background-size:auto 100%;background-position:bottom -20px left}
+.hj .forest .floor{position:absolute;left:0;right:0;bottom:0;top:var(--horizon);background:linear-gradient(180deg,#b9b78b 0,#c4bb90 16%,#cbbe94 100%)}
 .hj .beams{position:absolute;inset:0;
   background:repeating-linear-gradient(104deg,rgba(255,243,196,0) 0 46px,rgba(255,243,196,.26) 46px 80px,rgba(255,243,196,0) 80px 150px);
   -webkit-mask:radial-gradient(ellipse 70% 90% at 82% 14%,#000 0,rgba(0,0,0,.45) 45%,transparent 78%);mask:radial-gradient(ellipse 70% 90% at 82% 14%,#000 0,rgba(0,0,0,.45) 45%,transparent 78%);
@@ -350,5 +350,5 @@
 @keyframes hjRays{to{transform:rotate(360deg)}}
 @keyframes hjCloud{to{left:125%}}
 @keyframes hjBeams{from{opacity:.55}to{opacity:1}}
-@media(max-width:780px) and (orientation:portrait){.hj .sky{--horizon:36%}.hj .sun{right:14%;width:40px}}
+@media(max-width:780px) and (orientation:portrait){.hj .sky{--horizon:22%}.hj .sun{right:14%;width:40px}}
 @media(prefers-reduced-motion:reduce){.hj .sun::before,.hj .cloud,.hj .beams{animation:none}.hj .c1{left:8%}.hj .c2{left:48%}.hj .c3{left:70%}}

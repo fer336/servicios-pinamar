@@ -27,9 +27,13 @@ function buildHouseViewer(host) {
     mesh(trunk,0x816d50,x,h*.30,z,.10*h/5,h*.60,.10*h/5);
     for(let j=0;j<5;j++){const r=h*(.197-j*.029);const branch=mesh(foliage,greens[(i+j)%4],x,h*(.40+.128*j),z,r,h*(.48-.042*j),r);branch.rotation.y=i*.8+j*.49;}
   }
-  // Forest floor: a wide island of needle-covered earth so the house sits inside the pine forest.
-  box(0,-.49,0,20,.65,16,0x6f6045);
-  box(0,-.12,0,20,.18,16,0x9d966a);
+  // Forest floor: a flat disc of earth whose edge fades out (alpha map), so there is no slab edge and the ground
+  // melts into the forest floor of the backdrop instead of reading as a floating platform.
+  const fade=document.createElement('canvas');fade.width=fade.height=256;
+  const fadeCtx=fade.getContext('2d'),fadeGradient=fadeCtx.createRadialGradient(128,128,128*.5,128,128,128);
+  fadeGradient.addColorStop(0,'#fff');fadeGradient.addColorStop(1,'#000');fadeCtx.fillStyle=fadeGradient;fadeCtx.fillRect(0,0,256,256);
+  const ground=new T.Mesh(new T.CircleGeometry(13,56),new T.MeshLambertMaterial({color:0x857c5b,transparent:true,alphaMap:new T.CanvasTexture(fade)}));
+  ground.rotation.x=-Math.PI/2;ground.position.set(0,-.03,.4);ground.receiveShadow=true;scene.add(ground);meshes.push(ground);
   // Entry paving, cedar terrace and full-height glazing.
   for(let i=0;i<6;i++)box(3.25,.015,2.7+i*.51,1.13,.08,.37,0xd3ceba);
   box(-.55,.16,1.5,8.4,.38,4.9,0x936c48);
@@ -72,7 +76,7 @@ function buildHouseViewer(host) {
   for(let i=0;i<24;i++){let x=-6.9+random()*3.7,z=4.4+random()*.8;mesh(bush,0xb1b391,x,.04,z,.16,.13,.19);}
   // Forest: moss patches, undergrowth and a dense ring of pines. Tall trees stay behind and beside the house so
   // they never hide the front or the workers; the clearing in front only gets low shrubs and young pines.
-  for(let i=0;i<9;i++)box(-8+random()*16,-.108,-6.4+random()*12.4,1.4+random()*2.2,.016,1.1+random()*1.8,i%2?0x82965a:0x738a52);
+  for(let i=0;i<9;i++)box(-7+random()*14,-.022,-5.6+random()*11.2,1.4+random()*2.2,.012,1.1+random()*1.8,i%2?0x82965a:0x738a52);
   // Each service camera looks at its worker from a fixed side: keep a clearing along that line of sight so the
   // forest frames the scene from behind and the sides instead of hiding the work. [camera angle, target x, target z]
   const lookouts=[[1.04,4.15,.92],[.69,.1,2.68],[.7,4.25,.1],[.81,4.26,-2.02],[-1.08,-4.8,-.15],[-.28,-5.88,2.98]];
@@ -80,8 +84,9 @@ function buildHouseViewer(host) {
   const trees=[[-6,-3.1],[-4.9,-4.7],[.6,-4.8],[5.9,-4.4],[6.6,-2.8],[-6.45,2.2]];
   const free=(x,z,gap)=>trees.every(t=>Math.hypot(t[0]-x,t[1]-z)>gap);
   let planted=0;
-  for(let n=0;n<900&&planted<72;n++){
-    const x=-9.3+random()*18.6,z=-7.3+random()*14.6;
+  for(let n=0;n<900&&planted<22;n++){
+    const x=-10+random()*20,z=-8+random()*16;
+    if(Math.hypot(x/10.3,(z-.4)/8.4)>1)continue;
     if(x>-5.5&&x<6.3&&z>-3.7&&z<5.7)continue;
     let h=4.3+random()*4.4;
     if(z>5.7||(x>6.3&&z>-2.2))h=1.6+random()*1.1;
@@ -89,19 +94,22 @@ function buildHouseViewer(host) {
     if(inView(x,z,2.3+h*.14)||!free(x,z,h>3?1.35:.8))continue;
     trees.push([x,z]);pine(x,z,h,planted+7);planted++;
   }
-  for(let i=0;i<70;i++){
-    const x=-9.4+random()*18.8,z=-7.4+random()*14.8;
+  for(let i=0;i<28;i++){
+    const x=-10+random()*20,z=-8+random()*16;
+    if(Math.hypot(x/10.3,(z-.4)/8.4)>1)continue;
     if((x>-5.4&&x<6.2&&z>-3.6&&z<5.6)||inView(x,z,1.7))continue;
     const r=.18+random()*.36;mesh(bush,greens[i%4],x,.05+r*.45,z,r,r*.7,r*.86);
   }
   const fern=new T.ConeGeometry(1,1,5);
-  for(let i=0;i<60;i++){
-    const x=-9.4+random()*18.8,z=-7.4+random()*14.8;
+  for(let i=0;i<30;i++){
+    const x=-10+random()*20,z=-8+random()*16;
+    if(Math.hypot(x/10.3,(z-.4)/8.4)>1)continue;
     if((x>-5.2&&x<6.2&&z>-3.4&&z<5.5)||inView(x,z,1.4))continue;
     const h=.3+random()*.4;mesh(fern,i%3?0x7f9f63:0x9bb36f,x,h*.5-.02,z,.09,h,.09);
   }
-  for(let i=0;i<14;i++){
-    const x=-9.2+random()*18.4,z=-7.2+random()*14.4;
+  for(let i=0;i<10;i++){
+    const x=-10+random()*20,z=-8+random()*16;
+    if(Math.hypot(x/10.3,(z-.4)/8.4)>1)continue;
     if((x>-5.2&&x<6.2&&z>-3.4&&z<5.5)||inView(x,z,1.5))continue;
     const r=.16+random()*.3;mesh(bush,0x9a9484,x,.0+r*.3,z,r,r*.55,r*.8);
   }
