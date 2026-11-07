@@ -203,3 +203,13 @@
 .service-card:hover .service-card__scene{transform:none}
 .service-card .service-card__scene:hover{background:rgba(255,255,255,.3)}
 .service-card__scene:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}
+
+/* Short desktop viewports (e.g. 1366x650): keep the overview inside one screen, chooser included. */
+@media(min-width:781px) and (max-height:780px){
+  .hj .stage:not(.tour){padding-top:100px;padding-bottom:14px}
+  .hj .stage:not(.tour) .partner-note,.hj .stage:not(.tour) .hint{display:none}
+  .hj h1{font-size:clamp(30px,min(3.3vw,6.6vh),56px);margin:8px 0}
+  .hj .copy .lead{font-size:17px;line-height:1.45}
+  .hj .stage:not(.tour) .chooser{margin-top:14px;padding-top:12px}
+  .hj .stage:not(.tour) #viewer{height:clamp(300px,52vh,660px)}
+}
