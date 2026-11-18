@@ -7,7 +7,10 @@ export type ServiceSlug =
   | "pintura"
   | "hidrolavado"
   | "fumigaciones"
-  | "jardineria";
+  | "jardineria"
+  | "herreria"
+  | "durlock"
+  | "carpinteria";
 export const SERVICE_SLUGS: ServiceSlug[] = [
   "gas",
   "plomeria",
@@ -15,6 +18,9 @@ export const SERVICE_SLUGS: ServiceSlug[] = [
   "hidrolavado",
   "fumigaciones",
   "jardineria",
+  "herreria",
+  "durlock",
+  "carpinteria",
 ];
 
 export const SERVICE_TITLES: Record<string, string> = {
@@ -24,6 +30,9 @@ export const SERVICE_TITLES: Record<string, string> = {
   hidrolavado: "Hidrolavado",
   fumigaciones: "Fumigaciones",
   jardineria: "Jardinería",
+  herreria: "Herrería",
+  durlock: "Durlock",
+  carpinteria: "Carpintería",
 };
 
 export interface Trabajo {
