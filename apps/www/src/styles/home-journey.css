@@ -358,3 +358,22 @@
 /* No label in the overview: the place chip only shows while a service is open. */
 .hj .stage:not(.tour) .viewLabel{display:none}
 .hj .hj-eyebrow i{opacity:clamp(0,calc(1 - var(--t,0) * 3),1)}
+/* --- Tour without the detail card ---
+   While touring the services only the WhatsApp button stays, floating over the scene; the title, description,
+   status and service link stay in the HTML (SEO, no-JS) but are not shown. */
+.hj .tour .copy>:not(#quote){display:none!important}
+.hj .tour .copy #quote{box-shadow:0 12px 32px rgba(16,35,38,.26)}
+@media(min-width:781px) and (min-height:551px){
+  .hj .tour .copy{left:auto;right:4vw;bottom:128px;padding:0;background:none;border:0;border-radius:0;box-shadow:none;max-width:none}
+  .hj .tour .copy #quote{padding:14px 24px;font-size:15px}
+}
+@media(max-width:780px) and (orientation:portrait){
+  .hj .tour .sheetHandle{visibility:hidden;height:14px}
+  .hj .tour .copy{flex:none;padding-top:0}
+}
+@media(max-width:1000px) and (max-height:550px) and (orientation:landscape){
+  .hj .stage.tour{grid-template-columns:minmax(0,1fr)}
+  .hj .tour #viewer{grid-column:1/-1}
+  .hj .tour .copy{grid-column:1/-1;grid-row:1;align-self:end;justify-self:end;width:auto;position:relative;z-index:2;padding:0 14px 10px;background:none;overflow:visible}
+  .hj .tour .copy #quote{display:inline-flex;width:auto;min-height:0;padding:9px 16px;font-size:13px}
+}
