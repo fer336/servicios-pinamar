@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
 import { partnerNote } from '../../data/partner-copy';
 import { SERVICE_SLUGS } from '../../data/trabajos/api';
-import { getRelatedServices, getServiceUrl, serviceAreas, servicePages, whatsapp, whatsappMessage, whatsappNumber } from '../../data/service-pages';
+import { getRelatedServices, getServiceUrl, serviceAreas, servicePages, whatsapp } from '../../data/service-pages';
 
 export function getStaticPaths() {
   return servicePages.map((service) => ({
@@ -18,9 +18,6 @@ const { service } = Astro.props;
 const canonical = getServiceUrl(service.slug);
 const hasWorks = (SERVICE_SLUGS as readonly string[]).includes(service.slug);
 const relatedServices = getRelatedServices(service.slug);
-const credentialWhatsapp = 'credential' in service && service.credential
-  ? `${whatsappNumber}?text=${encodeURIComponent(whatsappMessage(service.slug === 'plomeria' ? 'plomería' : service.slug))}`
-  : undefined;
 
 const baseUrl = 'https://www.serviciospinamar.com';
 const breadcrumbSchema = {
@@ -121,22 +118,6 @@ const structuredData = [serviceSchema, ...subtypeSchemas, faqSchema, breadcrumbS
               <p class="eyebrow">Qué incluye</p>
               <h2>Un servicio claro para resolver lo que necesita tu propiedad</h2>
             </header>
-            {'credential' in service && service.credential && credentialWhatsapp && (
-              <aside class="service-credential" aria-label={`Matrícula y habilitación de ${service.credential.name}`}>
-                <div class="service-credential__body">
-                  <p class="eyebrow service-credential__eyebrow">Responsable técnico</p>
-                  <h3>{service.credential.name}</h3>
-                  <span class="service-credential__rule" aria-hidden="true"></span>
-                  <p>{service.credential.description}</p>
-                  {service.credential.items.length > 0 && (
-                    <ul class="service-credential__meta">
-                      {service.credential.items.map((item) => <li>{item}</li>)}
-                    </ul>
-                  )}
-                </div>
-                <a class="button button-primary service-credential__cta" href={credentialWhatsapp} target="_blank" rel="noopener"><Icon name="whatsapp" size={18} /> Consultar por WhatsApp</a>
-              </aside>
-            )}
           </div>
           <div class="service-list-panel">
             <ul>

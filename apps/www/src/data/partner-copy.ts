@@ -4,6 +4,17 @@ export const partnerNote =
 export const aboutText =
   'Servicios Pinamar facilita el contacto entre clientes y profesionales independientes de la zona. Recibimos las consultas, comunicamos los presupuestos preparados por los prestadores y facilitamos la coordinación de visitas. Cada profesional realiza el trabajo y acuerda directamente con el cliente sus condiciones y pagos.';
 
+export const intermediaryHeadline = 'Menos llamados, más soluciones.';
+
+export const intermediaryText =
+  'Centralizamos la consulta, el presupuesto y la coordinación. El profesional se ocupa de lo suyo.';
+
+export const intermediarySteps = [
+  { title: 'Consultás', text: 'Nos contás qué necesitás por WhatsApp, con fotos o videos si los tenés.' },
+  { title: 'Verificamos y conectamos', text: 'Te conectamos con un profesional verificado y te enviamos su presupuesto.' },
+  { title: 'El profesional trabaja y responde por su trabajo', text: 'Cada servicio lo realiza el profesional asignado, que es responsable del trabajo y de su garantía.' }
+];
+
 export const howWeWork = [
   'Nos contás qué necesitás.',
   'Consultamos al profesional correspondiente.',
