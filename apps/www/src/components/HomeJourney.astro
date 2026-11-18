@@ -4,12 +4,13 @@ import { whatsapp } from '../data/service-pages';
 import { partnerNote } from '../data/partner-copy';
 import threeUrl from '../vendor/home-journey/three.min.js?url';
 import crewUrl from '../vendor/home-journey/crew.js?url';
+import tradesUrl from '../scene/trades-crew.js?url';
 import sceneUrl from '../scene/house-scene.js?url';
 import '../styles/home-journey.css';
 
-const lead = 'Mantenimiento de casas y propiedades en Pinamar: pintura, hidrolavado, plomería, gas, fumigaciones y jardinería para casas, comercios e inmobiliarias en Cariló, Valeria del Mar y Ostende.';
+const lead = 'Mantenimiento de casas y propiedades en Pinamar: pintura, hidrolavado, plomería, gas, fumigaciones, jardinería, herrería, durlock y carpintería para casas, comercios e inmobiliarias en Cariló, Valeria del Mar y Ostende.';
 ---
-<section id="inicio" class="hj" data-stops={JSON.stringify(journeyStops)} data-scripts={JSON.stringify([threeUrl, crewUrl, sceneUrl])}>
+<section id="inicio" class="hj" data-stops={JSON.stringify(journeyStops)} data-scripts={JSON.stringify([threeUrl, crewUrl, tradesUrl, sceneUrl])}>
   <div class="journey">
     <div class="stage">
       <div id="viewer">

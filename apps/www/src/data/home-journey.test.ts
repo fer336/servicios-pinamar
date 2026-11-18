@@ -3,10 +3,14 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { journeyStops } from './home-journey.ts';
 
-// S2: six services, in this order, and no Electricidad.
+// S2: the six original services, then three herrería stops, durlock and carpintería; no Electricidad.
 assert.deepEqual(
   journeyStops.map((stop) => stop.service),
-  ['Pintura', 'Hidrolavado', 'Plomería', 'Gas', 'Fumigaciones', 'Jardinería y poda']
+  ['Pintura', 'Hidrolavado', 'Plomería', 'Gas', 'Fumigaciones', 'Jardinería y poda', 'Herrería · Rejas', 'Herrería · Carteles', 'Herrería · Techos', 'Durlock', 'Carpintería']
+);
+assert.deepEqual(
+  journeyStops.slice(6).map((stop) => stop.href),
+  ['/servicios/herreria/', '/servicios/herreria/', '/servicios/herreria/', '/servicios/durlock/', '/servicios/carpinteria/']
 );
 assert.equal(JSON.stringify(journeyStops).toLowerCase().includes('electric'), false);
 
@@ -34,5 +38,18 @@ assert.ok(scene.includes('function buildHouseViewer(host)'), 'the viewer entry p
 assert.ok(scene.includes('// Forest:'), 'the forest must be part of the scene');
 assert.equal(scene.includes('0x5fc1c7'), false, 'no sea in the scene');
 assert.equal(scene.includes('0x96a684'), false, 'the green island top must be gone');
+
+// The new trades: one worker per new stop, welders with sparks, and every stop with its mobile framing.
+const trades = readFileSync(new URL('../scene/trades-crew.js', import.meta.url), 'utf8');
+assert.ok(trades.includes('function buildTradesCrew(scene)'), 'the trades crew entry point must exist');
+assert.equal((trades.match(/^\s*\['[^']+', '[^']+'\],?$/gm) || []).length, journeyStops.length - 6, 'one message pair per new stop');
+assert.ok(trades.includes('sparks.push'), 'welders throw sparks');
+assert.ok(scene.includes('buildTradesCrew(scene)'), 'the scene builds the new trades');
+for (const name of ['mobileSpans', 'mobileHalfHeights']) {
+  const values = scene.match(new RegExp(`const ${name}=\\[([^\\]]+)\\]`))?.[1].split(',') ?? [];
+  assert.equal(values.length, journeyStops.length, `${name} needs one value per stop`);
+}
+const journeyComponent = readFileSync(new URL('../components/HomeJourney.astro', import.meta.url), 'utf8');
+assert.ok(journeyComponent.includes('trades-crew.js?url'), 'the trades crew script is loaded');
 
 console.log('home-journey data ok');

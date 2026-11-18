@@ -1,4 +1,6 @@
-export type JourneyStopId = 'pintura' | 'hidrolavado' | 'plomeria' | 'gas' | 'fumigaciones' | 'jardineria';
+export type JourneyStopId =
+  | 'pintura' | 'hidrolavado' | 'plomeria' | 'gas' | 'fumigaciones' | 'jardineria'
+  | 'herreria-rejas' | 'herreria-carteles' | 'herreria-techos' | 'durlock' | 'carpinteria';
 
 // Camera framing exactly as shipped in the design package: [angle, targetX, targetY, targetZ, lift, span].
 export type JourneyCamera = readonly [number, number, number, number, number, number];
@@ -14,6 +16,7 @@ export interface JourneyStop {
 
 // Order matters: it is the chooser order and the index the 3D scene uses for its worker crew.
 // The package also ships an "Electricidad" stop; the site has no such service page, so it is left out.
+// Stops 7-11 are drawn by src/scene/trades-crew.js.
 export const journeyStops: JourneyStop[] = [
   {
     id: 'pintura',
@@ -62,5 +65,45 @@ export const journeyStops: JourneyStop[] = [
     description: 'El jardinero poda una rama baja del pino con una herramienta de pértiga. También coordinamos poda de arbustos, corte de pasto y mantenimiento del jardín.',
     href: '/servicios/jardineria/',
     camera: [-0.28, -5.88, 1.7, 2.98, 0.31, 9.4]
+  },
+  {
+    id: 'herreria-rejas',
+    service: 'Herrería · Rejas',
+    place: 'El frente',
+    description: 'El herrero suelda uno a uno los barrotes de la reja del frente. Consultá por rejas, frentes completos y portones corredizos o elevadizos.',
+    href: '/servicios/herreria/',
+    camera: [0.35, -1.0, 0.95, 6.3, 0.22, 6.2]
+  },
+  {
+    id: 'herreria-carteles',
+    service: 'Herrería · Carteles',
+    place: 'El taller',
+    description: 'El herrero suelda el marco del cartel en la mesa de trabajo y le coloca la chapa. También hacemos parrillas y trabajos de herrería a medida.',
+    href: '/servicios/herreria/',
+    camera: [0.45, 1.7, 0.85, 6.8, 0.42, 5.6]
+  },
+  {
+    id: 'herreria-techos',
+    service: 'Herrería · Techos',
+    place: 'La estructura del quincho',
+    description: 'Desde el andamio, el herrero suelda las correas de perfil C sobre la estructura de caño y después se colocan las chapas. Consultá por estructuras de techo.',
+    href: '/servicios/herreria/',
+    camera: [-0.55, 5.8, 1.9, 6.2, 0.38, 7.4]
+  },
+  {
+    id: 'durlock',
+    service: 'Durlock',
+    place: 'La pared trasera',
+    description: 'El colocador fija la placa de durlock a los montantes y pasa la llana con masilla sobre la junta. Consultá por tabiques, cielorrasos y revestimientos.',
+    href: '/servicios/durlock/',
+    camera: [3.69, -1.4, 1.35, -3.2, 0.22, 6.6]
+  },
+  {
+    id: 'carpinteria',
+    service: 'Carpintería',
+    place: 'El deck del jardín',
+    description: 'El carpintero coloca y clava las tablas del deck de madera sobre los tirantes. Consultá por decks, pérgolas y trabajos de madera a medida.',
+    href: '/servicios/carpinteria/',
+    camera: [0.55, -4.3, 0.45, 5.6, 0.45, 6.4]
   }
 ];

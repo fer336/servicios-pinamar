@@ -1,6 +1,7 @@
 // Shared geometry for the orbital overview and the service detail cameras.
 // Derived from the design package's scene.js (sha256 e2750e9b...). Local changes: the house now stands on a
-// sunny pine forest (dense pines, undergrowth, forest floor) with warm light.
+// sunny pine forest (dense pines, undergrowth, forest floor) with warm light, and five more trades
+// (src/scene/trades-crew.js) work in the front garden, on the right and on the back wall.
 function buildHouseViewer(host) {
   const T = THREE;
   const scene = new T.Scene();
@@ -69,17 +70,21 @@ function buildHouseViewer(host) {
   box(3.98,.40,-2.1,.10,.59,.10,0xc1a560);
   // The entry paving continues as a trail through the front clearing.
   for(let i=0;i<5;i++)box(3.25,.015,5.76+i*.51,1.13,.08,.37,0xd3ceba);
+  // Ground taken by the trades' work (fence, sign table, roof structure, drywall, deck): no plants there.
+  const sites=[[-1,6.5,1.7],[1.7,6.9,1.3],[5.9,6.2,1.9],[-1.4,-3.6,1.5],[-4.3,5.4,1.8]];
+  const onSite=(x,z,pad=0)=>sites.some(([sx,sz,r])=>Math.hypot(x-sx,z-sz)<r+pad);
   let seed=42;
   function random(){seed=seed*16807%2147483647;return seed/2147483647}
   for(const [i,p] of [[-6,-3.1,6.9],[-4.9,-4.7,7.9],[.6,-4.8,6.6],[5.9,-4.4,7.4],[6.6,-2.8,5.1],[-6.45,2.2,4.5]].entries())pine(...p,i);
   for(let i=0;i<35;i++){const x=4.9+random()*1.8,z=.8+random()*3.9,r=.22+random()*.38;mesh(bush,greens[i%4],x,.06+r*.45,z,r,r*.69,r*.86);}
-  for(let i=0;i<24;i++){let x=-6.9+random()*3.7,z=4.4+random()*.8;mesh(bush,0xb1b391,x,.04,z,.16,.13,.19);}
+  for(let i=0;i<24;i++){let x=-6.9+random()*3.7,z=4.4+random()*.8;if(!onSite(x,z))mesh(bush,0xb1b391,x,.04,z,.16,.13,.19);}
   // Forest: moss patches, undergrowth and a dense ring of pines. Tall trees stay behind and beside the house so
   // they never hide the front or the workers; the clearing in front only gets low shrubs and young pines.
   for(let i=0;i<9;i++)box(-7+random()*14,-.022,-5.6+random()*11.2,1.4+random()*2.2,.012,1.1+random()*1.8,i%2?0x66863f:0x557a38);
   // Each service camera looks at its worker from a fixed side: keep a clearing along that line of sight so the
   // forest frames the scene from behind and the sides instead of hiding the work. [camera angle, target x, target z]
-  const lookouts=[[1.04,4.15,.92],[.69,.1,2.68],[.7,4.25,.1],[.81,4.26,-2.02],[-1.08,-4.8,-.15],[-.28,-5.88,2.98]];
+  const lookouts=[[1.04,4.15,.92],[.69,.1,2.68],[.7,4.25,.1],[.81,4.26,-2.02],[-1.08,-4.8,-.15],[-.28,-5.88,2.98],
+    [.35,-1,6.3],[.45,1.7,6.8],[-.55,5.8,6.2],[3.69,-1.4,-3.2],[.55,-4.3,5.6]];
   const inView=(x,z,w)=>lookouts.some(([a,tx,tz])=>{const dx=x-tx,dz=z-tz,along=dx*Math.sin(a)+dz*Math.cos(a);return along>.3&&Math.abs(dx*Math.cos(a)-dz*Math.sin(a))<w});
   const trees=[[-6,-3.1],[-4.9,-4.7],[.6,-4.8],[5.9,-4.4],[6.6,-2.8],[-6.45,2.2]];
   const free=(x,z,gap)=>trees.every(t=>Math.hypot(t[0]-x,t[1]-z)>gap);
@@ -91,31 +96,32 @@ function buildHouseViewer(host) {
     let h=4.3+random()*4.4;
     if(z>5.7||(x>6.3&&z>-2.2))h=1.6+random()*1.1;
     else if(x<-5.5&&z>.6)h=2.2+random()*1.4;
-    if(inView(x,z,2.3+h*.14)||!free(x,z,h>3?1.35:.8))continue;
+    if(inView(x,z,2.3+h*.14)||!free(x,z,h>3?1.35:.8)||onSite(x,z,.6))continue;
     trees.push([x,z]);pine(x,z,h,planted+7);planted++;
   }
   for(let i=0;i<28;i++){
     const x=-10+random()*20,z=-8+random()*16;
     if(Math.hypot(x/10.3,(z-.4)/8.4)>1)continue;
-    if((x>-5.4&&x<6.2&&z>-3.6&&z<5.6)||inView(x,z,1.7))continue;
+    if((x>-5.4&&x<6.2&&z>-3.6&&z<5.6)||inView(x,z,1.7)||onSite(x,z))continue;
     const r=.18+random()*.36;mesh(bush,greens[i%4],x,.05+r*.45,z,r,r*.7,r*.86);
   }
   const fern=new T.ConeGeometry(1,1,5);
   for(let i=0;i<30;i++){
     const x=-10+random()*20,z=-8+random()*16;
     if(Math.hypot(x/10.3,(z-.4)/8.4)>1)continue;
-    if((x>-5.2&&x<6.2&&z>-3.4&&z<5.5)||inView(x,z,1.4))continue;
+    if((x>-5.2&&x<6.2&&z>-3.4&&z<5.5)||inView(x,z,1.4)||onSite(x,z))continue;
     const h=.3+random()*.4;mesh(fern,i%3?0x7f9f63:0x9bb36f,x,h*.5-.02,z,.09,h,.09);
   }
   for(let i=0;i<10;i++){
     const x=-10+random()*20,z=-8+random()*16;
     if(Math.hypot(x/10.3,(z-.4)/8.4)>1)continue;
-    if((x>-5.2&&x<6.2&&z>-3.4&&z<5.5)||inView(x,z,1.5))continue;
+    if((x>-5.2&&x<6.2&&z>-3.4&&z<5.5)||inView(x,z,1.5)||onSite(x,z))continue;
     const r=.16+random()*.3;mesh(bush,0x9a9484,x,.0+r*.3,z,r,r*.55,r*.8);
   }
   scene.updateMatrixWorld(true);
   // Software projection shares the same camera when WebGL is unavailable.
-  const crew=buildCrew(scene);
+  // The vendored crew keeps its unused electrician (index 6) out of the journey; the new trades follow the six services.
+  const crew=[...buildCrew(scene).slice(0,6),...(typeof buildTradesCrew==='function'?buildTradesCrew(scene):[])];
   let active=-1,visible=true,lastTime=0,loopId=0,crewStarted=0,workDone=false;
   const actionStatus=document.querySelector("#actionStatus");
   const reduced=matchMedia("(prefers-reduced-motion: reduce)");
@@ -150,8 +156,8 @@ function buildHouseViewer(host) {
     const landscapeHalfHeight=Math.max(pose.span/2/aspect,pose.span*.29);
     // Mobile has a dedicated scene area, clear of the description and controls.
     const compact=matchMedia('(max-width:780px), (max-width:1000px) and (max-height:550px)').matches;
-    const mobileSpans=[4.4,4.8,3.8,4.4,5.8,5.4,4.2];
-    const mobileHalfHeights=[1.75,1.7,1.65,1.85,2.8,2.55,1.8];
+    const mobileSpans=[4.4,4.8,3.8,4.4,5.8,5.4,4.2,3.5,5.2,4.8,4.4];
+    const mobileHalfHeights=[1.75,1.7,1.65,1.85,2.8,2.55,1.75,1.4,2.2,2.2,1.55];
     const shown=Math.max(0,active);
     const tourHalf=compact?Math.max(mobileSpans[shown]/2/aspect,mobileHalfHeights[shown]):Math.min(landscapeHalfHeight,pose.span*.41);
     const half=landscapeHalfHeight+(tourHalf-landscapeHalfHeight)*pose.tour;
