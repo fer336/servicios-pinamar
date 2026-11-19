@@ -52,4 +52,11 @@ for (const name of ['mobileSpans', 'mobileHalfHeights']) {
 const journeyComponent = readFileSync(new URL('../components/HomeJourney.astro', import.meta.url), 'utf8');
 assert.ok(journeyComponent.includes('trades-crew.js?url'), 'the trades crew script is loaded');
 
+// Page scroll passes straight to the sections below; the tour opens only on demand (tap on the house or a service).
+const client = readFileSync(new URL('../scripts/home-journey.js', import.meta.url), 'utf8');
+assert.equal(/addEventListener\('scroll'/.test(client), false, 'page scroll must not drive the journey');
+assert.ok(client.includes("host.addEventListener('click'"), 'tapping the house opens the tour');
+assert.ok(client.includes('hj-touring'), 'the page is locked while the tour is open');
+assert.ok(journeyComponent.includes('id="enterTour"'), 'there is a visible button to open the tour');
+
 console.log('home-journey data ok');

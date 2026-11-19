@@ -29,6 +29,7 @@ const iconFor = (id: string) => icons[id.startsWith('herreria') ? 'herreria' : i
       <div id="viewer">
         <div class="sky" aria-hidden="true"><div class="sun"></div><div class="beams"></div><div class="forest"><i class="f1"></i><i class="f2"></i><i class="f3"></i><b class="floor"></b></div><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i></div>
         <div class="frame"><span class="viewLabel" aria-live="polite">Vista general</span><button id="reset" type="button" hidden>↺ Vista general</button></div>
+        <button id="enterTour" class="enterTour" type="button">Recorrer en 3D <span aria-hidden="true">→</span></button>
         <div id="visual" role="img" aria-label="Casa costera con deck, jardín y pinos en tres dimensiones">
           <img class="poster" src="/images/home-journey-poster.webp" alt="" width="903" height="551" fetchpriority="high" decoding="async" />
         </div>
@@ -45,7 +46,7 @@ const iconFor = (id: string) => icons[id.startsWith('herreria') ? 'herreria' : i
           <a id="serviceLink" class="serviceLink" href={journeyStops[0].href}>Más sobre pintura →</a>
           <a id="quote" class="pill" href={whatsapp} target="_blank" rel="noopener">Consultar por WhatsApp ↗</a>
           <p class="partner-note">{partnerNote}</p>
-          <span class="hint">↓ &nbsp; Deslizá para recorrer los servicios</span>
+          <span class="hint">Tocá la casa para recorrer los servicios en 3D</span>
         </div>
         <div class="chooser" id="explorar">
           <span id="progress">Explorar por servicio</span>

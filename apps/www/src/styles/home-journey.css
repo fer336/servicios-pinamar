@@ -415,3 +415,16 @@
   .hj .stage.tour .stepNav button{width:34px;height:34px}
 }
 @media(prefers-reduced-motion:reduce){.hj .stage.tour #choices a,.hj .stage.tour #choices a .lbl{transition:none}}
+/* --- Tap-to-open tour ---
+   The hero is one screen tall and scrolls away like any section; the 3D tour opens only on demand, as a fixed
+   full-screen layer, and the page behind it is locked until the visitor goes back to the overview. */
+.hj .journey,.hj .journey[class]{height:auto;min-height:0}
+.hj .stage:not(.tour){position:relative;top:auto}
+.hj .stage.tour{position:fixed;inset:0;z-index:80;width:100%;max-width:none;height:100svh;margin:0;background:#fffdfa}
+html.hj-touring,html.hj-touring body{overflow:hidden;overscroll-behavior:none}
+.hj .stage:not(.tour) #visual{cursor:pointer}
+.hj .enterTour{display:none}
+.hj .stage:not(.tour) .enterTour{position:absolute;z-index:3;left:50%;bottom:18px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:0;border-radius:999px;background:#173f38;color:#fff;font:inherit;font-size:15px;font-weight:600;box-shadow:0 12px 30px rgba(16,35,38,.28);cursor:pointer;transition:transform .2s ease}
+.hj .stage:not(.tour) .enterTour:hover{transform:translateX(-50%) translateY(-2px)}
+.hj .stage:not(.tour) .enterTour:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:780px) and (orientation:portrait){.hj .stage:not(.tour) .enterTour{bottom:46px;padding:10px 18px;font-size:14px}}
