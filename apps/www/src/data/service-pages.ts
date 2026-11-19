@@ -131,11 +131,11 @@ export const servicePages = [
     slug: 'plomeria',
     shortName: 'Plomería',
     serviceType: 'Plomería general',
-    title: 'Plomero en Pinamar | Pérdidas de Agua, Reparaciones e Instalaciones',
-    description: 'Plomero en Pinamar para pérdidas de agua, filtraciones, reparaciones, instalaciones y mantenimiento en casas, departamentos y locales. Presupuesto por WhatsApp.',
-    h1: 'Plomero en Pinamar para pérdidas de agua, reparaciones e instalaciones',
+    title: 'Plomero en Pinamar | Destapaciones, Pérdidas de Agua y Reparaciones',
+    description: 'Plomero en Pinamar: destapaciones de cañerías, inodoros y desagües, pérdidas de agua, filtraciones, reparaciones e instalaciones. Presupuesto por WhatsApp.',
+    h1: 'Plomero en Pinamar para destapaciones, pérdidas de agua y reparaciones',
     eyebrow: 'Instalaciones y reparaciones de agua',
-    lead: 'Plomero en Pinamar para resolver pérdidas de agua, filtraciones, instalaciones, reparaciones y mantenimiento general en casas y locales de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    lead: 'Plomero en Pinamar para destapaciones, pérdidas de agua, filtraciones, instalaciones, reparaciones y mantenimiento general en casas y locales de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-plomeria.webp',
     imageAlt: 'Trabajo de plomería y mantenimiento para una casa en Pinamar',
     intent: 'plomería en Pinamar',
@@ -146,19 +146,38 @@ export const servicePages = [
     },
     covers: [
       'Presentación de planos sanitarios y bajadas de luz y agua corriente.',
+      'Destapaciones de cañerías, inodoros, piletas, rejillas y desagües.',
       'Reparaciones de plomería en baños, cocinas, lavaderos y exteriores.',
       'Instalaciones y mantenimiento de cañerías, griferías y puntos de agua.',
       'Detección inicial de problemas visibles y coordinación del arreglo adecuado.',
       'Trabajos para casas, departamentos, locales y propiedades administradas.'
     ],
     situations: [
+      'Se tapó el inodoro, la pileta de la cocina o un desagüe.',
       'Apareció una pérdida, filtración o humedad visible.',
       'Necesitás instalar o cambiar griferías, conexiones o puntos de agua.',
       'Querés revisar la plomería antes de temporada o antes de alquilar.',
       'Administrás una propiedad y necesitás seguimiento con fotos o videos.'
     ],
     process: howWeWork,
+    sections: [
+      {
+        slug: 'destapaciones',
+        title: 'Destapaciones',
+        eyebrow: 'Cañerías, inodoros y desagües',
+        body: [
+          'Destapaciones de inodoros, piletas de cocina y lavadero, rejillas, cañerías y desagües en casas, departamentos y locales de Pinamar. Contanos qué se tapó y desde cuándo, y si podés mandá una foto o un video.',
+          'En las casas que pasan meses cerradas, la arena, las raíces de los pinos y la grasa acumulada suelen ser la causa. El profesional destapa, revisa por qué pasó y te avisa si conviene hacer algún arreglo para que no se repita.'
+        ],
+        bullets: [
+          'Inodoros, piletas, rejillas y bachas.',
+          'Cañerías y desagües internos y externos.',
+          'Revisión de la causa para evitar que se vuelva a tapar.'
+        ]
+      }
+    ],
     faqs: [
+      ['¿Hacen destapaciones en Pinamar?', 'Sí. Te conectamos con plomeros que destapan inodoros, piletas, rejillas, cañerías y desagües en casas, departamentos y locales de Pinamar.'],
       ['¿Puedo consultar por un plomero en Pinamar si tengo una pérdida?', 'Sí. Atendemos consultas por pérdidas visibles, reparaciones, instalaciones y mantenimiento general de plomería.'],
       ['¿Puedo mandar fotos de una pérdida?', 'Sí. Las fotos o videos ayudan a entender el problema y definir si hace falta una visita.'],
       ['¿Trabajan con propiedades de alquiler o administradas?', 'Sí. Coordinamos con propietarios, administradores e inmobiliarias de la zona.'],
@@ -264,15 +283,16 @@ export const servicePages = [
     slug: 'fumigaciones',
     shortName: 'Fumigaciones',
     serviceType: 'Fumigaciones y control de plagas con certificado',
-    title: 'Fumigación en Pinamar con Certificado | Plagas y Murciélagos',
-    description: 'Fumigación en Pinamar con certificado: cucarachas, hormigas, roedores, pulgas y exclusión de murciélagos en casas, locales y alquileres. Presupuesto por WhatsApp.',
-    h1: 'Fumigaciones en Pinamar con certificado para casas, locales y propiedades',
+    title: 'Fumigación en Pinamar | Mosquitos, Plagas y Murciélagos',
+    description: 'Fumigación en Pinamar con certificado: mosquitos, cucarachas, hormigas, roedores y exclusión de murciélagos en casas y alquileres. Presupuesto por WhatsApp.',
+    h1: 'Fumigaciones en Pinamar con certificado: mosquitos, plagas y murciélagos',
     eyebrow: 'Control de plagas',
-    lead: 'Fumigaciones y control de plagas en Pinamar: un profesional asignado revisa tu propiedad, aplica el tratamiento y entrega un certificado del trabajo realizado. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    lead: 'Fumigación de mosquitos, fumigaciones y control de plagas en Pinamar: un profesional asignado revisa tu propiedad, aplica el tratamiento y entrega un certificado del trabajo realizado. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-fumigaciones.webp',
     imageAlt: 'Técnico instalando una red de exclusión en el alero de una casa de Pinamar mientras los murciélagos salen al atardecer',
     intent: 'fumigaciones en Pinamar',
     covers: [
+      'Fumigación de mosquitos en jardines, patios y exteriores.',
       'Control de cucarachas, hormigas, arañas, pulgas y otros insectos en casas, departamentos y locales.',
       'Desratización y control de roedores en patios, depósitos y construcciones.',
       'Exclusión de murciélagos en techos y entretechos, sin dañar a los animales.',
@@ -281,6 +301,7 @@ export const servicePages = [
     ],
     situations: [
       'Cerraste la casa todo el invierno y querés recibirla sin plagas.',
+      'Hay muchos mosquitos en el jardín y no se puede estar afuera.',
       'Viste cucarachas, hormigas, pulgas o rastros de roedores.',
       'Hay murciélagos en el techo o el entretecho y no sabés cómo actuar.',
       'Una inmobiliaria o un comercio necesita un certificado de fumigación.'
@@ -302,6 +323,20 @@ export const servicePages = [
           'Tratamiento según la plaga detectada.',
           'Indicaciones claras antes y después de la aplicación.',
           'Servicio puntual o previo a la temporada.'
+        ]
+      },
+      {
+        slug: 'mosquitos',
+        title: 'Fumigación de mosquitos',
+        eyebrow: 'Jardines y exteriores',
+        body: [
+          'Con el calor y las lluvias, los jardines arbolados de Pinamar se llenan de mosquitos. La fumigación de mosquitos trata el jardín, los patios, los cercos y las zonas húmedas donde se refugian, para que puedas volver a disfrutar del exterior.',
+          'El profesional también te señala los recipientes, canaletas y rincones donde se acumula agua, porque eliminar esos criaderos es lo que hace que el tratamiento dure más.'
+        ],
+        bullets: [
+          'Tratamiento de jardines, patios y cercos.',
+          'Ideal antes de la temporada, de un evento o de recibir inquilinos.',
+          'Indicaciones para eliminar criaderos de agua estancada.'
         ]
       },
       {
@@ -340,7 +375,8 @@ export const servicePages = [
     },
     faqs: [
       ['¿Hacen fumigaciones con certificado en Pinamar?', 'Sí. Al finalizar el trabajo, el profesional asignado entrega un certificado de la fumigación realizada.'],
-      ['¿Qué plagas controlan?', 'Cucarachas, hormigas, arañas, pulgas, roedores y otras plagas comunes en casas, locales y propiedades de la costa. Para murciélagos, el profesional realiza la exclusión.'],
+      ['¿Hacen fumigación de mosquitos en Pinamar?', 'Sí. El profesional fumiga jardines, patios y exteriores, y te indica cómo eliminar los lugares con agua estancada donde se crían los mosquitos.'],
+      ['¿Qué plagas controlan?', 'Mosquitos, cucarachas, hormigas, arañas, pulgas, roedores y otras plagas comunes en casas, locales y propiedades de la costa. Para murciélagos, el profesional realiza la exclusión.'],
       ['¿Es seguro para mi familia y mis mascotas?', 'El profesional te indica cuánto tiempo ventilar, qué proteger y cuándo volver a usar cada ambiente según el producto aplicado.'],
       ['¿Pueden fumigar antes de la temporada?', 'Sí. Es un servicio habitual para casas de veraneo y propiedades de alquiler que estuvieron cerradas.'],
       ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']

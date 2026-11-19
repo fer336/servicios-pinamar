@@ -88,4 +88,16 @@ for (const page of servicePages) {
 assert.equal(notOffered.test(readFileSync(join(wwwRoot, 'src/pages/index.astro'), 'utf8')), false, 'home mentions a service that is not offered');
 assert.equal(notOffered.test(readFileSync(join(wwwRoot, 'public/llms.txt'), 'utf8')), false, 'llms.txt mentions a service that is not offered');
 
+// Confirmed by the user: "si hacemos fumigación de mosquitos, destapaciones".
+const pageBySlug = (slug: string) => servicePages.find((page) => page.slug === slug)!;
+for (const [slug, term, section] of [['plomeria', /destapaci/i, 'destapaciones'], ['fumigaciones', /mosquito/i, 'mosquitos']] as const) {
+  const page = pageBySlug(slug) as any;
+  for (const field of ['title', 'description', 'h1', 'lead'] as const) assert.match(page[field], term, `${slug}: ${field} must name ${section}`);
+  assert.ok(page.sections?.some((entry: { slug: string }) => entry.slug === section), `${slug}: missing section ${section}`);
+  assert.ok(page.faqs.some(([question]: [string]) => term.test(question)), `${slug}: missing faq about ${section}`);
+}
+const homeSource = readFileSync(join(wwwRoot, 'src/pages/index.astro'), 'utf8');
+assert.match(homeSource, /destapaci/i, 'home must mention destapaciones');
+assert.match(homeSource, /mosquito/i, 'home must mention mosquitos');
+
 console.log('service-pages.test.ts: ok');
