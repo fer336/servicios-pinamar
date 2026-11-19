@@ -61,4 +61,23 @@ const offenders = [...walk(join(wwwRoot, 'src')), ...walk(join(wwwRoot, 'public'
   });
 assert.deepEqual(offenders, []);
 
+// SEO: Pinamar first. The primary keyword "<service> en Pinamar" opens the title and the H1, Pinamar appears in the
+// first words of the description, the lead's first sentence is about Pinamar only, and the other zones (Cariló,
+// Valeria del Mar, Ostende and the rest of the coast) come after it.
+const otherZones = /Cariló|Valeria|Ostende/;
+for (const service of servicePages) {
+  const { slug, title, h1, description, lead } = service as { slug: string; title: string; h1: string; description: string; lead: string };
+  assert.match(title.slice(0, 40), /en Pinamar/, `${slug}: title must lead with "... en Pinamar"`);
+  assert.ok(title.length <= 70, `${slug}: title too long (${title.length})`);
+  assert.equal(otherZones.test(title), false, `${slug}: title is Pinamar only`);
+  assert.match(h1, /en Pinamar/, `${slug}: H1 must say "en Pinamar"`);
+  assert.equal(otherZones.test(h1), false, `${slug}: H1 is Pinamar only`);
+  assert.match(description.slice(0, 60), /Pinamar/, `${slug}: description must name Pinamar first`);
+  assert.ok(description.length <= 165, `${slug}: description too long (${description.length})`);
+  const [firstSentence, ...rest] = lead.split(/(?<=\.)\s/);
+  assert.match(firstSentence, /Pinamar/, `${slug}: lead must open with Pinamar`);
+  assert.equal(otherZones.test(firstSentence), false, `${slug}: other zones go after the first sentence`);
+  assert.match(rest.join(' '), /Cariló, Valeria del Mar, Ostende y el resto de la costa/, `${slug}: lead must close with the rest of the coverage`);
+}
+
 console.log('service-pages.test.ts: ok');
