@@ -438,11 +438,11 @@ export const servicePages = [
     slug: 'herreria',
     shortName: 'Herrería',
     serviceType: 'Herrería en general',
-    title: 'Herrería en Pinamar | Portones Automáticos, Rejas y Estructuras',
-    description: 'Herrero en Pinamar: rejas, portones corredizos automáticos y elevadizos, estructuras de techo con perfil C, frentes, parrillas y carteles. Presupuesto por WhatsApp.',
-    h1: 'Herrería en Pinamar: rejas, portones automáticos, estructuras y trabajos a medida',
+    title: 'Herrería en Pinamar | Herrero para Rejas, Portones y Estructuras',
+    description: 'Herrero en Pinamar: rejas, portones corredizos y elevadizos, estructuras de techo con perfil C, frentes, parrillas y carteles. Presupuesto por WhatsApp.',
+    h1: 'Herrería en Pinamar: rejas, portones, estructuras y trabajos a medida',
     eyebrow: 'Herrería y estructuras metálicas',
-    lead: 'Herreros en Pinamar para rejas, portones corredizos automáticos y elevadizos, estructuras de techo, frentes completos, parrillas, carteles y todo tipo de trabajos de herrería en casas y locales de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    lead: 'Herreros en Pinamar para rejas, portones corredizos y elevadizos, estructuras de techo, frentes completos, parrillas, carteles y todo tipo de trabajos de herrería en casas y locales de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/home-journey-poster.webp',
     imageAlt: 'Ilustración 3D de una casa de la costa con deck y pérgola de madera entre pinos',
     intent: 'herrería en Pinamar',
@@ -450,14 +450,14 @@ export const servicePages = [
       'Rejas para ventanas, puertas, balcones y cerramientos de seguridad.',
       'Estructuras de techo con perfil C o caño estructural.',
       'Frentes completos: rejas, portones y cerramientos de la línea municipal.',
-      'Portones corredizos eléctricos o automáticos y portones elevadizos.',
+      'Portones corredizos y portones elevadizos a medida.',
       'Parrillas, carteles y trabajos generales de herrería a medida.',
       'Reparación y mantenimiento de herrería castigada por el salitre.'
     ],
     situations: [
       'Querés colocar rejas o cerrar el frente de la propiedad.',
       'Necesitás una estructura de techo para una galería, un quincho o una cochera.',
-      'El portón se traba, se oxidó o querés automatizarlo.',
+      'El portón se traba, se oxidó o hay que cambiarlo.',
       'Buscás una parrilla, un cartel o una pieza de herrería hecha a medida.',
       'El salitre deterioró rejas, barandas o estructuras metálicas.'
     ],
@@ -482,11 +482,11 @@ export const servicePages = [
         title: 'Portones corredizos y elevadizos',
         eyebrow: 'Entradas y cocheras',
         body: [
-          'Portones corredizos eléctricos o automáticos y portones elevadizos para cocheras y entradas de vehículos. Se fabrican a medida del vano y se coordina la instalación del motor cuando el portón es automático.',
+          'Portones corredizos y portones elevadizos para cocheras y entradas de vehículos, fabricados a medida del vano.',
           'También se reparan portones existentes: guías, ruedas, bisagras, contrapesos y estructuras dañadas.'
         ],
         bullets: [
-          'Portones corredizos eléctricos o automáticos.',
+          'Portones corredizos a medida.',
           'Portones elevadizos para cocheras.',
           'Reparación de guías, ruedas y estructuras.'
         ]
@@ -525,9 +525,9 @@ export const servicePages = [
       description: 'Rejas, portones, estructuras y trabajos a medida en propiedades de Pinamar y la zona.'
     },
     faqs: [
-      ['¿Hacen rejas y portones en Pinamar?', 'Sí. Te conectamos con herreros que fabrican y colocan rejas, frentes completos, portones corredizos eléctricos o automáticos y portones elevadizos en Pinamar, Cariló, Valeria del Mar y Ostende.'],
+      ['¿Hacen rejas y portones en Pinamar?', 'Sí. Te conectamos con herreros que fabrican y colocan rejas, frentes completos, portones corredizos y portones elevadizos en Pinamar, Cariló, Valeria del Mar y Ostende.'],
       ['¿Hacen estructuras de techo metálicas?', 'Sí. El profesional arma estructuras de techo con perfil C o caño estructural para galerías, quinchos, cocheras y ampliaciones.'],
-      ['¿Pueden automatizar un portón que ya tengo?', 'Puede ser. Mandanos fotos del portón y del vano, y el profesional evalúa si conviene adaptarlo o fabricar uno nuevo.'],
+      ['¿Pueden reparar un portón que ya tengo?', 'Sí. Mandanos fotos del portón y del vano, y el profesional evalúa si conviene repararlo o fabricar uno nuevo.'],
       ['¿Hacen parrillas y carteles a medida?', 'Sí. Podés enviarnos una idea o una foto de referencia y el profesional te prepara el presupuesto.'],
       ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
     ]

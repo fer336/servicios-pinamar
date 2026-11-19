@@ -13,7 +13,7 @@ Servicios Pinamar is a local services landing page for property maintenance in P
 - Planos de gas, planos sanitarios y planos de agua corriente para ampliaciones y nuevas viviendas
 - Fumigaciones y control de plagas con certificado del trabajo realizado
 - Jardinería: poda de árboles y arbustos, corte de pasto y parquización
-- Herrería: rejas, frentes completos, portones corredizos automáticos y elevadizos, estructuras de techo con perfil C o caño estructural, parrillas y carteles
+- Herrería: rejas, frentes completos, portones corredizos y elevadizos, estructuras de techo con perfil C o caño estructural, parrillas y carteles
 - Durlock: tabiques, cielorrasos, revestimientos y colocación de placas con terminación con masilla
 - Carpintería: decks de madera, pérgolas y trabajos en madera a medida
 

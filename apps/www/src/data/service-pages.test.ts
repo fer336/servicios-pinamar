@@ -80,4 +80,12 @@ for (const service of servicePages) {
   assert.match(rest.join(' '), /Cariló, Valeria del Mar, Ostende y el resto de la costa/, `${slug}: lead must close with the rest of the coverage`);
 }
 
+// Services the professionals do not offer: no automated/electric gates and no plastic-wood decks anywhere on the site.
+const notOffered = /autom[aá]tic|automatiz|el[eé]ctric[oa]s? o autom|motor del port|instalaci[oó]n del motor|madera pl[aá]stica|wpc/i;
+for (const page of servicePages) {
+  assert.equal(notOffered.test(JSON.stringify(page)), false, `${page.slug}: mentions a service that is not offered`);
+}
+assert.equal(notOffered.test(readFileSync(join(wwwRoot, 'src/pages/index.astro'), 'utf8')), false, 'home mentions a service that is not offered');
+assert.equal(notOffered.test(readFileSync(join(wwwRoot, 'public/llms.txt'), 'utf8')), false, 'llms.txt mentions a service that is not offered');
+
 console.log('service-pages.test.ts: ok');
