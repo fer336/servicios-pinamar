@@ -75,7 +75,8 @@ function buildHouseViewer(host) {
   const onSite=(x,z,pad=0)=>sites.some(([sx,sz,r])=>Math.hypot(x-sx,z-sz)<r+pad);
   let seed=42;
   function random(){seed=seed*16807%2147483647;return seed/2147483647}
-  for(const [i,p] of [[-6,-3.1,6.9],[-4.9,-4.7,7.9],[.6,-4.8,6.6],[5.9,-4.4,7.4],[6.6,-2.8,5.1],[-6.45,2.2,4.5]].entries())pine(...p,i);
+  // The landmark pines stay, except one standing in front of the drywall camera (back wall).
+  for(const [i,p] of [[-6,-3.1,6.9],[-4.9,-4.7,7.9],[.6,-4.8,6.6],[5.9,-4.4,7.4],[6.6,-2.8,5.1],[-6.45,2.2,4.5]].entries())if(i!==1)pine(...p,i);
   for(let i=0;i<35;i++){const x=4.9+random()*1.8,z=.8+random()*3.9,r=.22+random()*.38;mesh(bush,greens[i%4],x,.06+r*.45,z,r,r*.69,r*.86);}
   for(let i=0;i<24;i++){let x=-6.9+random()*3.7,z=4.4+random()*.8;if(!onSite(x,z))mesh(bush,0xb1b391,x,.04,z,.16,.13,.19);}
   // Forest: moss patches, undergrowth and a dense ring of pines. Tall trees stay behind and beside the house so
@@ -162,7 +163,8 @@ function buildHouseViewer(host) {
     const tourHalf=compact?Math.max(mobileSpans[shown]/2/aspect,mobileHalfHeights[shown]):Math.min(landscapeHalfHeight,pose.span*.41);
     const half=landscapeHalfHeight+(tourHalf-landscapeHalfHeight)*pose.tour;
     const xOffset=compact?0:-half*aspect*.25*pose.tour;
-    const yOffset=0;
+    // On desktop the scene sits a little higher in the tour so the dock never covers the worker.
+    const yOffset=compact?0:-half*.1*pose.tour;
     Object.assign(camera,{top:half+yOffset,bottom:-half+yOffset,left:-half*aspect+xOffset,right:half*aspect+xOffset});
     camera.position.set(pose.targetX+32*Math.sin(pose.angle),pose.targetY+32*pose.lift,pose.targetZ+32*Math.cos(pose.angle));
     camera.lookAt(pose.targetX,pose.targetY,pose.targetZ);camera.updateProjectionMatrix();camera.updateMatrixWorld();

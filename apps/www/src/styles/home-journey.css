@@ -364,7 +364,7 @@
 .hj .tour .copy>:not(#quote){display:none!important}
 .hj .tour .copy #quote{box-shadow:0 12px 32px rgba(16,35,38,.26)}
 @media(min-width:781px) and (min-height:551px){
-  .hj .tour .copy{left:auto;right:4vw;bottom:128px;padding:0;background:none;border:0;border-radius:0;box-shadow:none;max-width:none}
+  .hj .tour .copy{left:auto;right:4vw;bottom:96px;padding:0;background:none;border:0;border-radius:0;box-shadow:none;max-width:none}
   .hj .tour .copy #quote{padding:14px 24px;font-size:15px}
 }
 @media(max-width:780px) and (orientation:portrait){
@@ -377,3 +377,41 @@
   .hj .tour .copy{grid-column:1/-1;grid-row:1;align-self:end;justify-self:end;width:auto;position:relative;z-index:2;padding:0 14px 10px;background:none;overflow:visible}
   .hj .tour .copy #quote{display:inline-flex;width:auto;min-height:0;padding:9px 16px;font-size:13px}
 }
+/* --- Service dock ---
+   Overview: each chip shows its icon and name. Tour: one slim row of icons (one per trade); only the active
+   stop shows its name. The three herrería stops are the hammer followed by two dots, grouped in one capsule. */
+.hj #choices .ico{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px;margin-right:7px}
+.hj #choices .dot{display:none}
+.hj #choices a{display:inline-flex;align-items:center}
+.hj .stage.tour .chooser{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 8vw);display:flex;align-items:center;gap:10px;padding:6px 8px 6px 16px;border-radius:999px;background:#fffdf8ee;border:1px solid #dfe5dc;box-shadow:0 14px 40px rgba(16,35,38,.18);backdrop-filter:blur(8px)}
+.hj .stage.tour .chooser>span{order:-1;font-size:12px;color:#6b7d72}
+.hj .stage.tour .stepNav{display:flex;order:2;gap:4px}
+.hj .stage.tour .stepNav button{width:38px;height:38px;font-size:17px;border:1px solid #d5ddd3;background:#fffdfa;border-radius:50%}
+.hj .stage.tour #choices{display:flex;flex:0 1 auto;flex-wrap:nowrap;gap:4px;overflow-x:auto;scrollbar-width:none;padding:0;min-width:0}
+.hj .stage.tour #choices a{position:relative;flex:0 0 auto;gap:0;min-height:0;height:42px;min-width:42px;padding:0 11px;justify-content:center;border:0;border-radius:999px;background:transparent;color:#2f4a42;font-size:14px;white-space:nowrap;transition:background-color .25s,color .25s}
+.hj .stage.tour #choices a .ico{width:21px;height:21px;margin:0}
+.hj .stage.tour #choices a .lbl{max-width:0;overflow:hidden;opacity:0;transition:max-width .35s ease,opacity .25s ease,margin .35s ease}
+.hj .stage.tour #choices a:hover{background:#e9eee6;color:#173f38}
+.hj .stage.tour #choices a[aria-current=true]{background:#173f38;color:#fff;padding:0 16px 0 13px}
+.hj .stage.tour #choices a[aria-current=true] .lbl{max-width:190px;opacity:1;margin-left:8px}
+/* Herrería capsule: hammer + two dots. */
+.hj .stage.tour #choices a[data-group]{background:#eef2ea;border-radius:0}
+.hj .stage.tour #choices a[data-group]:has(+ a[data-group]){border-radius:999px 0 0 999px}
+.hj .stage.tour #choices a[data-group]+a[data-group]{min-width:22px;padding:0 5px;border-radius:0}
+.hj .stage.tour #choices a[data-group]+a[data-group]:not(:has(+ a[data-group])){border-radius:0 999px 999px 0;padding-right:11px}
+.hj .stage.tour #choices a[data-group]+a[data-group] .ico{display:none}
+.hj .stage.tour #choices a[data-group]+a[data-group] .dot{display:block;width:7px;height:7px;border-radius:50%;background:#8aa292}
+.hj .stage.tour #choices a[data-group][aria-current=true][href]{background:#173f38;border-radius:999px;padding:0 16px 0 13px}
+.hj .stage.tour #choices a[data-group][aria-current=true] .dot{background:#fff}
+.hj .stage.tour #choices a:focus-visible{outline:2px solid #173f38;outline-offset:2px}
+@media(max-width:780px) and (orientation:portrait){
+  .hj .stage.tour .chooser{transform:none;left:auto;width:auto;max-width:none;border-radius:0;box-shadow:none;background:transparent;border:0;border-top:1px solid #e1e6de;backdrop-filter:none;padding:6px 12px calc(10px + env(safe-area-inset-bottom))}
+  .hj .stage.tour #choices{flex:1 1 auto}
+  .hj .stage.tour #choices a{height:40px;min-width:40px}
+}
+@media(max-width:1000px) and (max-height:550px) and (orientation:landscape){
+  .hj .stage.tour .chooser{position:relative;transform:none;left:auto;justify-self:center;max-width:calc(100% - 16px);padding:4px 6px 4px 12px;margin-bottom:6px}
+  .hj .stage.tour #choices a{height:36px;min-width:36px}
+  .hj .stage.tour .stepNav button{width:34px;height:34px}
+}
+@media(prefers-reduced-motion:reduce){.hj .stage.tour #choices a,.hj .stage.tour #choices a .lbl{transition:none}}
