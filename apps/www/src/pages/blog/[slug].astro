@@ -103,6 +103,17 @@ const structuredData = [blogPostingSchema, faqSchema, breadcrumbSchema];
       </section>
     )}
 
+    {'sources' in post && post.sources && (
+      <section class="section-small">
+        <div class="container">
+          <p class="eyebrow">Fuentes</p>
+          <ul>
+            {post.sources.map((source) => <li><a href={source.href} target="_blank" rel="noopener">{source.label}</a></li>)}
+          </ul>
+        </div>
+      </section>
+    )}
+
     <section class="section service-process">
       <div class="container service-process__grid">
         <header class="section-heading">

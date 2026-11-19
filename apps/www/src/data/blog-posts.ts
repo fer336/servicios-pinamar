@@ -25,6 +25,7 @@ export interface BlogPost {
   pillarLabel: string;
   relatedZoneSlugs?: string[];
   officialLink?: OfficialLink;
+  sources?: OfficialLink[];
   imageAlt?: string;
 }
 
@@ -255,6 +256,134 @@ export const blogPosts = [
     pillarUrl: '/servicios/pintura/',
     pillarLabel: 'Pintura en Pinamar: pintores para casas y locales',
     relatedZoneSlugs: ['pinamar', 'carilo']
+  },
+  {
+    slug: 'mosquitos-pinamar-cuando-fumigar',
+    title: 'Mosquitos en Pinamar: cuándo conviene fumigar y qué hacer antes | Blog de Servicios Pinamar',
+    description: 'Mosquitos en Pinamar: por qué llegan en olas después de las lluvias, cómo eliminar criaderos en tu casa y cuándo tiene sentido fumigar el jardín.',
+    h1: 'Mosquitos en Pinamar: cuándo conviene fumigar y qué hacer antes',
+    eyebrow: 'Fumigación de mosquitos',
+    date: '2026-11-19',
+    readingTime: 5,
+    lead: 'En Pinamar los mosquitos suelen llegar en olas, después de varios días de lluvia. Te contamos qué explicaron las autoridades sanitarias, qué podés hacer en tu casa para que haya menos y en qué casos tiene sentido fumigar el jardín.',
+    sections: [
+      {
+        heading: 'Por qué llegan en olas después de la lluvia',
+        paragraphs: [
+          'En febrero de 2021, durante una invasión de mosquitos que se hizo noticia en todo el país, el responsable del área de Zoonosis de Pinamar explicó a La Nación que estas olas aparecen después de lluvias "no tanto abundantes, pero sí continuas", y estimó que cada ola dura alrededor de una semana.',
+          'En esa misma nota aclaró que la especie que causaba la molestia no tenía riesgos para la salud y que "nada tiene que ver con el que propaga el dengue". También explicó que el municipio no hizo fumigaciones masivas porque podían causar "un importante impacto ambiental", y que el control se concentró en lugares puntuales con mucha circulación de gente.'
+        ]
+      },
+      {
+        heading: 'Lo primero: eliminar los criaderos',
+        paragraphs: [
+          'El Ministerio de Salud de la Provincia de Buenos Aires resume la prevención en cuatro acciones: "Tapá, lavá, tirá y girá". Tapar los tanques, tachos y depósitos que están a la intemperie; lavar con cepillo o esponja los recipientes, canaletas y desagües para desprender los huevos; tirar los recipientes en desuso; y dar vuelta los objetos que juntan agua cada vez que llueve, como baldes o portamacetas.',
+          'Según el mismo ministerio, el mosquito Aedes aegypti, el que transmite el dengue, pone sus huevos en objetos que acumulan agua, y las larvas pueden convertirse en mosquitos en menos de 10 días. Por eso recomienda descacharrar todo el año: los huevos permanecen latentes aun en los meses fríos. Pinamar participó de las jornadas provinciales de descacharrado de octubre de 2024, con promotores que recorrieron los barrios casa por casa.'
+        ]
+      },
+      {
+        heading: 'Qué puede hacer una fumigación en el jardín',
+        paragraphs: [
+          'Una fumigación del jardín actúa sobre los mosquitos que hay en ese momento en el pasto, los cercos y las zonas húmedas donde se refugian. Lo que no hace es quitar el agua estancada: si en el patio quedan recipientes con agua, en pocos días vuelve a haber mosquitos nuevos.',
+          'Por eso conviene pensarla como un complemento, nunca como reemplazo del descacharrado. Lo más efectivo es revisar primero el jardín, eliminar los criaderos y recién después fumigar. Así el tratamiento rinde más.'
+        ]
+      },
+      {
+        heading: 'Cuándo tiene sentido fumigar',
+        paragraphs: [
+          'Los casos más habituales en la costa son tres: antes de un evento o una reunión al aire libre, antes de recibir inquilinos en una casa que estuvo cerrada, y durante una ola fuerte que no deja usar el jardín. En todos conviene coordinar la fumigación junto con una recorrida para eliminar criaderos.',
+          'Si tenés chicos o mascotas, pedile al profesional que te indique qué producto va a usar, cuánto tiempo hay que esperar para volver a usar el jardín y qué conviene guardar o tapar antes de la aplicación.'
+        ]
+      },
+      {
+        heading: 'Si aparecen síntomas o sospechás dengue',
+        paragraphs: [
+          'Una fumigación particular no reemplaza las acciones de salud pública. Ante fiebre u otros síntomas, consultá en un centro de salud. La Provincia de Buenos Aires publica información actualizada sobre dengue en gba.gob.ar/dengue y atiende consultas en la línea 148.'
+        ]
+      }
+    ],
+    faqs: [
+      ['¿Por qué hay tantos mosquitos en Pinamar después de las lluvias?', 'Según explicó el área de Zoonosis de Pinamar en 2021, las olas de mosquitos aparecen después de lluvias continuas y suelen durar alrededor de una semana.'],
+      ['¿Qué es lo más efectivo para tener menos mosquitos en casa?', 'Eliminar los criaderos: tapar, lavar, tirar y dar vuelta los recipientes que juntan agua, como recomienda el Ministerio de Salud bonaerense.'],
+      ['¿Sirve fumigar el jardín?', 'Sirve para bajar la cantidad de mosquitos en un momento puntual, como antes de un evento. Si quedan recipientes con agua, vuelven a aparecer: por eso se combina con el descacharrado.'],
+      ['¿Hacen fumigación de mosquitos en Pinamar?', 'Sí. Te conectamos con un profesional que fumiga jardines, patios y exteriores, y entrega un certificado del trabajo realizado.']
+    ],
+    pillarUrl: '/servicios/fumigaciones/',
+    pillarLabel: 'Fumigación en Pinamar: mosquitos, plagas y murciélagos',
+    relatedZoneSlugs: ['pinamar', 'carilo'],
+    sources: [
+      { label: 'La Nación (24/02/2021): ¿Por qué volvieron los mosquitos a invadir Pinamar?', href: 'https://www.lanacion.com.ar/sociedad/temporada-por-que-volvieron-los-mosquitos-a-invadir-pinamar-nid24022021/' },
+      { label: 'Ministerio de Salud de la Provincia de Buenos Aires (25/10/2024): jornadas de descacharrado en todos los municipios', href: 'https://www.gba.gob.ar/saludprovincia/noticias/la_provincia_realiza_jornadas_de_descacharrado_en_todos_los_municipios' },
+      { label: 'Contexto Pinamar (28/10/2024): Pinamar se suma a la campaña provincial de prevención del dengue', href: 'https://contextopinamar.com/pinamar-prevencion-dengue/' }
+    ]
+  },
+  {
+    slug: 'permiso-poda-pinos-pinamar',
+    title: '¿Hace falta permiso para podar o talar un pino en Pinamar? | Blog de Servicios Pinamar',
+    description: 'Sí: en el Partido de Pinamar la poda y la extracción de árboles requieren autorización. Qué dice el Decreto 1292/2024, quién la emite y qué cambia en Cariló.',
+    h1: '¿Hace falta permiso para podar o talar un pino en Pinamar?',
+    eyebrow: 'Poda de pinos',
+    date: '2026-11-19',
+    readingTime: 5,
+    lead: 'Sí. En el Partido de Pinamar las podas y extracciones de árboles necesitan autorización municipal, también dentro de un lote privado. Te contamos qué dice la norma vigente, quién otorga el permiso y qué tener en cuenta antes de contratar a un podador.',
+    sections: [
+      {
+        heading: 'La respuesta corta: sí, hace falta autorización',
+        paragraphs: [
+          'El Decreto 1292/2024 de la Municipalidad de Pinamar, del 19 de junio de 2024, lo dice sin vueltas: "Las extracciones y podas de árboles en el Partido de Pinamar deberán contar con la autorización correspondiente". Y agrega: "En ningún caso se podrá realizar el trabajo sin la autorización."',
+          'El Partido de Pinamar incluye a Pinamar, Ostende, Valeria del Mar y Cariló, así que la regla vale para todas esas localidades.'
+        ]
+      },
+      {
+        heading: 'Quién otorga el permiso',
+        paragraphs: [
+          'Según el mismo decreto, cuando el árbol está en el espacio público la autorización la emite el Ingeniero Forestal del Vivero Municipal. Cuando está en un lote privado, la emite la Dirección de Obras Particulares.',
+          'Si la extracción forma parte de una obra, el sitio de Obras Particulares de la Municipalidad publica un modelo de nota para pedir el permiso. La firma el propietario o el profesional a cargo de la obra, e indica la parcela, la cantidad de árboles a extraer y las especies que se van a plantar para reponerlos.'
+        ]
+      },
+      {
+        heading: 'Reposición de árboles y el límite en Cariló',
+        paragraphs: [
+          'El modelo de nota municipal pide comprometerse a reponer los árboles extraídos, priorizando especies nativas argentinas. Como ejemplo menciona jacarandá, ceibo, aguaribay, timbó, butiá yatay, palo borracho, sauce criollo (Salix humboldtiana) y pindó, en envases de 20 litros.',
+          'En Cariló hay un límite adicional: según ese mismo modelo, no se puede pedir la extracción de más del 25 % del total de árboles existentes en el terreno.'
+        ]
+      },
+      {
+        heading: 'El podador también tiene que estar registrado',
+        paragraphs: [
+          'El Decreto 1292/2024 reglamenta el Registro Municipal de Jardineros, Podadores, Parqueros y Afines. La inscripción es obligatoria para cualquier persona o empresa que preste servicios de jardinería, poda, desmonte o extracción de árboles en el Partido de Pinamar, y se hace en línea desde el sitio del municipio.',
+          'Al inscribirse, el prestador declara que conoce las normas y se compromete a transmitirlas a sus clientes. Las sanciones van desde un apercibimiento y multas según el Código Municipal de Faltas hasta la suspensión del registro por 30 días ante una segunda multa y la exclusión definitiva ante una tercera.'
+        ]
+      },
+      {
+        heading: 'Qué pasa con los restos de poda',
+        paragraphs: [
+          'El decreto también regula los residuos. Los restos de podas pesadas y talas deben llevarse al Predio de Disposición Final de la Ruta 11, km 405,5. Los restos de poda liviana que superen los límites permitidos los tiene que llevar el prestador a los puntos verdes habilitados.'
+        ]
+      },
+      {
+        heading: 'Antes de contratar',
+        paragraphs: [
+          'Antes de empezar, pedile al profesional que te confirme que está inscripto en el registro municipal y que el trabajo cuenta con la autorización. Preguntale también adónde va a llevar los restos de poda.',
+          'Las normas municipales pueden cambiar. Para un caso concreto, confirmá los requisitos vigentes en la Dirección de Obras Particulares de la Municipalidad de Pinamar.'
+        ]
+      }
+    ],
+    faqs: [
+      ['¿Necesito permiso para podar un pino en mi terreno en Pinamar?', 'Sí. El Decreto 1292/2024 establece que las podas y extracciones de árboles en el Partido de Pinamar necesitan autorización. En un lote privado la emite la Dirección de Obras Particulares.'],
+      ['¿Cuántos árboles se pueden extraer en Cariló?', 'Según el modelo de nota de la Municipalidad para pedir la extracción en obra, en Cariló no se puede pedir más del 25 % del total de árboles existentes en el terreno.'],
+      ['¿Hay que reponer los árboles que se sacan?', 'El modelo de nota municipal pide indicar las especies con las que se van a reponer, priorizando especies nativas argentinas.'],
+      ['¿El podador tiene que estar registrado?', 'Sí. Quien preste servicios de poda, tala o extracción en el Partido de Pinamar debe estar inscripto en el Registro Municipal de Jardineros, Podadores, Parqueros y Afines.']
+    ],
+    pillarUrl: '/servicios/jardineria/',
+    pillarLabel: 'Poda de pinos en Pinamar: tala, jardinería y parquización',
+    relatedZoneSlugs: ['pinamar', 'carilo'],
+    officialLink: { label: 'Dirección de Obras Particulares · Municipalidad de Pinamar', href: 'https://pinamar.gob.ar/obras-particulares/' },
+    sources: [
+      { label: 'Boletín Oficial Municipal de Pinamar: Decreto 1292/2024 (Registro de Jardineros, Podadores, Parqueros y Afines)', href: 'https://sibom.slyt.gba.gob.ar/bulletins/11980/contents/2155056' },
+      { label: 'Municipalidad de Pinamar: modelo de nota "Permiso para extracción de árboles" en obra', href: 'https://pinamar.gob.ar/wp-content/uploads/Como-solicitar-extraccion-de-arboles-en-obra.docx' },
+      { label: 'Municipalidad de Pinamar: Dirección de Obras Particulares', href: 'https://pinamar.gob.ar/obras-particulares/' }
+    ]
   }
 ] as const;
 
