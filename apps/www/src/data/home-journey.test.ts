@@ -3,16 +3,19 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { journeyStops } from './home-journey.ts';
 
-// S2: the six original services, then three herrería stops, durlock and carpintería; no Electricidad.
+// The original services with Electricidad after Gas, then three herrería stops, durlock and carpintería.
 assert.deepEqual(
   journeyStops.map((stop) => stop.service),
-  ['Pintura', 'Hidrolavado', 'Plomería', 'Gas', 'Fumigaciones', 'Jardinería y poda', 'Herrería · Rejas', 'Herrería · Carteles', 'Herrería · Techos', 'Durlock', 'Carpintería']
+  ['Pintura', 'Hidrolavado', 'Plomería', 'Gas', 'Electricidad', 'Fumigaciones', 'Jardinería y poda', 'Herrería · Rejas', 'Herrería · Carteles', 'Herrería · Techos', 'Durlock', 'Carpintería']
 );
 assert.deepEqual(
-  journeyStops.slice(6).map((stop) => stop.href),
+  journeyStops.slice(7).map((stop) => stop.href),
   ['/servicios/herreria/', '/servicios/herreria/', '/servicios/herreria/', '/servicios/durlock/', '/servicios/carpinteria/']
 );
-assert.equal(JSON.stringify(journeyStops).toLowerCase().includes('electric'), false);
+assert.equal(journeyStops[4].href, '/servicios/electricidad/');
+// User: "no pongas nada en detalle solo que hacenos electricidad domesti a y de obras nuevas".
+assert.match(journeyStops[4].description, /domiciliaria/);
+assert.match(journeyStops[4].description, /obras nuevas/);
 
 // S5: every stop links to an existing service page.
 const servicePages = readFileSync(new URL('./service-pages.ts', import.meta.url), 'utf8');
@@ -42,7 +45,9 @@ assert.equal(scene.includes('0x96a684'), false, 'the green island top must be go
 // The new trades: one worker per new stop, welders with sparks, and every stop with its mobile framing.
 const trades = readFileSync(new URL('../scene/trades-crew.js', import.meta.url), 'utf8');
 assert.ok(trades.includes('function buildTradesCrew(scene)'), 'the trades crew entry point must exist');
-assert.equal((trades.match(/^\s*\['[^']+', '[^']+'\],?$/gm) || []).length, journeyStops.length - 6, 'one message pair per new stop');
+assert.equal((trades.match(/^\s*\['[^']+', '[^']+'\],?$/gm) || []).length, journeyStops.length - 7, 'one message pair per new stop');
+// The package electrician (crew index 6) plays the Electricidad stop, right after Gas.
+assert.ok(scene.includes('const crew=[...base.slice(0,4),base[6],base[4],base[5],'), 'electricidad must use the package electrician');
 assert.ok(trades.includes('sparks.push'), 'welders throw sparks');
 assert.ok(scene.includes('buildTradesCrew(scene)'), 'the scene builds the new trades');
 for (const name of ['mobileSpans', 'mobileHalfHeights']) {

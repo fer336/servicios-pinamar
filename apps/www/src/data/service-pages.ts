@@ -128,6 +128,37 @@ export const servicePages = [
     ]
   },
   {
+    slug: 'electricidad',
+    shortName: 'Electricidad',
+    serviceType: 'Electricidad domiciliaria y de obras nuevas',
+    title: 'Electricista en Pinamar | Electricidad Domiciliaria y Obras Nuevas',
+    description: 'Electricista en Pinamar para electricidad domiciliaria y de obras nuevas en casas y propiedades. Presupuesto por WhatsApp.',
+    h1: 'Electricista en Pinamar: electricidad domiciliaria y de obras nuevas',
+    eyebrow: 'Electricidad',
+    lead: 'Electricistas en Pinamar para trabajos de electricidad domiciliaria y de obras nuevas. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    image: '/images/home-journey-poster.webp',
+    imageAlt: 'Ilustración 3D de una casa de la costa con deck y pérgola de madera entre pinos',
+    intent: 'electricista en Pinamar',
+    covers: [
+      'Electricidad domiciliaria.',
+      'Electricidad de obras nuevas.'
+    ],
+    situations: [
+      'Necesitás un electricista para tu casa.',
+      'Estás construyendo y necesitás la electricidad de la obra nueva.'
+    ],
+    process: howWeWork,
+    gallery: {
+      eyebrow: 'Trabajos realizados',
+      title: 'Algunos de nuestros trabajos de electricidad',
+      description: 'Trabajos de electricidad en propiedades de Pinamar y la zona.'
+    },
+    faqs: [
+      ['¿Qué trabajos de electricidad hacen?', 'Electricidad domiciliaria y de obras nuevas. Contanos qué necesitás por WhatsApp y te enviamos el presupuesto del profesional.'],
+      ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
+    ]
+  },
+  {
     slug: 'plomeria',
     shortName: 'Plomería',
     serviceType: 'Plomería general',

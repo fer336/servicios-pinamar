@@ -84,7 +84,7 @@ function buildHouseViewer(host) {
   for(let i=0;i<9;i++)box(-7+random()*14,-.022,-5.6+random()*11.2,1.4+random()*2.2,.012,1.1+random()*1.8,i%2?0x66863f:0x557a38);
   // Each service camera looks at its worker from a fixed side: keep a clearing along that line of sight so the
   // forest frames the scene from behind and the sides instead of hiding the work. [camera angle, target x, target z]
-  const lookouts=[[1.04,4.15,.92],[.69,.1,2.68],[.7,4.25,.1],[.81,4.26,-2.02],[-1.08,-4.8,-.15],[-.28,-5.88,2.98],
+  const lookouts=[[1.04,4.15,.92],[.69,.1,2.68],[.7,4.25,.1],[.81,4.26,-2.02],[.35,2.95,1.9],[-1.08,-4.8,-.15],[-.28,-5.88,2.98],
     [.35,-1,6.3],[.45,1.7,6.8],[-.55,5.8,6.2],[3.69,-1.4,-3.2],[.55,-4.3,5.6]];
   const inView=(x,z,w)=>lookouts.some(([a,tx,tz])=>{const dx=x-tx,dz=z-tz,along=dx*Math.sin(a)+dz*Math.cos(a);return along>.3&&Math.abs(dx*Math.cos(a)-dz*Math.sin(a))<w});
   const trees=[[-6,-3.1],[-4.9,-4.7],[.6,-4.8],[5.9,-4.4],[6.6,-2.8],[-6.45,2.2]];
@@ -122,7 +122,9 @@ function buildHouseViewer(host) {
   scene.updateMatrixWorld(true);
   // Software projection shares the same camera when WebGL is unavailable.
   // The vendored crew keeps its unused electrician (index 6) out of the journey; the new trades follow the six services.
-  const crew=[...buildCrew(scene).slice(0,6),...(typeof buildTradesCrew==='function'?buildTradesCrew(scene):[])];
+  const base=buildCrew(scene);
+  // Package order is pintura, hidrolavado, plomería, gas, fumigaciones, jardinería, electricidad: electricidad goes after gas.
+  const crew=[...base.slice(0,4),base[6],base[4],base[5],...(typeof buildTradesCrew==='function'?buildTradesCrew(scene):[])];
   let active=-1,visible=true,lastTime=0,loopId=0,crewStarted=0,workDone=false;
   const actionStatus=document.querySelector("#actionStatus");
   const reduced=matchMedia("(prefers-reduced-motion: reduce)");
@@ -157,8 +159,8 @@ function buildHouseViewer(host) {
     const landscapeHalfHeight=Math.max(pose.span/2/aspect,pose.span*.29);
     // Mobile has a dedicated scene area, clear of the description and controls.
     const compact=matchMedia('(max-width:780px), (max-width:1000px) and (max-height:550px)').matches;
-    const mobileSpans=[4.4,4.8,3.8,4.4,5.8,5.4,4.2,3.5,5.2,4.8,4.4];
-    const mobileHalfHeights=[1.75,1.7,1.65,1.85,2.8,2.55,1.75,1.4,2.2,2.2,1.55];
+    const mobileSpans=[4.4,4.8,3.8,4.4,3.8,5.8,5.4,4.2,3.5,5.2,4.8,4.4];
+    const mobileHalfHeights=[1.75,1.7,1.65,1.85,1.7,2.8,2.55,1.75,1.4,2.2,2.2,1.55];
     const shown=Math.max(0,active);
     const tourHalf=compact?Math.max(mobileSpans[shown]/2/aspect,mobileHalfHeights[shown]):Math.min(landscapeHalfHeight,pose.span*.41);
     const half=landscapeHalfHeight+(tourHalf-landscapeHalfHeight)*pose.tour;

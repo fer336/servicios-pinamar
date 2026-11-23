@@ -9,7 +9,8 @@ export const SERVICE_SLUG = {
   JARDINERIA: 'jardineria',
   HERRERIA: 'herreria',
   DURLOCK: 'durlock',
-  CARPINTERIA: 'carpinteria'
+  CARPINTERIA: 'carpinteria',
+  ELECTRICIDAD: 'electricidad'
 } as const;
 
 export type ServiceSlug = (typeof SERVICE_SLUG)[keyof typeof SERVICE_SLUG];

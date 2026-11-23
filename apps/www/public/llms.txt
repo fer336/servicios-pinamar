@@ -16,6 +16,7 @@ Servicios Pinamar is a local services landing page for property maintenance in P
 - Herrería: rejas, frentes completos, portones corredizos y elevadizos, estructuras de techo con perfil C o caño estructural, parrillas y carteles
 - Durlock: tabiques, cielorrasos, revestimientos y colocación de placas con terminación con masilla
 - Carpintería: decks de madera, pérgolas y trabajos en madera a medida
+- Electricidad domiciliaria y de obras nuevas
 
 ## Areas Served
 
@@ -42,6 +43,7 @@ The site directs quote requests through WhatsApp: https://wa.me/5492254413336?te
 - Herrería en Pinamar: https://www.serviciospinamar.com/servicios/herreria/
 - Durlock en Pinamar: https://www.serviciospinamar.com/servicios/durlock/
 - Carpintería en Pinamar: https://www.serviciospinamar.com/servicios/carpinteria/
+- Electricista en Pinamar: https://www.serviciospinamar.com/servicios/electricidad/
 - Sobre nosotros: https://www.serviciospinamar.com/nosotros/
 - Contacto: https://www.serviciospinamar.com/contacto/
 - Zonas de cobertura: https://www.serviciospinamar.com/zonas/

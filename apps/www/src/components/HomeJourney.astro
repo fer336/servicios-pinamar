@@ -19,6 +19,7 @@ const icons: Record<string, string> = {
   jardineria: '<path d="M12 3 7 10h3l-4 6h12l-4-6h3z"/><path d="M12 16v5"/>',
   herreria: '<path d="M13.5 3.5 20 10l-2.6 2.6-6.5-6.5z"/><path d="m13.3 8.6-9 9a1.8 1.8 0 0 0 2.6 2.6l9-9"/>',
   durlock: '<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18"/><path d="M14.5 7h.01M14.5 12h.01M14.5 17h.01"/>',
+  electricidad: '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/>',
   carpinteria: '<rect x="3" y="4.5" width="18" height="4" rx="1"/><rect x="3" y="10" width="18" height="4" rx="1"/><rect x="3" y="15.5" width="18" height="4" rx="1"/>'
 };
 const iconFor = (id: string) => icons[id.startsWith('herreria') ? 'herreria' : id];

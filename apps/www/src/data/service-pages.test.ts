@@ -10,7 +10,7 @@ const selfPath = fileURLToPath(import.meta.url);
 
 // S1: the three new trade pages exist.
 const slugs = servicePages.map((service) => service.slug as string);
-for (const slug of ['herreria', 'durlock', 'carpinteria']) {
+for (const slug of ['herreria', 'durlock', 'carpinteria', 'electricidad']) {
   assert.ok(slugs.includes(slug), `missing service page: ${slug}`);
 }
 
@@ -99,5 +99,14 @@ for (const [slug, term, section] of [['plomeria', /destapaci/i, 'destapaciones']
 const homeSource = readFileSync(join(wwwRoot, 'src/pages/index.astro'), 'utf8');
 assert.match(homeSource, /destapaci/i, 'home must mention destapaciones');
 assert.match(homeSource, /mosquito/i, 'home must mention mosquitos');
+
+// Electricidad: only "domiciliaria" and "obras nuevas", no detail and no license claim.
+const electricidad = servicePages.find((page) => page.slug === 'electricidad') as any;
+for (const field of ['title', 'description', 'h1', 'lead'] as const) {
+  assert.match(electricidad[field], /domiciliaria/i, `electricidad: ${field} must say domiciliaria`);
+  assert.match(electricidad[field], /obras nuevas/i, `electricidad: ${field} must say obras nuevas`);
+}
+assert.equal(/matricul/i.test(JSON.stringify(electricidad)), false, 'electricidad: no license claim');
+assert.match(homeSource, /\/servicios\/electricidad\//, 'home must link electricidad');
 
 console.log('service-pages.test.ts: ok');

@@ -18,7 +18,8 @@ const SERVICE_LABEL = {
   jardineria: 'Jardinería',
   herreria: 'Herrería',
   durlock: 'Durlock',
-  carpinteria: 'Carpintería'
+  carpinteria: 'Carpintería',
+  electricidad: 'Electricidad'
 } as const;
 const INITIAL_VISIBLE_BY_MEDIA = {
   MOBILE: 5,

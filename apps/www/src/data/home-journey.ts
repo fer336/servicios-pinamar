@@ -1,5 +1,5 @@
 export type JourneyStopId =
-  | 'pintura' | 'hidrolavado' | 'plomeria' | 'gas' | 'fumigaciones' | 'jardineria'
+  | 'pintura' | 'hidrolavado' | 'plomeria' | 'gas' | 'electricidad' | 'fumigaciones' | 'jardineria'
   | 'herreria-rejas' | 'herreria-carteles' | 'herreria-techos' | 'durlock' | 'carpinteria';
 
 // Camera framing exactly as shipped in the design package: [angle, targetX, targetY, targetZ, lift, span].
@@ -15,8 +15,8 @@ export interface JourneyStop {
 }
 
 // Order matters: it is the chooser order and the index the 3D scene uses for its worker crew.
-// The package also ships an "Electricidad" stop; the site has no such service page, so it is left out.
-// Stops 7-11 are drawn by src/scene/trades-crew.js.
+// Electricidad (index 4) is the package's seventh crew member, moved next to Gas.
+// Stops 8-12 are drawn by src/scene/trades-crew.js.
 export const journeyStops: JourneyStop[] = [
   {
     id: 'pintura',
@@ -49,6 +49,14 @@ export const journeyStops: JourneyStop[] = [
     description: 'El gasista revisa el equipo y sus conexiones con un instrumento de medición. Consultá por instalaciones y artefactos con un profesional matriculado.',
     href: '/servicios/gas/',
     camera: [0.81, 4.26, 1.25, -2.02, 0.27, 7.65]
+  },
+  {
+    id: 'electricidad',
+    service: 'Electricidad',
+    place: 'El tablero',
+    description: 'El electricista trabaja en el tablero y prueba la luz exterior. Consultá por electricidad domiciliaria y de obras nuevas.',
+    href: '/servicios/electricidad/',
+    camera: [0.35, 2.95, 1.35, 1.9, 0.24, 6.6]
   },
   {
     id: 'fumigaciones',
