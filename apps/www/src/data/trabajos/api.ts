@@ -6,7 +6,11 @@ export const SERVICE_SLUG = {
   PINTURA: 'pintura',
   HIDROLAVADO: 'hidrolavado',
   FUMIGACIONES: 'fumigaciones',
-  JARDINERIA: 'jardineria'
+  JARDINERIA: 'jardineria',
+  HERRERIA: 'herreria',
+  DURLOCK: 'durlock',
+  CARPINTERIA: 'carpinteria',
+  ELECTRICIDAD: 'electricidad'
 } as const;
 
 export type ServiceSlug = (typeof SERVICE_SLUG)[keyof typeof SERVICE_SLUG];

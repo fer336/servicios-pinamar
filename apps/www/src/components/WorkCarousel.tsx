@@ -15,7 +15,11 @@ const SERVICE_LABEL = {
   pintura: 'Pintura',
   hidrolavado: 'Hidrolavado',
   fumigaciones: 'Fumigaciones',
-  jardineria: 'Jardinería'
+  jardineria: 'Jardinería',
+  herreria: 'Herrería',
+  durlock: 'Durlock',
+  carpinteria: 'Carpintería',
+  electricidad: 'Electricidad'
 } as const;
 const INITIAL_VISIBLE_BY_MEDIA = {
   MOBILE: 5,

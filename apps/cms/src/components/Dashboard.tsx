@@ -40,6 +40,10 @@ const TABS: { key: Tab; label: string }[] = [
   { key: "hidrolavado", label: "Hidrolavado" },
   { key: "fumigaciones", label: "Fumigaciones" },
   { key: "jardineria", label: "Jardinería" },
+  { key: "herreria", label: "Herrería" },
+  { key: "durlock", label: "Durlock" },
+  { key: "carpinteria", label: "Carpintería" },
+  { key: "electricidad", label: "Electricidad" },
 ];
 
 const LIMIT = 12;

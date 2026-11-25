@@ -3,12 +3,19 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { journeyStops } from './home-journey.ts';
 
-// S2: six services, in this order, and no Electricidad.
+// The original services with Electricidad after Gas, then three herrería stops, durlock and carpintería.
 assert.deepEqual(
   journeyStops.map((stop) => stop.service),
-  ['Pintura', 'Hidrolavado', 'Plomería', 'Gas', 'Fumigaciones', 'Jardinería y poda']
+  ['Pintura', 'Hidrolavado', 'Plomería', 'Gas', 'Electricidad', 'Fumigaciones', 'Jardinería y poda', 'Herrería · Rejas', 'Herrería · Carteles', 'Herrería · Techos', 'Durlock', 'Carpintería']
 );
-assert.equal(JSON.stringify(journeyStops).toLowerCase().includes('electric'), false);
+assert.deepEqual(
+  journeyStops.slice(7).map((stop) => stop.href),
+  ['/servicios/herreria/', '/servicios/herreria/', '/servicios/herreria/', '/servicios/durlock/', '/servicios/carpinteria/']
+);
+assert.equal(journeyStops[4].href, '/servicios/electricidad/');
+// User: "no pongas nada en detalle solo que hacenos electricidad domesti a y de obras nuevas".
+assert.match(journeyStops[4].description, /domiciliaria/);
+assert.match(journeyStops[4].description, /obras nuevas/);
 
 // S5: every stop links to an existing service page.
 const servicePages = readFileSync(new URL('./service-pages.ts', import.meta.url), 'utf8');
@@ -34,5 +41,27 @@ assert.ok(scene.includes('function buildHouseViewer(host)'), 'the viewer entry p
 assert.ok(scene.includes('// Forest:'), 'the forest must be part of the scene');
 assert.equal(scene.includes('0x5fc1c7'), false, 'no sea in the scene');
 assert.equal(scene.includes('0x96a684'), false, 'the green island top must be gone');
+
+// The new trades: one worker per new stop, welders with sparks, and every stop with its mobile framing.
+const trades = readFileSync(new URL('../scene/trades-crew.js', import.meta.url), 'utf8');
+assert.ok(trades.includes('function buildTradesCrew(scene)'), 'the trades crew entry point must exist');
+assert.equal((trades.match(/^\s*\['[^']+', '[^']+'\],?$/gm) || []).length, journeyStops.length - 7, 'one message pair per new stop');
+// The package electrician (crew index 6) plays the Electricidad stop, right after Gas.
+assert.ok(scene.includes('const crew=[...base.slice(0,4),base[6],base[4],base[5],'), 'electricidad must use the package electrician');
+assert.ok(trades.includes('sparks.push'), 'welders throw sparks');
+assert.ok(scene.includes('buildTradesCrew(scene)'), 'the scene builds the new trades');
+for (const name of ['mobileSpans', 'mobileHalfHeights']) {
+  const values = scene.match(new RegExp(`const ${name}=\\[([^\\]]+)\\]`))?.[1].split(',') ?? [];
+  assert.equal(values.length, journeyStops.length, `${name} needs one value per stop`);
+}
+const journeyComponent = readFileSync(new URL('../components/HomeJourney.astro', import.meta.url), 'utf8');
+assert.ok(journeyComponent.includes('trades-crew.js?url'), 'the trades crew script is loaded');
+
+// Page scroll passes straight to the sections below; the tour opens only on demand (tap on the house or a service).
+const client = readFileSync(new URL('../scripts/home-journey.js', import.meta.url), 'utf8');
+assert.equal(/addEventListener\('scroll'/.test(client), false, 'page scroll must not drive the journey');
+assert.ok(client.includes("host.addEventListener('click'"), 'tapping the house opens the tour');
+assert.ok(client.includes('hj-touring'), 'the page is locked while the tour is open');
+assert.ok(journeyComponent.includes('id="enterTour"'), 'there is a visible button to open the tour');
 
 console.log('home-journey data ok');

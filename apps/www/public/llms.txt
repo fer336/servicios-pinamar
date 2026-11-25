@@ -2,17 +2,21 @@
 
 Canonical URL: https://www.serviciospinamar.com/
 
-Servicios Pinamar is a local services landing page for property maintenance in Pinamar and nearby coastal areas in Buenos Aires, Argentina.
+Servicios Pinamar is a local services landing page for property maintenance in Pinamar and nearby coastal areas in Buenos Aires, Argentina. It is an intermediary: it receives the inquiry, shares the quote prepared by the professional and coordinates the work with verified independent professionals. Each service is carried out by its professional, who is responsible for the work and its warranty.
 
 ## Services
 
 - Pintura interior y exterior
 - Hidrolavado de fachadas, techos, veredas, pisos, decks y muros
-- Plomería para instalaciones, reparaciones y mantenimiento general
+- Plomería para destapaciones, pérdidas de agua, instalaciones, reparaciones y mantenimiento general
 - Gas para instalaciones, revisiones, mantenimiento y planos de gas (gasista matriculado)
 - Planos de gas, planos sanitarios y planos de agua corriente para ampliaciones y nuevas viviendas
-- Fumigaciones y control de plagas con certificado del trabajo realizado
+- Fumigaciones, fumigación de mosquitos y control de plagas con certificado del trabajo realizado
 - Jardinería: poda de árboles y arbustos, corte de pasto y parquización
+- Herrería: rejas, frentes completos, portones corredizos y elevadizos, estructuras de techo con perfil C o caño estructural, parrillas y carteles
+- Durlock: tabiques, cielorrasos, revestimientos y colocación de placas con terminación con masilla
+- Carpintería: decks de madera, pérgolas y trabajos en madera a medida
+- Electricidad domiciliaria y de obras nuevas
 
 ## Areas Served
 
@@ -36,6 +40,10 @@ The site directs quote requests through WhatsApp: https://wa.me/5492254413336?te
 - Planos en Pinamar: https://www.serviciospinamar.com/servicios/planos/
 - Fumigaciones en Pinamar: https://www.serviciospinamar.com/servicios/fumigaciones/
 - Jardinería en Pinamar: https://www.serviciospinamar.com/servicios/jardineria/
+- Herrería en Pinamar: https://www.serviciospinamar.com/servicios/herreria/
+- Durlock en Pinamar: https://www.serviciospinamar.com/servicios/durlock/
+- Carpintería en Pinamar: https://www.serviciospinamar.com/servicios/carpinteria/
+- Electricista en Pinamar: https://www.serviciospinamar.com/servicios/electricidad/
 - Sobre nosotros: https://www.serviciospinamar.com/nosotros/
 - Contacto: https://www.serviciospinamar.com/contacto/
 - Zonas de cobertura: https://www.serviciospinamar.com/zonas/

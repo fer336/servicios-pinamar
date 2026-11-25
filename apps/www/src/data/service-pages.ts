@@ -18,11 +18,11 @@ export const servicePages = [
     slug: 'pintura',
     shortName: 'Pintura',
     serviceType: 'Pintura interior y exterior',
-    title: 'Pintores en Pinamar: Pintura Interior y Exterior | Servicios Pinamar',
-    description: 'Pintores en Pinamar para casas, locales y propiedades de la costa. Pintura interior, exterior, mantenimiento y presupuestos por WhatsApp.',
-    h1: 'Pintores en Pinamar para casas, locales y propiedades de la costa',
+    title: 'Pintores en Pinamar | Pintura de Casas Interior y Exterior',
+    description: 'Pintores en Pinamar para casas, departamentos y locales: pintura interior y exterior, frentes, rejas y mantenimiento. Presupuesto por WhatsApp.',
+    h1: 'Pintores en Pinamar para casas, locales y propiedades',
     eyebrow: 'Pintura interior y exterior',
-    lead: 'Pintores en Pinamar para trabajos de pintura interior, exterior, retoques, mantenimiento y terminaciones prolijas en propiedades expuestas al clima costero.',
+    lead: 'Pintores en Pinamar para pintura interior, exterior, retoques y mantenimiento, con terminaciones prolijas pensadas para el sol, la humedad y el salitre de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-pintura.webp',
     imageAlt: 'Servicio de pintura interior y exterior en una propiedad de Pinamar',
     intent: 'pintura en Pinamar',
@@ -55,11 +55,11 @@ export const servicePages = [
     slug: 'hidrolavado',
     shortName: 'Hidrolavado',
     serviceType: 'Hidrolavado de exteriores',
-    title: 'Hidrolavado en Pinamar | Servicios Pinamar',
-    description: 'Hidrolavado en Pinamar para fachadas, techos, veredas, pisos, decks y muros. Limpieza exterior para propiedades de la Costa Atlántica.',
-    h1: 'Hidrolavado en Pinamar para fachadas, pisos, techos y exteriores',
+    title: 'Hidrolavado en Pinamar | Limpieza de Techos, Tejas y Fachadas',
+    description: 'Hidrolavado en Pinamar para techos, tejas, fachadas, decks, veredas y pisos. Limpieza exterior de casas y locales. Presupuesto por WhatsApp.',
+    h1: 'Hidrolavado en Pinamar para techos, fachadas, pisos y decks',
     eyebrow: 'Limpieza exterior de propiedades',
-    lead: 'Hidrolavado en Pinamar para recuperar superficies castigadas por arena, humedad, hojas, tránsito y clima costero.',
+    lead: 'Hidrolavado en Pinamar para recuperar techos, tejas, fachadas, decks y pisos castigados por la arena, la humedad, las hojas de los pinos y el clima de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-hidrolavado.webp',
     imageAlt: 'Hidrolavado de superficies exteriores en una propiedad de Pinamar',
     intent: 'hidrolavado en Pinamar',
@@ -92,24 +92,14 @@ export const servicePages = [
     slug: 'gas',
     shortName: 'Gasista',
     serviceType: 'Servicio de gas',
-    title: 'Gasista matriculado en Pinamar | Servicios Pinamar',
-    description: 'Gasista matriculado en Pinamar (Matrícula 7040, ENARGAS 3316-SG) para instalaciones, revisiones, mantenimiento y planos de gas en casas, locales y propiedades de la costa. Coordiná presupuesto por WhatsApp.',
-    h1: 'Gasista matriculado en Pinamar para instalaciones, revisiones y planos de gas',
+    title: 'Gasista Matriculado en Pinamar | Instalaciones y Pérdidas de Gas',
+    description: 'Gasista matriculado en Pinamar para instalaciones, revisiones, pérdidas de gas y mantenimiento de artefactos en casas y locales. Presupuesto por WhatsApp.',
+    h1: 'Gasista matriculado en Pinamar para instalaciones, revisiones y pérdidas de gas',
     eyebrow: 'Instalaciones y revisión de gas',
-    lead: 'Gasista en Pinamar para propiedades que necesitan instalación, revisión, reparación o mantenimiento de gas con comunicación clara desde el primer contacto.',
+    lead: 'Gasista matriculado en Pinamar para instalación, revisión, reparación y mantenimiento de gas, con comunicación clara desde el primer contacto. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-gas.webp',
     imageAlt: 'Trabajo de gas y mantenimiento seguro para una propiedad de Pinamar',
     intent: 'gasista en Pinamar',
-    credential: {
-      name: 'Soliz Guido Angel',
-      role: 'Gasista matriculado de primera',
-      description: 'Responsable técnico habilitado para instalaciones, revisiones y reparaciones de gas en propiedades de Pinamar, Cariló, Valeria del Mar y Ostende.',
-      items: [
-        'Matrícula 7040',
-        'ENARGAS 3316-SG',
-        'Habilitación 21012 FG2802'
-      ]
-    },
     gallery: {
       eyebrow: 'Trabajos realizados',
       title: 'Algunos de nuestros trabajos de gas',
@@ -138,23 +128,48 @@ export const servicePages = [
     ]
   },
   {
+    slug: 'electricidad',
+    shortName: 'Electricidad',
+    serviceType: 'Electricidad domiciliaria y de obras nuevas',
+    title: 'Electricista en Pinamar | Electricidad Domiciliaria y Obras Nuevas',
+    description: 'Electricista en Pinamar para electricidad domiciliaria y de obras nuevas en casas y propiedades. Presupuesto por WhatsApp.',
+    h1: 'Electricista en Pinamar: electricidad domiciliaria y de obras nuevas',
+    eyebrow: 'Electricidad',
+    lead: 'Electricistas en Pinamar para trabajos de electricidad domiciliaria y de obras nuevas. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    image: '/images/home-journey-poster.webp',
+    imageAlt: 'Ilustración 3D de una casa de la costa con deck y pérgola de madera entre pinos',
+    intent: 'electricista en Pinamar',
+    covers: [
+      'Electricidad domiciliaria.',
+      'Electricidad de obras nuevas.'
+    ],
+    situations: [
+      'Necesitás un electricista para tu casa.',
+      'Estás construyendo y necesitás la electricidad de la obra nueva.'
+    ],
+    process: howWeWork,
+    gallery: {
+      eyebrow: 'Trabajos realizados',
+      title: 'Algunos de nuestros trabajos de electricidad',
+      description: 'Trabajos de electricidad en propiedades de Pinamar y la zona.'
+    },
+    faqs: [
+      ['¿Qué trabajos de electricidad hacen?', 'Electricidad domiciliaria y de obras nuevas. Contanos qué necesitás por WhatsApp y te enviamos el presupuesto del profesional.'],
+      ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
+    ]
+  },
+  {
     slug: 'plomeria',
     shortName: 'Plomería',
     serviceType: 'Plomería general',
-    title: 'Plomeros en Pinamar: Reparaciones y Pérdidas de Agua | Servicios Pinamar',
-    description: 'Plomero en Pinamar para instalaciones, reparaciones, pérdidas de agua y mantenimiento general en casas, locales y propiedades de la costa.',
-    h1: 'Plomeros en Pinamar para reparaciones, instalaciones y mantenimiento',
+    title: 'Plomero en Pinamar | Destapaciones, Pérdidas de Agua y Reparaciones',
+    description: 'Plomero en Pinamar: destapaciones de cañerías, inodoros y desagües, pérdidas de agua, filtraciones, reparaciones e instalaciones. Presupuesto por WhatsApp.',
+    h1: 'Plomero en Pinamar para destapaciones, pérdidas de agua y reparaciones',
     eyebrow: 'Instalaciones y reparaciones de agua',
-    lead: 'Plomero en Pinamar para resolver filtraciones, instalaciones, reparaciones y mantenimiento general en propiedades de Pinamar, Cariló, Valeria del Mar y Ostende.',
+    lead: 'Plomero en Pinamar para destapaciones, pérdidas de agua, filtraciones, instalaciones, reparaciones y mantenimiento general en casas y locales de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-plomeria.webp',
     imageAlt: 'Trabajo de plomería y mantenimiento para una casa en Pinamar',
     intent: 'plomería en Pinamar',
-    credential: {
-      name: 'Soliz Guido Angel',
-      role: 'Gasista matriculado y plomero encargado',
-      description: 'Responsable técnico de los trabajos de plomería en propiedades de Pinamar, Cariló, Valeria del Mar y Ostende.',
-      items: []
-    },
     gallery: {
       eyebrow: 'Trabajos realizados',
       title: 'Algunos de nuestros trabajos de plomería',
@@ -162,19 +177,38 @@ export const servicePages = [
     },
     covers: [
       'Presentación de planos sanitarios y bajadas de luz y agua corriente.',
+      'Destapaciones de cañerías, inodoros, piletas, rejillas y desagües.',
       'Reparaciones de plomería en baños, cocinas, lavaderos y exteriores.',
       'Instalaciones y mantenimiento de cañerías, griferías y puntos de agua.',
       'Detección inicial de problemas visibles y coordinación del arreglo adecuado.',
       'Trabajos para casas, departamentos, locales y propiedades administradas.'
     ],
     situations: [
+      'Se tapó el inodoro, la pileta de la cocina o un desagüe.',
       'Apareció una pérdida, filtración o humedad visible.',
       'Necesitás instalar o cambiar griferías, conexiones o puntos de agua.',
       'Querés revisar la plomería antes de temporada o antes de alquilar.',
       'Administrás una propiedad y necesitás seguimiento con fotos o videos.'
     ],
     process: howWeWork,
+    sections: [
+      {
+        slug: 'destapaciones',
+        title: 'Destapaciones',
+        eyebrow: 'Cañerías, inodoros y desagües',
+        body: [
+          'Destapaciones de inodoros, piletas de cocina y lavadero, rejillas, cañerías y desagües en casas, departamentos y locales de Pinamar. Contanos qué se tapó y desde cuándo, y si podés mandá una foto o un video.',
+          'En las casas que pasan meses cerradas, la arena, las raíces de los pinos y la grasa acumulada suelen ser la causa. El profesional destapa, revisa por qué pasó y te avisa si conviene hacer algún arreglo para que no se repita.'
+        ],
+        bullets: [
+          'Inodoros, piletas, rejillas y bachas.',
+          'Cañerías y desagües internos y externos.',
+          'Revisión de la causa para evitar que se vuelva a tapar.'
+        ]
+      }
+    ],
     faqs: [
+      ['¿Hacen destapaciones en Pinamar?', 'Sí. Te conectamos con plomeros que destapan inodoros, piletas, rejillas, cañerías y desagües en casas, departamentos y locales de Pinamar.'],
       ['¿Puedo consultar por un plomero en Pinamar si tengo una pérdida?', 'Sí. Atendemos consultas por pérdidas visibles, reparaciones, instalaciones y mantenimiento general de plomería.'],
       ['¿Puedo mandar fotos de una pérdida?', 'Sí. Las fotos o videos ayudan a entender el problema y definir si hace falta una visita.'],
       ['¿Trabajan con propiedades de alquiler o administradas?', 'Sí. Coordinamos con propietarios, administradores e inmobiliarias de la zona.'],
@@ -185,24 +219,14 @@ export const servicePages = [
     slug: 'planos',
     shortName: 'Planos',
     serviceType: 'Planos y trámites',
-    title: 'Planos de Gas, Planos Sanitarios y de Agua Corriente en Pinamar | Servicios Pinamar',
-    description: 'Planos de gas, planos sanitarios y planos de agua corriente en Pinamar. Elaboración y presentación ante Obras Particulares para ampliaciones y nuevas viviendas. Presupuesto por WhatsApp.',
-    h1: 'Planos de Gas, Planos Sanitarios y de Agua Corriente en Pinamar',
+    title: 'Planos de Gas y Sanitarios en Pinamar | Obras Particulares',
+    description: 'Planos de gas en Pinamar, planos sanitarios y de agua corriente para ampliaciones y viviendas nuevas, listos para Obras Particulares. Presupuesto por WhatsApp.',
+    h1: 'Planos de gas, sanitarios y de agua corriente en Pinamar',
     eyebrow: 'Planos y trámites',
-    lead: 'Elaboramos planos de gas, planos sanitarios y planos de agua corriente para ampliaciones y nuevas viviendas en Pinamar, Cariló, Valeria del Mar y Ostende, con firma de gasista matriculado y orientación para la presentación ante Obras Particulares.',
+    lead: 'Elaboramos planos de gas, planos sanitarios y planos de agua corriente en Pinamar para ampliaciones y viviendas nuevas, con firma de gasista matriculado y orientación para la presentación ante Obras Particulares de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-planos.svg',
     imageAlt: 'Planos técnicos de gas, sanitarios y agua corriente para una propiedad de Pinamar',
     intent: 'planos en Pinamar',
-    credential: {
-      name: 'Soliz Guido Angel',
-      role: 'Gasista matriculado de primera',
-      description: 'Responsable técnico habilitado para la elaboración de planos de gas y la firma de la documentación presentada ante Obras Particulares en Pinamar, Cariló, Valeria del Mar y Ostende.',
-      items: [
-        'Matrícula 7040',
-        'ENARGAS 3316-SG',
-        'Habilitación 21012 FG2802'
-      ]
-    },
     gallery: {
       eyebrow: 'Trabajos realizados',
       title: 'Algunos de nuestros trabajos de planos',
@@ -213,7 +237,7 @@ export const servicePages = [
       'Planos sanitarios para obras, reformas y regularizaciones.',
       'Planos de agua corriente, incluidas las bajadas de luz y agua corriente.',
       'Orientación para la presentación y el seguimiento ante Obras Particulares.',
-      'Coordinación remota con propietarios, arquitectos, inmobiliarias y administradores.'
+      'Coordinación remota con propietarios, inmobiliarias y administradores.'
     ],
     situations: [
       'Necesitás planos para una ampliación, reforma o vivienda nueva.',
@@ -290,15 +314,16 @@ export const servicePages = [
     slug: 'fumigaciones',
     shortName: 'Fumigaciones',
     serviceType: 'Fumigaciones y control de plagas con certificado',
-    title: 'Fumigaciones en Pinamar con certificado | Control de plagas | Servicios Pinamar',
-    description: 'Fumigaciones en Pinamar con certificado: control de cucarachas, hormigas, roedores, pulgas y exclusión de murciélagos en casas, locales y propiedades de la costa. Presupuesto por WhatsApp.',
-    h1: 'Fumigaciones en Pinamar con certificado para casas, locales y propiedades',
+    title: 'Fumigación en Pinamar | Mosquitos, Plagas y Murciélagos',
+    description: 'Fumigación en Pinamar con certificado: mosquitos, cucarachas, hormigas, roedores y exclusión de murciélagos en casas y alquileres. Presupuesto por WhatsApp.',
+    h1: 'Fumigaciones en Pinamar con certificado: mosquitos, plagas y murciélagos',
     eyebrow: 'Control de plagas',
-    lead: 'Fumigaciones y control de plagas en Pinamar, Cariló, Valeria del Mar y Ostende. Un profesional asignado revisa tu propiedad, aplica el tratamiento y entrega un certificado del trabajo realizado.',
+    lead: 'Fumigación de mosquitos, fumigaciones y control de plagas en Pinamar: un profesional asignado revisa tu propiedad, aplica el tratamiento y entrega un certificado del trabajo realizado. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-fumigaciones.webp',
     imageAlt: 'Técnico instalando una red de exclusión en el alero de una casa de Pinamar mientras los murciélagos salen al atardecer',
     intent: 'fumigaciones en Pinamar',
     covers: [
+      'Fumigación de mosquitos en jardines, patios y exteriores.',
       'Control de cucarachas, hormigas, arañas, pulgas y otros insectos en casas, departamentos y locales.',
       'Desratización y control de roedores en patios, depósitos y construcciones.',
       'Exclusión de murciélagos en techos y entretechos, sin dañar a los animales.',
@@ -307,6 +332,7 @@ export const servicePages = [
     ],
     situations: [
       'Cerraste la casa todo el invierno y querés recibirla sin plagas.',
+      'Hay muchos mosquitos en el jardín y no se puede estar afuera.',
       'Viste cucarachas, hormigas, pulgas o rastros de roedores.',
       'Hay murciélagos en el techo o el entretecho y no sabés cómo actuar.',
       'Una inmobiliaria o un comercio necesita un certificado de fumigación.'
@@ -328,6 +354,20 @@ export const servicePages = [
           'Tratamiento según la plaga detectada.',
           'Indicaciones claras antes y después de la aplicación.',
           'Servicio puntual o previo a la temporada.'
+        ]
+      },
+      {
+        slug: 'mosquitos',
+        title: 'Fumigación de mosquitos',
+        eyebrow: 'Jardines y exteriores',
+        body: [
+          'Con el calor y las lluvias, los jardines arbolados de Pinamar se llenan de mosquitos. La fumigación de mosquitos trata el jardín, los patios, los cercos y las zonas húmedas donde se refugian, para que puedas volver a disfrutar del exterior.',
+          'El profesional también te señala los recipientes, canaletas y rincones donde se acumula agua, porque eliminar esos criaderos es lo que hace que el tratamiento dure más.'
+        ],
+        bullets: [
+          'Tratamiento de jardines, patios y cercos.',
+          'Ideal antes de la temporada, de un evento o de recibir inquilinos.',
+          'Indicaciones para eliminar criaderos de agua estancada.'
         ]
       },
       {
@@ -366,7 +406,8 @@ export const servicePages = [
     },
     faqs: [
       ['¿Hacen fumigaciones con certificado en Pinamar?', 'Sí. Al finalizar el trabajo, el profesional asignado entrega un certificado de la fumigación realizada.'],
-      ['¿Qué plagas controlan?', 'Cucarachas, hormigas, arañas, pulgas, roedores y otras plagas comunes en casas, locales y propiedades de la costa. Para murciélagos, el profesional realiza la exclusión.'],
+      ['¿Hacen fumigación de mosquitos en Pinamar?', 'Sí. El profesional fumiga jardines, patios y exteriores, y te indica cómo eliminar los lugares con agua estancada donde se crían los mosquitos.'],
+      ['¿Qué plagas controlan?', 'Mosquitos, cucarachas, hormigas, arañas, pulgas, roedores y otras plagas comunes en casas, locales y propiedades de la costa. Para murciélagos, el profesional realiza la exclusión.'],
       ['¿Es seguro para mi familia y mis mascotas?', 'El profesional te indica cuánto tiempo ventilar, qué proteger y cuándo volver a usar cada ambiente según el producto aplicado.'],
       ['¿Pueden fumigar antes de la temporada?', 'Sí. Es un servicio habitual para casas de veraneo y propiedades de alquiler que estuvieron cerradas.'],
       ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
@@ -376,11 +417,11 @@ export const servicePages = [
     slug: 'jardineria',
     shortName: 'Jardinería',
     serviceType: 'Jardinería, poda y parquización',
-    title: 'Poda y Tala de Árboles, Jardinería y Parquización en Pinamar',
-    description: 'Poda y tala de árboles, corte de pasto, parquización y mantenimiento de jardines en Pinamar, Cariló, Valeria del Mar y Ostende. Jardineros para casas y propiedades. Presupuesto por WhatsApp.',
-    h1: 'Poda de árboles, jardinería y parquización en Pinamar',
+    title: 'Poda de Pinos en Pinamar | Tala, Jardinería y Parquización',
+    description: 'Poda de pinos y tala de árboles en Pinamar, corte de pasto, parquización y mantenimiento de jardines para casas y propiedades. Presupuesto por WhatsApp.',
+    h1: 'Poda de pinos, jardinería y parquización en Pinamar',
     eyebrow: 'Jardines y parques',
-    lead: 'Jardineros en Pinamar, Cariló, Valeria del Mar y Ostende para podar, cortar el pasto, parquizar y mantener tu jardín prolijo todo el año, incluso si no vivís en la propiedad.',
+    lead: 'Jardineros en Pinamar para podar pinos y árboles, cortar el pasto, parquizar y mantener tu jardín prolijo todo el año, incluso si no vivís en la propiedad. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
     image: '/images/servicio-jardineria.webp',
     imageAlt: 'Jardinero cortando el pasto con una cortadora roja frente a una casa de madera entre pinos y el mar',
     intent: 'jardinería en Pinamar',
@@ -457,6 +498,238 @@ export const servicePages = [
       ['¿Cortan el pasto de casas de veraneo?', 'Sí. Podemos hacerlo una vez antes de la temporada o con una frecuencia fija.'],
       ['¿Qué incluye la parquización?', 'Preparación del terreno, césped, plantas y canteros. Se define según el tamaño del terreno y el mantenimiento que quieras.'],
       ['¿Pueden trabajar si no estoy en la propiedad?', 'Sí. Coordinamos el acceso y te mandamos fotos del antes y el después.'],
+      ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
+    ]
+  },
+  {
+    slug: 'herreria',
+    shortName: 'Herrería',
+    serviceType: 'Herrería en general',
+    title: 'Herrería en Pinamar | Herrero para Rejas, Portones y Estructuras',
+    description: 'Herrero en Pinamar: rejas, portones corredizos y elevadizos, estructuras de techo con perfil C, frentes, parrillas y carteles. Presupuesto por WhatsApp.',
+    h1: 'Herrería en Pinamar: rejas, portones, estructuras y trabajos a medida',
+    eyebrow: 'Herrería y estructuras metálicas',
+    lead: 'Herreros en Pinamar para rejas, portones corredizos y elevadizos, estructuras de techo, frentes completos, parrillas, carteles y todo tipo de trabajos de herrería en casas y locales de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    image: '/images/home-journey-poster.webp',
+    imageAlt: 'Ilustración 3D de una casa de la costa con deck y pérgola de madera entre pinos',
+    intent: 'herrería en Pinamar',
+    covers: [
+      'Rejas para ventanas, puertas, balcones y cerramientos de seguridad.',
+      'Estructuras de techo con perfil C o caño estructural.',
+      'Frentes completos: rejas, portones y cerramientos de la línea municipal.',
+      'Portones corredizos y portones elevadizos a medida.',
+      'Parrillas, carteles y trabajos generales de herrería a medida.',
+      'Reparación y mantenimiento de herrería castigada por el salitre.'
+    ],
+    situations: [
+      'Querés colocar rejas o cerrar el frente de la propiedad.',
+      'Necesitás una estructura de techo para una galería, un quincho o una cochera.',
+      'El portón se traba, se oxidó o hay que cambiarlo.',
+      'Buscás una parrilla, un cartel o una pieza de herrería hecha a medida.',
+      'El salitre deterioró rejas, barandas o estructuras metálicas.'
+    ],
+    process: howWeWork,
+    sections: [
+      {
+        slug: 'rejas-y-frentes',
+        title: 'Rejas y frentes completos',
+        eyebrow: 'Seguridad y cerramientos',
+        body: [
+          'Rejas para ventanas, puertas, balcones y patios, y frentes completos que integran reja, portón y puerta peatonal en un mismo diseño. El profesional releva las medidas, define el perfil adecuado y te propone el acabado.',
+          'En la costa el salitre ataca el hierro: por eso se cuida la preparación, el antióxido y la pintura de terminación, para que el trabajo dure más.'
+        ],
+        bullets: [
+          'Rejas de seguridad para aberturas y balcones.',
+          'Frentes completos con portón y puerta peatonal.',
+          'Tratamiento antióxido y terminación pintada.'
+        ]
+      },
+      {
+        slug: 'portones',
+        title: 'Portones corredizos y elevadizos',
+        eyebrow: 'Entradas y cocheras',
+        body: [
+          'Portones corredizos y portones elevadizos para cocheras y entradas de vehículos, fabricados a medida del vano.',
+          'También se reparan portones existentes: guías, ruedas, bisagras, contrapesos y estructuras dañadas.'
+        ],
+        bullets: [
+          'Portones corredizos a medida.',
+          'Portones elevadizos para cocheras.',
+          'Reparación de guías, ruedas y estructuras.'
+        ]
+      },
+      {
+        slug: 'estructuras-de-techo',
+        title: 'Estructuras de techo',
+        eyebrow: 'Perfil C y caño estructural',
+        body: [
+          'Estructuras metálicas de techo con perfil C o caño estructural para galerías, quinchos, cocheras y ampliaciones. El profesional evalúa las luces, las cargas y la fijación para proponerte la estructura adecuada.',
+          'Se coordina con vos el tipo de cubierta que va a llevar la estructura, para que quede lista para la colocación.'
+        ],
+        bullets: [
+          'Estructuras con perfil C o caño estructural.',
+          'Galerías, quinchos, cocheras y ampliaciones.',
+          'Soldadura, fijación y terminación anticorrosiva.'
+        ]
+      },
+      {
+        slug: 'parrillas-y-carteles',
+        title: 'Parrillas, carteles y trabajos a medida',
+        eyebrow: 'Todo en herrería',
+        body: [
+          'Parrillas, fogoneros, carteles para comercios, barandas, escaleras y piezas a medida. Si tenés una idea o una foto de referencia, mandala por WhatsApp y el profesional te prepara el presupuesto.'
+        ],
+        bullets: [
+          'Parrillas y fogoneros a medida.',
+          'Carteles y estructuras para comercios.',
+          'Barandas, escaleras y trabajos generales de herrería.'
+        ]
+      }
+    ],
+    gallery: {
+      eyebrow: 'Trabajos realizados',
+      title: 'Algunos de nuestros trabajos de herrería',
+      description: 'Rejas, portones, estructuras y trabajos a medida en propiedades de Pinamar y la zona.'
+    },
+    faqs: [
+      ['¿Hacen rejas y portones en Pinamar?', 'Sí. Te conectamos con herreros que fabrican y colocan rejas, frentes completos, portones corredizos y portones elevadizos en Pinamar, Cariló, Valeria del Mar y Ostende.'],
+      ['¿Hacen estructuras de techo metálicas?', 'Sí. El profesional arma estructuras de techo con perfil C o caño estructural para galerías, quinchos, cocheras y ampliaciones.'],
+      ['¿Pueden reparar un portón que ya tengo?', 'Sí. Mandanos fotos del portón y del vano, y el profesional evalúa si conviene repararlo o fabricar uno nuevo.'],
+      ['¿Hacen parrillas y carteles a medida?', 'Sí. Podés enviarnos una idea o una foto de referencia y el profesional te prepara el presupuesto.'],
+      ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
+    ]
+  },
+  {
+    slug: 'durlock',
+    shortName: 'Durlock',
+    serviceType: 'Construcción en seco con placas de yeso',
+    title: 'Durlock en Pinamar | Durlockero, Tabiques y Cielorrasos',
+    description: 'Durlock en Pinamar: durlockero para tabiques, cielorrasos, revestimientos y placas de yeso con masilla. Construcción en seco. Presupuesto por WhatsApp.',
+    h1: 'Durlock en Pinamar: durlockero para tabiques, cielorrasos y revestimientos',
+    eyebrow: 'Construcción en seco',
+    lead: 'Durlockeros en Pinamar para dividir ambientes, bajar techos, revestir paredes y dejar las placas terminadas con masilla, listas para pintar: construcción en seco rápida y limpia. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    image: '/images/home-journey-poster.webp',
+    imageAlt: 'Ilustración 3D de una casa de la costa con deck y pérgola de madera entre pinos',
+    intent: 'durlock en Pinamar',
+    covers: [
+      'Tabiques divisorios para separar o crear ambientes.',
+      'Cielorrasos suspendidos y aplicados.',
+      'Revestimientos de paredes con placas de yeso.',
+      'Colocación de placas sobre estructura metálica.',
+      'Terminación de juntas con cinta y masilla, lista para pintar.'
+    ],
+    situations: [
+      'Querés dividir un ambiente sin hacer obra húmeda.',
+      'Necesitás un cielorraso nuevo o reparar uno dañado por humedad.',
+      'Buscás revestir paredes irregulares antes de pintar.',
+      'Tenés que adaptar un local o un departamento rápido y con poca suciedad.'
+    ],
+    process: howWeWork,
+    sections: [
+      {
+        slug: 'tabiques-y-cielorrasos',
+        title: 'Tabiques y cielorrasos',
+        eyebrow: 'Ambientes nuevos sin obra húmeda',
+        body: [
+          'Los tabiques de durlock permiten dividir ambientes, armar un vestidor o separar una oficina en poco tiempo y con poca suciedad. Los cielorrasos sirven para bajar la altura, ocultar instalaciones o renovar un techo dañado.',
+          'El profesional arma la estructura metálica, coloca las placas y deja previstos los pasos de instalaciones que necesites.'
+        ],
+        bullets: [
+          'Tabiques divisorios con estructura metálica.',
+          'Cielorrasos suspendidos y aplicados.',
+          'Previsión para luces e instalaciones.'
+        ]
+      },
+      {
+        slug: 'revestimientos-y-terminacion',
+        title: 'Revestimientos y terminación con masilla',
+        eyebrow: 'Listo para pintar',
+        body: [
+          'Revestimientos de paredes con placas de yeso para emparejar superficies o mejorar la terminación de un ambiente. Las juntas se tratan con cinta y masilla en varias manos hasta lograr una superficie pareja.',
+          'Si después querés pintar, podemos coordinar también el servicio de pintura.'
+        ],
+        bullets: [
+          'Revestimiento de paredes con placas.',
+          'Tomado de juntas con cinta y masilla.',
+          'Superficie lista para pintar.'
+        ]
+      }
+    ],
+    gallery: {
+      eyebrow: 'Trabajos realizados',
+      title: 'Algunos de nuestros trabajos de durlock',
+      description: 'Tabiques, cielorrasos y revestimientos en propiedades de Pinamar y la zona.'
+    },
+    faqs: [
+      ['¿Colocan durlock en Pinamar?', 'Sí. Te conectamos con profesionales que hacen tabiques, cielorrasos y revestimientos de durlock en Pinamar, Cariló, Valeria del Mar y Ostende.'],
+      ['¿El trabajo incluye la terminación con masilla?', 'Sí. El profesional coloca las placas y toma las juntas con cinta y masilla para dejar la superficie lista para pintar.'],
+      ['¿Se puede usar durlock en ambientes húmedos?', 'Existen placas para ambientes húmedos. El profesional te indica cuál conviene según el lugar donde se coloca.'],
+      ['¿Puedo pedir presupuesto con fotos y medidas?', 'Sí. Mandanos fotos y medidas aproximadas por WhatsApp y coordinamos una visita si hace falta.'],
+      ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
+    ]
+  },
+  {
+    slug: 'carpinteria',
+    shortName: 'Carpintería',
+    serviceType: 'Carpintería en madera',
+    title: 'Deck de Madera en Pinamar | Carpintero, Decks y Pérgolas',
+    description: 'Decks de madera en Pinamar: carpintero para construcción y colocación de decks, pérgolas y trabajos en madera a medida para casas. Presupuesto por WhatsApp.',
+    h1: 'Decks de madera en Pinamar: carpintero para decks, pérgolas y trabajos a medida',
+    eyebrow: 'Trabajos en madera',
+    lead: 'Carpinteros en Pinamar para construir y colocar decks de madera, pérgolas y trabajos en madera a medida, con maderas aptas para el exterior y el clima de Pinamar. También trabajamos en Cariló, Valeria del Mar, Ostende y el resto de la costa.',
+    image: '/images/home-journey-poster.webp',
+    imageAlt: 'Ilustración 3D de una casa de la costa con deck y pérgola de madera entre pinos',
+    intent: 'carpintería en Pinamar',
+    covers: [
+      'Decks de madera para patios, galerías y entradas.',
+      'Pérgolas y estructuras de madera para exteriores.',
+      'Trabajos en madera a medida.',
+      'Reparación y mantenimiento de decks y estructuras existentes.'
+    ],
+    situations: [
+      'Querés sumar un deck al patio o a la galería.',
+      'Buscás una pérgola para tener sombra en el exterior.',
+      'Un deck existente tiene tablas flojas, rotas o gastadas.',
+      'Necesitás un trabajo en madera hecho a medida.'
+    ],
+    process: howWeWork,
+    sections: [
+      {
+        slug: 'decks-de-madera',
+        title: 'Decks de madera',
+        eyebrow: 'Exteriores en madera',
+        body: [
+          'Decks de madera para patios, galerías, entradas y alrededores de piletas. El profesional define la estructura, el tipo de madera y la fijación según el uso y la exposición al clima costero.',
+          'También se reparan decks existentes: cambio de tablas, refuerzo de la estructura y tratamiento de la madera.'
+        ],
+        bullets: [
+          'Decks nuevos para patios y galerías.',
+          'Reparación y cambio de tablas.',
+          'Tratamiento de la madera para exteriores.'
+        ]
+      },
+      {
+        slug: 'pergolas-y-trabajos-a-medida',
+        title: 'Pérgolas y trabajos a medida',
+        eyebrow: 'Madera a medida',
+        body: [
+          'Pérgolas para galerías y patios, y trabajos en madera a medida según lo que necesite tu propiedad. Mandanos una foto del lugar o una referencia y el profesional te prepara el presupuesto.'
+        ],
+        bullets: [
+          'Pérgolas para exteriores.',
+          'Trabajos en madera a medida.'
+        ]
+      }
+    ],
+    gallery: {
+      eyebrow: 'Trabajos realizados',
+      title: 'Algunos de nuestros trabajos de carpintería',
+      description: 'Decks, pérgolas y trabajos en madera en propiedades de Pinamar y la zona.'
+    },
+    faqs: [
+      ['¿Hacen decks de madera en Pinamar?', 'Sí. Te conectamos con carpinteros que construyen y reparan decks de madera en Pinamar, Cariló, Valeria del Mar y Ostende.'],
+      ['¿Hacen pérgolas?', 'Sí. El profesional construye pérgolas de madera para galerías y patios.'],
+      ['¿Pueden reparar un deck existente?', 'Sí. Mandanos fotos del deck y el profesional evalúa el cambio de tablas, el refuerzo de la estructura y el tratamiento de la madera.'],
       ['¿Qué zonas cubren?', 'Pinamar, Cariló, Valeria del Mar y Ostende.']
     ]
   }
