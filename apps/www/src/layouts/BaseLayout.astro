@@ -107,12 +107,17 @@ const schema = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script is:inline>
+      // Arm the IntersectionObserver reveal only where native scroll-driven animations are missing and motion is welcome.
+      // Without this class (or without JavaScript) every section stays visible.
+      if (!CSS.supports('(animation-timeline: view()) and (animation-range: entry)') && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal');
+    </script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
     <slot />
     <script>
-      const animated = document.querySelectorAll('[data-animate], [data-marker]');
+      const animated = document.querySelectorAll(document.documentElement.classList.contains('js-reveal') ? '[data-animate], [data-marker]' : '[data-marker]');
       const reveal = (el: Element) => el.classList.add(el.hasAttribute('data-marker') ? 'is-marked' : 'is-visible');
       if ('IntersectionObserver' in window && animated.length) {
         const observer = new IntersectionObserver((entries) => {
